@@ -168,8 +168,13 @@ decisions (lock first).
 - Introduce project structure and planning in L1/L2, before project work.
 - Make L1's method focus a **Project Scope Statement**: problem, target
   users, goal, boundaries, stakeholders and the first prototype question.
-- Move sequence diagrams from L1 to the client-server lesson, where they
-  describe actual system interactions.
+- Use L2, L4, L6, L8 and L12 as the **project-lecture sequence**: scope,
+  project planning, execution/monitoring, prototyping and status/iteration.
+- Reserve L10 and L18 for supervised **project work** leading to D1 and D2.
+- Keep Net lectures on L14, L16, L20, L22 and L24; L26 remains the Net
+  wrap-up.
+- Assume students know UML from 62420/62450. Do not spend dedicated Web
+  lessons reteaching UML diagrams; use them only when needed by the project.
 - **D1:** clickable frontend mockup with JavaScript, no backend.
 - **D2:** MVP with frontend, backend/API, PostgreSQL and one central user
   action.

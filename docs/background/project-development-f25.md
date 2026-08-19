@@ -38,12 +38,14 @@ supports D1, which is a clickable frontend mockup without a backend.
 
 ## Delayed material
 
-- Detailed Gantt planning and hour accounting: use after scope and MVP
-  boundaries are clear.
-- Risk analysis: introduce when the groups have a concrete system concept.
-- Detailed task breakdown and progress tracking: introduce as the project
-  develops.
-- Sequence diagrams: teach with client-server architecture, not in L1.
+- Detailed Gantt planning and hour accounting: introduce in L4, after the
+  scope boundaries are clear.
+- Risk analysis, communication and group contract: introduce in L6, when the
+  groups have a concrete project to manage.
+- Detailed progress tracking: use as the project develops and revisit in the
+  status work after each milestone.
+- UML and sequence diagrams: assume the prerequisite knowledge and use only
+  when needed by the project; do not make them a dedicated L1 topic.
 
 The original F25 assignment also contains an ethics section and a robotics
 specific prototype description. These should not be copied directly into
