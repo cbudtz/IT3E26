@@ -77,9 +77,10 @@ course descriptions, E22 lesson plan, E22 Drive materials.
     exceptions), **relational DBs + SQL CRUD/joins + DB integration**,
     **threads & synchronization**, **event-driven GUIs with UI/app-logic
     separation**, **UCD process + evaluation methods, usability/UX**.
-- **Java is out**: neither course names its language ("et objektorienteret
-  programmeringssprog"); serial-sensor work suggests Python — confirm with
-  course responsible (D9) before locking the backend choice.
+- **Java is out**: students have encountered some Python and C#, but no
+  single backend language appears to be a strong shared foundation. Since
+  JavaScript is already required for the frontend, E26 will use JavaScript on
+  the backend as well.
 - Consequence: 62580's "new" topics (UCD, databases, UML) are **web-context
   reinforcement**, not first exposure. Genuinely new web-track material:
   HTML/CSS/JS, HTTP/client-server, JSON, web auth, deployment.
@@ -144,15 +145,15 @@ decisions (lock first).
 
 | # | Decision | Options | Notes | Status |
 |---|---|---|---|---|
-| D1 🔒 | Backend language & framework | Python Flask · Node.js/alternativ runtime | Parked until the meeting. The final choice must support a simple backend/API with PostgreSQL and managed deployment. | parked |
+| D1 🔒 | Backend language & runtime | JavaScript on Node.js | Decided to use one language across frontend and backend. Framework remains a separate choice; it must support a simple REST API, PostgreSQL and managed deployment. | decided |
 | D2 | Frontend approach | Vanilla JS · optional small helpers or Svelte/SvelteKit later | **Vanilla HTML/CSS/JavaScript is the standard.** Any alternative must remain optional and preserve the same learning goals and deliverables. | decided |
 | D3 | TypeScript vs JavaScript | JavaScript | Vanilla JavaScript is the standard. TypeScript is not part of the initial plan; reconsider only if the teaching team later sees a concrete need. | decided |
 | D4 | Database | PostgreSQL | Students already know SQL CRUD + joins (62450). Focus on dataflow through the web application rather than re-teaching relational basics. | decided |
 | D5 🔒 | Deployment target | Vercel or similar managed hosting | Exact platform is parked until the meeting. It must support the chosen backend and PostgreSQL with low setup friction. | parked |
-| D6 | Dev environment | Local VS Code · web IDE (Codespaces/StackBlitz/Gitpod) · lab image | E22's biggest hidden cost was environment setup. A web IDE or devcontainer kills it — but constrains D1/D2. | open |
+| D6 | Dev environment | Local VS Code | VS Code is the standard development environment for the course. Setup documentation and a shared starter repository should minimize environment friction. | decided |
 | D7 | Auth for milestone 3 | Authentication only | D3 requires login/authentication, but **not authorization** or role-based access. Implementation approach remains open. | decided |
 | D8 | Project data & GDPR | Synthetic journalsystem data · real-ish data under GDPR · non-health case | Hosting patient-like data on free tiers = GDPR exposure; synthetic data is the safe default. Depends on D10. | open |
-| D9 🔒 | Prereq language check | Ask Daniel Zielasko / get 62420+62450 syllabi | Course DB never names the language (Java is out; serial sensors suggest Python). D1 depends on this. | open — ask |
+| D9 | Prereq language inventory | Document the Python/C# experience from 62420/62450 | Useful for calibrating the starting point, but no longer a gate for the backend decision. | informational |
 | D10 ⤴ | Project case | Keep journalsystem · new health-tech case | Awaiting clarification from today's meeting. | parked |
 | D11 ⤴ 🔒 | Portfolio format | Markdown-in-repo published as GitHub Pages site · PDF report · DTU Learn | Exam prerequisite "portfolio + website approved" means this shapes every milestone — lock earliest of all. Doubles as documentation exercise. | open |
 | D12 ⤴ | AI assistant policy (web track) | Banned · allowed with disclosure · encouraged + portfolio reflection | Oral exam is the individual-understanding backstop: pair policy with code-walkthrough style questions. Also: Copilot access in labs/web IDE (D6)? | open |
@@ -164,15 +165,17 @@ decisions (lock first).
 - Keep the 26-lesson structure: **13 Web lessons and 13 Net lessons**.
 - Leave the Net track unchanged for now; this plan focuses on the 13 Web
   lessons.
-- Form project groups in **L1** and finalize/record the groups in **L2**.
-- Introduce project structure and planning in L1/L2, before project work.
-- Make L1's method focus a **Project Scope Statement**: problem, target
+- Keep L1 as a pure HTML introduction.
+- Make L2's method focus a **Project Scope Statement**: problem, target
   users, goal, boundaries, stakeholders and the first prototype question.
+- Introduce project planning in L2 and develop it into a concrete work
+  breakdown, milestones and responsibility plan in L4.
 - Use L2, L4, L6, L8 and L12 as the **project-lecture sequence**: scope,
-  project planning, execution/monitoring, prototyping and status/iteration.
-- Reserve L10 and L18 for supervised **project work** leading to D1 and D2.
-- Keep Net lectures on L14, L16, L20, L22 and L24; L26 remains the Net
-  wrap-up.
+  project planning, user experience, prototyping, and monitoring/status.
+- Reserve L10, L18 and L25 for supervised **project work** leading to D1, D2
+  and D3.
+- Keep Net lectures on L14, L16, L20 and L22; L24 is currently empty and L26
+  remains the Net wrap-up.
 - Assume students know UML from 62420/62450. Do not spend dedicated Web
   lessons reteaching UML diagrams; use them only when needed by the project.
 - **D1:** clickable frontend mockup with JavaScript, no backend.
@@ -232,8 +235,8 @@ _(working section — to be refined)_
 
 ### Open questions
 
-- [ ] Which programming language do 62420/62450 actually use? (D9 — gate
-      for the stack decision.)
+- [ ] Document the actual Python/C# level from 62420/62450 (D9) so the
+      JavaScript/Node.js introduction is calibrated correctly.
 - [ ] Are E22 slides/exercise docs reusable under a format migration (Drive
       → repo), and do co-teachers (lasom, birad) have the source files?
 - [ ] Danish vs. English material language (62580 is taught in Danish, but

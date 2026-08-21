@@ -21,10 +21,11 @@ into manageable tasks, estimate time, assign responsibilities and record
 dependencies. These are useful later project-work practices, but should not
 all be taught in the first lesson.
 
-## Adaptation for E26 L1
+## Adaptation for E26 L2 and L4
 
-The relevant L1 method is **scope definition**, not a complete project
-management course. Groups should answer:
+L1 remains a pure HTML introduction. The relevant project method starts in L2
+with **scope definition**, not a complete project management course. Groups
+should answer:
 
 1. What problem are we trying to solve?
 2. Who is the target user or stakeholder?
