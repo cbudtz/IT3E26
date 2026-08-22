@@ -1,21 +1,22 @@
 # IT3E26 — 62580 Digitale Systemer & Anvendelse
 
-Kursusmateriale til **62580 Digitale Systemer & Anvendelse**, 3. semester
+Velkommen til **62580 Digitale Systemer & Anvendelse**, 3. semester
 sundhedsteknologi (diplomingeniør), DTU Ballerup — E26.
+
+**Det forventes, at du har forberedt dig til hver undervisningsgang.** Hvad du
+skal lave, står under *Forberedelse* på den enkelte lektion — klik på
+lektionens titel i planen herunder.
 
 - 13 uger med lektioner i **Web**, **Projekt**, **Projektarbejde** og **Net**
   (onsdag E5B og fredag E4B)
 - Gruppeprojekt med kørende system + projektportefølje, afleveres over
   **3 delafleveringer** og forsvares ved individuel mundtlig eksamen
-- Lektioner: [Lektion 1 — HTML-introduktion](lektion1/Readme.md)
-- Baggrund og planlægning: [docs/](docs/) — kursusbeskrivelser og
-  [opdateringsplan](docs/E26UpdatePlan.md)
 
 ## Lektionsplan (udkast)
 
 | Lektion | Spor | Emner |
 |---|---|---|
-| [1](lektion1/Readme.md) | **Web** | HTML-introduktion: dokumentstruktur og tags `<p>`, `<h>`, `<img>`, `<a>` |
+| 1 | **Web** | [HTML-introduktion: dokumentstruktur og tags `<p>`, `<h>`, `<img>`, `<a>`](lektion1/Readme.md) |
 | 2 | **Projekt** | Project Scope: problem, målgruppe, mål, afgrænsning og interessenter. Introduktion til projektplanlægning |
 | 3 | **Web** | HTML II og CSS: dynamiske elementer, semantisk HTML, grundlæggende accessibility, styling og `<form>`-elementer |
 | 4 | **Projekt** | Fra scope til projektplan: milepæle, work breakdown, arbejdspakker, opgaveansvar, tidsestimater og afhængigheder |

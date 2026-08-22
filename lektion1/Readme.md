@@ -1,8 +1,13 @@
 # Lektion 1 — HTML-introduktion
 
 Web-sporets første lektion: kom godt i gang med HTML og dit udviklingsmiljø.
-Forberedelse: se [forberedelse.md](forberedelse.md) — freeCodeCamp *Basic
+
+## Forberedelse
+
+Det forventes, at du har forberedt dig til undervisningen — freeCodeCamp *Basic
 HTML* til og med *Understanding the HTML Boilerplate* (ca. 1 time).
+
+[Forberedelse til Lektion 1](forberedelse.md)
 
 ## Program (4 timer)
 
