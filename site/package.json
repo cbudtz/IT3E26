@@ -10,8 +10,10 @@
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"start": "node server.ts",
-		"cas:check": "node scripts/cas-check.mjs"
+		"start": "node --env-file-if-exists=.env server.ts",
+		"cas:check": "node scripts/cas-check.mjs",
+		"db:generate": "drizzle-kit generate",
+		"db:studio": "drizzle-kit studio"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.1",
