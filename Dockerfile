@@ -1,0 +1,21 @@
+# Bygger site/ (SvelteKit + Colyseus) og pakker kursusmaterialet (markdown) med.
+FROM node:24-alpine AS build
+WORKDIR /app/site
+COPY site/package*.json ./
+RUN npm ci
+COPY site/ ./
+RUN npm run build && npm prune --omit=dev
+
+FROM node:24-alpine
+ENV NODE_ENV=production PORT=3000 CONTENT_DIR=/app/content
+WORKDIR /app/site
+COPY --from=build /app/site/node_modules ./node_modules
+COPY --from=build /app/site/build ./build
+COPY --from=build /app/site/package.json ./package.json
+COPY --from=build /app/site/server.ts ./server.ts
+COPY --from=build /app/site/src/lib/server/realtime ./src/lib/server/realtime
+# Kursusmaterialet (markdown). Hele repoet minus site/ - saa nye lektion*-mapper kommer automatisk med.
+COPY . /app/content/
+RUN rm -rf /app/content/site
+EXPOSE 3000
+CMD ["node", "server.ts"]

@@ -145,20 +145,22 @@ decisions (lock first).
 
 | # | Decision | Options | Notes | Status |
 |---|---|---|---|---|
-| D1 🔒 | Backend language & runtime | JavaScript on Node.js | Decided to use one language across frontend and backend. Framework remains a separate choice; it must support a simple REST API, PostgreSQL and managed deployment. | decided |
+| D1 🔒 | Backend language & runtime | JavaScript on Node.js | Decided to use one language across frontend and backend. Framework: see D15. | decided |
 | D2 | Frontend approach | Vanilla JS · optional small helpers or Svelte/SvelteKit later | **Vanilla HTML/CSS/JavaScript is the standard.** Any alternative must remain optional and preserve the same learning goals and deliverables. | decided |
 | D3 | TypeScript vs JavaScript | JavaScript | Vanilla JavaScript is the standard. TypeScript is not part of the initial plan; reconsider only if the teaching team later sees a concrete need. | decided |
 | D4 | Database | PostgreSQL | Students already know SQL CRUD + joins (62450). Focus on dataflow through the web application rather than re-teaching relational basics. | decided |
 | D5 🔒 | Deployment target | Vercel or similar managed hosting | Exact platform is parked until the meeting. It must support the chosen backend and PostgreSQL with low setup friction. | parked |
 | D6 | Dev environment | Local VS Code | VS Code is the standard development environment for the course. Setup documentation and a shared starter repository should minimize environment friction. | decided |
 | D7 | Auth for milestone 3 | Authentication only | D3 requires login/authentication, but **not authorization** or role-based access. Implementation approach remains open. | decided |
-| D8 | Project data & GDPR | Synthetic journalsystem data · real-ish data under GDPR · non-health case | Hosting patient-like data on free tiers = GDPR exposure; synthetic data is the safe default. Depends on D10. | open |
+| D8 | Project data & GDPR | Synthetic data · real-ish data under GDPR · non-health case | Hosting patient-like data on free tiers = GDPR exposure; synthetic data is the safe default. With D10 (optional health-tech cases, no EHR) all cases run on synthetic data. | open |
 | D9 | Prereq language inventory | Document the Python/C# experience from 62420/62450 | Useful for calibrating the starting point, but no longer a gate for the backend decision. | informational |
-| D10 ⤴ | Project case | Keep journalsystem · new health-tech case | Awaiting clarification from today's meeting. | parked |
+| D10 ⤴ | Project case | Keep journalsystem · new health-tech case · **menu of optional cases** | **EHR/journalsystem dropped as the common project.** Groups choose among smaller, well-delimited health-tech cases (examples): medication tracker, appointment system, blood-pressure diary, headache diary, patient questionnaire, lab-result viewer. Each must fit the D1→D3 arc (one central user action at D2). Needs co-teacher confirmation. | direction decided |
 | D11 ⤴ 🔒 | Portfolio format | Markdown-in-repo published as GitHub Pages site · PDF report · DTU Learn | Exam prerequisite "portfolio + website approved" means this shapes every milestone — lock earliest of all. Doubles as documentation exercise. | open |
 | D12 ⤴ | AI assistant policy (web track) | Banned · allowed with disclosure · encouraged + portfolio reflection | Oral exam is the individual-understanding backstop: pair policy with code-walkthrough style questions. Also: Copilot access in labs/web IDE (D6)? | open |
 | D13 ⤴ | Exam & grading split | Which learning goals, exam questions and milestone approvals the web teacher owns | Needed to scope material depth; coordinate with network-track teacher. | open |
 | D14 | Material distribution | This repo · DTU Learn · both (repo source of truth, Learn for announcements) | Replaces Google Drive; see Tooling section. | open |
+| D15 | Backend framework | Express · Hono · plain `http` | **Express.** Largest body of learning material and the most reliable output from AI assistants, which students will use. Teach "JavaScript can run on the server, receive HTTP requests and talk to a database" — not Node internals (V8, event loop). | decided |
+| D16 | Teacher-provided patient API | Teacher-hosted Express API with synthetic patients · local JSON files | **Teacher-hosted API** used from L7 onward for `fetch()` before students have their own backend. Must send `Access-Control-Allow-Origin: *` (the `cors` middleware) since students call it from `file://`/localhost; CORS is covered as an aside in L7 when they hit it. Endpoints mirror what students build themselves in L15 (`GET/POST/PUT/DELETE /api/patients[/:id]`). | decided |
 
 ### Decisions from current planning
 
@@ -183,6 +185,68 @@ decisions (lock first).
   action.
 - **D3:** functioning system with additional user flows, authentication,
   deployment and completed portfolio. Authorization is not required.
+- **L7 fetch target:** the teacher-provided patient API (D16); CORS is
+  handled as an aside there, not as a dedicated topic.
+- **Sessions stay in L13** (application state), not moved to L21 auth.
+- **Repository layer is taught explicitly in L17** (`Express → repository →
+  PostgreSQL`) — makes "lagdelte applikationer" (L11, course goal) concrete
+  and connects to 62450's UI/app-logic separation.
+- **Git collaboration** (branches, pull requests, merge conflicts) is not a
+  scheduled lesson. Level is gauged in L1 (survey); **if weak, introduce it
+  in L3.**
+
+### E22 traceability for the lesson plan
+
+Which E22 (62581) material each lesson in the [README lesson plan](../README.md)
+builds on, and what was removed. Kept here so the student-facing README stays
+free of old-course references.
+
+| Lektion | E22-grundlag |
+|---|---|
+| 1 | L1 |
+| 2 | nyt + F25 scope |
+| 3 | L3 (omarbejdet) |
+| 4 | F25 projektplan |
+| 5 | L9 |
+| 6 | nyt (bygger på 62450) |
+| 7 | L13 (omarbejdet) |
+| 8 | F25 prototype-materiale |
+| 9 | L7 (omarbejdet) |
+| 10 | F25 aflevering 1 |
+| D1 | D1 |
+| 11 | L9 |
+| 12 | F25 statusrapporter |
+| 13 | L11 (omarbejdet) |
+| 14 | L2 (forkortet) |
+| 15 | nyt |
+| 16 | L6 + L18 |
+| 17 | nyt |
+| 18 | projektarbejde |
+| D2 | D2 |
+| 19 | L5 + L23 (omarbejdet) |
+| 20 | L20 + L22 |
+| 21 | L19 |
+| 22 | L4 + L20 (omarbejdet) |
+| 23 | L25 |
+| 24 | — |
+| 25 | projektarbejde |
+| 26 | L26 |
+| D3 | D3 |
+
+**Fjernet ift. E22** (ikke i den nye kursusbeskrivelse):
+
+- **Forsinkelser og tab** samt transport-/netværkslagsdybde (gammelt
+  Kurose-spor)
+- **Kryptering som selvstændig lektion** — HTTPS indgår nu i L20 som en del af
+  protokol-overblikket
+- **Netværkssikkerhed som separat lektion** — samlet i L22 (sikkerhed og
+  privatliv)
+- **Pakkeanalyse/netværksanalyse-værktøjer** (Wireshark, ping/traceroute) —
+  var et 62581-læringsmål, ikke 62580
+- **Protokol-møde** og serialiserings-begrebet — var knyttet til det gamle
+  datamarshalling-mål
+- **Linux/Bash og serveradministration** — allerede fjernet; deployment er
+  nu hosting-orienteret (L19)
 
 _(working section — to be refined)_
 
@@ -193,8 +257,9 @@ _(working section — to be refined)_
       into overview modules).
 - [ ] Decide lesson rhythm: keep two-track Wed/Fri split or move to
       integrated "systems + lab" format matching the project phases.
-- [ ] Design the project: keep journalsystem case (health-tech relevance) or
-      modernize; define the portfolio format and per-student delimitation.
+- [ ] Design the project: write up the menu of optional health-tech cases
+      (D10) with per-case D1/D2/D3 expectations; define the portfolio format
+      and per-student delimitation.
 - [ ] Milestone plan aligned to new exam prerequisite (portfolio + website
       approved before exam).
 
@@ -235,6 +300,11 @@ _(working section — to be refined)_
 
 ### Open questions
 
+- [ ] **Validation & error handling need a home** — server-side validation of
+      request bodies and consistent error responses appear only implicitly in
+      L17; likely L15 (REST APIs), as the bridge to security in L21.
+- [ ] Git collaboration: depends on the L1 survey — if needed, it goes into L3
+      (which then has to make room next to HTML II/CSS).
 - [ ] Document the actual Python/C# level from 62420/62450 (D9) so the
       JavaScript/Node.js introduction is calibrated correctly.
 - [ ] Are E22 slides/exercise docs reusable under a format migration (Drive

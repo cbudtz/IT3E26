@@ -9,6 +9,7 @@ course database and the old course's Google Drive.
 | [course-62581-it-og-kommunikation.md](course-62581-it-og-kommunikation.md) | The old course it replaces (last offered 2025/26) | https://kurser.dtu.dk/course/62581 |
 | [e22-lesson-plan-62581.md](e22-lesson-plan-62581.md) | Complete 26-lesson plan (E22) with topics, preparation and deliverables | Google Sheets "E22 Lektionsplan 62581" |
 | [e22-drive-materials.md](e22-drive-materials.md) | Inventory of the old course's Google Drive (lectures + exercises per lesson) | https://drive.google.com/drive/folders/1qZ0IESfW2jFlFGfR5Igs1LZxHWu5rJUK |
+| [lektion1/](lektion1/) | Full verbatim text of Lektion 01's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion1/README.md](lektion1/README.md) |
 | [course-prerequisites-62420-62450.md](course-prerequisites-62420-62450.md) | The two prerequisite courses (IT1/IT2) — incoming student profile | https://kurser.dtu.dk/course/62420, https://kurser.dtu.dk/course/62450 |
 | [project-development-f25.md](project-development-f25.md) | F25 project-development material, adapted for the L1 scope exercise | https://drive.google.com/drive/folders/10jfMp-e9lRdwoUaIA5nbBXn_hxnhLV6L |
 
