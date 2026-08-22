@@ -35,7 +35,8 @@
 			watch(room, (s) => (snap = s));
 			room.onLeave(() => (error = 'Forbindelsen blev lukket.'));
 		} catch (e) {
-			error = 'Kunne ikke finde en quiz med koden ' + code + '. Tjek koden og prøv igen.';
+			const msg = (e as { message?: string })?.message || String(e);
+			error = 'Kunne ikke deltage med koden ' + code + ' (' + msg + '). Tjek koden og prøv igen.';
 		}
 	});
 

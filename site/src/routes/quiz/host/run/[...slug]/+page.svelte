@@ -40,7 +40,8 @@
 			watch(room, (s) => (snap = s));
 			room.onLeave(() => (error = 'Forbindelsen til quiz-serveren blev lukket.'));
 		} catch (e) {
-			error = 'Kunne ikke oprette quiz-rummet: ' + (e as Error).message;
+			const msg = (e as { message?: string })?.message || String(e);
+			error = 'Kunne ikke oprette quiz-rummet: ' + msg + '. Er WebSocket-support slaaet til paa serveren (CapRover: HTTP Settings -> Websocket Support)?';
 		}
 	});
 
