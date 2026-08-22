@@ -59,11 +59,14 @@ export class QuizRoom extends Room {
 		this.state.answerCount = 0;
 
 		this.onMessage('host:claim', (client, msg: { token: string }) => {
-			if (msg?.token && msg.token === this.hostToken) {
+			const ok = !!msg?.token && msg.token === this.hostToken;
+			if (ok) {
 				this.hostSessionId = client.sessionId;
 				// Host er ikke deltager.
 				this.state.players.delete(client.sessionId);
 			}
+			// Svar altid, saa host-UI'et ved om det har styringen.
+			client.send('host:claimed', { ok });
 		});
 		this.onMessage('host:next', (client) => this.ifHost(client, () => this.nextQuestion()));
 		this.onMessage('host:reveal', (client) => this.ifHost(client, () => this.reveal()));
@@ -90,7 +93,18 @@ export class QuizRoom extends Room {
 
 	async onLeave(client: Client, code?: number) {
 		const consented = code === CloseCode.CONSENTED;
-		if (client.sessionId === this.hostSessionId) return; // host kommer tilbage eller rummet lukker
+
+		// Uden host giver rummet ingen mening - og en efterladt join-kode ville
+		// kunne "stjaele" studerende fra en senere quiz med samme kode.
+		if (client.sessionId === this.hostSessionId) {
+			if (consented) return void this.disconnect();
+			try {
+				await this.allowReconnection(client, 120);
+			} catch {
+				await this.disconnect();
+			}
+			return;
+		}
 		if (consented) {
 			this.state.players.delete(client.sessionId);
 			return;

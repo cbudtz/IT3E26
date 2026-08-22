@@ -9,6 +9,7 @@
 	let snap = $state<Snapshot>(EMPTY);
 	let error = $state('');
 	let joinUrl = $state('');
+	let isHost = $state(false);
 
 	const q = $derived(snap.question);
 	const players = $derived(Object.values(snap.players));
@@ -17,17 +18,18 @@
 	const isLast = $derived(snap.questionIndex >= snap.questionCount - 1);
 
 	onMount(async () => {
-		// Overlev en side-reload: genbrug kode+token for denne quiz i denne fane.
+		// Overlev en side-reload: genbrug kode/token og reconnect til SAMME rum.
 		const key = 'it3e26_host:' + data.quiz.slug;
-		const saved = JSON.parse(sessionStorage.getItem(key) ?? 'null') as { joinCode: string; hostToken: string } | null;
+		const saved = JSON.parse(sessionStorage.getItem(key) ?? 'null') as
+			| { joinCode: string; hostToken: string; reconnect?: string }
+			| null;
 		const joinCode = saved?.joinCode ?? data.joinCode;
 		const hostToken = saved?.hostToken ?? data.hostToken;
-		sessionStorage.setItem(key, JSON.stringify({ joinCode, hostToken }));
 		joinUrl = `${location.origin}/quiz?code=${joinCode}`;
 
 		try {
 			const client = connect(data.realtimeUrl);
-			room = await client.joinOrCreate('quiz', {
+			const options = {
 				joinCode,
 				hostToken,
 				host: data.host,
@@ -35,6 +37,21 @@
 				title: data.quiz.title,
 				questions: data.quiz.questions,
 				nickname: '(host)'
+			};
+			// create() - ikke joinOrCreate() - saa host ALTID ejer rummet og
+			// dermed kender hostToken. Ved reload forsoeges reconnect foerst.
+			try {
+				room = saved?.reconnect
+					? await client.reconnect(saved.reconnect)
+					: await client.create('quiz', options);
+			} catch {
+				room = await client.create('quiz', options);
+			}
+			sessionStorage.setItem(key, JSON.stringify({ joinCode, hostToken, reconnect: room.reconnectionToken }));
+
+			room.onMessage('host:claimed', (m: { ok: boolean }) => {
+				isHost = m.ok;
+				if (!m.ok) error = 'Denne fane har ikke styringen over quizzen. Klik "Ny runde" for at starte et nyt rum.';
 			});
 			room.send('host:claim', { token: hostToken });
 			watch(room, (s) => (snap = s));
@@ -71,7 +88,7 @@
 	</div>
 	<div class="controls">
 		{#if snap.phase === 'lobby'}
-			<button class="primary" onclick={() => send('host:next')} disabled={!room}>Start quiz</button>
+			<button class="primary" onclick={() => send('host:next')} disabled={!isHost}>{isHost ? 'Start quiz' : 'Forbinder…'}</button>
 		{:else if snap.phase === 'question'}
 			<button class="primary" onclick={() => send('host:reveal')}>Afslør svar</button>
 		{:else if snap.phase === 'reveal'}
