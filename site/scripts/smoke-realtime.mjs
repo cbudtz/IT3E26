@@ -18,7 +18,7 @@ const questions = [
 
 const client = new Client(base);
 const host = await client.joinOrCreate('quiz', {
-  quizId: 'demo', joinCode: 'ABC123', hostToken: 'hemmelig', questions, nickname: 'Underviser'
+  quizSlug: 'demo', title: 'Smoke', joinCode: 'ABC123', hostToken: 'hemmelig', host: 'smoke', questions, nickname: 'Underviser'
 });
 console.log(`WS    join         -> room ${host.roomId}, phase "${host.state.phase}"`);
 host.send('host:claim', { token: 'hemmelig' });
@@ -27,8 +27,8 @@ const s1 = await client.joinById(host.roomId, { nickname: 'Stud A' });
 const s2 = await client.joinById(host.roomId, { nickname: 'Stud B' });
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 await wait(300);
-console.log(`WS    players       -> ${host.state.players.size} (forventet 3)`);
-if (host.state.players.size !== 3) fail('spillere blev ikke synkroniseret');
+console.log(`WS    players       -> ${host.state.players.size} (forventet 2 - host taeller ikke)`);
+if (host.state.players.size !== 2) fail('spillere blev ikke synkroniseret');
 
 // Spørgsmål 1 (mc): A svarer rigtigt, B forkert.
 host.send('host:next');

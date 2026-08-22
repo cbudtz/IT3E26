@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-node';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
 import { createServer } from 'node:http';
 import { attachColyseus } from './src/lib/server/realtime/attach.ts';
 
@@ -16,7 +16,9 @@ function colyseusDev(): Plugin {
 	return {
 		name: 'colyseus-dev',
 		apply: 'serve',
-		configureServer() {
+		configureServer(server) {
+			// QuizRoom persisterer via process.env.DATABASE_URL (ingen $env i u-bundlet kode).
+			Object.assign(process.env, loadEnv(server.config.mode, process.cwd(), ''));
 			const rt = createServer();
 			void attachColyseus(rt).then(() => {
 				rt.listen(DEV_REALTIME_PORT, () => {

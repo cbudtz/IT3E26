@@ -1,7 +1,8 @@
-import { Room, type Client } from 'colyseus';
+import { Room, CloseCode, type Client } from 'colyseus';
 import { QuizState, Player, Question } from './state.ts';
+import { startRun, saveAnswers, endRun } from './persist.ts';
 
-/** Et spørgsmål som underviseren har defineret (facit forlader aldrig serveren). */
+/** Et spoergsmaal som underviseren har defineret (facit forlader foerst serveren ved reveal). */
 export type QuestionDef = {
 	id: string;
 	type: 'mc' | 'tf' | 'short';
@@ -12,34 +13,45 @@ export type QuestionDef = {
 };
 
 export type QuizRoomOptions = {
-	quizId: string;
+	quizSlug: string;
+	title: string;
 	joinCode: string;
 	questions: QuestionDef[];
-	/** Hemmelighed underviserens klient sender for at få styringsrettigheder. */
+	/** Hemmelighed underviserens klient sender for at faa styringsrettigheder. */
 	hostToken: string;
+	/** DTU-brugernavn paa host (til resultat-loggen). */
+	host: string;
 };
 
+const norm = (s: string) => s.trim().toLowerCase();
+
 const isCorrect = (q: QuestionDef, value: string): boolean => {
-	if (q.type === 'short') {
-		const norm = (s: string) => s.trim().toLowerCase();
-		return (q.correct as string[]).some((c) => norm(c) === norm(value));
-	}
+	if (q.type === 'short') return (q.correct as string[]).some((c) => norm(c) === norm(value));
 	return (q.correct as number[]).includes(Number(value));
+};
+
+const clear = (arr: { length: number; pop(): unknown }) => {
+	while (arr.length > 0) arr.pop();
 };
 
 export class QuizRoom extends Room {
 	state = new QuizState();
 
+	private quizSlug = '';
 	private questions: QuestionDef[] = [];
 	private hostToken = '';
 	private hostSessionId: string | null = null;
-	/** questionId -> sessionId -> rå svarværdi. Bruges til persistering. */
+	private runId: number | null = null;
+	private revealed = new Set<string>();
+	/** questionId -> sessionId -> raa svarvaerdi. */
 	private answers = new Map<string, Map<string, string>>();
 
-	onCreate(options: QuizRoomOptions) {
+	async onCreate(options: QuizRoomOptions) {
+		this.quizSlug = options.quizSlug;
 		this.questions = options.questions ?? [];
 		this.hostToken = options.hostToken;
 		this.state.phase = 'lobby';
+		this.state.title = options.title ?? '';
 		this.state.joinCode = options.joinCode;
 		this.state.questionIndex = -1;
 		this.state.questionCount = this.questions.length;
@@ -47,28 +59,52 @@ export class QuizRoom extends Room {
 		this.state.answerCount = 0;
 
 		this.onMessage('host:claim', (client, msg: { token: string }) => {
-			if (msg?.token && msg.token === this.hostToken) this.hostSessionId = client.sessionId;
+			if (msg?.token && msg.token === this.hostToken) {
+				this.hostSessionId = client.sessionId;
+				// Host er ikke deltager.
+				this.state.players.delete(client.sessionId);
+			}
 		});
 		this.onMessage('host:next', (client) => this.ifHost(client, () => this.nextQuestion()));
 		this.onMessage('host:reveal', (client) => this.ifHost(client, () => this.reveal()));
-		this.onMessage('host:end', (client) =>
-			this.ifHost(client, () => {
-				this.state.phase = 'ended';
-			})
-		);
+		this.onMessage('host:end', (client) => this.ifHost(client, () => this.end()));
 		this.onMessage('answer', (client, msg: { value: string }) => this.submit(client, msg?.value));
+
+		this.runId = await startRun({
+			quizSlug: options.quizSlug,
+			title: options.title,
+			joinCode: options.joinCode,
+			host: options.host ?? ''
+		}).catch((e) => {
+			console.error('[quiz] kunne ikke logge koersel:', e.message);
+			return null;
+		});
 	}
 
 	onJoin(client: Client, options: { nickname?: string }) {
 		this.state.players.set(
 			client.sessionId,
-			new Player({ nickname: options?.nickname?.slice(0, 40) || 'Anonym', score: 0, hasAnswered: false })
+			new Player({ nickname: options?.nickname?.trim().slice(0, 40) || 'Anonym', score: 0, hasAnswered: false })
 		);
 	}
 
-	onLeave(client: Client) {
-		// Behold spilleren kortvarigt, så et wifi-hik ikke koster deres score.
-		this.allowReconnection(client, 60).catch(() => this.state.players.delete(client.sessionId));
+	async onLeave(client: Client, code?: number) {
+		const consented = code === CloseCode.CONSENTED;
+		if (client.sessionId === this.hostSessionId) return; // host kommer tilbage eller rummet lukker
+		if (consented) {
+			this.state.players.delete(client.sessionId);
+			return;
+		}
+		// Behold spilleren kortvarigt, saa et wifi-hik ikke koster deres score.
+		try {
+			await this.allowReconnection(client, 90);
+		} catch {
+			this.state.players.delete(client.sessionId);
+		}
+	}
+
+	onDispose() {
+		if (this.runId && this.state.phase !== 'ended') void endRun(this.runId).catch(() => {});
 	}
 
 	private ifHost(client: Client, fn: () => void) {
@@ -77,22 +113,16 @@ export class QuizRoom extends Room {
 
 	private nextQuestion() {
 		const next = this.state.questionIndex + 1;
-		if (next >= this.questions.length) {
-			this.state.phase = 'ended';
-			return;
-		}
+		if (next >= this.questions.length) return this.end();
 		const q = this.questions[next];
 		this.state.questionIndex = next;
 		this.state.phase = 'question';
-		this.state.question = new Question({
-			id: q.id,
-			type: q.type,
-			prompt: q.prompt,
-			options: q.options ?? []
-		});
-		// ArraySchema#splice() kan ikke indsaette flere end den sletter - toem og fyld i stedet.
-		while (this.state.tally.length > 0) this.state.tally.pop();
+		this.state.question = new Question({ id: q.id, type: q.type, prompt: q.prompt, options: q.options ?? [] });
+		clear(this.state.tally);
 		for (let i = 0; i < (q.options?.length ?? 0); i++) this.state.tally.push(0);
+		clear(this.state.correctOptions);
+		clear(this.state.correctText);
+		clear(this.state.shortAnswers);
 		this.state.answerCount = 0;
 		this.answers.set(q.id, new Map());
 		this.state.players.forEach((p) => (p.hasAnswered = false));
@@ -100,30 +130,47 @@ export class QuizRoom extends Room {
 
 	private submit(client: Client, value: string) {
 		if (this.state.phase !== 'question' || typeof value !== 'string') return;
+		if (client.sessionId === this.hostSessionId) return;
 		const q = this.questions[this.state.questionIndex];
 		const perQuestion = this.answers.get(q.id)!;
-		if (perQuestion.has(client.sessionId)) return; // ét svar pr. spørgsmål
+		if (perQuestion.has(client.sessionId)) return; // ét svar pr. spoergsmaal
 
-		perQuestion.set(client.sessionId, value.slice(0, 500));
+		const v = value.slice(0, 200);
+		perQuestion.set(client.sessionId, v);
 		this.state.answerCount = perQuestion.size;
 
 		const player = this.state.players.get(client.sessionId);
 		if (player) player.hasAnswered = true;
 
-		if (q.type !== 'short') {
-			const i = Number(value);
+		if (q.type === 'short') {
+			this.state.shortAnswers.push(v);
+		} else {
+			const i = Number(v);
 			if (Number.isInteger(i) && i >= 0 && i < this.state.tally.length) this.state.tally[i]++;
 		}
 	}
 
 	private reveal() {
-		if (this.state.questionIndex < 0) return;
+		if (this.state.questionIndex < 0 || this.state.phase !== 'question') return;
 		const q = this.questions[this.state.questionIndex];
+		const rows: { nickname: string; value: string; isCorrect: boolean }[] = [];
 		for (const [sessionId, value] of this.answers.get(q.id) ?? []) {
 			const player = this.state.players.get(sessionId);
-			if (player && isCorrect(q, value)) player.score++;
+			const ok = isCorrect(q, value);
+			if (player && ok && !this.revealed.has(q.id)) player.score++;
+			rows.push({ nickname: player?.nickname ?? '?', value, isCorrect: ok });
 		}
+		this.revealed.add(q.id);
+		if (q.type === 'short') (q.correct as string[]).forEach((c) => this.state.correctText.push(c));
+		else (q.correct as number[]).forEach((i) => this.state.correctOptions.push(i));
 		this.state.phase = 'reveal';
-		// TODO(plan): persistér this.answers til Postgres via Drizzle her.
+
+		if (this.runId) void saveAnswers(this.runId, q, rows).catch((e) => console.error('[quiz] gem svar:', e.message));
+	}
+
+	private end() {
+		if (this.state.phase === 'ended') return;
+		this.state.phase = 'ended';
+		if (this.runId) void endRun(this.runId).catch(() => {});
 	}
 }
