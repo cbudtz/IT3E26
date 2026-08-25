@@ -156,7 +156,7 @@ decisions (lock first).
 | D9 | Prereq language inventory | Document the Python/C# experience from 62420/62450 | Useful for calibrating the starting point, but no longer a gate for the backend decision. | informational |
 | D10 ⤴ | Project case | Keep journalsystem · new health-tech case | Awaiting clarification from today's meeting. | parked |
 | D11 ⤴ 🔒 | Portfolio format | Markdown-in-repo published as GitHub Pages site · PDF report · DTU Learn | Exam prerequisite "portfolio + website approved" means this shapes every milestone — lock earliest of all. Doubles as documentation exercise. | open |
-| D12 ⤴ | AI assistant policy (web track) | Banned · allowed with disclosure · encouraged + portfolio reflection | Oral exam is the individual-understanding backstop: pair policy with code-walkthrough style questions. Also: Copilot access in labs/web IDE (D6)? | open |
+| D12 ⤴ | AI assistant policy (web track) | Allowed with disclosure | AI assistants are allowed; **all code must be explainable**. Students must document AI usage in portfolio and be able to walk through and explain any code during oral exam. Copilot/ChatGPT encouraged as productivity tools with transparency. | decided |
 | D13 ⤴ | Exam & grading split | Which learning goals, exam questions and milestone approvals the web teacher owns | Needed to scope material depth; coordinate with network-track teacher. | open |
 | D14 | Material distribution | This repo · DTU Learn · both (repo source of truth, Learn for announcements) | Replaces Google Drive; see Tooling section. | open |
 
