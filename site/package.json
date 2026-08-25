@@ -1,0 +1,40 @@
+{
+	"name": "site",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"start": "node --env-file-if-exists=.env server.ts",
+		"cas:check": "node scripts/cas-check.mjs",
+		"db:generate": "drizzle-kit generate",
+		"db:studio": "drizzle-kit studio"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^7.0.1",
+		"@sveltejs/kit": "^2.63.0",
+		"@sveltejs/vite-plugin-svelte": "^7.1.2",
+		"@types/express": "^5.0.6",
+		"drizzle-kit": "^0.31.10",
+		"svelte": "^5.56.1",
+		"svelte-check": "^4.6.0",
+		"typescript": "^6.0.3",
+		"vite": "^8.0.16"
+	},
+	"dependencies": {
+		"@colyseus/schema": "^4.0.31",
+		"@colyseus/sdk": "^0.17.43",
+		"@colyseus/ws-transport": "^0.17.13",
+		"@sveltejs/adapter-node": "^5.5.7",
+		"colyseus": "^0.17.10",
+		"drizzle-orm": "^0.45.2",
+		"express": "^5.2.1",
+		"marked": "^18.0.10",
+		"postgres": "^3.4.9"
+	}
+}

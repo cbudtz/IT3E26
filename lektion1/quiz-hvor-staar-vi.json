@@ -1,0 +1,40 @@
+{
+  "title": "Hvor står vi? — programmering, databaser og UML fra 1.–2. semester",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvad udskriver dette Java-udtryk: 7 / 2 ?",
+      "options": ["3", "3.5", "4", "Kompileringsfejl"],
+      "correct": [0]
+    },
+    {
+      "id": "q2",
+      "type": "tf",
+      "prompt": "En primærnøgle i en SQL-tabel må gerne have samme værdi i to rækker.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvilken SQL-sætning henter alle rækker fra tabellen patient?",
+      "options": ["GET * FROM patient;", "SELECT * FROM patient;", "FETCH ALL patient;", "SHOW patient;"],
+      "correct": [1]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "prompt": "Hvilket UML-diagram viser, hvordan objekter sender beskeder til hinanden over tid?",
+      "options": [],
+      "correct": ["sekvensdiagram", "sequence diagram", "sekvens diagram"]
+    },
+    {
+      "id": "q5",
+      "type": "mc",
+      "prompt": "Hvad står HTML for?",
+      "options": ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "HighText Machine Language"],
+      "correct": [0]
+    }
+  ]
+}
