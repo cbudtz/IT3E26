@@ -5,13 +5,13 @@ sundhedsteknologi, DTU Ballerup — E26.
 
 Kurset bygger på de foregående IT kurser og fortsætter hvor de slap. Nu arbejder vi med systemer hele vejen fra brugergrænsefladen til servere og databaser.
 
-Kurset består af fullstack web-udvikling, projektudvikling og netværkværksteknologi
+Kurset består af fullstack web-udvikling, projektudvikling og netværksteknologi.
 
-- Projekt og UX undervises af Rolf Nordahl (kursusansvarlig).
-- Netværksteknologi af Birger Andersen.
-- Christian Budtz står for web-udvikling.
+- Projekt og UX: Rolf Nordahl (kursusansvarlig).
+- Netværksteknologi: Birger Andersen.
+- Web-udvikling: Christian Budtz.
 
-**Gruppeprojektet** afleveres i tre trin i form af **3 Delafleveringer** og skal — sammen med website og portefølje — **være godkendt for at man kan deltage i den individuelle mundtlige eksamen:**
+**Gruppeprojektet** afleveres i **3 Delafleveringer** og skal — sammen med website og portefølje — **være godkendt for at man kan deltage i den individuelle mundtlige eksamen:**
 
 - **D1** — forstudie og klikbar frontend-mockup (uden backend)
 - **D2** — MVP med frontend, backend/API, PostgreSQL og én central brugerhandling
@@ -57,6 +57,8 @@ Vi glæder os til at se jer!
 | 26             | Net                | Opsamling: digitale systemer i helhed, eksamensforberedelse                                                                                                                                                                          |
 | **D3** (tirs.) | —                  | **Delaflevering 3: Fungerende system + authentication + portefølje**                                                                                                                                                                 |
 | —              | —                  | **Eksamen: individuel mundtlig (portefølje + website forud godkendt)**                                                                                                                                                               |
+
+
 
 
 Projektstruktur og planlægning begynder i L2, efter at L1 har været en ren
