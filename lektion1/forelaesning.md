@@ -1,43 +1,86 @@
-# Lektion 1 — HTML-introduktion
+# Lektion 01 — Introduktion
 
-Fokus er at komme fra en tom mappe til en enkel, forståelig HTML-side.
+Christian Budtz — chbu@dtu.dk
 
-## Velkommen til Digitale Systemer & Anvendelse
+---
 
-På 1. semester arbejdede I primært med én computer og ét program. På 2.
-semester arbejdede I med én computer og flere programmer, blandt andet Java og
-SQL. På 3. semester arbejder vi med flere computere og flere teknologier:
+## Program i dag
 
-- frontend i browseren med HTML, CSS og JavaScript
-- backend og servere
-- databaser
-- netværkskommunikation mellem systemets dele
+- Kursusintro
+- Hvor står vi? — spørgeskema + quiz
+- Øvelse 0: VS Code op at køre
+- Gennemgang: HTML
+- Øvelse 1: Cat Photo App
+- Øvelse 2: Login-side
 
-Kurset er derfor et hybridkursus:
+Pauser lægges ind undervejs.
+
+---
+
+## Underviserne
+
+- Christian Budtz — de første web-lektioner
+- Rolf Nordahl — metode, projekt, UML og UX (kursusansvarlig)
+- Birger Andersen — netværk og senere web-lektioner
+
+---
+
+## Digitale Systemer & Anvendelse
+
+- 1. semester — én computer, ét program
+- 2. semester — én computer, flere programmer (Python, C#, SQL)
+- 3. semester — flere computere, flere teknologier
+  (HTML, CSS, JavaScript, servere, databaser)
+
+Nu bliver det kompliceret!
+
+---
+
+## Hybridkursus
 
 - 1/4 netværksteknologi
 - 1/4 metode: projekt, UML og UX
 - 1/2 fullstack-web
 
-Vi kombinerer teori med øvelser og et gennemgående EHR-projekt. Grupper på 4-5
-personer anbefales.
+Teori og øvelser. Gennemgående gruppeprojekt.
+Grupper på 4–5. Gruppedannelse i Lektion 2.
 
-## Underviserne
+---
 
-På web- og metodetråden møder I blandt andre:
+## Projektet — tre delafleveringer
 
-- Christian Budtz på de første web-lektioner
-- Rolf Nordahl på metode, projekt, UML og UX
-- Birger Andersen på senere web-lektioner
+- **D1** — forstudie og klikbar frontend-mockup (uden backend)
+- **D2** — MVP: frontend, backend/API, PostgreSQL, én central brugerhandling
+- **D3** — fungerende system med login, deployment og færdig portefølje
 
-## Kursusramme
+I vælger selv en afgrænset sundhedsteknologisk case.
+Portefølje + website skal være godkendt for at I kan gå til eksamen.
 
-- Eksamen kombinerer web samt netværk/metode.
-- Planlægning, milestones, Gantt, WBS og UML indgår i Lektion 2.
-- Web-sporet bruger HTML, CSS og JavaScript på frontend.
-- Backend og database behandles senere i kurset.
+---
 
-## Mål
+## Eksamen
+
+Individuel mundtlig eksamen baseret på projektet.
+
+- Web samt netværk/metode
+- Alle hjælpemidler, inkl. internet
+- I medbringer porteføljen og adgang til det kørende website
+
+---
+
+## AI-politik
+
+AI-værktøjer (ChatGPT, Copilot, Cursor, …) er tilladt.
+
+- Al kode skal kunne forklares
+- AI-brug dokumenteres i porteføljen
+- Til den mundtlige eksamen skal I kunne gennemgå koden linje for linje
+
+Hvis I ikke kan forklare det, ejer I det ikke.
+
+---
+
+## Læringsmål i dag
 
 Efter lektionen skal du kunne:
 
@@ -45,23 +88,56 @@ Efter lektionen skal du kunne:
 - forklare HTML-dokumentets grundstruktur
 - bruge tags, attributter og korrekt nesting
 - indsætte overskrifter, afsnit, billeder og links
-- bruge `src`, `alt`, `href` og `id`
 - skelne mellem relative og absolutte stier
-- bruge void elements korrekt
 - inspicere og validere HTML
 
-## HTML, CSS og JavaScript
+---
 
-- **HTML** beskriver sidens indhold og struktur.
-- **CSS** beskriver sidens udseende.
-- **JavaScript** beskriver sidens dynamiske adfærd.
+# Hvor står vi?
 
-HTML er et deklarativt markup-sprog: Vi beskriver, hvad indholdet er, og
-browseren fortolker strukturen.
+---
+
+## Spørgeskema
+
+Sprog, Git og IDE — bruges også til gruppedannelse.
+
+Linket kommer på tavlen. Udfyld det nu.
+
+---
+
+## Quiz!
+
+Gå til [/quiz](/quiz) og indtast koden fra tavlen.
+
+**Hvor står vi?** — programmering, databaser, UML og Git
+fra 1. og 2. semester.
+
+---
+
+## Pause
+
+---
+
+# Øvelse 0 — VS Code
+
+---
+
+## Lad os prøve det selv!
+
+Frem med VS Code.
+
+Vi gør det sammen nu:
+
+1. Opret en mappe, fx `mit-site`
+2. Åbn mappen i VS Code: *File → Open Folder*
+3. Opret filen `index.html`
+4. Skriv boilerplaten (næste slide)
+5. Åbn filen i browseren (højreklik → *Open with Live Server*,
+   eller træk filen over i browseren)
+
+---
 
 ## HTML-boilerplate
-
-En minimal HTML5-side kan se sådan ud:
 
 ```html
 <!DOCTYPE html>
@@ -78,77 +154,174 @@ En minimal HTML5-side kan se sådan ud:
 </html>
 ```
 
-- `<!DOCTYPE html>` angiver HTML5.
-- `<html>` er dokumentets yderste element.
-- `<head>` indeholder metadata.
-- `<title>` vises i browserfanen.
-- `<body>` indeholder sidens synlige indhold.
+Når siden vises i browseren, er Øvelse 0 i hus.
 
-### Find syntaksfejlen
+---
 
-Dette eksempel ligner boilerplaten, men indeholder en fejl:
+# Gennemgang — HTML
+
+---
+
+## Web-teknologier
+
+**Frontend**
+
+- HTML (Lektion 1 + 3)
+- CSS (Lektion 3)
+- JavaScript (Lektion 5 + 7)
+
+**Backend** — senere i kurset
+
+- JavaScript på serveren (Node.js)
+- PostgreSQL
+
+---
+
+## Frontend
+
+- **HTML** — sidens indhold og struktur (deklarativt)
+- **CSS** — sidens udseende (deklarativt)
+- **JavaScript** — sidens adfærd (imperativt)
+
+HTML beskriver *hvad* indholdet er. Browseren fortolker strukturen.
+
+---
+
+## HTML
+
+HyperText Markup Language
+
+- En del af markup-sprogene
+- Deklarativt sprog
+- Definerer indhold og struktur
+- Ét dynamisk element: `<a href>`
+
+---
+
+## Et eksempel
 
 ```html
 <html>
-  <head>
-    <title>DTU Web Programmering
-    <title>
-  </head>
-  <body>
-    <h1>Lektioner</h1>
-    <p>Lektion 1: Introduktion og HTML</p>
-  </body>
+<head>
+   <title> DTU Web Programmering
+   <title>
+</head>
+<body>
+<h1><b> Lektioner</b></h1>
+<h2><i> E26 </i></h2>
+<p>Lektion 1: Introduktion og HTML</p>
+<p>Lektion 2: Projekt</p>
+<p>Lektion 3: HTML 2 + CSS</p>
+</body>
 </html>
 ```
 
-`title`-elementet bliver åbnet igen i stedet for at blive lukket. Det korrekte
-er:
+---
+
+## Kan du se syntaks-fejlen?
+
+Hvad er konsekvensen?
+
+---
+
+## Fejlen
+
+`title` åbnes igen i stedet for at blive lukket:
 
 ```html
 <title>DTU Web Programmering</title>
 ```
 
-Browseren forsøger ofte at rette fejlen automatisk, så siden måske stadig ser
-ud til at virke. HTML-træet kan dog blive anderledes end forventet, og fejl kan
-give problemer med browserens fortolkning, tilgængelighed og senere CSS eller
-JavaScript. Brug derfor DevTools og validatoren til at finde sådanne fejl.
+Browseren gætter ofte videre — siden *ser* måske fin ud.
+Træet bliver alligevel forkert. Det giver ballade senere
+med CSS, JavaScript og tilgængelighed.
 
-## Tags og elementer
+---
 
-Et almindeligt element har et starttag og et afsluttende tag:
+## HTML-tags
+
+Åbnings- og lukketag:
+
+```html
+<tag>indhold</tag>
+```
+
+Hierarkisk — luk i omvendt rækkefølge:
+
+```html
+<html>
+  <body>
+    Tekst
+  </body>
+</html>
+```
+
+Indre HTML:
+
+```html
+<h1>Noget html</h1>
+```
+
+---
+
+## Attributter
+
+Ekstra information i starttagget:
+
+```html
+<img src="katter.jpg" alt="En kat i en kurv">
+<p id="intro">Introduktion</p>
+```
+
+| Attribut | Bruges til |
+|---|---|
+| `src` | placering af en ressource, fx et billede |
+| `alt` | alternativ tekst til billedet |
+| `href` | destinationen for et link |
+| `id` | unik identifikator |
+| `class` | kategori — bruges af CSS senere |
+
+---
+
+## Vigtige tags
+
+Overskrifter: `<h1>`, `<h2>`, … `<h6>`
+
+Afsnit — ekstra linje før og efter:
 
 ```html
 <p>Et afsnit med tekst.</p>
 ```
 
-Elementer kan ligge inde i hinanden. Det kaldes nesting:
+Billede — void element, intet lukketag:
+
+```html
+<img src="katter.jpg" alt="En kat i en kurv">
+```
+
+Link:
+
+```html
+<a href="https://www.dtu.dk">Besøg DTU</a>
+```
+
+---
+
+## Nesting
+
+Elementer kan ligge inde i hinanden. Luk i den rigtige rækkefølge:
 
 ```html
 <p>Dette er <strong>vigtigt</strong>.</p>
 ```
 
-Tags skal lukkes i den rigtige rækkefølge. Et `img`-element er derimod et void
-element og skal ikke have et afsluttende tag.
+HTML-kommentarer vises ikke på siden:
 
 ```html
-<img src="images/kat.jpg" alt="En kat i en kurv">
+<!-- Dette er en kommentar -->
 ```
 
-## Attributter
-
-Attributter giver et element ekstra information og skrives i starttagget:
-
-```html
-<p id="intro">Introduktion til siden</p>
-```
-
-Vigtige attributter:
-
-- `id`: en unik identifikator
-- `src`: placeringen af en ressource, for eksempel et billede
-- `alt`: alternativ tekst til et billede
-- `href`: destinationen for et link
-- `class`: en kategori, som blandt andet kan bruges af CSS senere
+---
 
 ## Links og stier
 
@@ -156,21 +329,58 @@ Vigtige attributter:
 <a href="https://www.dtu.dk">Besøg DTU</a>
 <a href="om-os.html">Om os</a>
 <a href="#kontakt">Gå til kontakt</a>
+<a href="https://www.dtu.dk" target="_blank">DTU i nyt faneblad</a>
 
 <h2 id="kontakt">Kontakt</h2>
 ```
 
-En relativ sti peger på noget i projektet, mens en absolut URL indeholder hele
-adressen:
+- Absolut URL: hele adressen, `https://…`
+- Relativ sti: noget i projektet, `om-os.html` eller `images/kat.jpg`
+- `#id`: hop til et element på samme side
+- `target="_blank"`: åbn i nyt faneblad
+
+---
+
+## Billede som link
+
+Hele billedet bliver klikbart, når `<img>` ligger inde i `<a>`:
+
+```html
+<a href="https://www.dtu.dk">
+  <img src="images/logo.png" alt="DTU-logo">
+</a>
+```
+
+Relativ vs. absolut sti virker på samme måde for billeder:
 
 ```html
 <img src="images/kat.jpg" alt="En kat">
 <img src="https://example.com/kat.jpg" alt="En kat">
 ```
 
+---
+
+## Lister
+
+```html
+<ul>
+  <li>Kattefoder</li>
+  <li>Garnnøgle</li>
+</ul>
+
+<ol>
+  <li>Åbn VS Code</li>
+  <li>Opret index.html</li>
+</ol>
+```
+
+`ul` = unummereret. `ol` = nummereret. Hvert punkt er et `li`.
+
+---
+
 ## Semantisk HTML
 
-Brug elementer efter deres betydning, ikke kun efter deres standardudseende:
+Brug elementer efter deres *betydning*, ikke kun efter udseende:
 
 ```html
 <header>
@@ -185,37 +395,114 @@ Brug elementer efter deres betydning, ikke kun efter deres standardudseende:
 <footer>Kontakt os</footer>
 ```
 
-Andre elementer, der bruges i Cat Photo App, er `ul`/`li`, `figure`,
-`figcaption`, `em` og `strong`.
+`header`, `main`, `section` og `footer` erstatter ikke `h1`/`p` —
+de *rammer* indholdet ind.
 
-## Øvelser
+---
 
-### Øvelse 0: Kom i gang
+## figure, em og strong
 
-Opret en mappe, lav `index.html`, skriv boilerplaten og åbn siden i browseren.
+```html
+<figure>
+  <img src="images/kat.jpg" alt="En kat i en kurv">
+  <figcaption>Maja i sin yndlingskurv</figcaption>
+</figure>
 
-### Øvelse 1: Cat Photo App
+<p>Katte er <em>pattedyr</em> og <strong>rovdyr</strong>.</p>
+```
 
-Arbejd med freeCodeCamps Cat Photo App. Fokusér på billeder, links, lister,
-sektioner, alternativ tekst og korrekt nesting.
+- `figure` + `figcaption`: billede med billedtekst
+- `em`: eftertryk (typisk kursiv)
+- `strong`: stærk betydning (typisk fed)
 
-### Øvelse 2: Login-side
+---
 
-Lav en enkel login-side til den kommende sundhedsapp. Brug overskrift,
-introduktion, link tilbage til forsiden og et billede eller logo med `alt`-tekst.
-Formularer gennemgås grundigt i en senere lektion.
+## Document Object Model — DOM
 
-## DevTools og validator
+HTML bliver til et træ i browseren.
 
-Brug browserens DevTools til at inspicere DOM-træet, se et elements attributter
-og finde fejl i nesting.
+```
+html
+├─ head
+│  └─ title
+└─ body
+   ├─ h1
+   └─ p
+```
 
-Brug W3C-validatoren til at finde syntaksfejl og manglende eller ugyldige
-attributter. Validatoren er et hjælpemiddel, men erstatter ikke forståelsen af
-HTML-strukturen.
+Elementer kan have et `id`. Så kan man pege på dem
+med links (`#kontakt`) — og senere med JavaScript.
 
-## Opsamling
+---
 
-Afslut med quizzen `Lektion 1-2: HTML`. Spørg især ind til forskellen på
-`head` og `body`, brugen af `src`, `alt` og `href`, boilerplate, void elements
-og korrekt nesting.
+## DevTools
+
+Højreklik på siden → *Inspicér*.
+
+- Se DOM-træet
+- Find et elements attributter
+- Spot fejl i nesting
+
+Når siden *ser* rigtig ud, men koden er forkert:
+kig i DevTools, ikke kun på skærmen.
+
+---
+
+## W3C-validator
+
+https://validator.w3.org/
+
+Finder syntaksfejl og manglende eller ugyldige attributter.
+
+Et hjælpemiddel — erstatter ikke, at I forstår strukturen.
+
+---
+
+## Quiz!
+
+Gå til [/quiz](/quiz) og indtast koden fra tavlen.
+
+**Lektion 1–2: HTML** — tags, attributter, boilerplate og nesting.
+
+---
+
+## Pause
+
+---
+
+# Øvelser
+
+---
+
+## Øvelse 1: Cat Photo App
+
+freeCodeCamp, *Cat Photo App* (42 trin) — styret øvelse.
+
+Fortsæt i **Basic HTML** dér, hvor forberedelsen stoppede.
+
+Fokus:
+
+- billeder, links og `target`
+- lister
+- `section` / `main` / `footer`
+- `figure` / `figcaption`
+- `em` / `strong`
+- kommentarer og nesting
+
+---
+
+## Øvelse 2: Login-side
+
+Freestyle i VS Code. En login-side til jeres kommende sundhedsapp.
+
+- overskrift og kort intro
+- et tekstfelt og en knap (find selv ud af det)
+- link tilbage til en forside
+- et billede eller logo med `alt`-tekst
+- inspicér med DevTools
+
+Formularer gennemgås rigtigt i Lektion 3.
+
+---
+
+## Man lærer bedst HTML ved at prøve selv!
