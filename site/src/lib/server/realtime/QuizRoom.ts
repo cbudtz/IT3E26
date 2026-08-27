@@ -1,5 +1,5 @@
 import { Room, CloseCode, type Client } from 'colyseus';
-import { QuizState, Player, Question } from './state.ts';
+import { QuizState, Player, Question, QuestionResult } from './state.ts';
 import { startRun, saveAnswers, endRun } from './persist.ts';
 
 /** Et spoergsmaal som underviseren har defineret (facit forlader foerst serveren ved reveal). */
@@ -57,6 +57,7 @@ export class QuizRoom extends Room {
 		this.state.questionCount = this.questions.length;
 		this.state.question = new Question();
 		this.state.answerCount = 0;
+		this.state.unansweredCount = 0;
 
 		this.onMessage('host:claim', (client, msg: { token: string }) => {
 			const ok = !!msg?.token && msg.token === this.hostToken;
@@ -138,6 +139,7 @@ export class QuizRoom extends Room {
 		clear(this.state.correctText);
 		clear(this.state.shortAnswers);
 		this.state.answerCount = 0;
+		this.state.unansweredCount = 0;
 		this.answers.set(q.id, new Map());
 		this.state.players.forEach((p) => (p.hasAnswered = false));
 	}
@@ -177,13 +179,30 @@ export class QuizRoom extends Room {
 		this.revealed.add(q.id);
 		if (q.type === 'short') (q.correct as string[]).forEach((c) => this.state.correctText.push(c));
 		else (q.correct as number[]).forEach((i) => this.state.correctOptions.push(i));
+		this.state.unansweredCount = Math.max(0, this.state.players.size - rows.length);
+		this.state.results.push(this.snapshotResult(q));
 		this.state.phase = 'reveal';
 
 		if (this.runId) void saveAnswers(this.runId, q, rows).catch((e) => console.error('[quiz] gem svar:', e.message));
 	}
 
+	private snapshotResult(q: QuestionDef) {
+		const r = new QuestionResult();
+		r.id = q.id;
+		r.type = q.type;
+		r.prompt = q.prompt;
+		r.unanswered = this.state.unansweredCount;
+		for (const o of q.options ?? []) r.options.push(o);
+		for (const n of this.state.tally) r.tally.push(Number(n));
+		for (const a of this.state.shortAnswers) r.shortAnswers.push(String(a));
+		for (const i of this.state.correctOptions) r.correctOptions.push(Number(i));
+		for (const t of this.state.correctText) r.correctText.push(String(t));
+		return r;
+	}
+
 	private end() {
 		if (this.state.phase === 'ended') return;
+		if (this.state.phase === 'question' && this.state.questionIndex >= 0) this.reveal();
 		this.state.phase = 'ended';
 		if (this.runId) void endRun(this.runId).catch(() => {});
 	}

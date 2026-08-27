@@ -1,5 +1,5 @@
 {
-  "title": "Hvor står vi? — programmering, databaser, UML og Git",
+  "title": "Hvor står vi? — IT1, IT2 og Git",
   "questions": [
     {
       "id": "q1",
@@ -17,34 +17,87 @@
     },
     {
       "id": "q3",
+      "type": "mc",
+      "prompt": "Hvad betyder encapsulation (indkapsling) i objektorienteret programmering?",
+      "options": [
+        "At en klasses indre tilstand skjules og kun ændres via metoder",
+        "At en klasse arver felter og metoder fra en anden klasse",
+        "At flere tråde kører samtidig",
+        "At programmet tegner en grafisk brugergrænseflade"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvad kendetegner event-drevet programmering (fx i en GUI)?",
+      "options": [
+        "Programmet venter på hændelser (klik, tast) og reagerer på dem",
+        "Programmet kører alle linjer i rækkefølge og stopper så",
+        "Programmet starter en ny tråd for hver variabel",
+        "Programmet kommunikerer kun via seriel port"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q5",
       "type": "tf",
       "prompt": "En primærnøgle i en SQL-tabel må gerne have samme værdi i to rækker.",
       "options": ["Sandt", "Falsk"],
       "correct": [1]
     },
     {
-      "id": "q4",
+      "id": "q6",
       "type": "mc",
       "prompt": "Hvilken SQL-sætning henter alle rækker fra tabellen patient?",
       "options": ["GET * FROM patient;", "SELECT * FROM patient;", "FETCH ALL patient;", "SHOW patient;"],
       "correct": [1]
     },
     {
-      "id": "q5",
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Hvad gør et SQL JOIN?",
+      "options": [
+        "Sletter dubletter i en tabel",
+        "Kombinerer rækker fra to tabeller ud fra en relateret kolonne",
+        "Opretter en ny database",
+        "Sorterer rækker alfabetisk"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q8",
       "type": "short",
       "prompt": "Hvilket UML-diagram viser, hvordan objekter sender beskeder til hinanden over tid?",
       "options": [],
       "correct": ["sekvensdiagram", "sequence diagram", "sekvens diagram"]
     },
     {
-      "id": "q6",
+      "id": "q9",
       "type": "mc",
-      "prompt": "Hvad står HTML for?",
-      "options": ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "HighText Machine Language"],
+      "prompt": "Hvad viser et UML-klassediagram (class diagram)?",
+      "options": [
+        "Klasser, deres attributter og metoder samt relationer mellem dem",
+        "Hvordan objekter sender beskeder til hinanden over tid",
+        "Brugerens klik og skærmovergange",
+        "Netværkspakker mellem klient og server"
+      ],
       "correct": [0]
     },
     {
-      "id": "q7",
+      "id": "q10",
+      "type": "mc",
+      "prompt": "Hvad er en persona i user-centered design?",
+      "options": [
+        "Et fiktivt, evidensbaseret portræt af en typisk bruger",
+        "En rigtig patient gemt i databasen",
+        "Et objekt i et UML-klassediagram",
+        "En Git-branch til brugerinterface"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q11",
       "type": "mc",
       "prompt": "Jeg har styr på Git.",
       "options": [
@@ -56,7 +109,7 @@
       "correct": [0, 1, 2, 3]
     },
     {
-      "id": "q8",
+      "id": "q12",
       "type": "mc",
       "prompt": "Hvad gør git merge?",
       "options": [
@@ -68,7 +121,7 @@
       "correct": [1]
     },
     {
-      "id": "q9",
+      "id": "q13",
       "type": "mc",
       "prompt": "Hvad betyder det, at Git-worktree'et er dirty?",
       "options": [

@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Room } from '@colyseus/sdk';
 	import { connect, watch, EMPTY, type Snapshot } from '$lib/realtime/client';
+	import QuizSummary from '$lib/QuizSummary.svelte';
 
 	let { data } = $props();
 
@@ -13,8 +14,7 @@
 
 	const q = $derived(snap.question);
 	const players = $derived(Object.values(snap.players));
-	const maxTally = $derived(Math.max(1, ...snap.tally));
-	const leaderboard = $derived([...players].sort((a, b) => b.score - a.score).slice(0, 10));
+	const maxTally = $derived(Math.max(1, ...snap.tally, snap.unansweredCount));
 	const isLast = $derived(snap.questionIndex >= snap.questionCount - 1);
 
 	onMount(async () => {
@@ -108,7 +108,7 @@
 		<h1>{data.quiz.title}</h1>
 		<p class="muted">{data.quiz.questions.length} spørgsmål. Venter på deltagere…</p>
 		<ul class="chips">
-			{#each players as p}<li>{p.nickname}</li>{/each}
+			{#each players as p, i (i)}<li>{p.nickname}</li>{/each}
 		</ul>
 	</section>
 {:else if snap.phase === 'question' || snap.phase === 'reveal'}
@@ -121,31 +121,37 @@
 				<p>Facit: <strong>{snap.correctText.join(' / ')}</strong></p>
 			{/if}
 			<ul class="chips answers">
-				{#each snap.shortAnswers as a}
+				{#each snap.shortAnswers as a, i (i)}
 					<li class:correct={snap.phase === 'reveal' && snap.correctText.some((c) => c.trim().toLowerCase() === a.trim().toLowerCase())}>{a}</li>
 				{/each}
 			</ul>
-			{#if snap.shortAnswers.length === 0}<p class="muted">Ingen svar endnu.</p>{/if}
+			{#if snap.shortAnswers.length === 0 && snap.unansweredCount === 0}<p class="muted">Ingen svar endnu.</p>{/if}
+			{#if snap.phase === 'reveal'}
+				<p class="muted none-count">{snap.unansweredCount} uden svar</p>
+			{/if}
 		{:else}
 			<div class="bars">
-				{#each q.options as opt, i}
+				{#each q.options as opt, i (i)}
 					<div class="row" class:correct={snap.phase === 'reveal' && snap.correctOptions.includes(i)}>
 						<div class="label"><span class="letter">{String.fromCharCode(65 + i)}</span> {opt}</div>
 						<div class="track"><div class="fill" style="width:{(snap.tally[i] ?? 0) / maxTally * 100}%"></div></div>
 						<div class="n">{snap.tally[i] ?? 0}</div>
 					</div>
 				{/each}
+				{#if snap.phase === 'reveal'}
+					<div class="row none">
+						<div class="label">Intet svar</div>
+						<div class="track"><div class="fill" style="width:{(snap.unansweredCount ?? 0) / maxTally * 100}%"></div></div>
+						<div class="n">{snap.unansweredCount ?? 0}</div>
+					</div>
+				{/if}
 			</div>
 		{/if}
 	</section>
 {:else}
 	<section>
 		<h1>Resultat</h1>
-		<ol class="board">
-			{#each leaderboard as p}
-				<li><span>{p.nickname}</span><strong>{p.score} / {snap.questionCount}</strong></li>
-			{/each}
-		</ol>
+		<QuizSummary results={snap.results} />
 		<p><a href="/quiz/host/results">Se alle gemte resultater →</a></p>
 	</section>
 {/if}
@@ -165,6 +171,9 @@
 	.row { display: grid; grid-template-columns: minmax(12rem, 1fr) 3fr 3rem; align-items: center; gap: 1rem; font-size: 1.4rem; }
 	.row.correct .label { color: #1a7f37; font-weight: 700; }
 	.row.correct .fill { background: #1a7f37; }
+	.row.none .label { color: #57606a; font-style: italic; }
+	.row.none .fill { background: #8c959f; }
+	.none-count { margin-top: 0.8rem; }
 	.letter { display: inline-block; width: 1.6em; font-weight: 700; color: #57606a; }
 	.track { background: #eaeef2; border-radius: 6px; height: 2rem; overflow: hidden; }
 	.fill { height: 100%; background: #0969da; transition: width 0.3s; }
@@ -173,7 +182,5 @@
 	.chips li { padding: 0.3rem 0.8rem; border-radius: 999px; background: #eaeef2; font-size: 1.1rem; }
 	.chips li.correct { background: #dafbe1; color: #1a7f37; font-weight: 600; }
 	.answers li { font-size: 1.4rem; }
-	.board { font-size: 1.4rem; padding-left: 2rem; }
-	.board li { display: flex; justify-content: space-between; max-width: 30rem; padding: 0.3rem 0; border-bottom: 1px solid #eaeef2; }
 	.lobby h1 { font-size: 2.4rem; }
 </style>

@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import type { Room } from '@colyseus/sdk';
 	import { connect, watch, EMPTY, type Snapshot } from '$lib/realtime/client';
+	import QuizSummary from '$lib/QuizSummary.svelte';
 
 	let { data } = $props();
 
@@ -17,6 +18,8 @@
 	const me = $derived(snap.players[mySessionId]);
 	const q = $derived(snap.question);
 	const answered = $derived(answeredFor === q.id && q.id !== '');
+	/** Kun et klikket svar tæller - et hængende valg fra forrige spørgsmål er intet svar. */
+	const shownAnswer = $derived(answered ? myAnswer : null);
 
 	onMount(async () => {
 		const code = page.url.searchParams.get('code')?.toUpperCase() ?? '';
@@ -54,8 +57,8 @@
 
 	const isCorrectOption = (i: number) => snap.correctOptions.includes(i);
 	const myShortCorrect = $derived(
-		q.type === 'short' && myAnswer !== null &&
-		snap.correctText.some((c) => c.trim().toLowerCase() === myAnswer!.trim().toLowerCase())
+		q.type === 'short' && shownAnswer !== null &&
+		snap.correctText.some((c) => c.trim().toLowerCase() === shownAnswer!.trim().toLowerCase())
 	);
 </script>
 
@@ -78,11 +81,11 @@
 		{#if q.type === 'short'}
 			{#if snap.phase === 'reveal'}
 				<p class="result {myShortCorrect ? 'ok' : 'nope'}">
-					{myAnswer === null ? 'Du svarede ikke.' : myShortCorrect ? 'Rigtigt!' : `Du svarede "${myAnswer}".`}
+					{shownAnswer === null ? 'Intet svar.' : myShortCorrect ? 'Rigtigt!' : `Du svarede "${shownAnswer}".`}
 				</p>
 				<p>Facit: <strong>{snap.correctText.join(' / ')}</strong></p>
 			{:else if answered}
-				<p class="result">Svar sendt: <strong>{myAnswer}</strong>. Vent på afsløring…</p>
+				<p class="result">Svar sendt: <strong>{shownAnswer}</strong>. Vent på afsløring…</p>
 			{:else}
 				<form onsubmit={submitShort} class="short">
 					<input bind:value={shortText} placeholder="Skriv dit svar" maxlength="200" autocomplete="off" />
@@ -91,12 +94,12 @@
 			{/if}
 		{:else}
 			<div class="options">
-				{#each q.options as opt, i}
+				{#each q.options as opt, i (i)}
 					<button
 						class="opt"
-						class:mine={myAnswer === String(i)}
+						class:mine={shownAnswer === String(i)}
 						class:correct={snap.phase === 'reveal' && isCorrectOption(i)}
-						class:wrong={snap.phase === 'reveal' && myAnswer === String(i) && !isCorrectOption(i)}
+						class:wrong={snap.phase === 'reveal' && shownAnswer === String(i) && !isCorrectOption(i)}
 						disabled={answered || snap.phase !== 'question'}
 						onclick={() => answer(String(i))}
 					>
@@ -107,17 +110,20 @@
 			{#if snap.phase === 'question' && answered}
 				<p class="result">Svar registreret. Vent på afsløring…</p>
 			{:else if snap.phase === 'reveal'}
-				<p class="result {myAnswer !== null && isCorrectOption(Number(myAnswer)) ? 'ok' : 'nope'}">
-					{myAnswer === null ? 'Du svarede ikke.' : isCorrectOption(Number(myAnswer)) ? 'Rigtigt!' : 'Desværre.'}
+				<p class="result {shownAnswer !== null && isCorrectOption(Number(shownAnswer)) ? 'ok' : 'nope'}">
+					{shownAnswer === null ? 'Intet svar.' : isCorrectOption(Number(shownAnswer)) ? 'Rigtigt!' : 'Desværre.'}
 				</p>
 			{/if}
 		{/if}
 		{#if me}<p class="muted">Din score: {me.score}</p>{/if}
 	</section>
 {:else}
-	<section class="center">
-		<h1>Quizzen er slut</h1>
-		{#if me}<p class="big">Du fik {me.score} af {snap.questionCount} rigtige</p>{/if}
+	<section>
+		<div class="center">
+			<h1>Quizzen er slut</h1>
+			{#if me}<p class="big">Du fik {me.score} af {snap.questionCount} rigtige</p>{/if}
+		</div>
+		<QuizSummary results={snap.results} />
 		<p><a href="/">Til forsiden</a></p>
 	</section>
 {/if}

@@ -1,4 +1,4 @@
-# Forberedelse til Lektion 1
+# Lektion 1 - Forberedelse
 
 ## HTML-intro via freeCodeCamp (ca. 1 time)
 
