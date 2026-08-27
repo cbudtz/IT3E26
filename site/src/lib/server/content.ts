@@ -54,7 +54,7 @@ async function resolveFile(slug: string): Promise<string | null> {
  * Absolutte URL'er, ankre og mailto røres ikke.
  */
 export function rewriteHref(href: string, fromFile: string): string {
-	if (/^([a-z]+:|\/\/|#)/i.test(href)) return href;
+	if (/^([a-z]+:|\/\/|#|\/)/i.test(href)) return href;
 	const [path, hash = ''] = href.split('#');
 	const baseDir = dirname(fromFile.split(sep).join('/'));
 	let target = posix.normalize(posix.join(baseDir === '.' ? '' : baseDir, path));
