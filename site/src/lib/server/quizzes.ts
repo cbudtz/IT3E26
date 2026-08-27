@@ -1,6 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve, posix } from 'node:path';
-import { CONTENT_DIR } from './content';
+import { CONTENT_DIR, HIDDEN_DIRS, isHiddenSlug } from './content';
 import type { QuestionDef } from './realtime/QuizRoom';
 
 export type QuizDef = {
@@ -10,8 +10,6 @@ export type QuizDef = {
 	questions: QuestionDef[];
 };
 
-const SKIP = new Set(['node_modules', 'site', '.git', '.svelte-kit', 'build', 'docs']);
-
 /** Finder alle quiz*.json under CONTENT_DIR (max 3 niveauer). */
 export async function listQuizzes(): Promise<Omit<QuizDef, 'questions'>[]> {
 	const out: Omit<QuizDef, 'questions'>[] = [];
@@ -19,7 +17,7 @@ export async function listQuizzes(): Promise<Omit<QuizDef, 'questions'>[]> {
 		if (depth > 3) return;
 		const entries = await readdir(resolve(CONTENT_DIR, rel), { withFileTypes: true }).catch(() => []);
 		for (const e of entries) {
-			if (e.name.startsWith('.') || SKIP.has(e.name)) continue;
+			if (e.name.startsWith('.') || HIDDEN_DIRS.has(e.name)) continue;
 			const p = posix.join(rel, e.name);
 			if (e.isDirectory()) await walk(p, depth + 1);
 			else if (/^quiz.*\.json$/i.test(e.name)) {
@@ -34,7 +32,7 @@ export async function listQuizzes(): Promise<Omit<QuizDef, 'questions'>[]> {
 
 export async function loadQuiz(slug: string): Promise<QuizDef | null> {
 	const safe = posix.normalize('/' + slug).replace(/^\/+/, '');
-	if (safe.includes('..') || !safe) return null;
+	if (safe.includes('..') || !safe || isHiddenSlug(safe)) return null;
 	const raw = await readFile(resolve(CONTENT_DIR, safe + '.json'), 'utf8').catch(() => null);
 	if (!raw) return null;
 	const json = JSON.parse(raw) as { title?: string; questions?: Partial<QuestionDef>[] };

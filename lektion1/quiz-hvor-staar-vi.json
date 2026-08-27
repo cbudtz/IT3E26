@@ -1,40 +1,83 @@
 {
-  "title": "Hvor står vi? — programmering, databaser og UML fra 1.–2. semester",
+  "title": "Hvor står vi? — programmering, databaser, UML og Git",
   "questions": [
     {
       "id": "q1",
       "type": "mc",
-      "prompt": "Hvad udskriver dette Java-udtryk: 7 / 2 ?",
+      "prompt": "Hvad udskriver dette Python-udtryk: print(7 / 2) ?",
+      "options": ["3", "3.5", "4", "Fejl"],
+      "correct": [1]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvad er værdien af dette C#-udtryk, når begge operander er int: 7 / 2 ?",
       "options": ["3", "3.5", "4", "Kompileringsfejl"],
       "correct": [0]
     },
     {
-      "id": "q2",
+      "id": "q3",
       "type": "tf",
       "prompt": "En primærnøgle i en SQL-tabel må gerne have samme værdi i to rækker.",
       "options": ["Sandt", "Falsk"],
       "correct": [1]
     },
     {
-      "id": "q3",
+      "id": "q4",
       "type": "mc",
       "prompt": "Hvilken SQL-sætning henter alle rækker fra tabellen patient?",
       "options": ["GET * FROM patient;", "SELECT * FROM patient;", "FETCH ALL patient;", "SHOW patient;"],
       "correct": [1]
     },
     {
-      "id": "q4",
+      "id": "q5",
       "type": "short",
       "prompt": "Hvilket UML-diagram viser, hvordan objekter sender beskeder til hinanden over tid?",
       "options": [],
       "correct": ["sekvensdiagram", "sequence diagram", "sekvens diagram"]
     },
     {
-      "id": "q5",
+      "id": "q6",
       "type": "mc",
       "prompt": "Hvad står HTML for?",
       "options": ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "HighText Machine Language"],
       "correct": [0]
+    },
+    {
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Jeg har styr på Git.",
+      "options": [
+        "Slet ikke — jeg har aldrig brugt det",
+        "Jeg kan clone, committe og pushe",
+        "Jeg kan oprette branches og merge",
+        "Jeg bruger Git dagligt og kan løse konflikter"
+      ],
+      "correct": [0, 1, 2, 3]
+    },
+    {
+      "id": "q8",
+      "type": "mc",
+      "prompt": "Hvad gør git merge?",
+      "options": [
+        "Sletter en branch",
+        "Kombinerer ændringer fra en branch ind i en anden",
+        "Uploader koden til GitHub",
+        "Opretter en kopi af hele repositoryet"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q9",
+      "type": "mc",
+      "prompt": "Hvad betyder det, at Git-worktree'et er dirty?",
+      "options": [
+        "Repositoryet er slettet",
+        "Der er ændringer i working directory, som ikke er committet",
+        "Den seneste commit er ødelagt",
+        "Man er på den forkerte branch"
+      ],
+      "correct": [1]
     }
   ]
 }

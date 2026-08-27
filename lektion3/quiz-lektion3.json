@@ -1,0 +1,45 @@
+{
+  "title": "Lektion 3: CSS",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": ".mit-element { margin: 1rem; } angiver hvad?",
+      "options": [
+        "Tykkelsen på elementets kant",
+        "Afstanden mellem elementets yderside og andre elementer",
+        "Afstanden mellem elementets kant og elementets indhold",
+        "At kanten bliver fjernet"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvilken selector angiver en reference til et ID?",
+      "options": ["#", ".", ">", ":"],
+      "correct": [0]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvordan får man et element til at blive det samme sted i vinduet?",
+      "options": ["{ margin: auto; }", "{ position: relative; }", "{ position: absolute; }", "{ position: fixed; }"],
+      "correct": [3]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvilken enhed er en absolut enhed?",
+      "options": ["%", "em", "rem", "px", "fr", "vh", "vw"],
+      "correct": [3]
+    },
+    {
+      "id": "q5",
+      "type": "tf",
+      "prompt": "CSS er et deklarativt sprog.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [0]
+    }
+  ]
+}

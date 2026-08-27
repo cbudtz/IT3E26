@@ -16,8 +16,7 @@ COPY --from=build /app/site/package.json ./package.json
 COPY --from=build /app/site/server.ts ./server.ts
 COPY --from=build /app/site/src/lib/server/realtime ./src/lib/server/realtime
 COPY --from=build /app/site/drizzle ./drizzle
-# Kursusmaterialet (markdown). Hele repoet minus site/ - saa nye lektion*-mapper kommer automatisk med.
-COPY . /app/content/
-RUN rm -rf /app/content/site
+# Kursusmaterialet: README + lektion*-mapper. docs/ og site/ kommer ikke med.
+COPY README.md lektion* /app/content/
 EXPOSE 3000
 CMD ["node", "server.ts"]

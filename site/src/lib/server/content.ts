@@ -9,6 +9,15 @@ import { marked } from 'marked';
  */
 export const CONTENT_DIR = resolve(env.CONTENT_DIR ?? resolve(process.cwd(), '..'));
 
+/** Mapper der ikke vises på kurssitet (lærer-docs, build, kildekode). */
+export const HIDDEN_DIRS = new Set(['docs', 'site', 'node_modules', '.git', '.svelte-kit', 'build']);
+
+/** True hvis stien peger ind i en skjult mappe. */
+export function isHiddenSlug(slug: string): boolean {
+	const parts = posix.normalize('/' + slug).replace(/^\/+/, '').split('/').filter(Boolean);
+	return parts.some((p) => p.startsWith('.') || HIDDEN_DIRS.has(p));
+}
+
 /** Filnavne vi prøver, når en URL peger på en mappe. Rækkefølge = prioritet. */
 const INDEX_NAMES = ['README.md', 'Readme.md', 'readme.md', 'index.md'];
 
@@ -26,7 +35,7 @@ const exists = async (p: string) => stat(p).then((s) => s.isFile()).catch(() => 
 /** Mapper en URL-slug til en markdown-fil. Returnerer null hvis ingen passer. */
 async function resolveFile(slug: string): Promise<string | null> {
 	const safe = posix.normalize('/' + slug).replace(/^\/+/, ''); // fjerner ../ og dobbelt-slash
-	if (safe.includes('..')) return null;
+	if (safe.includes('..') || isHiddenSlug(safe)) return null;
 
 	const candidates = safe === '' ? INDEX_NAMES : [
 		`${safe}.md`,
@@ -42,7 +51,6 @@ async function resolveFile(slug: string): Promise<string | null> {
  * Omskriver relative markdown-links til site-ruter:
  *   forberedelse.md         -> /lektion1/forberedelse   (fra lektion1/Readme.md)
  *   lektion1/Readme.md      -> /lektion1
- *   docs/                   -> /docs
  * Absolutte URL'er, ankre og mailto røres ikke.
  */
 export function rewriteHref(href: string, fromFile: string): string {
@@ -63,12 +71,12 @@ function titleFrom(markdown: string, fallback: string): string {
 /** Mappe uden README: vis en simpel liste over undermapper og .md-filer. */
 async function directoryListing(slug: string): Promise<Page | null> {
 	const safe = posix.normalize('/' + slug).replace(/^\/+/, '');
-	if (safe.includes('..')) return null;
+	if (safe.includes('..') || isHiddenSlug(safe)) return null;
 	const dir = resolve(CONTENT_DIR, safe);
 	const entries = await readdir(dir, { withFileTypes: true }).catch(() => null);
 	if (!entries) return null;
 	const items = entries
-		.filter((e) => !e.name.startsWith('.') && e.name !== 'node_modules' && (e.isDirectory() || e.name.endsWith('.md')))
+		.filter((e) => !e.name.startsWith('.') && !HIDDEN_DIRS.has(e.name) && (e.isDirectory() || e.name.endsWith('.md')))
 		.sort((a, b) => Number(b.isDirectory()) - Number(a.isDirectory()) || a.name.localeCompare(b.name, 'da'))
 		.map((e) => {
 			const href = '/' + posix.join(safe, e.isDirectory() ? e.name : e.name.replace(/\.md$/, ''));

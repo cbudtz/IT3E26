@@ -1,0 +1,109 @@
+{
+  "title": "Lektion 1-2: HTML",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvilket element laver et afsnit med en linjes afstand før og efter?",
+      "options": ["<span>", "<div>", "<p>"],
+      "correct": [2]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvilket element angiver, at sidens indhold begynder?",
+      "options": ["<html>", "<head>", "<body>", "<h1>"],
+      "correct": [2]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvad angiver attributten src på et <img src=\"\">-tag?",
+      "options": ["Navnet på et billede", "Filtypen", "Uniform Resource Locator til filen", "Filens id"],
+      "correct": [2]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvordan angiver man et hyperlink?",
+      "options": [
+        "<href>http://dr.dk</href>Tryk for at komme til DR",
+        "<a>http://ddr.dk</a>Tryk for at komme til DDR",
+        "<a href=\"http://kd.dk\">Tryk for at komme i politik</a>",
+        "<a src=\"http://dkk.dk\">Tryk for at gå i hundene</a>"
+      ],
+      "correct": [2]
+    },
+    {
+      "id": "q5",
+      "type": "tf",
+      "prompt": "HTML er et imperativt sprog.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    },
+    {
+      "id": "q6",
+      "type": "mc",
+      "prompt": "Hvad bruges en attribut i et HTML-element til?",
+      "options": [
+        "At give elementet ekstra information eller egenskaber",
+        "At lave en ny CSS-fil",
+        "At afslutte hele HTML-dokumentet",
+        "At køre JavaScript automatisk"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Hvilken attribut bør et billede have, så det kan beskrives for brugere, der ikke kan se det?",
+      "options": ["href", "alt", "src", "title"],
+      "correct": [1]
+    },
+    {
+      "id": "q8",
+      "type": "mc",
+      "prompt": "Hvilket element indeholder sidens metadata og normalt sidens titel?",
+      "options": ["<body>", "<main>", "<head>", "<footer>"],
+      "correct": [2]
+    },
+    {
+      "id": "q9",
+      "type": "mc",
+      "prompt": "Hvilket element angiver sidens titel i browserfanen?",
+      "options": ["<header>", "<title>", "<h1>", "<name>"],
+      "correct": [1]
+    },
+    {
+      "id": "q10",
+      "type": "mc",
+      "prompt": "Hvad er formålet med <!DOCTYPE html> øverst i et HTML-dokument?",
+      "options": [
+        "At indsætte sidens første overskrift",
+        "At fortælle browseren, at dokumentet bruger HTML5",
+        "At linke til en CSS-fil",
+        "At vise dokumentet i et nyt vindue"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q11",
+      "type": "mc",
+      "prompt": "Hvilket af disse er et void element, som ikke skal have et afsluttende tag?",
+      "options": ["<p>", "<a>", "<img>", "<strong>"],
+      "correct": [2]
+    },
+    {
+      "id": "q12",
+      "type": "mc",
+      "prompt": "Hvilken rækkefølge viser den grundlæggende struktur i et HTML-dokument?",
+      "options": [
+        "<body> indeholder <html>, som indeholder <head>",
+        "<html> indeholder <head> og <body>",
+        "<head> indeholder <html> og <body>",
+        "<title> indeholder <html> og <body>"
+      ],
+      "correct": [1]
+    }
+  ]
+}
