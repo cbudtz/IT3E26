@@ -26,6 +26,8 @@ export type Page = {
 	slug: string;
 	title: string;
 	html: string;
+	/** HTML pr. slide, splittet på en linje med kun `---`. */
+	slides: string[];
 	/** Relativ fil i CONTENT_DIR, fx "lektion1/Readme.md" (til "rediger på GitHub"-links). */
 	file: string;
 };
@@ -68,6 +70,33 @@ function titleFrom(markdown: string, fallback: string): string {
 	return m ? m[1].replace(/[*_`]/g, '').trim() : fallback;
 }
 
+/** Splitter markdown på en linje der kun er `---`. Ignorerer separators inde i code fences. */
+export function splitSlides(markdown: string): string[] {
+	const parts: string[] = [];
+	let buf: string[] = [];
+	let inFence = false;
+	for (const line of markdown.split(/\r?\n/)) {
+		if (/^```/.test(line)) inFence = !inFence;
+		if (!inFence && /^\s*---\s*$/.test(line)) {
+			const chunk = buf.join('\n').trim();
+			if (chunk) parts.push(chunk);
+			buf = [];
+		} else {
+			buf.push(line);
+		}
+	}
+	const last = buf.join('\n').trim();
+	if (last) parts.push(last);
+	return parts;
+}
+
+async function toHtml(markdown: string, fromFile: string): Promise<string> {
+	const renderer = new marked.Renderer();
+	const baseLink = renderer.link.bind(renderer);
+	renderer.link = (token) => baseLink({ ...token, href: rewriteHref(token.href, fromFile) });
+	return await marked.parse(markdown, { renderer, gfm: true });
+}
+
 /** Mappe uden README: vis en simpel liste over undermapper og .md-filer. */
 async function directoryListing(slug: string): Promise<Page | null> {
 	const safe = posix.normalize('/' + slug).replace(/^\/+/, '');
@@ -83,18 +112,24 @@ async function directoryListing(slug: string): Promise<Page | null> {
 			return `<li><a href="${href}">${e.isDirectory() ? e.name + '/' : e.name}</a></li>`;
 		});
 	const title = safe || 'Forside';
-	return { slug, title, file: safe, html: `<h1>${title}</h1><ul>${items.join('')}</ul>` };
+	const html = `<h1>${title}</h1><ul>${items.join('')}</ul>`;
+	return { slug, title, file: safe, html, slides: [html] };
 }
 
 export async function loadPage(slug: string): Promise<Page | null> {
 	const file = await resolveFile(slug);
 	if (!file) return directoryListing(slug);
 	const markdown = await readFile(resolve(CONTENT_DIR, file), 'utf8');
-
-	const renderer = new marked.Renderer();
-	const baseLink = renderer.link.bind(renderer);
-	renderer.link = (token) => baseLink({ ...token, href: rewriteHref(token.href, file) });
-
-	const html = await marked.parse(markdown, { renderer, gfm: true });
-	return { slug, title: titleFrom(markdown, slug || 'Forside'), html, file };
+	const chunks = splitSlides(markdown);
+	const [html, ...rest] = await Promise.all([
+		toHtml(markdown, file),
+		...chunks.map((chunk) => toHtml(chunk, file))
+	]);
+	return {
+		slug,
+		title: titleFrom(markdown, slug || 'Forside'),
+		html,
+		slides: rest.length ? rest : [html],
+		file
+	};
 }

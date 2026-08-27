@@ -6,7 +6,11 @@ import { pruneSessions } from '$lib/server/auth/session';
 
 /** Koerer migrationer og seeder SUPERUSERS. Kaldes én gang ved opstart (hooks.server.ts init). */
 export async function bootstrap() {
-	const db = getDb(); // kaster tydeligt her, hvis DATABASE_URL mangler
+	if (!env.DATABASE_URL) {
+		console.warn('[bootstrap] DATABASE_URL mangler — skipper DB (quiz/login virker ikke)');
+		return;
+	}
+	const db = getDb();
 	await migrate(db, { migrationsFolder: resolve(process.cwd(), 'drizzle') });
 
 	const users = (env.SUPERUSERS ?? '')

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
+	import ViewToggle from '$lib/ViewToggle.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	let { children } = $props();
@@ -16,6 +17,9 @@
 	const onQuiz = $derived(
 		page.url.pathname === '/quiz' || page.url.pathname.startsWith('/quiz/')
 	);
+	const onAuth = $derived(page.url.pathname.startsWith('/auth'));
+	const slideMode = $derived(page.url.searchParams.get('show') === 'slide');
+	const showToggle = $derived(!onQuiz && !onAuth);
 
 	afterNavigate(() => {
 		menuOpen = false;
@@ -32,35 +36,40 @@
 
 <svelte:window onkeydown={onKeydown} />
 
-<header>
-	<nav>
-		<div class="crumbs">
-			<a href="/" class="brand">IT3E26</a>
-			{#each crumbs as c (c.href)}
-				<span class="sep">/</span><a href={c.href}>{c.name}</a>
-			{/each}
-		</div>
+{#if !slideMode}
+	<header>
+		<nav>
+			<div class="crumbs">
+				<a href="/" class="brand">IT3E26</a>
+				{#each crumbs as c (c.href)}
+					<span class="sep">/</span><a href={c.href}>{c.name}</a>
+				{/each}
+			</div>
 
-		<button
-			type="button"
-			class="menu-toggle"
-			aria-expanded={menuOpen}
-			aria-controls="site-menu"
-			aria-label="Menu"
-			onclick={() => (menuOpen = !menuOpen)}
-		>
-			<span class="bars" aria-hidden="true"></span>
-		</button>
+			<button
+				type="button"
+				class="menu-toggle"
+				aria-expanded={menuOpen}
+				aria-controls="site-menu"
+				aria-label="Menu"
+				onclick={() => (menuOpen = !menuOpen)}
+			>
+				<span class="bars" aria-hidden="true"></span>
+			</button>
 
-		<ul id="site-menu" class="links" class:open={menuOpen}>
-			<li>
-				<a href="/quiz" aria-current={onQuiz ? 'page' : undefined}>Quiz</a>
-			</li>
-		</ul>
-	</nav>
-</header>
+			<ul id="site-menu" class="links" class:open={menuOpen}>
+				{#if showToggle}
+					<li class="toggle"><ViewToggle /></li>
+				{/if}
+				<li>
+					<a href="/quiz" aria-current={onQuiz ? 'page' : undefined}>Quiz</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+{/if}
 
-<main>
+<main class:flush={slideMode}>
 	{@render children()}
 </main>
 
@@ -138,6 +147,11 @@
 		color: #1f2328;
 		box-shadow: inset 0 0 0 1px #d0d7de;
 	}
+	.toggle {
+		display: flex;
+		align-items: center;
+		padding: 0 0.5rem;
+	}
 	@media (max-width: 40rem) {
 		.menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
 		.links {
@@ -161,6 +175,15 @@
 		max-width: 60rem;
 		margin: 0 auto;
 		padding: 1.5rem 1.25rem 4rem;
+	}
+	main.flush {
+		max-width: none;
+		margin: 0;
+		padding: 0;
+	}
+	:global(body:has(.deck)) {
+		overflow: hidden;
+		background: #12141c;
 	}
 
 	/* GitHub-agtig markdown */

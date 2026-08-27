@@ -27,9 +27,9 @@ Pauser lægges ind undervejs.
 
 ## Digitale Systemer & Anvendelse
 
-- 1. semester — én computer, ét program
-- 2. semester — én computer, flere programmer (Python, C#, SQL)
-- 3. semester — flere computere, flere teknologier
+- 1\. semester — én computer, ét program
+- 2\. semester — én computer, flere programmer (Python, C#, SQL)
+- 3\. semester — flere computere, flere teknologier
   (HTML, CSS, JavaScript, servere, databaser)
 
 Nu bliver det kompliceret!
