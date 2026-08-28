@@ -22,6 +22,10 @@ HTML* til og med *Understanding the HTML Boilerplate* (ca. 1 time).
 
 Pauser lægges ind undervejs.
 
+## Slides
+
+[Forelæsningsslides](forelaesning.md?show=slide)
+
 ## Efter lektionen kan du
 
 - oprette og redigere en HTML-fil i VS Code og åbne den i en browser

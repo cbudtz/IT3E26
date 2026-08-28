@@ -1,13 +1,13 @@
 # Lektion 01 — Introduktion
 
-Christian Budtz — chbu@dtu.dk
+Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 
 ---
 
 ## Program i dag
 
 - Kursusintro
-- Hvor står vi? — spørgeskema + quiz
+- Hvor står vi? Quiz + snak
 - Øvelse 0: VS Code op at køre
 - Gennemgang: HTML
 - Øvelse 1: Cat Photo App
@@ -27,9 +27,9 @@ Pauser lægges ind undervejs.
 
 ## Digitale Systemer & Anvendelse
 
-- 1\. semester — én computer, ét program
-- 2\. semester — én computer, flere programmer (Python, C#, SQL)
-- 3\. semester — flere computere, flere teknologier
+- 1. semester — én computer, ét program
+- 1. semester — én computer, flere programmer (Python, C#, SQL)
+- 1. semester — flere computere, flere teknologier
   (HTML, CSS, JavaScript, servere, databaser)
 
 Nu bliver det kompliceret!
@@ -43,7 +43,7 @@ Nu bliver det kompliceret!
 - 1/2 fullstack-web
 
 Teori og øvelser. Gennemgående gruppeprojekt.
-Grupper på 4–5. Gruppedannelse i Lektion 2.
+Grupper på 3-4. Gruppedannelse i Lektion 2.
 
 ---
 
@@ -53,7 +53,10 @@ Grupper på 4–5. Gruppedannelse i Lektion 2.
 - **D2** — MVP: frontend, backend/API, PostgreSQL, én central brugerhandling
 - **D3** — fungerende system med login, deployment og færdig portefølje
 
-I vælger selv en afgrænset sundhedsteknologisk case.
+I vælger selv en afgrænset sundhedsteknologisk case. 
+
+Der skal indgå alle elementer af fullstack i applikationen. Appen skal omhandle patienter.
+
 Portefølje + website skal være godkendt for at I kan gå til eksamen.
 
 ---
@@ -97,13 +100,9 @@ Efter lektionen skal du kunne:
 
 ---
 
-## Spørgeskema
+## Spørgeskema - Quiz
 
-Sprog, Git og IDE — bruges også til gruppedannelse.
-
-Linket kommer på tavlen. Udfyld det nu.
-
----
+Sprog, Git og IDE.
 
 ## Quiz!
 
@@ -133,7 +132,7 @@ Vi gør det sammen nu:
 3. Opret filen `index.html`
 4. Skriv boilerplaten (næste slide)
 5. Åbn filen i browseren (højreklik → *Open with Live Server*,
-   eller træk filen over i browseren)
+  eller træk filen over i browseren)
 
 ---
 
@@ -273,13 +272,15 @@ Ekstra information i starttagget:
 <p id="intro">Introduktion</p>
 ```
 
-| Attribut | Bruges til |
-|---|---|
-| `src` | placering af en ressource, fx et billede |
-| `alt` | alternativ tekst til billedet |
-| `href` | destinationen for et link |
-| `id` | unik identifikator |
-| `class` | kategori — bruges af CSS senere |
+
+| Attribut | Bruges til                               |
+| -------- | ---------------------------------------- |
+| `src`    | placering af en ressource, fx et billede |
+| `alt`    | alternativ tekst til billedet            |
+| `href`   | destinationen for et link                |
+| `id`     | unik identifikator                       |
+| `class`  | kategori — bruges af CSS senere          |
+
 
 ---
 
@@ -450,7 +451,7 @@ kig i DevTools, ikke kun på skærmen.
 
 ## W3C-validator
 
-https://validator.w3.org/
+[https://validator.w3.org/](https://validator.w3.org/)
 
 Finder syntaksfejl og manglende eller ugyldige attributter.
 
@@ -471,6 +472,8 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 ---
 
 # Øvelser
+
+**Man lærer bedst HTML ved at prøve selv!**
 
 ---
 
@@ -505,4 +508,5 @@ Formularer gennemgås rigtigt i Lektion 3.
 
 ---
 
-## Man lærer bedst HTML ved at prøve selv!
+
+

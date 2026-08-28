@@ -172,13 +172,7 @@
 		}
 		const t = e.target;
 		if (!(t instanceof Element)) return;
-		const a = t.closest('a');
-		if (a) {
-			if (e.metaKey || e.ctrlKey || e.shiftKey) return;
-			e.preventDefault();
-			return;
-		}
-		if (t.closest('button, .chrome, .overview, .fs, .switch, .menu, .panel')) return;
+		if (t.closest('a, button, .chrome, .overview, .fs, .switch, .menu, .panel')) return;
 		if (blank) {
 			blank = false;
 			return;

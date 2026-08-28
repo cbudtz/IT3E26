@@ -53,16 +53,18 @@ async function resolveFile(slug: string): Promise<string | null> {
  * Omskriver relative markdown-links til site-ruter:
  *   forberedelse.md         -> /lektion1/forberedelse   (fra lektion1/Readme.md)
  *   lektion1/Readme.md      -> /lektion1
+ *   forelaesning.md?show=slide -> /lektion1/forelaesning?show=slide
  * Absolutte URL'er, ankre og mailto røres ikke.
  */
 export function rewriteHref(href: string, fromFile: string): string {
 	if (/^([a-z]+:|\/\/|#|\/)/i.test(href)) return href;
-	const [path, hash = ''] = href.split('#');
+	const [beforeHash, hash = ''] = href.split('#');
+	const [path, query = ''] = beforeHash.split('?');
 	const baseDir = dirname(fromFile.split(sep).join('/'));
 	let target = posix.normalize(posix.join(baseDir === '.' ? '' : baseDir, path));
 	target = target.replace(/\/?(README|Readme|readme|index)\.md$/, '').replace(/\.md$/, '').replace(/\/+$/, '');
 	if (target === '.' ) target = '';
-	return '/' + target + (hash ? '#' + hash : '');
+	return '/' + target + (query ? '?' + query : '') + (hash ? '#' + hash : '');
 }
 
 function titleFrom(markdown: string, fallback: string): string {
