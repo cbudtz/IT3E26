@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
+	import AppMenu from './AppMenu.svelte';
 	import ViewToggle from './ViewToggle.svelte';
 
 	let { slides }: { slides: string[] } = $props();
@@ -18,6 +19,7 @@
 	let blank = $state(false);
 	let overview = $state(false);
 	let chrome = $state(true);
+	let menuOpen = $state(false);
 	let startX = 0;
 	let hideTimer = 0;
 	let deck: HTMLElement | undefined = $state();
@@ -43,7 +45,7 @@
 		chrome = true;
 		clearTimeout(hideTimer);
 		hideTimer = window.setTimeout(() => {
-			if (!overview) chrome = false;
+			if (!overview && !menuOpen) chrome = false;
 		}, 2000);
 	}
 
@@ -120,6 +122,10 @@
 			chrome = true;
 		} else if (e.key === 'Escape') {
 			e.preventDefault();
+			if (menuOpen) {
+				menuOpen = false;
+				return;
+			}
 			if (document.fullscreenElement) document.exitFullscreen();
 			else overview = !overview;
 		}
@@ -148,7 +154,7 @@
 	function onPointerUp(e: PointerEvent) {
 		if (overview || blank) return;
 		const t = e.target;
-		if (t instanceof Element && t.closest('a, button, .chrome, .overview')) return;
+		if (t instanceof Element && t.closest('a, button, .chrome, .overview, .menu')) return;
 		const dx = e.clientX - startX;
 		if (dx > 60) {
 			swiped = true;
@@ -172,7 +178,7 @@
 			e.preventDefault();
 			return;
 		}
-		if (t.closest('button, .chrome, .overview, .fs, .switch')) return;
+		if (t.closest('button, .chrome, .overview, .fs, .switch, .menu, .panel')) return;
 		if (blank) {
 			blank = false;
 			return;
@@ -209,11 +215,14 @@
 >
 	<header class="chrome">
 		<p class="count" aria-live="polite">{i + 1} / {count}</p>
-		<ViewToggle variant="dark" />
 		<p class="keys">F fuld skærm · B sort · O overblik</p>
-		<button type="button" class="fs" onclick={toggleFullscreen}>
-			{fullscreen ? 'Afslut fuld skærm' : 'Fuld skærm'}
-		</button>
+		<div class="right">
+			<ViewToggle />
+			<button type="button" class="fs" onclick={toggleFullscreen}>
+				{fullscreen ? 'Afslut fuld skærm' : 'Fuld skærm'}
+			</button>
+			<AppMenu bind:open={menuOpen} />
+		</div>
 	</header>
 
 	<div class="viewport" aria-label="Slide {i + 1} af {count}">
@@ -260,8 +269,8 @@
 		z-index: 40;
 		display: flex;
 		flex-direction: column;
-		background: #101218;
-		color: #f4f6fa;
+		background: var(--slide-bg);
+		color: var(--slide-fg);
 		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 		outline: none;
 		cursor: none;
@@ -274,13 +283,14 @@
 		left: 0;
 		right: 0;
 		z-index: 4;
-		display: flex;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
 		align-items: center;
 		gap: 1rem;
 		padding: 0.75rem 1.25rem;
-		color: #c5cdd8;
+		color: var(--slide-chrome);
 		font-size: 0.88rem;
-		background: linear-gradient(to bottom, rgb(16 18 24 / 0.9), transparent);
+		background: linear-gradient(to bottom, color-mix(in srgb, var(--slide-bg) 92%, transparent), transparent);
 		opacity: 1;
 		transition: opacity 0.25s ease;
 	}
@@ -294,23 +304,30 @@
 		font-variant-numeric: tabular-nums;
 		font-weight: 600;
 		letter-spacing: 0.04em;
-		min-width: 4.5rem;
+		justify-self: start;
 	}
 	.keys {
-		margin: 0 auto;
+		margin: 0;
 		opacity: 0.55;
 		letter-spacing: 0.02em;
+		justify-self: center;
+	}
+	.right {
+		justify-self: end;
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
 	}
 	.fs {
 		border: 0;
-		background: rgb(255 255 255 / 0.1);
+		background: color-mix(in srgb, var(--slide-fg) 10%, transparent);
 		color: inherit;
 		border-radius: 999px;
 		padding: 0.4rem 0.9rem;
 		font: inherit;
 		cursor: pointer;
 	}
-	.fs:hover { background: rgb(255 255 255 / 0.18); }
+	.fs:hover { background: color-mix(in srgb, var(--slide-fg) 16%, transparent); }
 
 	.viewport {
 		flex: 1;
@@ -350,14 +367,14 @@
 		bottom: 0;
 		z-index: 3;
 		height: 3px;
-		background: rgb(255 255 255 / 0.08);
+		background: var(--slide-progress);
 	}
 	.progress::after {
 		content: '';
 		display: block;
 		height: 100%;
 		width: var(--p);
-		background: #5b9dff;
+		background: var(--slide-progress-fill);
 	}
 
 	.curtain {
@@ -377,7 +394,7 @@
 		align-content: start;
 		padding: 4.5rem 1.25rem 1.5rem;
 		overflow: auto;
-		background: #101218;
+		background: var(--slide-bg);
 	}
 	.thumb {
 		display: flex;
@@ -385,21 +402,21 @@
 		gap: 0.35rem;
 		min-height: 6.5rem;
 		padding: 0.7rem 0.8rem;
-		border: 1px solid #2a3140;
+		border: 1px solid var(--slide-border);
 		border-radius: 10px;
-		background: #181c27;
-		color: #e8edf5;
+		background: var(--slide-thumb-bg);
+		color: var(--slide-fg);
 		text-align: left;
 		cursor: pointer;
 		font: inherit;
 	}
-	.thumb:hover { border-color: #5b9dff; }
-	.thumb.current { border-color: #5b9dff; box-shadow: 0 0 0 1px #5b9dff; }
+	.thumb:hover { border-color: var(--slide-progress-fill); }
+	.thumb.current { border-color: var(--slide-progress-fill); box-shadow: 0 0 0 1px var(--slide-progress-fill); }
 	.num {
 		font-size: 0.75rem;
 		font-weight: 700;
 		letter-spacing: 0.06em;
-		color: #8b95a8;
+		color: var(--slide-muted);
 	}
 	.txt {
 		font-size: 0.92rem;
@@ -419,7 +436,7 @@
 		margin: 0 0 0.55em;
 		line-height: 1.12;
 		font-weight: 700;
-		color: #fff;
+		color: var(--slide-heading);
 		text-wrap: balance;
 	}
 	.inner :global(h1) { font-size: clamp(2.4rem, 6.2vw, 4.4rem); }
@@ -434,21 +451,21 @@
 	.inner :global(ul),
 	.inner :global(ol) { margin: 0 0 0.8em; padding-left: 1.15em; }
 	.inner :global(a) {
-		color: #8cb8ff;
+		color: var(--slide-link);
 		pointer-events: auto;
 		text-decoration: underline;
 		text-underline-offset: 0.12em;
 	}
 	.inner :global(code) {
-		background: #2a3040;
-		color: #f4d58d;
+		background: var(--slide-code-bg);
+		color: var(--slide-code);
 		padding: 0.08em 0.38em;
 		border-radius: 5px;
 		font-size: 0.86em;
 	}
 	.inner :global(pre) {
-		background: #0b0d14;
-		color: #e8edf5;
+		background: var(--slide-pre-bg);
+		color: var(--slide-pre-fg);
 		padding: 1rem 1.2rem;
 		border-radius: 12px;
 		overflow: auto;
@@ -456,7 +473,7 @@
 		font-size: clamp(0.9rem, 1.6vw, 1.15rem);
 		line-height: 1.45;
 		user-select: text;
-		box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+		box-shadow: inset 0 0 0 1px var(--slide-border);
 	}
 	.inner :global(pre code) { background: none; color: inherit; padding: 0; }
 	.inner :global(table) {
@@ -467,15 +484,15 @@
 	}
 	.inner :global(th),
 	.inner :global(td) {
-		border-color: #3a4150;
+		border-color: var(--slide-border);
 		padding: 0.45em 0.7em;
 	}
-	.inner :global(th) { background: #1c2230; color: #fff; }
-	.inner :global(tr:nth-child(2n)) { background: #181c27; }
+	.inner :global(th) { background: var(--slide-table-head); color: var(--slide-heading); }
+	.inner :global(tr:nth-child(2n)) { background: var(--slide-table-alt); }
 	.inner :global(hr) { display: none; }
 	.inner :global(blockquote) {
-		color: #c5cdd8;
-		border-left-color: #5b9dff;
+		color: var(--slide-muted);
+		border-left-color: var(--slide-progress-fill);
 	}
 
 	@media (max-width: 50rem) {

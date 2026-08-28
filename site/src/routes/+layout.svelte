@@ -1,8 +1,12 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
+	import AppMenu from '$lib/AppMenu.svelte';
 	import ViewToggle from '$lib/ViewToggle.svelte';
+	import { initTheme } from '$lib/theme.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
+
 	let { children } = $props();
 
 	let menuOpen = $state(false);
@@ -20,6 +24,10 @@
 	const onAuth = $derived(page.url.pathname.startsWith('/auth'));
 	const slideMode = $derived(page.url.searchParams.get('show') === 'slide');
 	const showToggle = $derived(!onQuiz && !onAuth);
+
+	onMount(() => {
+		initTheme();
+	});
 
 	afterNavigate(() => {
 		menuOpen = false;
@@ -46,25 +54,12 @@
 				{/each}
 			</div>
 
-			<button
-				type="button"
-				class="menu-toggle"
-				aria-expanded={menuOpen}
-				aria-controls="site-menu"
-				aria-label="Menu"
-				onclick={() => (menuOpen = !menuOpen)}
-			>
-				<span class="bars" aria-hidden="true"></span>
-			</button>
-
-			<ul id="site-menu" class="links" class:open={menuOpen}>
+			<div class="tools">
 				{#if showToggle}
-					<li class="toggle"><ViewToggle /></li>
+					<ViewToggle />
 				{/if}
-				<li>
-					<a href="/quiz" aria-current={onQuiz ? 'page' : undefined}>Quiz</a>
-				</li>
-			</ul>
+				<AppMenu bind:open={menuOpen} />
+			</div>
 		</nav>
 	</header>
 {/if}
@@ -74,17 +69,74 @@
 </main>
 
 <style>
+	:global(:root) {
+		--bg: #fff;
+		--fg: #1f2328;
+		--muted: #57606a;
+		--border: #d0d7de;
+		--header-bg: #f6f8fa;
+		--link: #0969da;
+		--code-bg: #eff1f3;
+		--pre-bg: #f6f8fa;
+		--accent: #0969da;
+		--switch-off: #d0d7de;
+		--slide-bg: #f5f6f8;
+		--slide-fg: #1c2128;
+		--slide-heading: #11151a;
+		--slide-muted: #5c6570;
+		--slide-chrome: #3c4654;
+		--slide-code: #9a6700;
+		--slide-code-bg: #eceef1;
+		--slide-pre-bg: #eef0f3;
+		--slide-pre-fg: #1c2128;
+		--slide-border: #d0d7de;
+		--slide-thumb-bg: #fff;
+		--slide-progress: rgb(15 23 42 / 0.1);
+		--slide-progress-fill: #0969da;
+		--slide-link: #0969da;
+		--slide-table-head: #eef1f4;
+		--slide-table-alt: #f7f8fa;
+	}
+	:global(html[data-theme='dark']) {
+		--bg: #101218;
+		--fg: #f4f6fa;
+		--muted: #9aa3b5;
+		--border: #2a3140;
+		--header-bg: #161a24;
+		--link: #8cb8ff;
+		--code-bg: #1c2230;
+		--pre-bg: #0b0d14;
+		--accent: #5b9dff;
+		--switch-off: #3a4150;
+		--slide-bg: #101218;
+		--slide-fg: #f4f6fa;
+		--slide-heading: #fff;
+		--slide-muted: #9aa3b5;
+		--slide-chrome: #c5cdd8;
+		--slide-code: #f4d58d;
+		--slide-code-bg: #2a3040;
+		--slide-pre-bg: #0b0d14;
+		--slide-pre-fg: #e8edf5;
+		--slide-border: #3a4150;
+		--slide-thumb-bg: #181c27;
+		--slide-progress: rgb(255 255 255 / 0.08);
+		--slide-progress-fill: #5b9dff;
+		--slide-link: #8cb8ff;
+		--slide-table-head: #1c2230;
+		--slide-table-alt: #181c27;
+	}
+
 	:global(body) {
 		margin: 0;
 		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 		line-height: 1.55;
-		color: #1f2328;
-		background: #fff;
+		color: var(--fg);
+		background: var(--bg);
 	}
 	header {
 		position: relative;
-		border-bottom: 1px solid #d0d7de;
-		background: #f6f8fa;
+		border-bottom: 1px solid var(--border);
+		background: var(--header-bg);
 	}
 	nav {
 		max-width: 60rem;
@@ -95,7 +147,7 @@
 		align-items: center;
 		gap: 0.75rem;
 	}
-	nav a { color: #0969da; text-decoration: none; }
+	nav a { color: var(--link); text-decoration: none; }
 	nav a:hover { text-decoration: underline; }
 	.crumbs {
 		display: flex;
@@ -104,72 +156,14 @@
 		min-width: 0;
 		flex: 1;
 	}
-	.brand { font-weight: 700; color: #1f2328; }
-	.sep { margin: 0 0.4rem; color: #6e7781; }
-	.menu-toggle {
-		display: none;
+	.brand { font-weight: 700; color: var(--fg); }
+	.sep { margin: 0 0.4rem; color: var(--muted); }
+	.tools {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		margin-left: auto;
 		flex-shrink: 0;
-		width: 2.4rem;
-		height: 2.4rem;
-		margin: -0.3rem -0.4rem -0.3rem 0;
-		padding: 0;
-		border: 0;
-		border-radius: 6px;
-		background: transparent;
-		color: #1f2328;
-		cursor: pointer;
-	}
-	.menu-toggle:hover { background: #eaeef2; }
-	.bars {
-		display: block;
-		width: 1.15rem;
-		height: 2px;
-		margin: 0 auto;
-		background: currentColor;
-		box-shadow: 0 -6px currentColor, 0 6px currentColor;
-	}
-	.links {
-		display: flex;
-		align-items: center;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		gap: 0.15rem;
-	}
-	.links a {
-		display: block;
-		padding: 0.3rem 0.65rem;
-		border-radius: 6px;
-		font-weight: 600;
-	}
-	.links a[aria-current='page'] {
-		background: #fff;
-		color: #1f2328;
-		box-shadow: inset 0 0 0 1px #d0d7de;
-	}
-	.toggle {
-		display: flex;
-		align-items: center;
-		padding: 0 0.5rem;
-	}
-	@media (max-width: 40rem) {
-		.menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
-		.links {
-			display: none;
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 100%;
-			z-index: 20;
-			flex-direction: column;
-			align-items: stretch;
-			gap: 0;
-			padding: 0.35rem 1.25rem 0.6rem;
-			background: #fff;
-			border-bottom: 1px solid #d0d7de;
-		}
-		.links.open { display: flex; }
-		.links a { padding: 0.75rem 0.4rem; }
 	}
 	main {
 		max-width: 60rem;
@@ -183,20 +177,19 @@
 	}
 	:global(body:has(.deck)) {
 		overflow: hidden;
-		background: #12141c;
+		background: var(--slide-bg);
 	}
 
-	/* GitHub-agtig markdown */
-	:global(.markdown h1) { border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; }
-	:global(.markdown h2) { border-bottom: 1px solid #d8dee4; padding-bottom: 0.25em; margin-top: 2em; }
-	:global(.markdown a) { color: #0969da; }
+	:global(.markdown h1) { border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+	:global(.markdown h2) { border-bottom: 1px solid var(--border); padding-bottom: 0.25em; margin-top: 2em; }
+	:global(.markdown a) { color: var(--link); }
 	:global(.markdown table) { border-collapse: collapse; display: block; overflow-x: auto; max-width: 100%; }
-	:global(.markdown th), :global(.markdown td) { border: 1px solid #d0d7de; padding: 0.4em 0.8em; vertical-align: top; }
-	:global(.markdown th) { background: #f6f8fa; }
-	:global(.markdown tr:nth-child(2n)) { background: #f6f8fa; }
-	:global(.markdown code) { background: #eff1f3; padding: 0.15em 0.35em; border-radius: 4px; font-size: 0.9em; }
-	:global(.markdown pre) { background: #f6f8fa; padding: 1em; overflow-x: auto; border-radius: 6px; }
+	:global(.markdown th), :global(.markdown td) { border: 1px solid var(--border); padding: 0.4em 0.8em; vertical-align: top; }
+	:global(.markdown th) { background: var(--header-bg); }
+	:global(.markdown tr:nth-child(2n)) { background: var(--header-bg); }
+	:global(.markdown code) { background: var(--code-bg); padding: 0.15em 0.35em; border-radius: 4px; font-size: 0.9em; }
+	:global(.markdown pre) { background: var(--pre-bg); padding: 1em; overflow-x: auto; border-radius: 6px; }
 	:global(.markdown pre code) { background: none; padding: 0; }
-	:global(.markdown blockquote) { margin: 0; padding: 0 1em; color: #57606a; border-left: 0.25em solid #d0d7de; }
+	:global(.markdown blockquote) { margin: 0; padding: 0 1em; color: var(--muted); border-left: 0.25em solid var(--border); }
 	:global(.markdown img) { max-width: 100%; }
 </style>
