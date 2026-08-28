@@ -21,6 +21,7 @@
 	let chrome = $state(true);
 	let menuOpen = $state(false);
 	let startX = 0;
+	let startInGutter = false;
 	let hideTimer = 0;
 	let deck: HTMLElement | undefined = $state();
 
@@ -145,16 +146,30 @@
 		poke();
 	}
 
+	/** Venstre/højre margen uden for slide-indholdet — ikke selve teksten. */
+	function gutterDir(e: MouseEvent | PointerEvent): 'prev' | 'next' | null {
+		const t = e.target;
+		if (!(t instanceof Element)) return null;
+		if (t.closest('a, button, .chrome, .overview, .fs, .switch, .menu, .panel, .progress, .inner')) {
+			return null;
+		}
+		const inner = deck?.querySelectorAll('.slide')[i]?.querySelector('.inner');
+		if (!(inner instanceof HTMLElement)) return null;
+		const r = inner.getBoundingClientRect();
+		if (e.clientX < r.left) return 'prev';
+		if (e.clientX > r.right) return 'next';
+		return null;
+	}
+
 	function onPointerDown(e: PointerEvent) {
 		if (e.pointerType === 'mouse' && e.button !== 0) return;
 		startX = e.clientX;
+		startInGutter = gutterDir(e) !== null;
 	}
 	let swiped = false;
 
 	function onPointerUp(e: PointerEvent) {
-		if (overview || blank) return;
-		const t = e.target;
-		if (t instanceof Element && t.closest('a, button, .chrome, .overview, .menu')) return;
+		if (overview || blank || !startInGutter) return;
 		const dx = e.clientX - startX;
 		if (dx > 60) {
 			swiped = true;
@@ -170,16 +185,15 @@
 			swiped = false;
 			return;
 		}
-		const t = e.target;
-		if (!(t instanceof Element)) return;
-		if (t.closest('a, button, .chrome, .overview, .fs, .switch, .menu, .panel')) return;
+		if (!startInGutter) return;
 		if (blank) {
 			blank = false;
 			return;
 		}
 		if (overview) return;
-		if (e.clientX < window.innerWidth * 0.28) prev();
-		else next();
+		const dir = gutterDir(e);
+		if (dir === 'prev') prev();
+		else if (dir === 'next') next();
 	}
 
 	onMount(() => {
@@ -267,9 +281,8 @@
 		color: var(--slide-fg);
 		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 		outline: none;
-		cursor: none;
+		cursor: default;
 	}
-	.deck:not(.idle) { cursor: default; }
 
 	.chrome {
 		position: absolute;
@@ -285,10 +298,13 @@
 		color: var(--slide-chrome);
 		font-size: 0.88rem;
 		background: linear-gradient(to bottom, color-mix(in srgb, var(--slide-bg) 92%, transparent), transparent);
-		opacity: 1;
-		transition: opacity 0.25s ease;
 	}
-	.idle .chrome,
+	.idle .chrome {
+		background: none;
+		pointer-events: none;
+	}
+	.idle .keys,
+	.idle .right,
 	.blank .chrome {
 		opacity: 0;
 		pointer-events: none;
@@ -299,18 +315,22 @@
 		font-weight: 600;
 		letter-spacing: 0.04em;
 		justify-self: start;
+		text-shadow: 0 0 12px var(--slide-bg), 0 1px 0 var(--slide-bg);
 	}
+	.blank .count { opacity: 0; }
 	.keys {
 		margin: 0;
 		opacity: 0.55;
 		letter-spacing: 0.02em;
 		justify-self: center;
+		transition: opacity 0.25s ease;
 	}
 	.right {
 		justify-self: end;
 		display: flex;
 		align-items: center;
 		gap: 0.65rem;
+		transition: opacity 0.25s ease;
 	}
 	.fs {
 		border: 0;
@@ -326,7 +346,7 @@
 	.viewport {
 		flex: 1;
 		overflow: hidden;
-		touch-action: none;
+		touch-action: pan-y;
 	}
 	.track {
 		display: flex;
@@ -347,11 +367,15 @@
 		display: flex;
 		padding: 6vh 8vw 8vh;
 		box-sizing: border-box;
+		cursor: pointer;
 		user-select: none;
 	}
 	.inner {
 		margin: auto;
 		width: min(62rem, 100%);
+		cursor: text;
+		user-select: text;
+		touch-action: pan-y;
 	}
 
 	.progress {
