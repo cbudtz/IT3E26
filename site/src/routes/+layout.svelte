@@ -2,7 +2,6 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import AppMenu from '$lib/AppMenu.svelte';
 	import DownloadLinks from '$lib/DownloadLinks.svelte';
-	import ViewToggle from '$lib/ViewToggle.svelte';
 	import { initTheme } from '$lib/theme.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
@@ -24,7 +23,7 @@
 	);
 	const onAuth = $derived(page.url.pathname.startsWith('/auth'));
 	const slideMode = $derived(page.url.searchParams.get('show') === 'slide');
-	const showToggle = $derived(!onQuiz && !onAuth);
+	const showDownloads = $derived(!onQuiz && !onAuth);
 
 	onMount(() => {
 		initTheme();
@@ -56,8 +55,7 @@
 			</div>
 
 			<div class="tools">
-				{#if showToggle}
-					<ViewToggle />
+				{#if showDownloads}
 					<DownloadLinks />
 				{/if}
 				<AppMenu bind:open={menuOpen} />
