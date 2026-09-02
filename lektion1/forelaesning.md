@@ -170,7 +170,7 @@ Vi gør det sammen nu:
 </html>
 ```
 
-Når siden vises i browseren, er Øvelse 0 i hus.
+Når siden vises i browseren, er Øvelse 0 i hus. Hvis du har ekstra tid - så eksperimentér gerne lidt.
 
 ---
 
@@ -210,7 +210,7 @@ HyperText Markup Language
 - En del af markup-sprogene
 - Deklarativt sprog
 - Definerer indhold og struktur
-- Ét dynamisk element: `<a href>`
+- Dynamiske elementer -  eks:`<a href>`, `<form action="/somepage">`, `<button type="submit">`, 
 
 ---
 
