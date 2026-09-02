@@ -21,7 +21,7 @@ Pauser lægges ind undervejs.
 
 - Rolf Nordahl — metode, projekt, UML og UX (kursusansvarlig)
 - Birger Andersen — netværksteknologi
-- Christian Budtz — de web-lektioner
+- Christian Budtz — fullstack webudvikling
 
 ---
 
@@ -29,7 +29,7 @@ Pauser lægges ind undervejs.
 
 - 1. semester — én computer, ét program
 - 2. semester — én computer, flere processer (Python, C#, SQL)
-- 3. semester — flere computere, flere processer teknologier
+- 3. semester — flere computere, flere processer
   (HTML, CSS, JavaScript, servere, databaser)
 
 Nu bliver det kompliceret!
@@ -38,9 +38,10 @@ Nu bliver det kompliceret!
 
 ## Hybridkursus
 
-- 1/4 netværksteknologi
-- 1/4 metode: projekt, UML og UX
 - 1/2 fullstack-web
+- 1/4 metode: projekt, UML og UX
+- 1/4 netværksteknologi
+
 
 Teori og øvelser. Gennemgående gruppeprojekt.
 Grupper på 3-4. Gruppedannelse i Lektion 2.
