@@ -131,6 +131,13 @@
         "Man er på den forkerte branch"
       ],
       "correct": [1]
+    },
+    {
+      "id": "q14",
+      "type": "tf",
+      "prompt": "Jeg har forberedt mig til i dag.",
+      "options": ["Ja", "Nej"],
+      "correct": [0, 1]
     }
   ]
 }

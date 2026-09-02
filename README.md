@@ -17,7 +17,7 @@ Kurset består af fullstack web-udvikling, projektudvikling og netværksteknolog
 - **D2** — MVP med frontend, backend/API, PostgreSQL og én central brugerhandling
 - **D3** — fungerende system med authentication, deployment og færdig portefølje
 
-**Det forventes, at du har ++forberedt dig til hver undervisningsgang.**++ Hvad du
+**Det forventes, at du har forberedt dig til hver undervisningsgang.** Hvad du
 skal lave, står under *Forberedelse* på den enkelte lektion.
 
 Vi glæder os til at se jer!

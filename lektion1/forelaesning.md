@@ -109,7 +109,7 @@ Efter lektionen skal du kunne:
 - bruge tags, attributter og korrekt nesting
 - indsætte overskrifter, afsnit, billeder og links
 - skelne mellem relative og absolutte stier
-- inspicere og validere HTML
+- inspicere HTML i DevTools
 
 ---
 
@@ -466,16 +466,6 @@ kig i DevTools, ikke kun på skærmen.
 
 ---
 
-## W3C-validator
-
-[https://validator.w3.org/](https://validator.w3.org/)
-
-Finder syntaksfejl og manglende eller ugyldige attributter.
-
-Et hjælpemiddel — erstatter ikke, at I forstår strukturen.
-
----
-
 ## Quiz!
 
 Gå til [/quiz](/quiz) og indtast koden fra tavlen.
@@ -491,6 +481,8 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 # Øvelser
 
 **Man lærer bedst HTML ved at prøve selv!**
+
+Detaljerne — trin, tjekliste og ekstra tid — står i [øvelsesarket](oevelser.md).
 
 ---
 

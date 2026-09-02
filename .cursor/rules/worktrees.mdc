@@ -1,0 +1,16 @@
+---
+description: Udvikl features i git worktrees under .worktrees/ i rodmappen
+alwaysApply: true
+---
+
+# Feature-udvikling i worktrees
+
+Udvikl nye features i et isoleret git worktree — ikke i det primære checkout.
+
+- Placering: `.worktrees/<branch-navn>` i repo-roden (fx `.worktrees/feat-klikbar-lektionsplan`)
+- Opret med `git worktree add .worktrees/<branch-navn> -b <branch-navn>`
+- Arbejd i worktreet (cd dertil) indtil branchen er klar til merge/PR
+- Opret ikke et nestet worktree, hvis du allerede er i et linked worktree
+- `.worktrees/` er gitignored — commit aldrig worktree-indhold
+
+Undtagelser: små rettelser i det primære checkout (typo, docs, én-linjes fix) når brugeren eksplicit arbejder dér.
