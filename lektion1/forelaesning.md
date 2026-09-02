@@ -80,6 +80,17 @@ Der skal indgå alle elementer af fullstack i applikationen. Appen skal omhandle
 Portefølje + website **skal være godkendt for at I kan gå til eksamen.**
 
 ---
+## Projektet — Afleveringer
+
+- Fast defineret rapportformat 
+- HVORFOR i har gjort som i gjorde - Vi vil se jeres beslutninger
+- Minimalt med HVAD i har gjort - Det kan vi godt se selv
+- INGEN AI-slop tak!
+- Skal Godkendes
+- Danner basis for eksamen
+- Rapportformat gennemgås v/Rolf i de næste uger
+
+---
 
 ## Eksamen
 
