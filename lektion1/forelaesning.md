@@ -99,6 +99,8 @@ Individuel mundtlig eksamen baseret på projektet.
 - Web samt netværk/metode
 - Alle hjælpemidler, inkl. internet
 - I medbringer porteføljen og adgang til det kørende website
+- I står til ansvar for det hele
+- Eksamenspræstationen afgør resultatet
 
 ---
 
