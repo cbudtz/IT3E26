@@ -3,7 +3,7 @@
 
 	function onInput(e: Event) {
 		const v = Number((e.currentTarget as HTMLInputElement).value);
-		if (v === 1 || v === 2 || v === 3) setTextSize(v as TextStep);
+		if (v === 1 || v === 2 || v === 3 || v === 4) setTextSize(v as TextStep);
 	}
 </script>
 
@@ -12,11 +12,11 @@
 	<input
 		type="range"
 		min="1"
-		max="3"
+		max="4"
 		step="1"
 		value={textSize.step}
 		aria-label="Tekststørrelse på slides"
-		aria-valuetext="Trin {textSize.step} af 3"
+		aria-valuetext="Trin {textSize.step} af 4"
 		oninput={onInput}
 	/>
 	<span class="a big" aria-hidden="true">A</span>

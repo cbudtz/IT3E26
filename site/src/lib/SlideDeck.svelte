@@ -213,6 +213,7 @@
 <div
 	bind:this={deck}
 	class="deck"
+	class:fullscreen
 	class:idle={!chrome && !overview}
 	class:blank
 	style="--i: {i}; --p: {((i + 1) / count) * 100}%; --ts: {textScale(textSize.step)}"
@@ -372,6 +373,13 @@
 		cursor: pointer;
 		user-select: none;
 	}
+	.fullscreen .slide {
+		padding: 3vh 4vw 4vh;
+	}
+	.fullscreen .inner {
+		width: min(80rem, 100%);
+	}
+
 	.inner {
 		margin: auto;
 		width: min(62rem, 100%);
@@ -488,7 +496,7 @@
 		color: var(--slide-code);
 		padding: 0.08em 0.38em;
 		border-radius: 5px;
-		font-size: 0.86em;
+		font-size: 0.95em;
 	}
 	.inner :global(pre) {
 		background: var(--slide-pre-bg);
@@ -496,8 +504,8 @@
 		padding: 1rem 1.2rem;
 		border-radius: 12px;
 		overflow: auto;
-		max-height: 52vh;
-		font-size: calc(clamp(0.9rem, 1.6vw, 1.15rem) * var(--ts, 1));
+		max-height: 60vh;
+		font-size: 1em;
 		line-height: 1.45;
 		user-select: text;
 		box-shadow: inset 0 0 0 1px var(--slide-border);
