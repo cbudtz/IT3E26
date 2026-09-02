@@ -14,7 +14,7 @@
 		"cas:check": "node scripts/cas-check.mjs",
 		"db:generate": "drizzle-kit generate",
 		"db:studio": "drizzle-kit studio",
-		"test": "node --experimental-strip-types --test src/lib/server/lessonPlan.test.ts"
+		"test": "node --experimental-strip-types --test src/lib/server/*.test.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.1",
