@@ -19,17 +19,17 @@ Pauser lægges ind undervejs.
 
 ## Underviserne
 
-- Christian Budtz — de første web-lektioner
 - Rolf Nordahl — metode, projekt, UML og UX (kursusansvarlig)
-- Birger Andersen — netværk og senere web-lektioner
+- Birger Andersen — netværksteknologi
+- Christian Budtz — de web-lektioner
 
 ---
 
 ## Digitale Systemer & Anvendelse
 
 - 1. semester — én computer, ét program
-- 1. semester — én computer, flere programmer (Python, C#, SQL)
-- 1. semester — flere computere, flere teknologier
+- 2. semester — én computer, flere processer (Python, C#, SQL)
+- 3. semester — flere computere, flere processer teknologier
   (HTML, CSS, JavaScript, servere, databaser)
 
 Nu bliver det kompliceret!
@@ -47,6 +47,22 @@ Grupper på 3-4. Gruppedannelse i Lektion 2.
 
 ---
 
+## Projektet 
+
+- Fullstack applikation - Sundhedsteknologisk case
+- Grupper af 3-4 studerende
+
+
+Eksempler til inspiration
+- Medicintracker
+- Aftalesystem
+- Blodtryksdagbog
+- Migræne-/hovedpinedagbog
+- Patientspørgeskema
+- Visning af laboratorieresultater
+
+---
+
 ## Projektet — tre delafleveringer
 
 - **D1** — forstudie og klikbar frontend-mockup (uden backend)
@@ -57,7 +73,7 @@ I vælger selv en afgrænset sundhedsteknologisk case.
 
 Der skal indgå alle elementer af fullstack i applikationen. Appen skal omhandle patienter.
 
-Portefølje + website skal være godkendt for at I kan gå til eksamen.
+Portefølje + website **skal være godkendt for at I kan gå til eksamen.**
 
 ---
 

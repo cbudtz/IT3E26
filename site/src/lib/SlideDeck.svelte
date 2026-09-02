@@ -376,6 +376,8 @@
 		cursor: text;
 		user-select: text;
 		touch-action: pan-y;
+		font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+		line-height: 1.45;
 	}
 
 	.progress {
@@ -461,13 +463,18 @@
 	.inner :global(h2) { font-size: clamp(1.85rem, 4.4vw, 3.1rem); }
 	.inner :global(h3) { font-size: clamp(1.35rem, 2.6vw, 1.8rem); }
 	.inner :global(p),
-	.inner :global(li) {
-		font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-		line-height: 1.4;
-		margin: 0 0 0.55em;
-	}
 	.inner :global(ul),
-	.inner :global(ol) { margin: 0 0 0.8em; padding-left: 1.15em; }
+	.inner :global(ol) {
+		margin: 0.9em 0;
+	}
+	.inner :global(li) { margin: 0; }
+	.inner :global(ul),
+	.inner :global(ol) { padding-left: 2.5em; }
+	.inner :global(ul ul),
+	.inner :global(ul ol),
+	.inner :global(ol ul),
+	.inner :global(ol ol) { margin: 0; }
+	.inner :global(li > p) { margin: 0.7em 0; }
 	.inner :global(a) {
 		color: var(--slide-link);
 		pointer-events: auto;
