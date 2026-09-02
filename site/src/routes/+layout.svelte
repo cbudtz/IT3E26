@@ -1,6 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import AppMenu from '$lib/AppMenu.svelte';
+	import DownloadLinks from '$lib/DownloadLinks.svelte';
 	import ViewToggle from '$lib/ViewToggle.svelte';
 	import { initTheme } from '$lib/theme.svelte';
 	import { afterNavigate } from '$app/navigation';
@@ -57,6 +58,7 @@
 			<div class="tools">
 				{#if showToggle}
 					<ViewToggle />
+					<DownloadLinks />
 				{/if}
 				<AppMenu bind:open={menuOpen} />
 			</div>
@@ -209,4 +211,17 @@
 	:global(.markdown pre code) { background: none; padding: 0; }
 	:global(.markdown blockquote) { margin: 0; padding: 0 1em; color: var(--muted); border-left: 0.25em solid var(--border); }
 	:global(.markdown img) { max-width: 100%; }
+
+	@media print {
+		header { display: none !important; }
+		main {
+			max-width: none;
+			margin: 0;
+			padding: 0;
+		}
+		:global(body) {
+			background: #fff;
+			color: #111;
+		}
+	}
 </style>
