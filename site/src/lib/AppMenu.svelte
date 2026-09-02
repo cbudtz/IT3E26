@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ThemeToggle from './ThemeToggle.svelte';
+	import ViewToggle from './ViewToggle.svelte';
 	import { page } from '$app/state';
 
 	let { open = $bindable(false) }: { open?: boolean } = $props();
@@ -7,6 +8,8 @@
 	const onQuiz = $derived(
 		page.url.pathname === '/quiz' || page.url.pathname.startsWith('/quiz/')
 	);
+	const onAuth = $derived(page.url.pathname.startsWith('/auth'));
+	const showViewToggle = $derived(!onQuiz && !onAuth);
 </script>
 
 <div class="menu">
@@ -28,7 +31,12 @@
 		<li>
 			<a href="/quiz" aria-current={onQuiz ? 'page' : undefined}>Quiz</a>
 		</li>
-		<li class="theme">
+		{#if showViewToggle}
+			<li class="control">
+				<ViewToggle />
+			</li>
+		{/if}
+		<li class="control">
 			<ThemeToggle />
 		</li>
 	</ul>
@@ -93,7 +101,7 @@
 		color: var(--fg);
 		box-shadow: inset 0 0 0 1px var(--border);
 	}
-	.theme {
+	.control {
 		display: flex;
 		align-items: center;
 		padding: 0.45rem 0.55rem 0.35rem;

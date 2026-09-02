@@ -3,7 +3,6 @@
 	import { page } from '$app/state';
 	import AppMenu from './AppMenu.svelte';
 	import DownloadLinks from './DownloadLinks.svelte';
-	import ViewToggle from './ViewToggle.svelte';
 
 	let { slides }: { slides: string[] } = $props();
 
@@ -226,7 +225,6 @@
 		<p class="count" aria-live="polite">{i + 1} / {count}</p>
 		<p class="keys">F fuld skærm · B sort · O overblik</p>
 		<div class="right">
-			<ViewToggle />
 			<DownloadLinks />
 			<button type="button" class="fs" onclick={toggleFullscreen}>
 				{fullscreen ? 'Afslut fuld skærm' : 'Fuld skærm'}
