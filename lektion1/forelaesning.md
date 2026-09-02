@@ -43,8 +43,11 @@ Nu bliver det kompliceret!
 - 1/4 netværksteknologi
 
 
-Teori og øvelser. Gennemgående gruppeprojekt.
-Grupper på 3-4. Gruppedannelse i Lektion 2.
+- Teori og øvelser. 
+- Gennemgående gruppeprojekt.
+  - Grupper på 3-4. 
+  - Gruppedannelse i Lektion 2.
+[Et Kig på lektionsplanen](../README.md#lektionsplan)
 
 ---
 
