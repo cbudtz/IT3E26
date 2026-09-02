@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ThemeToggle from './ThemeToggle.svelte';
 	import ViewToggle from './ViewToggle.svelte';
+	import TextSizeSlider from './TextSizeSlider.svelte';
 	import { page } from '$app/state';
 
 	let { open = $bindable(false) }: { open?: boolean } = $props();
@@ -10,6 +11,7 @@
 	);
 	const onAuth = $derived(page.url.pathname.startsWith('/auth'));
 	const showViewToggle = $derived(!onQuiz && !onAuth);
+	const slideMode = $derived(page.url.searchParams.get('show') === 'slide');
 </script>
 
 <div class="menu">
@@ -34,6 +36,11 @@
 		{#if showViewToggle}
 			<li class="control">
 				<ViewToggle />
+			</li>
+		{/if}
+		{#if slideMode}
+			<li class="control">
+				<TextSizeSlider />
 			</li>
 		{/if}
 		<li class="control">
