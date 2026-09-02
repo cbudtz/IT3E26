@@ -49,6 +49,16 @@ async function resolveFile(slug: string): Promise<string | null> {
 	return null;
 }
 
+/** Kilden til den viste side, eller null hvis slug er en mappe-liste uden .md. */
+export async function readMarkdownSource(
+	slug: string
+): Promise<{ file: string; markdown: string } | null> {
+	const file = await resolveFile(slug);
+	if (!file) return null;
+	const markdown = await readFile(resolve(CONTENT_DIR, file), 'utf8');
+	return { file, markdown };
+}
+
 /**
  * Omskriver relative markdown-links til site-ruter:
  *   forberedelse.md         -> /lektion1/forberedelse   (fra lektion1/Readme.md)

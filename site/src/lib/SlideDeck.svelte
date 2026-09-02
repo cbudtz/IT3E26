@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import AppMenu from './AppMenu.svelte';
+	import DownloadLinks from './DownloadLinks.svelte';
 	import ViewToggle from './ViewToggle.svelte';
 
 	let { slides }: { slides: string[] } = $props();
@@ -226,6 +227,7 @@
 		<p class="keys">F fuld skærm · B sort · O overblik</p>
 		<div class="right">
 			<ViewToggle />
+			<DownloadLinks />
 			<button type="button" class="fs" onclick={toggleFullscreen}>
 				{fullscreen ? 'Afslut fuld skærm' : 'Fuld skærm'}
 			</button>
@@ -523,5 +525,45 @@
 	@media (max-width: 50rem) {
 		.slide { padding: 5.5rem 1.4rem 3.5rem; }
 		.keys, .fs { display: none; }
+	}
+
+	@media print {
+		.deck {
+			position: static;
+			display: block;
+			height: auto;
+			overflow: visible;
+			background: #fff;
+			color: #111;
+		}
+		.chrome, .progress, .overview, .curtain { display: none !important; }
+		.viewport {
+			overflow: visible;
+			height: auto;
+		}
+		.track {
+			display: block;
+			height: auto;
+			transform: none;
+			transition: none;
+		}
+		.slide {
+			display: block;
+			width: auto;
+			height: auto;
+			overflow: visible;
+			padding: 0 0 2rem;
+			break-after: page;
+			page-break-after: always;
+		}
+		.slide:last-child {
+			break-after: auto;
+			page-break-after: auto;
+		}
+		.inner {
+			margin: 0;
+			width: 100%;
+			font-size: 12pt;
+		}
 	}
 </style>
