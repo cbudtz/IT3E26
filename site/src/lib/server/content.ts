@@ -2,6 +2,7 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import { resolve, dirname, posix, sep } from 'node:path';
 import { env } from '$env/dynamic/private';
 import { marked } from 'marked';
+import { enhanceLessonPlan } from './lessonPlan';
 
 /**
  * Rod for kursusmaterialet (markdown). Default: repo-roden (én mappe over site/).
@@ -20,6 +21,26 @@ export function isHiddenSlug(slug: string): boolean {
 
 /** Filnavne vi prøver, når en URL peger på en mappe. Rækkefølge = prioritet. */
 const INDEX_NAMES = ['README.md', 'Readme.md', 'readme.md', 'index.md'];
+
+/** Lektionsnumre der har en index-fil i `lektionN/`. */
+export async function availableLessons(): Promise<Set<number>> {
+	const found = new Set<number>();
+	const entries = await readdir(CONTENT_DIR, { withFileTypes: true }).catch(() => []);
+	for (const e of entries) {
+		if (!e.isDirectory()) continue;
+		const m = /^lektion(\d+)$/i.exec(e.name);
+		if (!m) continue;
+		const n = Number(m[1]);
+		const dir = resolve(CONTENT_DIR, e.name);
+		for (const name of INDEX_NAMES) {
+			if (await exists(resolve(dir, name))) {
+				found.add(n);
+				break;
+			}
+		}
+	}
+	return found;
+}
 
 export type Page = {
 	/** URL-sti uden foranstillet slash, fx "lektion1" eller "lektion1/forberedelse". */
@@ -123,15 +144,20 @@ export async function loadPage(slug: string): Promise<Page | null> {
 	if (!file) return directoryListing(slug);
 	const markdown = await readFile(resolve(CONTENT_DIR, file), 'utf8');
 	const chunks = splitSlides(markdown);
-	const [html, ...rest] = await Promise.all([
+	const available = await availableLessons();
+	const [rawHtml, ...rawSlides] = await Promise.all([
 		toHtml(markdown, file),
 		...chunks.map((chunk) => toHtml(chunk, file))
 	]);
+	const html = enhanceLessonPlan(rawHtml, available);
+	const slides = (rawSlides.length ? rawSlides : [rawHtml]).map((s) =>
+		enhanceLessonPlan(s, available)
+	);
 	return {
 		slug,
 		title: titleFrom(markdown, slug || 'Forside'),
 		html,
-		slides: rest.length ? rest : [html],
+		slides,
 		file
 	};
 }

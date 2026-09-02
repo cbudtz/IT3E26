@@ -187,6 +187,23 @@
 	:global(.markdown th), :global(.markdown td) { border: 1px solid var(--border); padding: 0.4em 0.8em; vertical-align: top; }
 	:global(.markdown th) { background: var(--header-bg); }
 	:global(.markdown tr:nth-child(2n)) { background: var(--header-bg); }
+	:global(.markdown tr.lesson-row) { cursor: pointer; }
+	:global(.markdown tr.lesson-row:hover td) {
+		background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+	}
+	:global(.markdown tr.lesson-row td:first-child a) {
+		display: inline-block;
+		padding: 0.15em 0.65em;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--accent) 14%, transparent);
+		color: var(--link);
+		font-weight: 700;
+		text-decoration: none;
+	}
+	:global(.markdown tr.lesson-row td:first-child a:focus-visible) {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
 	:global(.markdown code) { background: var(--code-bg); padding: 0.15em 0.35em; border-radius: 4px; font-size: 0.9em; }
 	:global(.markdown pre) { background: var(--pre-bg); padding: 1em; overflow-x: auto; border-radius: 6px; }
 	:global(.markdown pre code) { background: none; padding: 0; }

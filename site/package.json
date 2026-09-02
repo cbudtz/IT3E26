@@ -13,7 +13,8 @@
 		"start": "node --env-file-if-exists=.env server.ts",
 		"cas:check": "node scripts/cas-check.mjs",
 		"db:generate": "drizzle-kit generate",
-		"db:studio": "drizzle-kit studio"
+		"db:studio": "drizzle-kit studio",
+		"test": "node --experimental-strip-types --test src/lib/server/lessonPlan.test.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.1",

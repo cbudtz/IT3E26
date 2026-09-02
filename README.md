@@ -24,10 +24,11 @@ Vi glæder os til at se jer!
 
 ## Lektionsplan
 
+Klik på en lektion for at åbne materialet.
 
 | Lektion        | Dato  | Spor               | Emner                                                                                                                                                                                                                                |
 | -------------- | ----- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1              | 2/9   | **Web**            | [HTML-introduktion: dokumentstruktur og tags](lektion1/Readme.md) `<p>`[,](lektion1/Readme.md) `<h>`[,](lektion1/Readme.md) `<img>`[,](lektion1/Readme.md) `<a>`. Introduktion til projektemner og afklaring (omfang – patientfokus) |
+| [1](lektion1/) | 2/9   | **Web**            | HTML-introduktion: dokumentstruktur og tags (`<p>`, `<h>`, `<img>`, `<a>`). Introduktion til projektemner og afklaring (omfang – patientfokus)                                                                                      |
 | 2              | 4/9   | **Projekt**        | Project Scope: problem, målgruppe, mål, afgrænsning og interessenter. Introduktion til projektplanlægning. GDPR-intro. Gruppedannelse og valg af projekt                                                                             |
 | 3              | 9/9   | **Web**            | HTML II og CSS: dynamiske elementer, semantisk HTML, grundlæggende accessibility, styling og `<form>`-elementer                                                                                                                      |
 | 4              | 11/9  | **Projekt**        | Fra scope til projektplan: milepæle, work breakdown, arbejdspakker, opgaveansvar, tidsestimater og afhængigheder                                                                                                                     |
