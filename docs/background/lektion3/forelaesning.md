@@ -239,8 +239,8 @@ Aidan
 Azad?
 #NYT: UD — E22-holdet. Ingen gruppeliste, ingen VM-oprettelse (øvelsesarket). D1 er frontend-mockup uden server; hosting er L19 (D5).
 
-#NYT Forberedelse (ca. 1 time, efter Cat Photo App). Spring Recipe Page, Semantic HTML, Forms and Tables og Accessibility over.
-- HTML → Basic HTML → *HTML Fundamentals* (uden lecture om `<script>` — det er L5)
-- CSS → Basic CSS → lecture What is CSS + workshop **Cafe Menu til trin 28**
-- Hvis I har tid: Cafe Menu til trin 55 (padding / box model)
-#NYT Øvelser i *timen*: ikke Cafe Menu (det er lavet hjemme). IntelliJ UD. Gennemgå `<form>` her. Style *deres* projekts formular i VS Code (D10: valgfri health-tech-cases, ikke fælles journalsystem) — samme freestyle-mønster som L1's login-side, nu med CSS. Padding på slides til dem der stoppede ved 28.
+#NYT Forberedelse (ca. 1 time). Spring Recipe Page og resten af HTML-kapitlet over.
+- HTML → Basic HTML → *HTML Fundamentals* (uden `<script>` — L5) ~10 min
+- CSS → *What is CSS* kun 1, 2 og 5 (rolle, anatomi, inline/internal/external) ~10 min
+- Workshop **Cafe Menu til trin 28** ~40 min. Stretch: trin 55
+#NYT Øvelser i *timen*: ikke Cafe Menu. IntelliJ UD. Gennemgå `<form>` her. Style *deres* projekts formular i VS Code. Padding på slides til dem der stoppede ved 28.
