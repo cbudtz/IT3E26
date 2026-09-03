@@ -31,11 +31,12 @@ udviklingsmiljø, vi bruger resten af kurset.
 3. Opret filen `index.html` i mappen (*File → New File*, eller højreklik i
   filoversigten).
 4. Skriv boilerplaten nedenfor i filen og gem.
-5. Åbn filen i browseren:
-  - Hvis du har udvidelsen *Live Server*: højreklik i editoren →
-   *Open with Live Server*.
-  - Ellers: træk `index.html` over i et browservindue, eller dobbeltklik
-  på filen i stifinderen.
+5. Se siden:
+  - Hurtigt kig i VS Code: klik på globus-ikonet
+   (*Open in Integrated Browser*) øverst til højre i editoren.
+  - I en rigtig browser: træk `index.html` over i et browservindue, eller
+   dobbeltklik på filen i stifinderen. Det skal du alligevel, når vi
+   senere åbner DevTools.
 
 
 

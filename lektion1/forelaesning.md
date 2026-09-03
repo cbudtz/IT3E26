@@ -43,8 +43,11 @@ Nu bliver det kompliceret!
 - 1/4 netværksteknologi
 
 
-Teori og øvelser. Gennemgående gruppeprojekt.
-Grupper på 3-4. Gruppedannelse i Lektion 2.
+- Teori og øvelser. 
+- Gennemgående gruppeprojekt.
+  - Grupper på 3-4. 
+  - Gruppedannelse i Lektion 2.
+[Et Kig på lektionsplanen](../README.md#lektionsplan)
 
 ---
 
@@ -77,6 +80,17 @@ Der skal indgå alle elementer af fullstack i applikationen. Appen skal omhandle
 Portefølje + website **skal være godkendt for at I kan gå til eksamen.**
 
 ---
+## Projektet — Afleveringer
+
+- Fast defineret rapportformat 
+- HVORFOR i har gjort som i gjorde - Vi vil se jeres beslutninger
+- Minimalt med HVAD i har gjort - Det kan vi godt se selv
+- INGEN AI-slop tak!
+- Skal Godkendes
+- Danner basis for eksamen
+- Rapportformat gennemgås v/Rolf i de næste uger
+
+---
 
 ## Eksamen
 
@@ -85,6 +99,8 @@ Individuel mundtlig eksamen baseret på projektet.
 - Web samt netværk/metode
 - Alle hjælpemidler, inkl. internet
 - I medbringer porteføljen og adgang til det kørende website
+- I står til ansvar for det hele
+- Eksamenspræstationen afgør resultatet
 
 ---
 
@@ -148,8 +164,9 @@ Vi gør det sammen nu:
 2. Åbn mappen i VS Code: *File → Open Folder*
 3. Opret filen `index.html`
 4. Skriv boilerplaten (næste slide)
-5. Åbn filen i browseren (højreklik → *Open with Live Server*,
-  eller træk filen over i browseren)
+5. Se siden: klik på globus-ikonet (*Open in Integrated Browser*)
+  øverst i editoren — eller træk filen over i en rigtig browser
+  (det skal vi alligevel, når vi åbner DevTools)
 
 ---
 

@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import AppMenu from './AppMenu.svelte';
 	import DownloadLinks from './DownloadLinks.svelte';
+	import { textSize, textScale, initTextSize } from './textsize.svelte';
 
 	let { slides }: { slides: string[] } = $props();
 
@@ -197,6 +198,7 @@
 	}
 
 	onMount(() => {
+		initTextSize();
 		deck?.focus({ preventScroll: true });
 		poke();
 		return () => clearTimeout(hideTimer);
@@ -211,9 +213,10 @@
 <div
 	bind:this={deck}
 	class="deck"
+	class:fullscreen
 	class:idle={!chrome && !overview}
 	class:blank
-	style="--i: {i}; --p: {((i + 1) / count) * 100}%"
+	style="--i: {i}; --p: {((i + 1) / count) * 100}%; --ts: {textScale(textSize.step)}"
 	role="application"
 	tabindex="-1"
 	aria-label="Forelæsningsslides"
@@ -370,13 +373,20 @@
 		cursor: pointer;
 		user-select: none;
 	}
+	.fullscreen .slide {
+		padding: 3vh 4vw 4vh;
+	}
+	.fullscreen .inner {
+		width: min(80rem, 100%);
+	}
+
 	.inner {
 		margin: auto;
 		width: min(62rem, 100%);
 		cursor: text;
 		user-select: text;
 		touch-action: pan-y;
-		font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+		font-size: calc(clamp(1.2rem, 2.5vw, 1.7rem) * var(--ts, 1));
 		line-height: 1.45;
 	}
 
@@ -459,9 +469,9 @@
 		color: var(--slide-heading);
 		text-wrap: balance;
 	}
-	.inner :global(h1) { font-size: clamp(2.4rem, 6.2vw, 4.4rem); }
-	.inner :global(h2) { font-size: clamp(1.85rem, 4.4vw, 3.1rem); }
-	.inner :global(h3) { font-size: clamp(1.35rem, 2.6vw, 1.8rem); }
+	.inner :global(h1) { font-size: calc(clamp(2.4rem, 6.2vw, 4.4rem) * var(--ts, 1)); }
+	.inner :global(h2) { font-size: calc(clamp(1.85rem, 4.4vw, 3.1rem) * var(--ts, 1)); }
+	.inner :global(h3) { font-size: calc(clamp(1.35rem, 2.6vw, 1.8rem) * var(--ts, 1)); }
 	.inner :global(p),
 	.inner :global(ul),
 	.inner :global(ol) {
@@ -486,7 +496,7 @@
 		color: var(--slide-code);
 		padding: 0.08em 0.38em;
 		border-radius: 5px;
-		font-size: 0.86em;
+		font-size: 0.95em;
 	}
 	.inner :global(pre) {
 		background: var(--slide-pre-bg);
@@ -494,8 +504,8 @@
 		padding: 1rem 1.2rem;
 		border-radius: 12px;
 		overflow: auto;
-		max-height: 52vh;
-		font-size: clamp(0.9rem, 1.6vw, 1.15rem);
+		max-height: 60vh;
+		font-size: 1em;
 		line-height: 1.45;
 		user-select: text;
 		box-shadow: inset 0 0 0 1px var(--slide-border);
@@ -505,7 +515,7 @@
 		display: table;
 		width: 100%;
 		overflow: auto;
-		font-size: clamp(1rem, 1.8vw, 1.25rem);
+		font-size: calc(clamp(1rem, 1.8vw, 1.25rem) * var(--ts, 1));
 	}
 	.inner :global(th),
 	.inner :global(td) {

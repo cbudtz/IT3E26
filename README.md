@@ -22,6 +22,8 @@ skal lave, står under *Forberedelse* på den enkelte lektion.
 
 Vi glæder os til at se jer!
 
+<a id="lektionsplan"></a>
+
 ## Lektionsplan
 
 Klik på en lektion for at åbne materialet.
