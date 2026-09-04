@@ -9,7 +9,7 @@ all text content is preserved).
 
 Lektion 03
 HTML 2 og CSS
-#NYT: HTML II (`<form>`) + CSS. Ikke semantisk HTML. FCC-spor: færdiggør Basic HTML med *HTML Fundamentals*, spring resten af HTML-kapitlet over, gå til CSS → Basic CSS. Ikke det gamle Basic CSS/Applied Visual Design.
+#NYT: HTML II (`<form>`) + CSS. Ikke semantisk HTML. freeCodeCamp-spor: HTML Fundamentals, spring resten af HTML-kapitlet over, Cafe Menu som *forberedelse* (til 28, stretch 55). Ikke det gamle Basic CSS/Applied Visual Design.
 
 Læringsmål
 udvikle konfigurerbare, lagdelte applikationer der anvender filer og kommunikerer over et netværk.
@@ -94,7 +94,7 @@ Indlejret i html-dokumentet
 <head>	<style>body {background-color: blue;}</style></head>
 I separat .css - fil (oftest den bedste løsning)
 <link rel="stylesheet" type="text/css" href="mystyle.css">
-#NYT: Behold de tre niveauer. Peg på separat fil som standard (D1-mockup). FCC v9 CSS → Basic CSS (lecture What is CSS + workshop Cafe Menu).
+#NYT: Behold de tre niveauer. Peg på separat fil som standard (D1-mockup). Det har de allerede fra Cafe Menu-forberedelsen (trin 15–17). Opsamling, ikke førstegangsgennemgang.
 
 
 Syntaks
@@ -239,8 +239,8 @@ Aidan
 Azad?
 #NYT: UD — E22-holdet. Ingen gruppeliste, ingen VM-oprettelse (øvelsesarket). D1 er frontend-mockup uden server; hosting er L19 (D5).
 
-#NYT Forberedelse (nyt, ikke i E22-slides): FCC v9 efter Cat Photo App. Spring Recipe Page, resten af Basic HTML efter Fundamentals, Semantic HTML, Forms and Tables og Accessibility over.
-- HTML → Basic HTML → *HTML Fundamentals* (uden lecture om `<script>` — det er L5)
-- CSS → Basic CSS (lecture What is CSS + begynd Cafe Menu)
-Ikke hele CSS-kapitlet. Flexbox/Grid/animationer er ikke L3.
-#NYT Øvelser: IntelliJ-tutorial UD. EHR-login → styling af *deres* projekts formular (D10: valgfri health-tech-cases, ikke fælles journalsystem). Cafe Menu som styret øvelse, derefter freestyle på eget mockup — samme mønster som L1 Cat Photo App → login-side.
+#NYT Forberedelse (ca. 1 time). Spring Recipe Page og resten af HTML-kapitlet over.
+- HTML → Basic HTML → *HTML Fundamentals* (uden `<script>` — L5) ~10 min
+- CSS → *What is CSS* kun 1, 2 og 5 (rolle, anatomi, inline/internal/external) ~10 min
+- Workshop **Cafe Menu til trin 28** ~40 min. Stretch: trin 55
+#NYT Øvelser i *timen*: ikke Cafe Menu. IntelliJ UD. Gennemgå `<form>` her. Style *deres* projekts formular i VS Code. Padding på slides til dem der stoppede ved 28.
