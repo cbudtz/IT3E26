@@ -134,8 +134,8 @@
 				{#each q.options as opt, i (i)}
 					<div class="row" class:correct={snap.phase === 'reveal' && snap.correctOptions.includes(i)}>
 						<div class="label"><span class="letter">{String.fromCharCode(65 + i)}</span> {opt}</div>
-						<div class="track"><div class="fill" style="width:{(snap.tally[i] ?? 0) / maxTally * 100}%"></div></div>
-						<div class="n">{snap.tally[i] ?? 0}</div>
+						<div class="track"><div class="fill" style="width:{snap.phase === 'reveal' ? (snap.tally[i] ?? 0) / maxTally * 100 : 0}%"></div></div>
+						<div class="n">{snap.phase === 'reveal' ? (snap.tally[i] ?? 0) : ''}</div>
 					</div>
 				{/each}
 				{#if snap.phase === 'reveal'}
