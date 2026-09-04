@@ -1,38 +1,48 @@
 {
-  "title": "Lektion 3: CSS",
+  "title": "Lektion 3: HTML og CSS",
   "questions": [
     {
       "id": "q1",
       "type": "mc",
-      "prompt": ".mit-element { margin: 1rem; } angiver hvad?",
+      "prompt": "Hvad er forskellen på id og class?",
       "options": [
-        "Tykkelsen på elementets kant",
-        "Afstanden mellem elementets yderside og andre elementer",
-        "Afstanden mellem elementets kant og elementets indhold",
-        "At kanten bliver fjernet"
+        "class er unik på siden; id kan genbruges på flere elementer",
+        "De betyder det samme",
+        "id er unik på siden; class kan genbruges på flere elementer",
+        "id er kun til CSS; class er kun til JavaScript"
       ],
-      "correct": [1]
+      "correct": [2]
     },
     {
       "id": "q2",
       "type": "mc",
-      "prompt": "Hvilken selector angiver en reference til et ID?",
-      "options": ["#", ".", ">", ":"],
-      "correct": [0]
+      "prompt": "Hvad er et <div>?",
+      "options": [
+        "Et afsnit med linjeafstand før og efter",
+        "En generel kasse uden egen betydning",
+        "Et felt i en formular",
+        "Sidens titel i browserfanen"
+      ],
+      "correct": [1]
     },
     {
       "id": "q3",
       "type": "mc",
-      "prompt": "Hvordan får man et element til at blive det samme sted i vinduet?",
-      "options": ["{ margin: auto; }", "{ position: relative; }", "{ position: absolute; }", "{ position: fixed; }"],
+      "prompt": "Hvilken selector angiver en reference til et ID?",
+      "options": [".", ">", ":", "#"],
       "correct": [3]
     },
     {
       "id": "q4",
       "type": "mc",
-      "prompt": "Hvilken enhed er en absolut enhed?",
-      "options": ["%", "em", "rem", "px", "fr", "vh", "vw"],
-      "correct": [3]
+      "prompt": ".mit-element { margin: 1rem; } angiver hvad?",
+      "options": [
+        "Tykkelsen på elementets kant",
+        "Afstanden mellem elementets kant og elementets indhold",
+        "Afstanden mellem elementets yderside og andre elementer",
+        "At kanten bliver fjernet"
+      ],
+      "correct": [2]
     },
     {
       "id": "q5",
@@ -40,6 +50,85 @@
       "prompt": "CSS er et deklarativt sprog.",
       "options": ["Sandt", "Falsk"],
       "correct": [0]
+    },
+    {
+      "id": "q6",
+      "type": "mc",
+      "prompt": "Hvad er CSS' rolle på nettet?",
+      "options": [
+        "At beskrive sidens indhold og struktur",
+        "At køre logik og beregninger i browseren",
+        "At gemme data på en server",
+        "At beskrive sidens udseende og layout"
+      ],
+      "correct": [3]
+    },
+    {
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Hvad er den grundlæggende anatomi i en CSS-regel?",
+      "options": [
+        "egenskab { selector: værdi; }",
+        "selector { egenskab: værdi; }",
+        "<selector egenskab=\"værdi\">",
+        "selector = værdi (egenskab)"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q8",
+      "type": "mc",
+      "prompt": "Hvordan kobler man en HTML-side til en ekstern CSS-fil?",
+      "options": [
+        "<style src=\"styles.css\">",
+        "<script href=\"styles.css\">",
+        "<link rel=\"stylesheet\" href=\"styles.css\">",
+        "<css file=\"styles.css\">"
+      ],
+      "correct": [2]
+    },
+    {
+      "id": "q9",
+      "type": "mc",
+      "prompt": "Hvilken selector rammer alle elementer med class=\"menu\"?",
+      "options": [".menu", "#menu", "menu", "class=menu"],
+      "correct": [0]
+    },
+    {
+      "id": "q10",
+      "type": "mc",
+      "prompt": "Hvad gør margin: auto på et element med en sat width?",
+      "options": [
+        "Fjerner al margin fra elementet",
+        "Centrerer teksten inde i elementet",
+        "Sætter bredden til automatisk 100%",
+        "Centrerer elementet vandret"
+      ],
+      "correct": [3]
+    },
+    {
+      "id": "q11",
+      "type": "mc",
+      "prompt": "Hvilken CSS-regel rammer alle <h2>-elementer (type-selector)?",
+      "options": [
+        ".h2 { text-align: center; }",
+        "#h2 { text-align: center; }",
+        "h2 { text-align: center; }",
+        "<h2> { text-align: center; }"
+      ],
+      "correct": [2]
+    },
+    {
+      "id": "q12",
+      "type": "mc",
+      "prompt": "Hvor placerer man intern CSS?",
+      "options": [
+        "I style-attributten på ét element",
+        "I et <style>-tag i dokumentets <head>",
+        "I en separat .css-fil",
+        "I et <script>-tag"
+      ],
+      "correct": [1]
     }
   ]
 }
