@@ -6,7 +6,7 @@ Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 
 ## Program i dag
 
-- Gennemgang: `id`, `class`, `div`
+- Gennemgang: `id`, `class`, `div` — og `span` vs `div` vs `p`
 - Gennemgang: CSS fra forberedelsen
 - Quiz: HTML Fundamentals + CSS
 - Gennemgang: `<form>`, `<input>`, `<label>`, `<button>` — nyt
@@ -80,14 +80,51 @@ I Øvelse 1: wrap login-siden i et `div` med en `class`.
 
 
 
+## span vs div vs p
+
+Tre måder at «pakke» indhold — forskellig betydning:
+
+
+| Element  | Type   | Betydning                             | Note                      |
+| -------- | ------ | ------------------------------------- | ------------------------- |
+| `<p>`    | blok   | Et afsnit — tekst med mening          | Ekstra linje før og efter |
+| `<div>`  | blok   | Kasse uden mening — gruppering/layout | Linebreak før og efter    |
+| `<span>` | inline | Stykke *i* en linje — style et ord    | Ingen linebreak           |
+
+
+```html
+<p>
+  Log ind med dit
+  <span class="highlight">studie-id</span>.
+</p>
+
+<div class="kort">
+  <p>…</p>
+</div>
+```
+
+- Brug `<p>` til tekstafsnit.
+- Brug `<div>` når I skal samle flere elementer (fx et kort).
+- Brug `<span>` når I kun vil farve eller fremhæve noget *inde i* teksten.
+
+`<div>` og `<span>` er «tomme» — vælg dem når I ikke har et mere præcist tag.
+
+---
+
+
+
 ## HTML-entiteter
 
 Når tegnet selv er HTML-syntaks, kan browseren ikke se forskel på indhold og kode:
 
-- `<` skrives `<`
-- `>` skrives `>`
-- `&` skrives `&`
-- hårdt mellemrum skrives  ``
+
+| Tegn            | Skrives |
+| --------------- | ------- |
+| `<`             | &amp;lt;    |
+| `>`             | &amp;gt;    |
+| `&`             | &amp;amp;   |
+| hårdt mellemrum | &amp;nbsp;  |
+
 
 I skriver almindelig tekst i felter og overskrifter — ikke tegn, der *er* HTML.
 Derfor møder I dem sjældent. Vid at de findes - slå dem op efter behov.
@@ -189,16 +226,14 @@ h1 {
 ## Selectors
 
 
-| Selector | Matcher        | Cafe Menu          |
-| -------- | -------------- | ------------------ |
-| `h1`     | alle `<h1>`    | type               |
-| `.menu`  | `class="menu"` | class — trin 22–23 |
-| `#login` | `id="login"`   | id — trin 16–17    |
+| Selector | Matcher        | Note                |
+| -------- | -------------- | ------------------- |
+| `h1`     | alle `<h1>`    | type (html element) |
+| `.menu`  | `class="menu"` | class               |
+| `#login` | `id="login"`   | id                  |
 
 
-Fra HTML Fundamentals: `id` er unik, `class` kan genbruges.
-
-Quizzen spørger om `#`.
+`id` er unik, `class` kan genbruges.
 
 ---
 
@@ -214,17 +249,17 @@ Mere specifik regel vinder:
 
 ```css
 p { color: blue; }
-.udhaev { color: red; }   /* vinder over p */
-#advarsel { color: black; } /* vinder over .udhaev */
+.fremhaev { color: red; }   /* vinder over p */
+#advarsel { color: black; } /* vinder over .fremhaev */
 ```
 
-`!important` er en nødbremse — ikke en metode.
+`!important` er en nødbremse — ikke en metode. Hvis du har brug for den er det ved at gå galt.
 
 ---
 
 
 
-## Box model
+## Box model - elementer på siden.
 
 Inde fra og ud:
 
@@ -234,7 +269,7 @@ Inde fra og ud:
 - **margin** — afstand *uden for* elementet
 - `margin: auto` — centrerer (vandret), når der er en `width`
 
-Tegn box-modellen. Kig i DevTools: *Computed*.
+Kig i DevTools: *Computed*.
 
 ---
 
@@ -243,12 +278,12 @@ Tegn box-modellen. Kig i DevTools: *Computed*.
 ## Enheder
 
 
-| Enhed       | Type    | Brug                           |
-| ----------- | ------- | ------------------------------ |
-| `px`        | absolut | kanter, skarpe mål             |
-| `rem`       | relativ | tekst og luft — standard nu    |
-| `%`         | relativ | andel af det omgivende element |
-| `vh` / `vw` | relativ | andel af vinduet               |
+| Enhed       | Type                            | Brug                           |
+| ----------- | ------------------------------- | ------------------------------ |
+| `px`        | absolut                         | kanter, skarpe mål             |
+| `rem`       | relativ                         | tekst og luft — standard nu    |
+| `%`         | relativ                         | andel af det omgivende element |
+| `vh` / `vw` | relativ (viewport height/width) | andel af vinduet               |
 
 
 `em` er relativ til *elementets* font. `rem` er relativ til roden — lettere at styre.
@@ -272,6 +307,8 @@ Tegn box-modellen. Kig i DevTools: *Computed*.
 
 
 `position: fixed` — bliver på samme sted i vinduet, også når man scroller.
+
+Float til layout: spring over. Side om side kommer I til senere (flexbox).
 
 ---
 
@@ -299,13 +336,15 @@ Det er det, I skal bruge på login-siden.
 
 ## :hover
 
+`:hover` er en **pseudoklasse** — den matcher et element i en bestemt tilstand (musen over).
+
 ```css
 button:hover {
   background-color: #222;
 }
 ```
 
-Float til layout: spring over. Side om side kommer I til senere (flexbox).
+Samme familie: `:focus`, `:active`. Skrives med én kolon (`:`), ikke to (`::` — det er pseudo-*elementer* som `::before`).
 
 ---
 
@@ -357,8 +396,6 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 **Lektion 1:** `<h1>`, `<p>`, `<img>`, `<a>`, lister, `login.html` med et felt og en knap.
 
-**Forberedelsen:** `id`, `class`, `div` — ingen formularer. FCC *Forms* sprang I over.
-
 **I dag nyt:** feltet og knappen ind i en rigtig formular.
 
 ```html
@@ -386,7 +423,7 @@ Ramme om felter, der hører sammen.
 - `action` — *hvor* browseren vil sende hen
 - `method` — `get` eller `post`
 
-Til D1 mockup: I submitter **ikke** til en server. Brug `action="#"` — eller udelad `action`.
+Til D1 mockup: I submitter **ikke** til en server. Brug `action="/enandenside.html"` — eller udelad `action`.
 HTTP hører til senere (Lektion 9).
 
 ---
