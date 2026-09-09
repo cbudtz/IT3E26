@@ -77,10 +77,10 @@ course descriptions, E22 lesson plan, E22 Drive materials.
     exceptions), **relational DBs + SQL CRUD/joins + DB integration**,
     **threads & synchronization**, **event-driven GUIs with UI/app-logic
     separation**, **UCD process + evaluation methods, usability/UX**.
-- **Java is out**: students have encountered some Python and C#, but no
-  single backend language appears to be a strong shared foundation. Since
-  JavaScript is already required for the frontend, E26 will use JavaScript on
-  the backend as well.
+- **Java is out**: students have learned **C#** in the previous courses. Some
+  students may encounter Python in a parallel course, but Python is not prior
+  shared course experience. Since JavaScript is already required for the
+  frontend, E26 will use JavaScript on the backend as well.
 - Consequence: 62580's "new" topics (UCD, databases, UML) are **web-context
   reinforcement**, not first exposure. Genuinely new web-track material:
   HTML/CSS/JS, HTTP/client-server, JSON, web auth, deployment.
@@ -153,7 +153,7 @@ decisions (lock first).
 | D6 | Dev environment | Local VS Code | VS Code is the standard development environment for the course. Setup documentation and a shared starter repository should minimize environment friction. | decided |
 | D7 | Auth for milestone 3 | Authentication only | D3 requires login/authentication, but **not authorization** or role-based access. Implementation approach remains open. | decided |
 | D8 | Project data & GDPR | Synthetic data · real-ish data under GDPR · non-health case | Hosting patient-like data on free tiers = GDPR exposure; synthetic data is the safe default. With D10 (optional health-tech cases, no EHR) all cases run on synthetic data. | open |
-| D9 | Prereq language inventory | Document the Python/C# experience from 62420/62450 | Useful for calibrating the starting point, but no longer a gate for the backend decision. | informational |
+| D9 | Prereq language inventory | Document the C# experience from 62420/62450; note Python as parallel-course experience | Useful for calibrating the starting point, but no longer a gate for the backend decision. | informational |
 | D10 ⤴ | Project case | Keep journalsystem · new health-tech case · **menu of optional cases** | **EHR/journalsystem dropped as the common project.** Groups choose among smaller, well-delimited health-tech cases (examples): medication tracker, appointment system, blood-pressure diary, headache diary, patient questionnaire, lab-result viewer. Each must fit the D1→D3 arc (one central user action at D2). Needs co-teacher confirmation. | direction decided |
 | D11 ⤴ 🔒 | Portfolio format | Markdown-in-repo published as GitHub Pages site · PDF report · DTU Learn | Exam prerequisite "portfolio + website approved" means this shapes every milestone — lock earliest of all. Doubles as documentation exercise. | open |
 | D12 ⤴ | AI assistant policy (web track) | Allowed with disclosure | AI assistants are allowed; **all code must be explainable**. Students must document AI usage in portfolio and be able to walk through and explain any code during oral exam. Copilot/ChatGPT encouraged as productivity tools with transparency. | decided |
@@ -305,8 +305,9 @@ _(working section — to be refined)_
       L17; likely L15 (REST APIs), as the bridge to security in L21.
 - [ ] Git collaboration: depends on the L1 survey — if needed, it goes into L3
       (which then has to make room next to HTML II/CSS).
-- [ ] Document the actual Python/C# level from 62420/62450 (D9) so the
-      JavaScript/Node.js introduction is calibrated correctly.
+- [ ] Document the actual C# level from 62420/62450 (D9), and distinguish it
+      from Python taught in a parallel course, so the JavaScript/Node.js
+      introduction is calibrated correctly.
 - [ ] Are E22 slides/exercise docs reusable under a format migration (Drive
       → repo), and do co-teachers (lasom, birad) have the source files?
 - [ ] Danish vs. English material language (62580 is taught in Danish, but

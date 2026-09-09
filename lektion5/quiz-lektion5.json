@@ -1,0 +1,91 @@
+{
+  "title": "Lektion 5: Git og JavaScript",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvad er et commit?",
+      "options": [
+        "En gemt ændring i repositoryets historik",
+        "En kopi af hele computeren",
+        "En GitHub-bruger",
+        "En branch, der altid hedder main"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvorfor arbejder man typisk på en branch?",
+      "options": [
+        "For at slette historikken",
+        "For at holde en opgave adskilt fra main, indtil den er klar",
+        "For at undgå commits",
+        "For at gøre HTML til JavaScript"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvad sender push typisk?",
+      "options": [
+        "Lokale commits til en remote",
+        "Remote ændringer til din lokale mappe",
+        "En pull request direkte til browseren",
+        "En HTML-fil til DOM'en"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvilket nøgleord bruger du normalt til en værdi, der ikke skal tildeles igen?",
+      "options": ["var", "let", "const", "static"],
+      "correct": [2]
+    },
+    {
+      "id": "q5",
+      "type": "mc",
+      "prompt": "Hvad bruges return til i en funktion?",
+      "options": [
+        "At koble CSS på HTML",
+        "At sende en værdi tilbage fra funktionen",
+        "At oprette en Git-branch",
+        "At åbne DevTools"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q6",
+      "type": "mc",
+      "prompt": "Hvad gør en event listener?",
+      "options": [
+        "Den gemmer alle commits",
+        "Den venter på en hændelse og kører kode, når den sker",
+        "Den ændrer en remote branch",
+        "Den installerer JavaScript"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Hvad bruges document.getElementById til?",
+      "options": [
+        "At finde et HTML-element i DOM'en",
+        "At hente en fil fra GitHub",
+        "At oprette en funktion",
+        "At skrive CSS"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q8",
+      "type": "tf",
+      "prompt": "Man bør normalt committe adgangskoder og API-nøgler, så gruppen kan dele dem.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    }
+  ]
+}

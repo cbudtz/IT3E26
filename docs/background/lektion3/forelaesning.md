@@ -47,7 +47,7 @@ Eks. Pascal, C, JavaScript, Java ....
 Nogle er objektorienterede
 kobler data og opførsel sammen
 Java, C++, C#, Javascript (både -og)
-#NYT: Behold kontrasten HTML/CSS vs JS. Java udgår som kursussprog (D1) — de kender Python + C# fra 62420/62450. Klassediagram/sekvensdiagram: UML reteaches ikke på web-sporet; drop diagram-henvisningerne.
+#NYT: Behold kontrasten HTML/CSS vs JS. Java udgår som kursussprog (D1) — de har C# fra 62420/62450. Python er fra et sideløbende fag og ikke en tidligere forudsætning. Klassediagram/sekvensdiagram: UML reteaches ikke på web-sporet; drop diagram-henvisningerne.
 
 #NYT: Semantisk HTML UD — ikke nødvendigt som L3-emne. Cat Photo App har allerede `main`/`section`/`footer`. FCC-modulet Semantic HTML springes over. HTML Fundamentals nævner `div` vs `section` og `id`/`class` — det er CSS-broen, ikke et semantik-spor. Accessibility-modulet på FCC springes også over; `label`+`alt` er nok.
 
