@@ -6,10 +6,10 @@ dagens to øvelser med den uddybning, der ikke kan være på slidesne.
 Hvis du ikke nåede [forberedelsen](forberedelse.md) (især Cafe Menu til
 trin 28), så start der — eller gør det parallelt med Øvelse 1.
 
-| Øvelse                        | Hvornår                       | Tid     |
-| ----------------------------- | ----------------------------- | ------- |
-| **1** Style login-siden       | Efter formular-gennemgangen   | ~40 min |
-| **2** Videre på mockupet      | Efter Øvelse 1                | ~40 min |
+| Øvelse                        | Hvornår                              | Tid     |
+| ----------------------------- | ------------------------------------ | ------- |
+| **1** Style login-siden       | Efter formular-quizzen               | ~40 min |
+| **2** Videre på mockupet      | Efter Øvelse 1                       | ~40 min |
 
 
 AI er tilladt, men du skal kunne forklare hver regel og hvert tag, du

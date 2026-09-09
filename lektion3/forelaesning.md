@@ -6,10 +6,11 @@ Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 
 ## Program i dag
 
-- Quiz: HTML Fundamentals + CSS
 - Gennemgang: `id`, `class`, `div`
 - Gennemgang: CSS fra forberedelsen
+- Quiz: HTML Fundamentals + CSS
 - Gennemgang: `<form>`, `<input>`, `<label>`, `<button>` — nyt
+- Quiz: Formularer (kort)
 - Øvelse 1: Style jeres login-side
 - Øvelse 2: Videre på mockupet
 
@@ -31,32 +32,20 @@ Efter lektionen skal du kunne:
 
 ---
 
-# Quiz
 
----
-
-## Quiz!
-
-Gå til [/quiz](/quiz) og indtast koden fra tavlen.
-
-**Lektion 3: HTML og CSS** — `id`/`class`/`div`, CSS-regler, stylesheet, selectors og `margin`.
-
----
-
-## Pause
-
----
 
 # Gennemgang — HTML Fundamentals
 
 ---
 
+
+
 ## id og class
 
 Fra forberedelsen:
 
-- **`id`** — unikt på siden. Ét element.
-- **`class`** — kan sidde på mange elementer.
+- `id` — unikt på siden. Ét element.
+- `class` — kan sidde på mange elementer.
 
 ```html
 <label for="kode">Adgangskode</label>
@@ -69,6 +58,8 @@ Fra forberedelsen:
 `class` til CSS — samme udseende flere steder.
 
 ---
+
+
 
 ## div
 
@@ -87,22 +78,29 @@ I Øvelse 1: wrap login-siden i et `div` med en `class`.
 
 ---
 
+
+
 ## HTML-entiteter
 
-Når tegnet selv er HTML-syntaks:
+Når tegnet selv er HTML-syntaks, kan browseren ikke se forskel på indhold og kode:
 
-- `<` skrives `&lt;`
-- `>` skrives `&gt;`
-- `&` skrives `&amp;`
-- hårdt mellemrum skrives `&nbsp;`
+- `<` skrives `<`
+- `>` skrives `>`
+- `&` skrives `&`
+- hårdt mellemrum skrives  ``
 
-I har næsten ikke brug for dem i dag. Vid at de findes.
+I skriver almindelig tekst i felter og overskrifter — ikke tegn, der *er* HTML.
+Derfor møder I dem sjældent. Vid at de findes - slå dem op efter behov.
 
 ---
+
+
 
 # Gennemgang — CSS
 
 ---
+
+
 
 ## HTML og CSS
 
@@ -114,6 +112,8 @@ HTML beskriver *hvad*. CSS beskriver *hvordan det ser ud*.
 I har mødt deklarativt sprog før: SQL.
 
 ---
+
+
 
 ## Eksempel — uden og med CSS
 
@@ -129,6 +129,8 @@ Font, afrundede hjørner, bredde, centrering, kant, skygge, farver, placering.
 
 ---
 
+
+
 ## Tre steder at lægge CSS
 
 1. **Inline** — på ét element:
@@ -137,8 +139,8 @@ Font, afrundede hjørner, bredde, centrering, kant, skygge, farver, placering.
 <h1 style="color: blue;">Overskrift</h1>
 ```
 
-2. **I dokumentet** — `<style>` i `<head>`
-3. **I en fil** — det I skal bruge:
+1. **I dokumentet** — `<style>` i `<head>`
+2. **I en fil** — det I skal bruge:
 
 ```html
 <link rel="stylesheet" href="styles.css">
@@ -147,6 +149,8 @@ Font, afrundede hjørner, bredde, centrering, kant, skygge, farver, placering.
 I Cafe Menu flyttede I CSS ud i en fil. Det er standarden til D1.
 
 ---
+
+
 
 ## Syntaks
 
@@ -159,6 +163,8 @@ selector {
 `h1` er type. `.menu` er class. `#login` er id.
 
 ---
+
+
 
 ## Syntaks — tre selectors
 
@@ -178,19 +184,25 @@ h1 {
 
 ---
 
+
+
 ## Selectors
 
-| Selector | Matcher | Cafe Menu |
-|---|---|---|
-| `h1` | alle `<h1>` | type |
-| `.menu` | `class="menu"` | class — trin 22–23 |
-| `#login` | `id="login"` | id — trin 16–17 |
+
+| Selector | Matcher        | Cafe Menu          |
+| -------- | -------------- | ------------------ |
+| `h1`     | alle `<h1>`    | type               |
+| `.menu`  | `class="menu"` | class — trin 22–23 |
+| `#login` | `id="login"`   | id — trin 16–17    |
+
 
 Fra HTML Fundamentals: `id` er unik, `class` kan genbruges.
 
 Quizzen spørger om `#`.
 
 ---
+
+
 
 ## Specificity — hvem vinder?
 
@@ -210,6 +222,8 @@ p { color: blue; }
 
 ---
 
+
+
 ## Box model
 
 Inde fra og ud:
@@ -220,20 +234,22 @@ Inde fra og ud:
 - **margin** — afstand *uden for* elementet
 - `margin: auto` — centrerer (vandret), når der er en `width`
 
-Quizzen: `.mit-element { margin: 1rem; }` er afstanden til naboerne.
-
 Tegn box-modellen. Kig i DevTools: *Computed*.
 
 ---
 
+
+
 ## Enheder
 
-| Enhed | Type | Brug |
-|---|---|---|
-| `px` | absolut | kanter, skarpe mål |
-| `rem` | relativ | tekst og luft — standard nu |
-| `%` | relativ | andel af det omgivende element |
-| `vh` / `vw` | relativ | andel af vinduet |
+
+| Enhed       | Type    | Brug                           |
+| ----------- | ------- | ------------------------------ |
+| `px`        | absolut | kanter, skarpe mål             |
+| `rem`       | relativ | tekst og luft — standard nu    |
+| `%`         | relativ | andel af det omgivende element |
+| `vh` / `vw` | relativ | andel af vinduet               |
+
 
 `em` er relativ til *elementets* font. `rem` er relativ til roden — lettere at styre.
 
@@ -241,19 +257,25 @@ Tegn box-modellen. Kig i DevTools: *Computed*.
 
 ---
 
+
+
 ## position
 
-| Værdi | Relativt til |
-|---|---|
-| `static` | normalt flow (default) |
-| `relative` | dér hvor elementet ellers ville være |
-| `absolute` | nærmeste positionerede forælder |
-| `fixed` | viewport — bliver på skærmen |
-| `sticky` | scroller med, indtil den *sætter sig* |
+
+| Værdi      | Relativt til                               |
+| ---------- | ------------------------------------------ |
+| `static`   | normalt flow (default)                     |
+| `relative` | dér hvor elementet ellers ville være       |
+| `absolute` | nærmeste positionerede forælder            |
+| `fixed`    | viewport — bliver på skærmen               |
+| `sticky`   | scroller med, indtil den *sætter sig fast* |
+
 
 `position: fixed` — bliver på samme sted i vinduet, også når man scroller.
 
 ---
+
+
 
 ## Andre nyttige egenskaber
 
@@ -273,6 +295,8 @@ Det er det, I skal bruge på login-siden.
 
 ---
 
+
+
 ## :hover
 
 ```css
@@ -284,6 +308,8 @@ button:hover {
 Float til layout: spring over. Side om side kommer I til senere (flexbox).
 
 ---
+
+
 
 ## DevTools — Styles
 
@@ -297,13 +323,35 @@ Når siden *ser* rigtig ud, men I ikke ved hvorfor: kig her.
 
 ---
 
+
+
+# Quiz — HTML og CSS
+
+---
+
+
+
+## Quiz!
+
+Gå til [/quiz](/quiz) og indtast koden fra tavlen.
+
+**Lektion 3: HTML og CSS** — `id`/`class`/`div`, CSS-regler, stylesheet, selectors og `margin`.
+
+---
+
+
+
 ## Pause
 
 ---
 
+
+
 # Gennemgang — Formularer
 
 ---
+
+
 
 ## Sidst og nyt
 
@@ -323,6 +371,8 @@ Når siden *ser* rigtig ud, men I ikke ved hvorfor: kig her.
 
 ---
 
+
+
 ## `<form>`
 
 Ramme om felter, der hører sammen.
@@ -340,6 +390,8 @@ Til D1 mockup: I submitter **ikke** til en server. Brug `action="#"` — eller u
 HTTP hører til senere (Lektion 9).
 
 ---
+
+
 
 ## `<input>`
 
@@ -359,6 +411,8 @@ Der findes flere (`checkbox`, `radio`, `date`, `file`, …). Til login er `text`
 
 ---
 
+
+
 ## `<label>`
 
 Klik på teksten — feltet får fokus. Det kræver at `for` matcher `id`:
@@ -373,6 +427,8 @@ Uden `label` er feltet sværere at ramme — og sværere at bruge med skærmlæs
 `id` til `label`. `class` til CSS. `name` først, når noget sendes til en server.
 
 ---
+
+
 
 ## `<button>`
 
@@ -389,6 +445,8 @@ Uden `label` er feltet sværere at ramme — og sværere at bruge med skærmlæs
 Foretræk `<button>` frem for `<input type="submit">`.
 
 ---
+
+
 
 ## Samlet — login til jeres app
 
@@ -409,6 +467,24 @@ Byt navnet ud med *jeres* projekt. Den fulde fil står i [øvelsesarket](oevelse
 
 ---
 
+
+
+# Quiz — Formularer
+
+---
+
+
+
+## Quiz!
+
+Gå til [/quiz](/quiz) og indtast koden fra tavlen.
+
+**Lektion 3: Formularer** — `<form>`, `<label>`/`for`, `input`-typer, `action`, `button`.
+
+---
+
+
+
 # Øvelser
 
 **Man lærer bedst CSS og formularer ved at prøve selv.**
@@ -416,6 +492,8 @@ Byt navnet ud med *jeres* projekt. Den fulde fil står i [øvelsesarket](oevelse
 Detaljerne — tjekliste og ekstra tid — står i [øvelsesarket](oevelser.md).
 
 ---
+
+
 
 ## Øvelse 1: Style login-siden
 
@@ -429,6 +507,8 @@ Freestyle i VS Code. Samme mappe som Lektion 1.
 Ikke mere Cafe Menu — det var forberedelsen.
 
 ---
+
+
 
 ## Øvelse 2: Videre på mockupet
 

@@ -5,8 +5,8 @@ og gør jeres mockup interaktiv med simpel JavaScript.
 
 ## Forberedelse
 
-Det forventes, at du har forberedt dig — 30 minutter Git og 30–45 minutter
-JavaScript.
+Det forventes, at du har forberedt dig — 30 minutter Git og ca. 45–60
+minutter JavaScript (start + DOM).
 
 [Forberedelse til Lektion 5](forberedelse.md)
 

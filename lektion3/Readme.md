@@ -15,10 +15,11 @@ Menu* til trin 28 (ca. 1 time).
 
 | Tid | Blok | Indhold |
 |---|---|---|
-| 15 min | Quiz | HTML Fundamentals (`id`/`class`/`div`) + CSS fra Cafe Menu |
 | 10 min | Gennemgang | HTML Fundamentals: `id` vs `class`, `div`, entiteter kort |
-| 25 min | Gennemgang | Opsamling på Cafe Menu: stylesheet, type/class, `width`, `margin: auto`. Padding/box model (til jer der stoppede ved 28). `position: fixed` og enheder kort |
-| 35 min | Gennemgang | `<form>`, `<input>`, `<label>`, `<button>` — nyt (ikke i forberedelsen); det, Lektion 1 lovede |
+| 35 min | Gennemgang | Opsamling på Cafe Menu: stylesheet, type/class, `width`, `margin: auto`. Padding/box model (til jer der stoppede ved 28). `position: fixed` og enheder kort |
+| 15 min | Quiz | HTML Fundamentals (`id`/`class`/`div`) + CSS fra Cafe Menu |
+| 30 min | Gennemgang | `<form>`, `<input>`, `<label>`, `<button>` — nyt (ikke i forberedelsen); det, Lektion 1 lovede |
+| 10 min | Quiz | Formularer — kort tjek før øvelsen |
 | 40 min | [Øvelse 1](oevelser.md) | **Style jeres login-/formularside** i VS Code: eksternt stylesheet, class-selectors, farve, afstand. Ikke mere Cafe Menu |
 | 40 min | [Øvelse 2](oevelser.md) | Videre på mockupet med CSS — hjælp rundt i grupperne |
 
