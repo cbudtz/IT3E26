@@ -29,9 +29,10 @@ systemer bestående af sensorer, kontrollere og lignende komponenter.
 
 ### Notable
 
-- Programming language is **not named** ("et program", serial-port sensors) —
-  Java is out; most likely Python. Needs confirmation from course
-  responsible before stack decisions.
+- The official description does not name the programming language. The actual
+  incoming profile for this cohort is **C# from the previous courses**. Some
+  students may encounter Python in a parallel course, but Python is not a
+  prerequisite programming language for 62580.
 
 ## 62450 Informationsteknologi 2 (2nd semester, 5 ECTS)
 
@@ -69,5 +70,5 @@ Students arrive at 3rd semester already knowing:
 | User-centered design (personas, scenarios, usability) | Basic UCD process + evaluation methods — **reinforce in web context** |
 | Databases & data management | SQL CRUD + joins, DB integration in OO apps — **add web/API dataflow** |
 | UML modelling | Class/activity/sequence diagrams — **reuse, apply to system description** |
-| Programming | OOP incl. exceptions, threads, event-driven GUIs — JS/DOM events map naturally |
+| Programming | C# OOP incl. exceptions, threads and event-driven GUIs — JS/DOM events map naturally |
 | Client-server, HTTP, HTML/CSS/JS, JSON, web auth, deployment | **Genuinely new** — the core of the web track |
