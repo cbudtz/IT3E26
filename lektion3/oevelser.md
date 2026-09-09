@@ -6,10 +6,10 @@ dagens to øvelser med den uddybning, der ikke kan være på slidesne.
 Hvis du ikke nåede [forberedelsen](forberedelse.md) (især Cafe Menu til
 trin 28), så start der — eller gør det parallelt med Øvelse 1.
 
-| Øvelse                        | Hvornår                              | Tid     |
-| ----------------------------- | ------------------------------------ | ------- |
-| **1** Style login-siden       | Efter formular-quizzen               | ~40 min |
-| **2** Videre på mockupet      | Efter Øvelse 1                       | ~40 min |
+| Øvelse                              | Hvornår                | Tid     |
+| ----------------------------------- | ---------------------- | ------- |
+| **1** Style login-siden             | Efter formular-quizzen | ~40 min |
+| **2** Gruppearbejde: Mockup til D1  | Efter Øvelse 1         | ~40 min |
 
 
 AI er tilladt, men du skal kunne forklare hver regel og hvert tag, du
@@ -127,18 +127,19 @@ siden efter i DevTools.
 
 ---
 
-## Øvelse 2 — Videre på mockupet
+## Øvelse 2 — Gruppearbejde: Mockup til D1
 
 **Mål:** Bruge HTML + CSS på flere skærme i *jeres* sundhedsteknologiske
 case. Det er stadig D1-mockup — klikbart, uden backend.
 
-Arbejd i gruppen, i den mappe I allerede har.
+Øvelse 1 var individuel. Denne øvelse er **gruppearbejde**: arbejd sammen i
+gruppen, i den mappe I allerede har, og byg videre mod jeres D1-aflevering.
 
 ### Det I skal nå
 
 1. Style `index.html`, så forsiden hænger sammen med login-siden (samme
   `styles.css`, samme farver og typografi).
-2. Skitsér **1–2 skærme mere** som HTML-filer, fx:
+2. Skitsér **1–2 skærme mere** (udover en login-side) som HTML-filer, fx:
   - en oversigt (liste over målinger, aftaler, medicin — det jeres case
     handler om)
   - en detalje- eller formularside (ny måling, ny aftale, …)
@@ -156,7 +157,7 @@ stylesheetet rammer de rigtige elementer.
 **Øvelsen er i hus**, når forsiden er stylet, I har mindst én ekstra
 HTML-side ud over login, og siderne linker til hinanden.
 
-### Hvis du har ekstra tid
+### Hvis I har ekstra tid
 
 - Gentag formular-mønsteret (`<form>`, `<label>`, `<input>`) på en
   "ny måling"- eller "ny aftale"-side.

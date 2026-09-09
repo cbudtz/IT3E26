@@ -21,7 +21,7 @@ Menu* til trin 28 (ca. 1 time).
 | 30 min | Gennemgang | `<form>`, `<input>`, `<label>`, `<button>` — nyt (ikke i forberedelsen); det, Lektion 1 lovede |
 | 10 min | Quiz | Formularer — kort tjek før øvelsen |
 | 40 min | [Øvelse 1](oevelser.md) | **Style jeres login-/formularside** i VS Code: eksternt stylesheet, class-selectors, farve, afstand. Ikke mere Cafe Menu |
-| 40 min | [Øvelse 2](oevelser.md) | Videre på mockupet med CSS — hjælp rundt i grupperne |
+| 40 min | [Øvelse 2](oevelser.md) | **Gruppearbejde: Mockup til D1** — style forsiden og skitsér 1–2 skærme mere med HTML + CSS. Hjælp rundt i grupperne |
 
 Pauser lægges ind undervejs.
 

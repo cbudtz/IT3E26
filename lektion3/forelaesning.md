@@ -12,7 +12,7 @@ Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 - Gennemgang: `<form>`, `<input>`, `<label>`, `<button>` — nyt
 - Quiz: Formularer (kort)
 - Øvelse 1: Style jeres login-side
-- Øvelse 2: Videre på mockupet
+- Øvelse 2: Gruppearbejde — Mockup til D1
 
 Pauser lægges ind undervejs.
 
@@ -547,8 +547,8 @@ Ikke mere Cafe Menu — det var forberedelsen.
 
 
 
-## Øvelse 2: Videre på mockupet
+## Øvelse 2: Gruppearbejde — Mockup til D1
 
 I grupper: style forsiden, og skitsér 1–2 skærme mere med HTML + CSS.
 
-Det er stadig mockup — ingen backend.
+Det er stadig D1-mockup — klikbart, ingen backend.
