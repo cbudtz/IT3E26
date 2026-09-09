@@ -11,6 +11,11 @@ course database and the old course's Google Drive.
 | [e22-drive-materials.md](e22-drive-materials.md) | Inventory of the old course's Google Drive (lectures + exercises per lesson) | https://drive.google.com/drive/folders/1qZ0IESfW2jFlFGfR5Igs1LZxHWu5rJUK |
 | [lektion1/](lektion1/) | Full verbatim text of Lektion 01's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion1/README.md](lektion1/README.md) |
 | [lektion3/](lektion3/) | Full verbatim text of Lektion 03's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion3/README.md](lektion3/README.md) |
+| [lektion5/](lektion5/) | Full verbatim text of Lektion 05's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion5/README.md](lektion5/README.md) |
+| [lektion9/](lektion9/) | Full verbatim text of Lektion 09's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion9/README.md](lektion9/README.md) |
+| [lektion13/](lektion13/) | Full verbatim text of Lektion 13's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion13/README.md](lektion13/README.md) |
+| [lektion17/](lektion17/) | Full verbatim text of Lektion 17's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion17/README.md](lektion17/README.md) |
+| [myrandomoldmaterialsonversioncontrol/](myrandomoldmaterialsonversioncontrol/) | Older versionskontrol materials (Git/EGit slides + 3 exercises), not from the E22 set | [Drive folder](https://drive.google.com/drive/folders/0B9dp65nRHm0rZ2JnYnByb0tELUE?resourcekey=0-pviK6YqjVRgOIrgJAikT-g), see [README](myrandomoldmaterialsonversioncontrol/README.md) |
 | [course-prerequisites-62420-62450.md](course-prerequisites-62420-62450.md) | The two prerequisite courses (IT1/IT2) — incoming student profile | https://kurser.dtu.dk/course/62420, https://kurser.dtu.dk/course/62450 |
 | [project-development-f25.md](project-development-f25.md) | F25 project-development material, adapted for the L1 scope exercise | https://drive.google.com/drive/folders/10jfMp-e9lRdwoUaIA5nbBXn_hxnhLV6L |
 
