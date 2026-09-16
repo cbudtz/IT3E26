@@ -1,6 +1,7 @@
 import { Room, CloseCode, type Client } from 'colyseus';
 import { QuizState, Player, Question, QuestionResult } from './state.ts';
 import { startRun, saveAnswers, endRun } from './persist.ts';
+import { isCorrect } from '../grading.ts';
 
 /** Et spoergsmaal som underviseren har defineret (facit forlader foerst serveren ved reveal). */
 export type QuestionDef = {
@@ -21,13 +22,6 @@ export type QuizRoomOptions = {
 	hostToken: string;
 	/** DTU-brugernavn paa host (til resultat-loggen). */
 	host: string;
-};
-
-const norm = (s: string) => s.trim().toLowerCase();
-
-const isCorrect = (q: QuestionDef, value: string): boolean => {
-	if (q.type === 'short') return (q.correct as string[]).some((c) => norm(c) === norm(value));
-	return (q.correct as number[]).includes(Number(value));
 };
 
 const clear = (arr: { length: number; pop(): unknown }) => {
