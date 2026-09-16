@@ -40,3 +40,10 @@ export const quizAnswers = pgTable('quiz_answers', {
 	isCorrect: boolean('is_correct').notNull(),
 	answeredAt: timestamp('answered_at', { withTimezone: true }).notNull().defaultNow()
 });
+
+/** Quizzer som studerende kan tage selv på /quiz/practice. Tom tabel = intet offentligt. */
+export const publicQuizzes = pgTable('public_quizzes', {
+	quizSlug: text('quiz_slug').primaryKey(),
+	publishedBy: text('published_by').notNull(),
+	publishedAt: timestamp('published_at', { withTimezone: true }).notNull().defaultNow()
+});
