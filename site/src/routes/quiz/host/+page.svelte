@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+
 	let { data } = $props();
+	const isPublic = (slug: string) => data.publicSlugs.includes(slug);
 </script>
 
 <svelte:head><title>Quiz-host · IT3E26</title></svelte:head>
@@ -11,9 +14,28 @@
 {#if data.quizzes.length === 0}
 	<p>Ingen quizzer fundet. Læg en <code>quiz-*.json</code> i en lektionsmappe.</p>
 {:else}
+	{#if !data.canPublish}
+		<p class="muted">DATABASE_URL mangler – quizzer kan ikke gøres offentlige.</p>
+	{/if}
 	<ul class="list">
-		{#each data.quizzes as q}
-			<li><a href="/quiz/host/run/{q.slug}">{q.title}</a> <span class="muted">({q.slug})</span></li>
+		{#each data.quizzes as q (q.slug)}
+			<li>
+				<a href="/quiz/host/run/{q.slug}">{q.title}</a> <span class="muted">({q.slug})</span>
+				<form method="POST" action="?/publish" use:enhance class="publish">
+					<input type="hidden" name="slug" value={q.slug} />
+					<label>
+						<input
+							type="checkbox"
+							name="on"
+							value="1"
+							checked={isPublic(q.slug)}
+							disabled={!data.canPublish}
+							onchange={(e) => e.currentTarget.form?.requestSubmit()}
+						/>
+						Offentlig
+					</label>
+				</form>
+			</li>
 		{/each}
 	</ul>
 {/if}
@@ -21,5 +43,7 @@
 <style>
 	.muted { color: #57606a; }
 	.list { padding-left: 1.2rem; }
-	.list li { margin: 0.4rem 0; }
+	.list li { margin: 0.4rem 0; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
+	.publish { display: inline; }
+	.publish label { font-weight: 400; cursor: pointer; }
 </style>
