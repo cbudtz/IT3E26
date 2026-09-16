@@ -27,11 +27,21 @@
 		answeredIndex = -1;
 		netError = '';
 	}
+
+	// Komponenten genbruges ved skift mellem to øvelses-URL'er; score må ikke følge med.
+	$effect(() => {
+		void data.slug;
+		index = 0;
+		score = 0;
+		shortText = '';
+		chosen = null;
+		answeredIndex = -1;
+		netError = '';
+	});
 </script>
 
 <svelte:head><title>{data.title} · IT3E26</title></svelte:head>
 
-{#key data.slug}
 {#if total === 0}
 	<section class="center">
 		<h1>{data.title}</h1>
@@ -125,7 +135,6 @@
 		<p class="muted">Din score: {score}</p>
 	</section>
 {/if}
-{/key}
 
 <style>
 	.center { text-align: center; margin-top: 3rem; }
