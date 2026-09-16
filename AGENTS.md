@@ -2,6 +2,10 @@
 
 Dette repo er kursusstedet for **62580 Digitale Systemer & Anvendelse** (IT3, E26) på DTU Ballerup — 3. semester sundhedsteknologi. Indholdet er lektionsmateriale (forelæsning, øvelser, forberedelse) plus en SvelteKit-site der viser lektioner, quizzer og relateret undervisningsværktøj.
 
+## Lektionsmateriale
+
+Nyt eller opdateret lektionsmateriale (`lektionN/`) skrives efter skill `planning-a-lesson` (`.cursor/skills/planning-a-lesson/SKILL.md`) og skabelonerne i `docs/templates/`.
+
 ## Feature-udvikling i worktrees
 
 Udvikl nye features i et isoleret git worktree — ikke i det primære checkout.

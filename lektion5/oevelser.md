@@ -8,7 +8,7 @@ det parallelt med Øvelse 1.
 
 | Øvelse | Hvornår | Tid |
 |---|---|---|
-| **1** Git-samarbejde | Efter Git-gennemgangen | ~25 min |
+| **1** Git-samarbejde | Efter Git-gennemgangen | ~40 min |
 | **2** JavaScript i browseren og projektet | Efter JS-gennemgangen | ~85 min |
 
 AI er tilladt, men du skal kunne forklare hver Git-kommando, hver regel og hver
