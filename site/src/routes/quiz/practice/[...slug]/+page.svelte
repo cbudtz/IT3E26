@@ -7,19 +7,23 @@
 	let score = $state(0);
 	let shortText = $state('');
 	let chosen = $state<string | null>(null);
+	let pending = $state(false);
+	let answeredIndex = $state(-1);
 
 	const total = $derived(data.questions.length);
 	const q = $derived(data.questions[index]);
 	const done = $derived(index >= total);
-	const result = $derived(form && 'questionId' in form && q && form.questionId === q.id ? form : null);
+	const result = $derived(
+		form && 'questionId' in form && q && form.questionId === q.id && answeredIndex === index ? form : null
+	);
 	const answered = $derived(result !== null);
-	const correctOptions = $derived((result?.correct ?? []) as number[]);
-	const correctText = $derived((result?.correct ?? []) as string[]);
+	const correct = $derived(result?.correct ?? []);
 
 	function next() {
 		index += 1;
 		shortText = '';
 		chosen = null;
+		answeredIndex = -1;
 	}
 </script>
 
@@ -45,10 +49,21 @@
 		<form
 			method="POST"
 			action="?/answer"
-			use:enhance={() => {
+			use:enhance={({ cancel }) => {
+				if (pending || answered) {
+					cancel();
+					return;
+				}
+				pending = true;
+				answeredIndex = index;
 				return async ({ result, update }) => {
-					if (result.type === 'success' && result.data?.isCorrect) score += 1;
-					await update({ reset: false });
+					try {
+						if (result.type === 'success' && result.data?.isCorrect) score += 1;
+						if (result.type !== 'success') chosen = null;
+						await update({ reset: false, invalidateAll: false });
+					} finally {
+						pending = false;
+					}
 				};
 			}}
 		>
@@ -56,12 +71,12 @@
 
 			{#if q.type === 'short'}
 				<div class="short">
-					<input name="value" bind:value={shortText} placeholder="Skriv dit svar" maxlength="200" autocomplete="off" disabled={answered} required />
-					<button type="submit" disabled={answered}>Svar</button>
+					<input name="value" bind:value={shortText} placeholder="Skriv dit svar" maxlength="200" autocomplete="off" disabled={answered || pending} required />
+					<button type="submit" disabled={answered || pending}>Svar</button>
 				</div>
 				{#if result}
 					<p class="result {result.isCorrect ? 'ok' : 'nope'}">{result.isCorrect ? 'Rigtigt!' : 'Forkert.'}</p>
-					<p>Facit: <strong>{correctText.join(' / ')}</strong></p>
+					<p>Facit: <strong>{(correct as string[]).join(' / ')}</strong></p>
 				{/if}
 			{:else}
 				<div class="options">
@@ -72,9 +87,9 @@
 							value={String(i)}
 							class="opt"
 							class:mine={chosen === String(i)}
-							class:correct={answered && correctOptions.includes(i)}
-							class:wrong={answered && chosen === String(i) && !correctOptions.includes(i)}
-							disabled={answered}
+							class:correct={answered && (correct as number[]).includes(i)}
+							class:wrong={answered && chosen === String(i) && !(correct as number[]).includes(i)}
+							disabled={answered || pending}
 							onclick={() => (chosen = String(i))}
 						>
 							<span class="letter">{String.fromCharCode(65 + i)}</span> {opt}
