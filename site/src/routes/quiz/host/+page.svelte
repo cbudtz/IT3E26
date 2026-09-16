@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { invalidateAll } from '$app/navigation';
 
-	let { data } = $props();
+	let { data, form } = $props();
 	const isPublic = (slug: string) => data.publicSlugs.includes(slug);
 </script>
 
@@ -11,6 +12,7 @@
 <p class="muted">Logget ind som <strong>{data.user}</strong> · <a href="/quiz/host/results">Resultater</a> · <a href="/auth/logout">Log ud</a></p>
 
 <h2>Start en quiz</h2>
+{#if form?.error}<p class="error">{form.error}</p>{/if}
 {#if data.quizzes.length === 0}
 	<p>Ingen quizzer fundet. Læg en <code>quiz-*.json</code> i en lektionsmappe.</p>
 {:else}
@@ -21,7 +23,15 @@
 		{#each data.quizzes as q (q.slug)}
 			<li>
 				<a href="/quiz/host/run/{q.slug}">{q.title}</a> <span class="muted">({q.slug})</span>
-				<form method="POST" action="?/publish" use:enhance class="publish">
+				<form
+					method="POST"
+					action="?/publish"
+					class="publish"
+					use:enhance={() => async ({ result, update }) => {
+						await update({ reset: false });
+						if (result.type === 'failure' || result.type === 'error') await invalidateAll();
+					}}
+				>
 					<input type="hidden" name="slug" value={q.slug} />
 					<label>
 						<input
@@ -42,6 +52,7 @@
 
 <style>
 	.muted { color: #57606a; }
+	.error { color: #cf222e; }
 	.list { padding-left: 1.2rem; }
 	.list li { margin: 0.4rem 0; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
 	.publish { display: inline; }
