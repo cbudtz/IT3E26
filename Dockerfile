@@ -15,6 +15,8 @@ COPY --from=build /app/site/build ./build
 COPY --from=build /app/site/package.json ./package.json
 COPY --from=build /app/site/server.ts ./server.ts
 COPY --from=build /app/site/src/lib/server/realtime ./src/lib/server/realtime
+# QuizRoom.ts importerer ../grading.ts (delt med SvelteKit-bundlet) - skal med i runtime.
+COPY --from=build /app/site/src/lib/server/grading.ts ./src/lib/server/grading.ts
 COPY --from=build /app/site/drizzle ./drizzle
 # Kursusmaterialet: README + lektion*-mapper.
 # Docker COPY af en mappe kopierer indholdet (ikke mappen selv), så lektion*
