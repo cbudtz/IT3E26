@@ -2,6 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 
+	let { data } = $props();
+
 	let code = $state(page.url.searchParams.get('code')?.toUpperCase() ?? '');
 	let name = $state('');
 
@@ -30,6 +32,15 @@
 		<button type="submit">Deltag</button>
 	</form>
 	<p class="muted">Underviser? <a href="/quiz/host">Host en quiz</a></p>
+	{#if data.practiceQuizzes.length > 0}
+		<h2>Prøv en quiz selv</h2>
+		<p class="muted small">Ingen kode, ingen login – du får facit efter hvert spørgsmål.</p>
+		<ul class="practice">
+			{#each data.practiceQuizzes as q (q.slug)}
+				<li><a href="/quiz/practice/{q.slug}">{q.title}</a></li>
+			{/each}
+		</ul>
+	{/if}
 </section>
 
 <style>
@@ -39,4 +50,8 @@
 	input { font-size: 1.4rem; padding: 0.6rem 0.8rem; border: 1px solid #d0d7de; border-radius: 8px; font-weight: 400; }
 	button { font-size: 1.2rem; padding: 0.8rem; border: 0; border-radius: 8px; background: #0969da; color: #fff; cursor: pointer; }
 	.muted { color: #57606a; margin-top: 2rem; }
+	h2 { margin-top: 2.5rem; }
+	.small { margin-top: 0; }
+	.practice { padding-left: 1.2rem; }
+	.practice li { margin: 0.4rem 0; }
 </style>
