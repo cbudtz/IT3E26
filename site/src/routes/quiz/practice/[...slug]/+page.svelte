@@ -9,6 +9,7 @@
 	let chosen = $state<string | null>(null);
 	let pending = $state(false);
 	let answeredIndex = $state(-1);
+	let netError = $state('');
 
 	const total = $derived(data.questions.length);
 	const q = $derived(data.questions[index]);
@@ -24,11 +25,13 @@
 		shortText = '';
 		chosen = null;
 		answeredIndex = -1;
+		netError = '';
 	}
 </script>
 
 <svelte:head><title>{data.title} · IT3E26</title></svelte:head>
 
+{#key data.slug}
 {#if total === 0}
 	<section class="center">
 		<h1>{data.title}</h1>
@@ -56,8 +59,15 @@
 				}
 				pending = true;
 				answeredIndex = index;
+				netError = '';
 				return async ({ result, update }) => {
 					try {
+						if (result.type === 'error') {
+							netError = 'Kunne ikke sende svaret. Prøv igen.';
+							chosen = null;
+							answeredIndex = -1;
+							return;
+						}
 						if (result.type === 'success' && result.data?.isCorrect) score += 1;
 						if (result.type !== 'success') chosen = null;
 						await update({ reset: false, invalidateAll: false });
@@ -105,6 +115,9 @@
 		{#if form && 'error' in form && !answered}
 			<p class="error">{form.error}</p>
 		{/if}
+		{#if netError}
+			<p class="error">{netError}</p>
+		{/if}
 
 		{#if answered}
 			<button class="next" onclick={next}>{index + 1 === total ? 'Se resultat' : 'Næste'}</button>
@@ -112,6 +125,7 @@
 		<p class="muted">Din score: {score}</p>
 	</section>
 {/if}
+{/key}
 
 <style>
 	.center { text-align: center; margin-top: 3rem; }

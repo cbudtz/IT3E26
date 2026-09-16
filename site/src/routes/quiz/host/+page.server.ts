@@ -21,6 +21,10 @@ export const actions: Actions = {
 		// Ukendt slug: ingen skrivning.
 		const known = (await listQuizzes()).some((q) => q.slug === input.slug);
 		if (!known) return fail(404, { error: `Ingen quiz "${input.slug}"` });
-		await setPublic(input.slug, locals.user!, input.on);
+		try {
+			await setPublic(input.slug, locals.user!, input.on);
+		} catch {
+			return fail(503, { error: 'Kunne ikke gemme – prøv igen' });
+		}
 	}
 };
