@@ -49,6 +49,30 @@
     {
       "id": "q6",
       "type": "mc",
+      "prompt": "Hvad er `[118, 124, 121]` i JavaScript?",
+      "options": [
+        "En array — en liste af værdier i rækkefølge",
+        "Et objekt med tre navngivne felter",
+        "En funktion, der returnerer tre tal",
+        "En CSS-regel"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Hvordan opretter du et objekt med navngivne felter?",
+      "options": [
+        "`[124, 82]`",
+        "`{ systolic: 124, diastolic: 82 }`",
+        "`function measurement() {}`",
+        "`<p>124</p>`"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q8",
+      "type": "mc",
       "prompt": "Hvad er en funktion i JavaScript?",
       "options": [
         "En CSS-regel, der samler farver",
@@ -59,7 +83,7 @@
       "correct": [1]
     },
     {
-      "id": "q7",
+      "id": "q9",
       "type": "mc",
       "prompt": "Hvad bruges return til i en funktion?",
       "options": [
@@ -71,7 +95,7 @@
       "correct": [1]
     },
     {
-      "id": "q8",
+      "id": "q10",
       "type": "mc",
       "prompt": "Hvad er en parameter i en funktion?",
       "options": [
@@ -83,7 +107,7 @@
       "correct": [0]
     },
     {
-      "id": "q9",
+      "id": "q11",
       "type": "mc",
       "prompt": "Hvornår kører koden i else-grenen?",
       "options": [
@@ -95,7 +119,7 @@
       "correct": [1]
     },
     {
-      "id": "q10",
+      "id": "q12",
       "type": "mc",
       "prompt": "Hvorfor bruger vi typisk === til sammenligning i JavaScript?",
       "options": [
@@ -107,7 +131,7 @@
       "correct": [1]
     },
     {
-      "id": "q11",
+      "id": "q13",
       "type": "mc",
       "prompt": "Hvad bruges document.getElementById til?",
       "options": [
@@ -119,7 +143,7 @@
       "correct": [0]
     },
     {
-      "id": "q12",
+      "id": "q14",
       "type": "mc",
       "prompt": "Hvad gør en event listener?",
       "options": [
@@ -131,7 +155,7 @@
       "correct": [1]
     },
     {
-      "id": "q13",
+      "id": "q15",
       "type": "mc",
       "prompt": "Hvad sker der, når koden kører `message.innerText = \"Hej, Maja!\";`?",
       "options": [
@@ -143,7 +167,7 @@
       "correct": [1]
     },
     {
-      "id": "q14",
+      "id": "q16",
       "type": "mc",
       "prompt": "Hvad betyder defer på `<script src=\"app.js\" defer></script>`?",
       "options": [

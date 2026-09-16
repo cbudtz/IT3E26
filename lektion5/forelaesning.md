@@ -23,7 +23,7 @@ Efter lektionen skal du kunne:
 
 - forklare commit, branch, merge, push og pull
 - lave en ændring på en branch og få den ind i projektet via en pull request
-- bruge variabler, funktioner og simple betingelser i JavaScript
+- bruge variabler, arrays, objekter, funktioner og simple betingelser i JavaScript
 - koble JavaScript til en HTML-side
 - reagere på en hændelse og ændre DOM'en
 
@@ -163,6 +163,8 @@ Detaljerne står i [øvelsesarket](oevelser.md).
 JavaScript kører i browseren og kan læse og ændre den HTML, browseren har
 bygget som DOM.
 
+- Kan køres direkte i console i browseren - lad os prøve!
+
 ---
 
 
@@ -181,7 +183,7 @@ forvente, at sprogene fungerer ens:
 | UI-events håndteres af controls og event handlers     | DOM-events håndteres med fx `addEventListener` |
 
 
-Grundidéer som variabler, funktioner, betingelser og events er stadig genkendelige.
+Grundidéer som variabler, lister, objekter, funktioner, betingelser og events er stadig genkendelige.
 
 ---
 
@@ -219,6 +221,67 @@ visits = visits + 1;
 
 
 
+## Arrays
+
+En array er en liste af værdier i rækkefølge. Første element har indeks `0`.
+
+```js
+const measurements = [118, 124, 121];
+
+console.log(measurements[0]); // 118
+console.log(measurements.length); // 3
+
+measurements.push(130);
+```
+
+`.push()` lægger et nyt element til sidst i listen.
+
+---
+
+
+
+## Objekter
+
+Et objekt samler relaterede værdier under navne. I JavaScript behøver du ikke
+en klasse for at lave et objekt.
+
+```js
+const measurement = {
+  systolic: 124,
+  diastolic: 82,
+  unit: "mmHg"
+};
+
+console.log(measurement.systolic);
+```
+
+Punktnotationen `measurement.systolic` læser feltet `systolic`.
+
+---
+
+
+
+## Liste af objekter
+
+Målinger, aftaler og patienter er typisk en liste af objekter:
+
+```js
+const measurements = [
+  { systolic: 118, diastolic: 76 },
+  { systolic: 124, diastolic: 82 }
+];
+
+for (const m of measurements) {
+  console.log(m.systolic);
+}
+```
+
+`for...of` går listen igennem ét element ad gangen.
+
+---
+
+
+
 ## Funktioner
 
 En funktion samler en handling, som kan bruges flere gange:
@@ -246,6 +309,19 @@ if (loggedIn) {
   console.log("Vis forsiden");
 } else {
   console.log("Vis login");
+}
+```
+
+`if` konverterer værdien til sand eller falsk. En ikke-tom streng er sand —
+også `"false"`:
+
+```js
+if ("false") {
+  console.log("Vis forsiden"); // kører!
+}
+
+if ("false" === true) {
+  console.log("Vis forsiden"); // kører ikke
 }
 ```
 
@@ -302,8 +378,8 @@ sammen med den funktion, der skal køre.
 
 Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
-**Lektion 5: JavaScript** — `let`/`const`, funktioner, betingelser, events og
-DOM.
+**Lektion 5: JavaScript** — `let`/`const`, arrays, objekter, funktioner,
+betingelser, events og DOM.
 
 ---
 

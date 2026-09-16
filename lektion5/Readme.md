@@ -17,8 +17,8 @@ minutter JavaScript (start + DOM).
 | 20 min | Gennemgang | Opsamling på Git-forberedelsen: commit, branch, merge og remote |
 | 10 min | Quiz | Git: commit, branch, merge, push, pull og pull request |
 | 40 min | [Øvelse 1](oevelser.md) | **Git-samarbejde** — branch, commit, push og pull request |
-| 30 min | Gennemgang | JavaScript-primer: variabler, typer, funktioner og betingelser |
-| 15 min | Quiz | JavaScript: `let`/`const`, funktioner, betingelser og DOM |
+| 30 min | Gennemgang | JavaScript-primer: variabler, arrays, objekter, funktioner og betingelser |
+| 15 min | Quiz | JavaScript: `let`/`const`, arrays, objekter, funktioner, betingelser og DOM |
 | 40 min | [Øvelse 2](oevelser.md) | **JavaScript i browseren** — event, DOM-opslag og opdatering af siden |
 | 40 min | [Øvelse 2](oevelser.md) | Brug JavaScript-interaktion på projektets mockup |
 
@@ -38,7 +38,7 @@ Der er afsat 45 minutter til pauser, som lægges ind undervejs.
 
 - forklare forskellen på et workspace, et lokalt repository og et remote repository
 - arbejde på en branch, lave meningsfulde commits og oprette en pull request
-- forklare grundlæggende JavaScript med variabler, typer, funktioner og betingelser
+- forklare grundlæggende JavaScript med variabler, arrays, objekter, funktioner og betingelser
 - koble en JavaScript-fil til en HTML-side
 - reagere på et klik og læse fra eller skrive til DOM'en
 - bruge en lille JavaScript-interaktion i jeres projekt-mockup
