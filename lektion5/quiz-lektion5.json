@@ -1,5 +1,5 @@
 {
-  "title": "Lektion 5: Git og JavaScript",
+  "title": "Lektion 5: Git",
   "questions": [
     {
       "id": "q1",
@@ -28,6 +28,18 @@
     {
       "id": "q3",
       "type": "mc",
+      "prompt": "Hvad gør en merge?",
+      "options": [
+        "Den sletter branchen, så kun working copy er tilbage",
+        "Den samler ændringer fra én branch ind i en anden",
+        "Den sender filer direkte til browseren",
+        "Den opretter et nyt GitHub-login"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
       "prompt": "Hvad sender push typisk?",
       "options": [
         "Lokale commits til en remote",
@@ -38,50 +50,31 @@
       "correct": [0]
     },
     {
-      "id": "q4",
-      "type": "mc",
-      "prompt": "Hvilket nøgleord bruger du normalt til en værdi, der ikke skal tildeles igen?",
-      "options": ["var", "let", "const", "static"],
-      "correct": [2]
-    },
-    {
       "id": "q5",
       "type": "mc",
-      "prompt": "Hvad bruges return til i en funktion?",
+      "prompt": "Hvad gør pull typisk?",
       "options": [
-        "At koble CSS på HTML",
-        "At sende en værdi tilbage fra funktionen",
-        "At oprette en Git-branch",
-        "At åbne DevTools"
+        "Den opretter en ny branch på GitHub",
+        "Den henter ændringer fra en remote og integrerer dem lokalt",
+        "Den sender lokale commits til en remote",
+        "Den åbner en pull request"
       ],
       "correct": [1]
     },
     {
       "id": "q6",
       "type": "mc",
-      "prompt": "Hvad gør en event listener?",
+      "prompt": "Hvad er en pull request?",
       "options": [
-        "Den gemmer alle commits",
-        "Den venter på en hændelse og kører kode, når den sker",
-        "Den ændrer en remote branch",
-        "Den installerer JavaScript"
+        "En særlig slags commit med review-tekst",
+        "En kommando, der henter alle branches på én gang",
+        "En forespørgsel om at få en branch ind i en anden branch",
+        "En backup af hele det lokale repository"
       ],
-      "correct": [1]
+      "correct": [2]
     },
     {
       "id": "q7",
-      "type": "mc",
-      "prompt": "Hvad bruges document.getElementById til?",
-      "options": [
-        "At finde et HTML-element i DOM'en",
-        "At hente en fil fra GitHub",
-        "At oprette en funktion",
-        "At skrive CSS"
-      ],
-      "correct": [0]
-    },
-    {
-      "id": "q8",
       "type": "tf",
       "prompt": "Man bør normalt committe adgangskoder og API-nøgler, så gruppen kan dele dem.",
       "options": ["Sandt", "Falsk"],

@@ -1,23 +1,17 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
-import { resolve, dirname, posix, sep } from 'node:path';
+import { resolve, posix } from 'node:path';
 import { env } from '$env/dynamic/private';
 import { marked } from 'marked';
 import { enhanceLessonPlan } from './lessonPlan';
+import { HIDDEN_DIRS, isHiddenSlug, mediaTypeFor, rewriteHref } from './contentPaths';
+
+export { HIDDEN_DIRS, isHiddenSlug, mediaTypeFor, rewriteHref } from './contentPaths';
 
 /**
  * Rod for kursusmaterialet (markdown). Default: repo-roden (én mappe over site/).
  * I CapRover/Docker sættes CONTENT_DIR til mappen hvor README.md og lektion-mapperne ligger.
  */
 export const CONTENT_DIR = resolve(env.CONTENT_DIR ?? resolve(process.cwd(), '..'));
-
-/** Mapper der ikke vises på kurssitet (lærer-docs, build, kildekode). */
-export const HIDDEN_DIRS = new Set(['docs', 'site', 'node_modules', '.git', '.svelte-kit', 'build']);
-
-/** True hvis stien peger ind i en skjult mappe. */
-export function isHiddenSlug(slug: string): boolean {
-	const parts = posix.normalize('/' + slug).replace(/^\/+/, '').split('/').filter(Boolean);
-	return parts.some((p) => p.startsWith('.') || HIDDEN_DIRS.has(p));
-}
 
 /** Filnavne vi prøver, når en URL peger på en mappe. Rækkefølge = prioritet. */
 const INDEX_NAMES = ['README.md', 'Readme.md', 'readme.md', 'index.md'];
@@ -80,22 +74,19 @@ export async function readMarkdownSource(
 	return { file, markdown };
 }
 
-/**
- * Omskriver relative markdown-links til site-ruter:
- *   forberedelse.md         -> /lektion1/forberedelse   (fra lektion1/Readme.md)
- *   lektion1/Readme.md      -> /lektion1
- *   forelaesning.md?show=slide -> /lektion1/forelaesning?show=slide
- * Absolutte URL'er, ankre og mailto røres ikke.
- */
-export function rewriteHref(href: string, fromFile: string): string {
-	if (/^([a-z]+:|\/\/|#|\/)/i.test(href)) return href;
-	const [beforeHash, hash = ''] = href.split('#');
-	const [path, query = ''] = beforeHash.split('?');
-	const baseDir = dirname(fromFile.split(sep).join('/'));
-	let target = posix.normalize(posix.join(baseDir === '.' ? '' : baseDir, path));
-	target = target.replace(/\/?(README|Readme|readme|index)\.md$/, '').replace(/\.md$/, '').replace(/\/+$/, '');
-	if (target === '.' ) target = '';
-	return '/' + target + (query ? '?' + query : '') + (hash ? '#' + hash : '');
+/** Læser et kursusbillede fra CONTENT_DIR. */
+export async function readMedia(
+	slug: string
+): Promise<{ body: Buffer; type: string } | null> {
+	const type = mediaTypeFor(slug);
+	if (!type) return null;
+	const safe = posix.normalize('/' + slug).replace(/^\/+/, '');
+	try {
+		const body = await readFile(resolve(CONTENT_DIR, safe));
+		return { body, type };
+	} catch {
+		return null;
+	}
 }
 
 function titleFrom(markdown: string, fallback: string): string {
@@ -126,7 +117,9 @@ export function splitSlides(markdown: string): string[] {
 async function toHtml(markdown: string, fromFile: string): Promise<string> {
 	const renderer = new marked.Renderer();
 	const baseLink = renderer.link.bind(renderer);
+	const baseImage = renderer.image.bind(renderer);
 	renderer.link = (token) => baseLink({ ...token, href: rewriteHref(token.href, fromFile) });
+	renderer.image = (token) => baseImage({ ...token, href: rewriteHref(token.href, fromFile) });
 	return await marked.parse(markdown, { renderer, gfm: true });
 }
 

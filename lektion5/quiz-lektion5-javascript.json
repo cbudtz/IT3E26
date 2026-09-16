@@ -1,0 +1,158 @@
+{
+  "title": "Lektion 5: JavaScript",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvad er JavaScripts rolle på en webside?",
+      "options": [
+        "At beskrive indhold og struktur",
+        "At beskrive udseende og placering",
+        "At beskrive adfærd og reaktioner",
+        "At gemme projektets historik"
+      ],
+      "correct": [2]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvordan får en JavaScript-variabel typisk sin type?",
+      "options": [
+        "Den angives i deklarationen, som i C# med int count",
+        "Den får type fra den aktuelle værdi",
+        "Den har ingen type, før koden kompileres",
+        "Den får altid typen string"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvilket nøgleord bruger du normalt til en værdi, der ikke skal tildeles igen?",
+      "options": ["var", "let", "const", "static"],
+      "correct": [2]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvilket nøgleord bruger du, når variablen skal kunne tildeles en ny værdi senere?",
+      "options": ["const", "let", "static", "class"],
+      "correct": [1]
+    },
+    {
+      "id": "q5",
+      "type": "tf",
+      "prompt": "Koden `const visits = 0; visits = 1;` er gyldig JavaScript.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    },
+    {
+      "id": "q6",
+      "type": "mc",
+      "prompt": "Hvad er en funktion i JavaScript?",
+      "options": [
+        "En CSS-regel, der samler farver",
+        "En handling, der er samlet, så den kan bruges flere gange",
+        "Et HTML-element i DOM'en",
+        "Et commit i Git"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Hvad bruges return til i en funktion?",
+      "options": [
+        "At koble CSS på HTML",
+        "At sende en værdi tilbage fra funktionen",
+        "At oprette en Git-branch",
+        "At åbne DevTools"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q8",
+      "type": "mc",
+      "prompt": "Hvad er en parameter i en funktion?",
+      "options": [
+        "Input til funktionen",
+        "Den værdi, funktionen altid logger i Console",
+        "Navnet på HTML-filen",
+        "En CSS-selector"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q9",
+      "type": "mc",
+      "prompt": "Hvornår kører koden i else-grenen?",
+      "options": [
+        "Altid, både når betingelsen er sand og falsk",
+        "Kun når betingelsen i if er falsk",
+        "Kun første gang funktionen kaldes",
+        "Kun hvis funktionen bruger return"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q10",
+      "type": "mc",
+      "prompt": "Hvorfor bruger vi typisk === til sammenligning i JavaScript?",
+      "options": [
+        "Fordi == ikke findes i browseren",
+        "Fordi === sammenligner uden automatisk typekonvertering",
+        "Fordi === kun virker på strenge",
+        "Fordi === er det samme som et assignment med ="
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q11",
+      "type": "mc",
+      "prompt": "Hvad bruges document.getElementById til?",
+      "options": [
+        "At finde et HTML-element i DOM'en",
+        "At hente en fil fra GitHub",
+        "At oprette en funktion",
+        "At skrive CSS"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q12",
+      "type": "mc",
+      "prompt": "Hvad gør en event listener?",
+      "options": [
+        "Den gemmer alle commits",
+        "Den venter på en hændelse og kører kode, når den sker",
+        "Den ændrer en remote branch",
+        "Den installerer JavaScript"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q13",
+      "type": "mc",
+      "prompt": "Hvad sker der, når koden kører `message.innerText = \"Hej, Maja!\";`?",
+      "options": [
+        "Den opretter en ny HTML-fil på disken",
+        "Den ændrer den synlige tekst i elementet i DOM'en",
+        "Den sender en commit til GitHub",
+        "Den skifter sidens CSS-fil"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q14",
+      "type": "mc",
+      "prompt": "Hvad betyder defer på `<script src=\"app.js\" defer></script>`?",
+      "options": [
+        "At scriptet aldrig kører",
+        "At browseren kan læse HTML'en færdig, før scriptet kører",
+        "At JavaScript kompileres til C#",
+        "At filen hentes fra Git i stedet for fra mappen"
+      ],
+      "correct": [1]
+    }
+  ]
+}

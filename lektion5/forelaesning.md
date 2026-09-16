@@ -7,9 +7,10 @@ Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 ## Program i dag
 
 - Opsamling: Git-forberedelsen
+- Quiz: Git
 - Øvelse 1: Git-samarbejde
 - Gennemgang: JavaScript-grundlag
-- Quiz: Git og JavaScript
+- Quiz: JavaScript
 - Øvelse 2: JavaScript i browseren og i projektet
 
 Pauser lægges ind undervejs.
@@ -28,9 +29,19 @@ Efter lektionen skal du kunne:
 
 ---
 
+![Linus Torvalds, skaberen af Git, giver fingeren](images/linus-torvalds.webp)
+
+Linus Torvalds — skaberen af Git.
+
+---
+
+
+
 # Gennemgang — Git-samarbejde
 
 ---
+
+
 
 ## Fra arbejdsmappe til historik
 
@@ -46,6 +57,8 @@ Et commit er ikke det samme som en backup af hele computeren. Det er en gemt
 ændring i projektets historik.
 
 ---
+
+
 
 ## Branches
 
@@ -63,6 +76,8 @@ Gode branchnavne fortæller, hvad du arbejder på, fx
 
 ---
 
+
+
 ## Et sikkert samarbejdsflow
 
 1. Hent det nyeste fra `main`.
@@ -79,6 +94,8 @@ andre hemmeligheder.
 
 ---
 
+
+
 ## Git og GitHub
 
 - **Git** er versionskontrolsystemet på din computer.
@@ -92,9 +109,50 @@ review-proces omkring commits.
 
 ---
 
+
+
+# Quiz — Git
+
+---
+
+
+
+## Quiz!
+
+Gå til [/quiz](/quiz) og indtast koden fra tavlen.
+
+**Lektion 5: Git** — commit, branch, merge, push, pull og pull request.
+
+---
+
+
+
+# Øvelse 1: Git-samarbejde
+
+I arbejder i gruppens repository med en lille, ufarlig ændring.
+
+- branch fra `main`
+- lille commit med en forklarende besked
+- push og pull request
+- review og merge
+
+Detaljerne står i [øvelsesarket](oevelser.md).
+
+---
+
+
+
+# Pause
+
+---
+
+
+
 # Gennemgang — JavaScript-grundlag
 
 ---
+
+
 
 ## JavaScript i forhold til HTML og CSS
 
@@ -107,21 +165,27 @@ bygget som DOM.
 
 ---
 
+
+
 ## JavaScript i forhold til C#
 
 I kender allerede programmering fra C#. Brug det som afsæt, men pas på med at
 forvente, at sprogene fungerer ens:
 
-| C# | JavaScript |
-|---|---|
-| Variabler har deklarerede typer, fx `int count` | Variabler får type fra den aktuelle værdi |
-| Kode organiseres ofte i klasser og metoder | Funktioner kan ligge frit uden en klasse |
-| Programmet kører typisk som en kompileret applikation | Koden kører her i browserens JavaScript-miljø |
-| UI-events håndteres af controls og event handlers | DOM-events håndteres med fx `addEventListener` |
+
+| C#                                                    | JavaScript                                     |
+| ----------------------------------------------------- | ---------------------------------------------- |
+| Variabler har deklarerede typer, fx `int count`       | Variabler får type fra den aktuelle værdi      |
+| Kode organiseres ofte i klasser og metoder            | Funktioner kan ligge frit uden en klasse       |
+| Programmet kører typisk som en kompileret applikation | Koden kører her i browserens JavaScript-miljø  |
+| UI-events håndteres af controls og event handlers     | DOM-events håndteres med fx `addEventListener` |
+
 
 Grundidéer som variabler, funktioner, betingelser og events er stadig genkendelige.
 
 ---
+
+
 
 ## Variabler og værdier
 
@@ -153,6 +217,8 @@ visits = visits + 1;
 
 ---
 
+
+
 ## Funktioner
 
 En funktion samler en handling, som kan bruges flere gange:
@@ -168,6 +234,8 @@ const message = greeting("Maja");
 Parametre er input til funktionen. `return` sender en værdi tilbage.
 
 ---
+
+
 
 ## Betingelser
 
@@ -185,6 +253,8 @@ Brug `===` til at sammenligne uden automatisk typekonvertering.
 
 ---
 
+
+
 ## JavaScript-filen og browseren
 
 ```html
@@ -196,6 +266,8 @@ Brug `===` til at sammenligne uden automatisk typekonvertering.
 små eksperimenter.
 
 ---
+
+
 
 ## Events og DOM
 
@@ -218,43 +290,28 @@ sammen med den funktion, der skal køre.
 
 ---
 
-# Quiz — Git og JavaScript
+
+
+# Quiz — JavaScript
 
 ---
+
+
 
 ## Quiz!
 
 Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
-**Lektion 5: Git og JavaScript** — commits, branches, samarbejdsflow,
-variabler, funktioner og events.
+**Lektion 5: JavaScript** — `let`/`const`, funktioner, betingelser, events og
+DOM.
 
 ---
 
-# Pause
 
----
 
-# Øvelser
-
-**Man lærer Git og JavaScript bedst ved at bruge det på noget konkret.**
-
-Detaljerne står i [øvelsesarket](oevelser.md).
-
----
-
-## Øvelse 1: Git-samarbejde
-
-I arbejder i gruppens repository med en lille, ufarlig ændring.
-
-- branch fra `main`
-- lille commit med en forklarende besked
-- push og pull request
-- review og merge
-
----
-
-## Øvelse 2: JavaScript i browseren
+# Øvelse 2: JavaScript i browseren
 
 Først bygger du en lille interaktion med en knap og et DOM-element. Derefter
 flytter du idéen over i projektets mockup.
+
+Detaljerne står i [øvelsesarket](oevelser.md).

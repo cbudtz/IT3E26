@@ -15,10 +15,11 @@ minutter JavaScript (start + DOM).
 | Tid | Blok | Indhold |
 |---|---|---|
 | 20 min | Gennemgang | Opsamling på Git-forberedelsen: commit, branch, merge og remote |
+| 10 min | Quiz | Git: commit, branch, merge, push, pull og pull request |
 | 40 min | [Øvelse 1](oevelser.md) | **Git-samarbejde** — branch, commit, push og pull request |
-| 35 min | Gennemgang | JavaScript-primer: variabler, typer, funktioner og betingelser |
-| 15 min | Quiz | Git og JavaScript-grundlag |
-| 45 min | [Øvelse 2](oevelser.md) | **JavaScript i browseren** — event, DOM-opslag og opdatering af siden |
+| 30 min | Gennemgang | JavaScript-primer: variabler, typer, funktioner og betingelser |
+| 15 min | Quiz | JavaScript: `let`/`const`, funktioner, betingelser og DOM |
+| 40 min | [Øvelse 2](oevelser.md) | **JavaScript i browseren** — event, DOM-opslag og opdatering af siden |
 | 40 min | [Øvelse 2](oevelser.md) | Brug JavaScript-interaktion på projektets mockup |
 
 Der er afsat 45 minutter til pauser, som lægges ind undervejs.

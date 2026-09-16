@@ -1,37 +1,47 @@
 # Lektion 5 — Øvelser
 
-Man lærer Git og JavaScript bedst ved at prøve selv. Dette ark samler dagens to
-øvelser med den uddybning, der ikke kan være på slidesne.
+Man lærer Git og JavaScript bedst ved at prøve selv. 
 
 Hvis du ikke nåede [forberedelsen](forberedelse.md), så start der — eller gør
 det parallelt med Øvelse 1.
 
-| Øvelse | Hvornår | Tid |
-|---|---|---|
-| **1** Git-samarbejde | Efter Git-gennemgangen | ~40 min |
-| **2** JavaScript i browseren og projektet | Efter JS-gennemgangen | ~85 min |
+
+| Øvelse                                    | Hvornår                | Tid     |
+| ----------------------------------------- | ---------------------- | ------- |
+| **1** Git-samarbejde                      | Efter Git-quizzen | ~40 min |
+| **2** JavaScript i browseren og projektet | Efter JS-quizzen  | ~80 min |
+
 
 AI er tilladt, men du skal kunne forklare hver Git-kommando, hver regel og hver
 linje kode, du bruger. En løsning, du ikke kan gennemgå, tæller ikke.
 
 ---
 
+
+
 ## Øvelse 1 — Git-samarbejde
 
 **Mål:** Gennemføre et lille samarbejdsflow uden at arbejde direkte på `main`.
 
-Arbejd i gruppens GitHub-repository. Hvis gruppens repository ikke er klar, så
-brug det repository, underviseren viser.
+Arbejd i gruppens GitHub-repository. Hvis gruppens repository ikke er klar, så 
 
-### Det skal I lave
+1. Opret et repository på github [https://github.com/new](https://github.com/new).
+2. Opret en index.html fil - Den behøver ikke at have det store indhold - boilerplate er fint.
+3. Inviter jeres gruppe: [https://github.com/{ejer}/{jeres](https://github.com/{ejer}/{jeres) repo navn}/settings
+
+
+
+### Det skal I lave (alle i gruppen)
 
 1. Hent den nyeste version af `main`.
 2. Opret en branch med dit navn eller din opgave, fx `feature/about-page`.
 3. Lav en lille ændring i en HTML-fil, fx en tekst, en footer eller en kort
-   projektbeskrivelse.
+  projektbeskrivelse.
 4. Commit ændringen med en besked, der beskriver ændringen.
-5. Push branchen og opret en pull request.
+5. Push branchen og opret en pull request. [https://github.com/{ejer}/{jeres](https://github.com/{ejer}/{jeres) repo navn}/pulls
 6. Lad en anden læse ændringen, og merge den efter aftale.
+
+
 
 ### Tjekliste
 
@@ -39,6 +49,8 @@ brug det repository, underviseren viser.
 - [ ] Commit-beskeden forklarer ændringen.
 - [ ] Pull requesten har en kort beskrivelse.
 - [ ] En anden har kigget på ændringen før merge.
+
+
 
 ### Tjek resultatet
 
@@ -54,7 +66,9 @@ request → review → merge.
 - Tjek hvilken branch der er aktiv, før du laver en commit.
 - Se på GitHub, om branchen faktisk er pushed.
 - Spørg gruppen eller underviseren, før du sletter noget eller bruger
-  `reset --hard`.
+`reset --hard`.
+
+
 
 ### Hvis I har ekstra tid
 
@@ -63,6 +77,8 @@ request → review → merge.
 - Sammenlign en ændring i pull requestens diff med den oprindelige fil.
 
 ---
+
+
 
 ## Øvelse 2 — JavaScript i browseren og projektet
 
@@ -86,10 +102,10 @@ Opret `index.html` og `app.js` med dette udgangspunkt:
   </head>
   <body>
     <h1>Min side</h1>
-    <label for="navn">Dit navn</label>
-    <input id="navn" type="text">
-    <button id="hils">Sig hej</button>
-    <p id="besked"></p>
+    <label for="name">Dit navn</label>
+    <input id="name" type="text">
+    <button id="button">Sig hej</button>
+    <p id="message"></p>
   </body>
 </html>
 ```
@@ -97,9 +113,9 @@ Opret `index.html` og `app.js` med dette udgangspunkt:
 I `app.js`:
 
 ```js
-const nameInput = document.getElementById("navn");
-const button = document.getElementById("hils");
-const message = document.getElementById("besked");
+const nameInput = document.getElementById("name");
+const button = document.getElementById("button");
+const message = document.getElementById("message");
 
 button.addEventListener("click", () => {
   const name = nameInput.value;
@@ -107,12 +123,16 @@ button.addEventListener("click", () => {
 });
 ```
 
+
+
 ### Det skal du undersøge
 
 1. Hvad sker der, hvis inputfeltet er tomt?
 2. Hvordan kan du vise en anden besked, hvis feltet er tomt?
 3. Hvordan kan du tælle, hvor mange gange der er klikket?
 4. Hvordan kan du ændre knappens tekst efter første klik?
+
+
 
 ### Del 2 — Brug det i jeres mockup
 
@@ -125,7 +145,7 @@ Tilføj én lille interaktion til projektets frontend, fx:
 - markér en aftale eller måling som valgt
 
 Hold dataene faste i HTML eller JavaScript. Vi arbejder ikke med backend eller
-`fetch` endnu.
+`fetch` endnu. Det kræver måske at I undersøger hvordan man arbejder/filtrerer data i JS - søg på nettet, Spørg en LLM, spørg underviseren.
 
 ### Tjekliste
 
@@ -134,6 +154,8 @@ Hold dataene faste i HTML eller JavaScript. Vi arbejder ikke med backend eller
 - [ ] Koden finder mindst ét element med `getElementById`.
 - [ ] En event listener reagerer på et klik.
 - [ ] Siden ændrer synligt indhold i DOM'en.
+
+
 
 ### Tjek med DevTools
 
@@ -155,9 +177,12 @@ synlig JavaScript-interaktion.
 - Tjek browserens Console for den første fejl, ikke kun den sidste.
 - Brug `console.log(nameInput.value)` til at se, hvad du faktisk læser.
 
+
+
 ### Hvis I har ekstra tid
 
 - Brug en `if`-betingelse til at validere et tomt inputfelt.
 - Lav en anden knap, der nulstiller beskeden.
 - Giv interaktionen en tydelig tilstand i jeres mockup, som I kan beskrive i
-  et simpelt tilstandsdiagram.
+et simpelt tilstandsdiagram.
+

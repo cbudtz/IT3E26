@@ -1,6 +1,7 @@
 import { redirect, type Handle, type ServerInit } from '@sveltejs/kit';
 import { bootstrap } from '$lib/server/bootstrap';
 import { getSessionUser } from '$lib/server/auth/session';
+import { readMedia } from '$lib/server/content';
 
 export const init: ServerInit = async () => {
 	await bootstrap();
@@ -16,5 +17,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 		const next = encodeURIComponent(event.url.pathname + event.url.search);
 		redirect(303, `/auth/login?next=${next}`);
 	}
+
+	const media = await readMedia(event.url.pathname.replace(/^\/+/, ''));
+	if (media) {
+		return new Response(media.body, {
+			headers: {
+				'Content-Type': media.type,
+				'Cache-Control': 'public, max-age=3600'
+			}
+		});
+	}
+
 	return resolve(event);
 };

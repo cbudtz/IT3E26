@@ -529,6 +529,15 @@
 		color: var(--slide-muted);
 		border-left-color: var(--slide-progress-fill);
 	}
+	.inner :global(img) {
+		display: block;
+		max-width: 100%;
+		max-height: min(72vh, 52rem);
+		width: auto;
+		height: auto;
+		margin: 0.35em auto;
+		border-radius: 12px;
+	}
 
 	@media (max-width: 50rem) {
 		.slide { padding: 5.5rem 1.4rem 3.5rem; }
