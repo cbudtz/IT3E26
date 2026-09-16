@@ -1,6 +1,6 @@
 # Offentlige quizzer til selv-prøvning – Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Underviser kan markere en quiz som offentlig på `/quiz/host`; studerende kan tage den anonymt i eget tempo på `/quiz/practice/<slug>` med øjeblikkelig facit.
 
@@ -51,7 +51,7 @@
 **Interfaces:**
 - Produces: `isCorrect(q: QuestionDef, value: string): boolean` – `short`: trim+lowercase-match mod `q.correct` (strings); `mc`/`tf`: `Number(value)` findes i `q.correct` (numbers).
 
-- [ ] **Step 1: Skriv de fejlende tests**
+- [x] **Step 1: Skriv de fejlende tests**
 
 Opret `site/src/lib/server/practice.test.ts`:
 
@@ -79,12 +79,12 @@ test('isCorrect: short er case-insensitive og trimmet', () => {
 });
 ```
 
-- [ ] **Step 2: Kør testen og se den fejle**
+- [x] **Step 2: Kør testen og se den fejle**
 
 Run: `npm test` (fra `site/`)
 Expected: FAIL – `Cannot find module './grading.ts'`
 
-- [ ] **Step 3: Opret `grading.ts`**
+- [x] **Step 3: Opret `grading.ts`**
 
 ```ts
 import type { QuestionDef } from './realtime/QuizRoom';
@@ -98,7 +98,7 @@ export const isCorrect = (q: QuestionDef, value: string): boolean => {
 };
 ```
 
-- [ ] **Step 4: Brug den i `QuizRoom.ts`**
+- [x] **Step 4: Brug den i `QuizRoom.ts`**
 
 Erstat linje 26-31 (`const norm = ...` og `const isCorrect = ...`) med én import øverst i filen, efter de eksisterende imports:
 
@@ -108,7 +108,7 @@ import { isCorrect } from '../grading.ts';
 
 Slet `norm` og den lokale `isCorrect`. Intet andet i filen ændres.
 
-- [ ] **Step 5: Kør tests + typecheck**
+- [x] **Step 5: Kør tests + typecheck**
 
 Run: `npm test`
 Expected: 5 tests pass (2 gamle + 3 nye).
@@ -116,7 +116,7 @@ Expected: 5 tests pass (2 gamle + 3 nye).
 Run: `npm run check`
 Expected: 0 errors.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add site/src/lib/server/grading.ts site/src/lib/server/realtime/QuizRoom.ts site/src/lib/server/practice.test.ts
@@ -142,7 +142,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
   - `parsePublishForm(fd: FormData): { slug: string; on: boolean } | null` – `slug` skal være ikke-tom streng; `on` er `true` hvis feltet `on` er `'1'`.
   - `parseAnswerForm(fd: FormData): { questionId: string; value: string } | null` – begge ikke-tomme strenge; `value` afkortes til 200 tegn.
 
-- [ ] **Step 1: Tilføj fejlende tests**
+- [x] **Step 1: Tilføj fejlende tests**
 
 Tilføj til `site/src/lib/server/practice.test.ts` (under de eksisterende):
 
@@ -193,12 +193,12 @@ test('parseAnswerForm kræver questionId og value, afkorter value', () => {
 });
 ```
 
-- [ ] **Step 2: Kør og se dem fejle**
+- [x] **Step 2: Kør og se dem fejle**
 
 Run: `npm test`
 Expected: FAIL – `Cannot find module './practice.ts'`
 
-- [ ] **Step 3: Implementér `practice.ts`**
+- [x] **Step 3: Implementér `practice.ts`**
 
 ```ts
 import type { QuestionDef } from './realtime/QuizRoom';
@@ -231,12 +231,12 @@ export function parseAnswerForm(fd: FormData): { questionId: string; value: stri
 }
 ```
 
-- [ ] **Step 4: Kør tests**
+- [x] **Step 4: Kør tests**
 
 Run: `npm test`
 Expected: 9 tests pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add site/src/lib/server/practice.ts site/src/lib/server/practice.test.ts
@@ -262,7 +262,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
   - `isPublic(slug: string): Promise<boolean>` – `false` hvis DB er slået fra.
   - `setPublic(slug: string, by: string, on: boolean): Promise<void>` – insert (onConflictDoNothing) eller delete. No-op hvis DB er slået fra.
 
-- [ ] **Step 1: Tilføj tabel til schema**
+- [x] **Step 1: Tilføj tabel til schema**
 
 Tilføj nederst i `site/src/lib/server/db/schema.ts`:
 
@@ -275,7 +275,7 @@ export const publicQuizzes = pgTable('public_quizzes', {
 });
 ```
 
-- [ ] **Step 2: Generér migration**
+- [x] **Step 2: Generér migration**
 
 Run (fra `site/`): `npx drizzle-kit generate --name public_quizzes`
 Expected output indeholder: `1 tables` / `public_quizzes 3 columns` og `[✓] Your SQL migration file ➜ drizzle\0002_public_quizzes.sql`.
@@ -292,7 +292,7 @@ CREATE TABLE "public_quizzes" (
 
 og at `site/drizzle/meta/_journal.json` har fået en tredje entry med `"idx": 2, "tag": "0002_public_quizzes"`. Hvis drizzle-kit brokker sig over `DATABASE_URL`, kør med `DATABASE_URL=postgres://x npx drizzle-kit generate --name public_quizzes` (generate åbner ingen forbindelse).
 
-- [ ] **Step 3: Opret `publicQuizzes.ts`**
+- [x] **Step 3: Opret `publicQuizzes.ts`**
 
 ```ts
 import { eq } from 'drizzle-orm';
@@ -328,7 +328,7 @@ export async function setPublic(slug: string, by: string, on: boolean): Promise<
 }
 ```
 
-- [ ] **Step 4: Typecheck og migrér lokalt**
+- [x] **Step 4: Typecheck og migrér lokalt**
 
 Run: `npm run check`
 Expected: 0 errors.
@@ -336,7 +336,7 @@ Expected: 0 errors.
 Run: `npm run dev` (kræver `DATABASE_URL` i `site/.env`), se serverloggen.
 Expected: `[bootstrap] DB migreret. ...` uden fejl. Stop serveren igen (Ctrl+C).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add site/src/lib/server/db/schema.ts site/drizzle site/src/lib/server/publicQuizzes.ts
@@ -357,7 +357,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `listQuizzes()` fra `$lib/server/quizzes`; `listPublicSlugs`, `setPublic`, `publishingEnabled` fra `$lib/server/publicQuizzes`; `parsePublishForm` fra `$lib/server/practice`.
 - Produces: page data `{ user, quizzes, publicSlugs: string[], canPublish: boolean }`; action `?/publish` med felter `slug`, `on` (`'1'` = offentlig).
 
-- [ ] **Step 1: Skriv `+page.server.ts`**
+- [x] **Step 1: Skriv `+page.server.ts`**
 
 ```ts
 import { fail } from '@sveltejs/kit';
@@ -388,7 +388,7 @@ export const actions: Actions = {
 };
 ```
 
-- [ ] **Step 2: Skriv `+page.svelte`**
+- [x] **Step 2: Skriv `+page.svelte`**
 
 ```svelte
 <script lang="ts">
@@ -444,19 +444,19 @@ export const actions: Actions = {
 
 Bemærk: en uafkrydset checkbox sendes ikke med i form-data, så `parsePublishForm` ser `on` som `false` – det er afpublicering.
 
-- [ ] **Step 3: Typecheck**
+- [x] **Step 3: Typecheck**
 
 Run: `npm run check`
 Expected: 0 errors.
 
-- [ ] **Step 4: Manuel verifikation**
+- [x] **Step 4: Manuel verifikation**
 
 Run: `npm run dev`. Log ind og åbn `/quiz/host`.
 - Sæt flueben ved en quiz → ingen sideskift, fluebenet bliver stående efter reload (F5).
 - Fjern fluebenet → forbliver væk efter reload.
 - I `npm run db:studio` (eller psql): `public_quizzes` har rækken ved sat flueben, og den er væk efter fjernelse.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add site/src/routes/quiz/host/+page.server.ts site/src/routes/quiz/host/+page.svelte
@@ -477,7 +477,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `listQuizzes`, `listPublicSlugs`, `selectPublic`.
 - Produces: page data `{ practiceQuizzes: { slug: string; title: string }[] }` (ud over `realtimeUrl` fra layout).
 
-- [ ] **Step 1: Opret `+page.server.ts`**
+- [x] **Step 1: Opret `+page.server.ts`**
 
 ```ts
 import { listQuizzes } from '$lib/server/quizzes';
@@ -491,7 +491,7 @@ export const load: PageServerLoad = async () => {
 };
 ```
 
-- [ ] **Step 2: Opdatér `+page.svelte`**
+- [x] **Step 2: Opdatér `+page.svelte`**
 
 Tilføj `let { data } = $props();` som første linje i `<script>` (efter imports). Indsæt følgende **efter** `<p class="muted">Underviser? …</p>` og **før** `</section>`:
 
@@ -516,7 +516,7 @@ Tilføj til `<style>`:
 	.practice li { margin: 0.4rem 0; }
 ```
 
-- [ ] **Step 3: Typecheck + manuel verifikation**
+- [x] **Step 3: Typecheck + manuel verifikation**
 
 Run: `npm run check` → 0 errors.
 
@@ -525,7 +525,7 @@ Run: `npm run dev`, åbn `/quiz` i et inkognitovindue (ikke logget ind):
 - Fjern alle flueben på `/quiz/host` → sektionen forsvinder helt (ingen tom overskrift).
 - "Deltag i quiz"-formularen virker som før.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add site/src/routes/quiz/+page.server.ts site/src/routes/quiz/+page.svelte
@@ -548,7 +548,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
   - page data `{ title: string; slug: string; questions: PracticeQuestion[] }`
   - action `?/answer` med felter `questionId`, `value`; returnerer `{ questionId: string; isCorrect: boolean; correct: number[] | string[] }`; 400 ved ugyldigt svar eller ukendt `questionId`; 404 hvis quizzen ikke (længere) er offentlig.
 
-- [ ] **Step 1: Skriv `+page.server.ts`**
+- [x] **Step 1: Skriv `+page.server.ts`**
 
 ```ts
 import { error, fail } from '@sveltejs/kit';
@@ -581,7 +581,7 @@ export const actions: Actions = {
 };
 ```
 
-- [ ] **Step 2: Skriv `+page.svelte`**
+- [x] **Step 2: Skriv `+page.svelte`**
 
 Score og indeks bor kun her – refresh starter forfra (som spec'en ønsker). Feedback for det aktuelle spørgsmål vises kun når `form.questionId` matcher, så et gammelt svar aldrig "smitter" næste spørgsmål.
 
@@ -712,12 +712,12 @@ Score og indeks bor kun her – refresh starter forfra (som spec'en ønsker). Fe
 </style>
 ```
 
-- [ ] **Step 3: Typecheck**
+- [x] **Step 3: Typecheck**
 
 Run: `npm run check`
 Expected: 0 errors. (Hvis `form.questionId` giver typefejl: `'questionId' in form`-guarden bør snævre typen; ellers cast `form as { questionId?: string }` i `result`-derived.)
 
-- [ ] **Step 4: Manuel verifikation (inkognito, ikke logget ind)**
+- [x] **Step 4: Manuel verifikation (inkognito, ikke logget ind)**
 
 Run: `npm run dev`.
 1. `/quiz/practice/<offentlig slug>`: første spørgsmål vises. Åbn DevTools → Network → dokumentet: JSON i `data` indeholder **ingen** `correct`.
@@ -730,7 +730,7 @@ Run: `npm run dev`.
 8. `psql`/db:studio: `quiz_runs` og `quiz_answers` har **ikke** fået nye rækker.
 9. Live-flowet (`/quiz/host/run/...` + `/quiz/play`) virker stadig og bedømmer korrekt (regressionstjek af Task 1).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add "site/src/routes/quiz/practice/[...slug]/+page.server.ts" "site/src/routes/quiz/practice/[...slug]/+page.svelte"
@@ -743,10 +743,10 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ### Task 7: Afslutning
 
-- [ ] **Step 1: Fuldt tjek**
+- [x] **Step 1: Fuldt tjek**
 
 Run: `npm test` → 9 pass. Run: `npm run check` → 0 errors. Run: `npm run build` → bygger uden fejl.
 
-- [ ] **Step 2: Færdiggør branchen**
+- [x] **Step 2: Færdiggør branchen**
 
 Brug `superpowers:finishing-a-development-branch` (merge til `main` eller PR efter brugerens valg).
