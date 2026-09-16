@@ -35,13 +35,9 @@ Linus Torvalds — skaberen af Git.
 
 ---
 
-
-
 # Gennemgang — Git-samarbejde
 
 ---
-
-
 
 ## Fra arbejdsmappe til historik
 
@@ -57,8 +53,6 @@ Et commit er ikke det samme som en backup af hele computeren. Det er en gemt
 ændring i projektets historik.
 
 ---
-
-
 
 ## Branches
 
@@ -76,8 +70,6 @@ Gode branchnavne fortæller, hvad du arbejder på, fx
 
 ---
 
-
-
 ## Et sikkert samarbejdsflow
 
 1. Hent det nyeste fra `main`.
@@ -94,8 +86,6 @@ andre hemmeligheder.
 
 ---
 
-
-
 ## Git og GitHub
 
 - **Git** er versionskontrolsystemet på din computer.
@@ -109,13 +99,9 @@ review-proces omkring commits.
 
 ---
 
-
-
 # Quiz — Git
 
 ---
-
-
 
 ## Quiz!
 
@@ -124,8 +110,6 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 **Lektion 5: Git** — commit, branch, merge, push, pull og pull request.
 
 ---
-
-
 
 # Øvelse 1: Git-samarbejde
 
@@ -140,19 +124,13 @@ Detaljerne står i [øvelsesarket](oevelser.md).
 
 ---
 
-
-
 # Pause
 
 ---
 
-
-
 # Gennemgang — JavaScript-grundlag
 
 ---
-
-
 
 ## JavaScript i forhold til HTML og CSS
 
@@ -166,8 +144,6 @@ bygget som DOM.
 - Kan køres direkte i console i browseren - lad os prøve!
 
 ---
-
-
 
 ## JavaScript i forhold til C#
 
@@ -187,8 +163,6 @@ Grundidéer som variabler, lister, objekter, funktioner, betingelser og events e
 
 ---
 
-
-
 ## Variabler og værdier
 
 ```js
@@ -199,9 +173,11 @@ const isReady = true;
 visits = visits + 1;
 ```
 
-Brug `const`, når variablen ikke skal tildeles en ny værdi. Brug `let`, når den
-skal kunne ændres. JavaScript er dynamisk typet, så værdien har en type, selv om
-variablen ikke har en typeangivelse i koden.
+Brug `const`, når variablen ikke skal tildeles en ny værdi. Brug `let`, når den skal kunne ændres. JavaScript er dynamisk typet, så værdien har en type, selv om variablen ikke har en typeangivelse i koden.
+
+---
+
+## C# vs JS variable
 
 I C# ville en tilsvarende variabel typisk have en eksplicit type:
 
@@ -218,8 +194,6 @@ visits = visits + 1;
 ```
 
 ---
-
-
 
 ## Arrays
 
@@ -238,12 +212,9 @@ measurements.push(130);
 
 ---
 
-
-
 ## Objekter
 
-Et objekt samler relaterede værdier under navne. I JavaScript behøver du ikke
-en klasse for at lave et objekt.
+Et objekt samler relaterede værdier under navne. I JavaScript behøver du ikke en klasse for at lave et objekt. 
 
 ```js
 const measurement = {
@@ -258,8 +229,6 @@ console.log(measurement.systolic);
 Punktnotationen `measurement.systolic` læser feltet `systolic`.
 
 ---
-
-
 
 ## Liste af objekter
 
@@ -280,8 +249,6 @@ for (const m of measurements) {
 
 ---
 
-
-
 ## Funktioner
 
 En funktion samler en handling, som kan bruges flere gange:
@@ -290,6 +257,10 @@ En funktion samler en handling, som kan bruges flere gange:
 function greeting(name) {
   return `Hej, ${name}`;
 }
+// Eller
+const hi = (name)=> {
+  return `Halløj, ${name}`;
+}
 
 const message = greeting("Maja");
 ```
@@ -297,8 +268,6 @@ const message = greeting("Maja");
 Parametre er input til funktionen. `return` sender en værdi tilbage.
 
 ---
-
-
 
 ## Betingelser
 
@@ -311,6 +280,12 @@ if (loggedIn) {
   console.log("Vis login");
 }
 ```
+
+Ingen store overraskelser.
+
+---
+
+## Type coercion
 
 `if` konverterer værdien til sand eller falsk. En ikke-tom streng er sand —
 også `"false"`:
@@ -329,21 +304,17 @@ Brug `===` til at sammenligne uden automatisk typekonvertering.
 
 ---
 
-
-
 ## JavaScript-filen og browseren
 
 ```html
 <script src="app.js" defer></script>
 ```
 
-`defer` betyder, at browseren kan læse HTML'en færdig, før scriptet kører.
-Åbn browserens DevTools og brug fanen **Console** til at se fejl og skrive
-små eksperimenter.
+`defer` betyder, at browseren kan læse HTML'en færdig, før scriptet kører. Ellers kører scriptet FØR DOM'en er loaded...
+
+Åbn browserens DevTools og brug fanen **Console** til at se fejl og skrive små eksperimenter.
 
 ---
-
-
 
 ## Events og DOM
 
@@ -361,29 +332,21 @@ button.addEventListener("click", () => {
 });
 ```
 
-Et event er noget, der sker, fx et klik. En event listener kobler hændelsen
-sammen med den funktion, der skal køre.
+Et event er noget, der sker, fx et klik. En event listener kobler hændelsen sammen med den funktion, der skal køre.
 
 ---
-
-
 
 # Quiz — JavaScript
 
 ---
 
-
-
 ## Quiz!
 
 Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
-**Lektion 5: JavaScript** — `let`/`const`, arrays, objekter, funktioner,
-betingelser, events og DOM.
+**Lektion 5: JavaScript** — `let`/`const`, arrays, objekter, funktioner, betingelser, events og DOM.
 
 ---
-
-
 
 # Øvelse 2: JavaScript i browseren
 
