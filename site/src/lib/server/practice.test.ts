@@ -17,7 +17,7 @@ test('isCorrect: forkert mc-svar', () => {
 });
 
 test('isCorrect: short er case-insensitive og trimmet', () => {
-	assert.equal(isCorrect(short, '  København '), true);
+	assert.equal(isCorrect(short, '  københavn '), true);
 	assert.equal(isCorrect(short, 'Aarhus'), false);
 });
 
