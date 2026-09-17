@@ -1,10 +1,22 @@
 {
 	"name": "examplesite",
 	"private": true,
+	"type": "module",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server.js",
+		"test": "node --test src/*.test.js",
+		"db:push": "drizzle-kit push"
 	},
 	"dependencies": {
+		"@neondatabase/serverless": "^1.0.2",
+		"bcryptjs": "^3.0.2",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.2",
+		"drizzle-orm": "^0.45.2",
 		"express": "^5.2.1"
+	},
+	"devDependencies": {
+		"drizzle-kit": "^0.31.10",
+		"supertest": "^7.1.4"
 	}
 }

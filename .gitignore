@@ -1,2 +1,4 @@
 # Isolated git worktrees for feature development
 .worktrees/
+
+*.env
