@@ -26,7 +26,8 @@ app.get('/api/patients', async (_req, res) => {
 app.post('/api/login', async (req, res) => {
 	try {
 		await seedPatients();
-		const result = await login(req.body.cpr, req.body.password);
+		const { cpr, password } = req.body ?? {};
+		const result = await login(cpr, password);
 		res.status(result.status).json(result.body);
 	} catch (err) {
 		console.error(err);

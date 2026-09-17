@@ -62,3 +62,10 @@ test('missing fields is 400', { skip: !hasDb }, async () => {
 	assert.equal(res.status, 400);
 	assert.deepEqual(res.body, { error: 'cpr og password skal sendes' });
 });
+
+test('POST /api/login without JSON body is 400', { skip: !hasDb }, async () => {
+	const { default: app } = await import('../server.js');
+	const res = await request(app).post('/api/login');
+	assert.equal(res.status, 400);
+	assert.deepEqual(res.body, { error: 'cpr og password skal sendes' });
+});

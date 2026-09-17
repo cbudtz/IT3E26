@@ -9,7 +9,10 @@ export const SEED_PATIENTS = [
 	{ cpr: '3103979995', navn: 'Anders Test Jensen', password: 'password' }
 ];
 
+let seeded = false;
+
 export async function seedPatients() {
+	if (seeded) return;
 	const values = [];
 	for (const patient of SEED_PATIENTS) {
 		values.push({
@@ -18,5 +21,9 @@ export async function seedPatients() {
 			passwordHash: await hashPassword(patient.password)
 		});
 	}
-	await getDb().insert(schema.patients).values(values).onConflictDoNothing();
+	await getDb()
+		.insert(schema.patients)
+		.values(values)
+		.onConflictDoNothing({ target: schema.patients.cpr });
+	seeded = true;
 }
