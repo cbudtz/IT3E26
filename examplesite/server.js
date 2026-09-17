@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { seedPatients } from './src/seed.js';
 import { listPatients } from './src/patients.js';
+import { login } from './src/login.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -16,6 +17,17 @@ app.get('/api/patients', async (_req, res) => {
 		await seedPatients();
 		const body = await listPatients();
 		res.json(body);
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ error: 'serverfejl' });
+	}
+});
+
+app.post('/api/login', async (req, res) => {
+	try {
+		await seedPatients();
+		const result = await login(req.body.cpr, req.body.password);
+		res.status(result.status).json(result.body);
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ error: 'serverfejl' });
