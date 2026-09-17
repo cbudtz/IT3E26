@@ -22,6 +22,12 @@ test('mediaTypeFor accepts raster images in lesson folders', () => {
 	assert.equal(mediaTypeFor('lektion5/images/foto.webp'), 'image/webp');
 });
 
+test('mediaTypeFor accepts lesson demo html, css and js', () => {
+	assert.equal(mediaTypeFor('lektion7/dom-blodtryk.html'), 'text/html; charset=utf-8');
+	assert.equal(mediaTypeFor('lektion7/dom-blodtryk.css'), 'text/css; charset=utf-8');
+	assert.equal(mediaTypeFor('lektion7/dom-blodtryk.js'), 'text/javascript; charset=utf-8');
+});
+
 test('mediaTypeFor rejects non-images, hidden dirs and empty paths', () => {
 	assert.equal(mediaTypeFor('lektion5/forelaesning.md'), null);
 	assert.equal(mediaTypeFor('lektion5/quiz-lektion5.json'), null);

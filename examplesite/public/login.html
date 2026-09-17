@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Log ind</title>
+	<link rel="stylesheet" href="/style.css">
+	<script src="/login.js" defer></script>
+</head>
+<body>
+	<main class="kort">
+		<h1>Log ind</h1>
+		<p>Brug et test-CPR og kodeord. Der gemmes ingen session.</p>
+		<form id="login-form">
+			<label for="brugernavn">Brugernavn (CPR)</label>
+			<input id="brugernavn" type="text" autocomplete="username" required>
+			<label for="kode">Adgangskode</label>
+			<input id="kode" type="password" autocomplete="current-password" required>
+			<p id="fejl" hidden>Forkert brugernavn eller kodeord</p>
+			<button type="submit">Log ind</button>
+		</form>
+	</main>
+</body>
+</html>

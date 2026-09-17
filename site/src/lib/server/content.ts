@@ -74,7 +74,7 @@ export async function readMarkdownSource(
 	return { file, markdown };
 }
 
-/** Læser et kursusbillede fra CONTENT_DIR. */
+/** Læser en statisk kursusfil (billede eller lektions-demo) fra CONTENT_DIR. */
 export async function readMedia(
 	slug: string
 ): Promise<{ body: Buffer; type: string } | null> {

@@ -1,13 +1,16 @@
 import { dirname, posix, sep } from 'node:path';
 
-/** Rasterformater vi vil vise i markdown/slides. SVG holdes ude (XSS). */
+/** Rasterformater og lektions-demoer vi vil vise. SVG holdes ude (XSS). */
 const MEDIA_TYPES: Record<string, string> = {
 	'.jpg': 'image/jpeg',
 	'.jpeg': 'image/jpeg',
 	'.png': 'image/png',
 	'.gif': 'image/gif',
 	'.webp': 'image/webp',
-	'.avif': 'image/avif'
+	'.avif': 'image/avif',
+	'.html': 'text/html; charset=utf-8',
+	'.css': 'text/css; charset=utf-8',
+	'.js': 'text/javascript; charset=utf-8'
 };
 
 /** Mapper der ikke vises på kurssitet (lærer-docs, build, kildekode). */

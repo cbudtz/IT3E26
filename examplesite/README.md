@@ -20,6 +20,8 @@ npm start
 ```
 
 Serveren lytter på `http://localhost:3000` (eller `PORT`).
+Login-demo: [http://localhost:3000/login.html](http://localhost:3000/login.html)
+(ingen session — vis/skjul fejltekst, redirect ved 200).
 
 ## Test
 
