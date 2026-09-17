@@ -5,11 +5,14 @@ import * as schema from './schema.js';
 
 config({ path: '.env' });
 
-const url = process.env.DATABASE_URL;
-if (!url) {
-	throw new Error('DATABASE_URL mangler');
+let _db;
+
+export function getDb() {
+	if (_db) return _db;
+	const url = process.env.DATABASE_URL;
+	if (!url) throw new Error('DATABASE_URL mangler');
+	_db = drizzle({ client: neon(url), schema });
+	return _db;
 }
 
-const sql = neon(url);
-export const db = drizzle({ client: sql, schema });
 export { schema };
