@@ -1,6 +1,8 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 app.get('/', (_req, res) => {
@@ -9,7 +11,7 @@ app.get('/', (_req, res) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-module.exports = app;
+export default app;
 
 if (!process.env.VERCEL) {
 	const port = Number(process.env.PORT) || 3000;
