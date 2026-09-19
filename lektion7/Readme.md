@@ -2,7 +2,14 @@
 
 Fra DOM og events til at hente API-data med `fetch`. Timen åbner med
 blodtryksdemoen, der ikke nåede med i Lektion 5. Derefter henter I
-patientliste og logger ind mod underviser-API'et.
+patientlisten og viser den i en tabel, og logger ind mod underviser-API'et.
+
+## Forberedelse
+
+Det forventes, at du har forberedt dig — JSON, `fetch`/`async`/`await`,
+Authors Page-workshoppen og en kort HTML-tabel (ca. 60 min).
+
+[Forberedelse til Lektion 7](forberedelse.md)
 
 ## Program (4 timer)
 
@@ -13,7 +20,7 @@ patientliste og logger ind mod underviser-API'et.
 | 10 min | Quiz | DOM, events, `classList`, betingelser |
 | 25 min | Gennemgang | `fetch`, `async`/`await`, JSON, `response.ok` — CORS som aside |
 | 10 min | Quiz | fetch |
-| 45 min | Øvelse 1 | **Patientliste** — hent `GET /api/patients` og vis listen i DOM'en |
+| 45 min | Øvelse 1 | **Patientliste** — hent `GET /api/patients` og vis listen i en tabel |
 | 40 min | Øvelse 2 | **Login** — formularen kalder `POST /api/login`, eller samme idé i projektet |
 
 Der er afsat 45 minutter til pauser, som lægges ind undervejs.
@@ -37,7 +44,7 @@ står her:
 - læse et input, forgrene med `if`/`else if` og sætte én CSS-klasse med `classList`
 - forklare at `fetch` henter data fra en URL, mens siden kører i browseren
 - kalde `GET /api/patients` med `async`/`await`, tjekke `response.ok` og læse JSON
-- vise listen i DOM'en
+- vise listen i en HTML-tabel (`cpr` og `navn`)
 - sende `POST /api/login` fra login-formularen
 - kende CORS som grunden til at underviser-API'et tillader `origin: '*'`
 - bruge én af delene i projektets mockup (stadig uden egen backend)
