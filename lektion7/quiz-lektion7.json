@@ -1,0 +1,96 @@
+{
+  "title": "Lektion 7: DOM",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvad bruges document.getElementById til?",
+      "options": [
+        "At finde et HTML-element i DOM'en",
+        "At hente JSON fra en server",
+        "At oprette en CSS-fil",
+        "At sende en POST-request"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvad gør addEventListener(\"click\", ...)?",
+      "options": [
+        "Den kører funktionen med det samme, når scriptet indlæses",
+        "Den venter på et klik og kører så funktionen",
+        "Den skifter CSS-fil",
+        "Den gemmer værdien i Git"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvad er upper.value, når feltet har type=\"number\"?",
+      "options": [
+        "Altid et tal af typen number",
+        "Altid en streng — også når brugeren har skrevet 140",
+        "null, indtil man kalder Number()",
+        "Et objekt med felterne cpr og navn"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvad gør upper.classList.add(\"ok\")?",
+      "options": [
+        "Den skriver teksten \"ok\" i feltet",
+        "Den lægger CSS-klassen ok på elementet",
+        "Den henter en fil ved navn ok.css",
+        "Den sletter de andre klasser automatisk"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q5",
+      "type": "mc",
+      "prompt": "Hvorfor fjerner demoen alle tilstandsklasser, før den lægger en ny på?",
+      "options": [
+        "Fordi classList kun kan have én klasse i alt",
+        "Så en gammel farve (fx lav) ikke hænger ved, når værdien ændres",
+        "Fordi browseren ellers ignorerer CSS",
+        "Fordi Number() kræver, at klasserne er tomme"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q6",
+      "type": "mc",
+      "prompt": "I demoen: hvad sker der, hvis feltet Øvre er tomt?",
+      "options": [
+        "Koden kalder Number(\"\") og viser OK",
+        "Koden viser en fejl, sætter klassen fejl og stopper med return",
+        "Koden læser i stedet feltet Nedre",
+        "Koden sender værdien til underviser-API'et"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Hvilken gren kører for værdien 89, når koden er if (value < 90) … else if (value <= 139) … else …?",
+      "options": [
+        "else if-grenen (OK)",
+        "if-grenen (lav)",
+        "else-grenen (høj)",
+        "Ingen — 89 er en streng og kan ikke sammenlignes"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q8",
+      "type": "tf",
+      "prompt": "I blodtryksdemoen styrer feltet Nedre, hvilken farve Øvre får.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    }
+  ]
+}

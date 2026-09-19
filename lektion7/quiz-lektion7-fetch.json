@@ -1,0 +1,108 @@
+{
+  "title": "Lektion 7: fetch",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvad gør fetch i browseren?",
+      "options": [
+        "Den gemmer HTML-filen i Git",
+        "Den henter data fra en URL, mens siden kører",
+        "Den kompilerer JavaScript til C#",
+        "Den skifter CSS-klasse på et inputfelt"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvad er JSON, før I kalder res.json() / JSON.parse?",
+      "options": [
+        "Et færdigt JavaScript-objekt, I kan skrive patient.navn på",
+        "Tekst i et aftalt format",
+        "En HTML-tabel",
+        "En CSS-regel"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvad får I typisk ud af await res.json() på GET /api/patients?",
+      "options": [
+        "En array af objekter med cpr og navn",
+        "En HTML-streng med en færdig tabel",
+        "Et password til hver patient",
+        "En Git-commit"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvad er forskellen på .then() og async/await her?",
+      "options": [
+        "await virker kun i Node, ikke i browseren",
+        "async/await er en mere læsbar måde at vente på det samme promise, som .then() bruger",
+        ".then() parser JSON; await kan kun hente HTML",
+        "Man må ikke blande dem i samme projekt"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q5",
+      "type": "mc",
+      "prompt": "Hvornår er res.ok sand?",
+      "options": [
+        "Når statuskoden er 200–299",
+        "Så snart fetch er kaldt, uanset svar",
+        "Kun ved status 401",
+        "Kun hvis CORS er slået fra"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q6",
+      "type": "tf",
+      "prompt": "fetch kaster en exception i JavaScript, når serveren svarer 401.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    },
+    {
+      "id": "q7",
+      "type": "mc",
+      "prompt": "Hvorfor sender underviser-API'et Access-Control-Allow-Origin: *?",
+      "options": [
+        "Så browseren tillader fetch fra file:// og localhost (CORS)",
+        "Så password hashes i databasen",
+        "Så GET /api/patients kræver login",
+        "Så JSON bliver til HTML"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q8",
+      "type": "mc",
+      "prompt": "Hvad skal med, når I logger ind med POST /api/login?",
+      "options": [
+        "Kun URL'en — fetch gætter resten",
+        "method: \"POST\", header Content-Type: application/json og en JSON-body med cpr og password",
+        "En SOAP-kuvert med XML",
+        "Et session-cookie, I selv har gemt i localStorage"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q9",
+      "type": "mc",
+      "prompt": "Hvor skal patientrækkerne typisk indsættes i tabellen?",
+      "options": [
+        "I <thead>",
+        "I <tbody>",
+        "I <title>",
+        "I <script>"
+      ],
+      "correct": [1]
+    }
+  ]
+}

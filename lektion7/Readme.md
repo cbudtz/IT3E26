@@ -20,14 +20,20 @@ Authors Page-workshoppen og en kort HTML-tabel (ca. 60 min).
 | 10 min | Quiz | DOM, events, `classList`, betingelser |
 | 25 min | Gennemgang | `fetch`, `async`/`await`, JSON, `response.ok` — CORS som aside |
 | 10 min | Quiz | fetch |
-| 45 min | Øvelse 1 | **Patientliste** — hent `GET /api/patients` og vis listen i en tabel |
-| 40 min | Øvelse 2 | **Login** — formularen kalder `POST /api/login`, eller samme idé i projektet |
+| 45 min | [Øvelse 1](oevelser.md) | **Patientliste** — hent `GET /api/patients` og vis listen i en tabel |
+| 40 min | [Øvelse 2](oevelser.md) | **Login** — formularen kalder `POST /api/login`, eller samme idé i projektet |
 
 Der er afsat 45 minutter til pauser, som lægges ind undervejs.
 
 ## Slides
 
 [Forelæsningsslides](forelaesning.md?show=slide)
+
+## Øvelser
+
+Øvelserne står samlet her, med mere uddybning end på slidesne:
+
+[Øvelser til Lektion 7](oevelser.md)
 
 ## Underviser-API
 
