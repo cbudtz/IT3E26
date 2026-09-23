@@ -32,37 +32,49 @@ Efter lektionen skal du kunne:
 
 ---
 
+
+
 # Live demo — inputvalidering
 
 ---
+
+
 
 ## Blodtryk: feltet Øvre
 
 Vi læser ét felt, forgrener med `if` og sætter én CSS-klasse.
 
-<a href="/lektion7/dom-blodtryk.html" target="_blank" rel="noreferrer">Åbn DOM-demoen</a>
+[Åbn DOM-demoen](/lektion7/dom-blodtryk.html)
 
 Prøv tomt felt, 89, 90, 139 og 140. Kun feltet **Øvre** ændrer farve.
 
 ---
 
+
+
 ## Det I så
 
-| Input | Tekst | Klasse på Øvre |
-|---|---|---|
-| tomt | Udfyld feltet Øvre | `fejl` |
-| 89 | Lav | `lav` |
-| 90 | OK | `ok` |
-| 139 | OK | `ok` |
-| 140 | Høj | `hoj` |
+
+| Input | Tekst              | Klasse på Øvre |
+| ----- | ------------------ | -------------- |
+| tomt  | Udfyld feltet Øvre | `fejl`         |
+| 89    | Lav                | `lav`          |
+| 90    | OK                 | `ok`           |
+| 139   | OK                 | `ok`           |
+| 140   | Høj                | `hoj`          |
+
 
 Feltet **Nedre** er med i HTML'en, men koden læser det ikke. Bevidst.
 
 ---
 
+
+
 # Opsamling — DOM
 
 ---
+
+
 
 ## Fra Lektion 5
 
@@ -75,6 +87,8 @@ I kan allerede:
 I dag: **læse et tal**, **forgrene**, og **skifte CSS-klasse**.
 
 ---
+
+
 
 ## Find, lyt, læs
 
@@ -92,6 +106,8 @@ button.addEventListener("click", () => {
 
 ---
 
+
+
 ## classList
 
 CSS-klassen sidder på elementet. JavaScript tænder og slukker den:
@@ -105,6 +121,8 @@ Fjern de gamle tilstande **før** du lægger den nye på. Ellers hænger forrige
 farve ved.
 
 ---
+
+
 
 ## Tomt felt først
 
@@ -122,6 +140,8 @@ const value = Number(raw);
 
 ---
 
+
+
 ## if / else if
 
 ```js
@@ -138,9 +158,13 @@ if (value < 90) {
 
 ---
 
+
+
 # Quiz — DOM
 
 ---
+
+
 
 ## Quiz!
 
@@ -150,13 +174,19 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 ---
 
+
+
 # Pause
 
 ---
 
+
+
 # Gennemgang — fetch
 
 ---
+
+
 
 ## Opsamling fra forberedelsen
 
@@ -172,6 +202,8 @@ I timen bruger vi **samme mønster** på patientlisten:
 Nyt i dag: `response.ok`, CORS, og rækker i en **tabel**.
 
 ---
+
+
 
 ## JSON
 
@@ -192,6 +224,8 @@ Password kommer **aldrig** med i listen.
 
 ---
 
+
+
 ## fetch og await
 
 ```js
@@ -202,14 +236,15 @@ const patienter = await res.json();
 Siden bliver på skærmen. Browseren henter dataene i baggrunden.
 `await` venter på svaret, uden at I skal kæde `.then()`.
 
-Funktionen, der bruger `await`, skal være `async`.
+Funktionen, der bruger `await`, skal være `async`. Det er både fetch() og json().
 
 ---
 
+
+
 ## response.ok
 
-`fetch` kaster **ikke** en fejl ved HTTP 401 eller 404. I får et svar —
-bare med en dårlig status.
+`fetch` kaster **ikke** en fejl ved HTTP 401 eller 404. I får et svar — bare med en negativ status.
 
 ```js
 const res = await fetch("https://it3e26.vercel.app/api/patients");
@@ -223,6 +258,8 @@ const patienter = await res.json();
 
 ---
 
+
+
 ## CORS — kort
 
 Browseren blokerer `fetch` til et **andet origin** (anden protokol, host
@@ -235,6 +272,8 @@ I bygger **ikke** API'et i dag. CORS er grunden til, at I overhovedet kan
 kalde det.
 
 ---
+
+
 
 ## Fra array til tabel
 
@@ -266,6 +305,8 @@ for (const p of patienter) {
 
 ---
 
+
+
 ## POST kommer i øvelse 2
 
 Login er et `POST` med JSON i body:
@@ -284,9 +325,13 @@ Kontrakt og testpatienter: [API til Lektion 7](api.md).
 
 ---
 
+
+
 # Quiz — fetch
 
 ---
+
+
 
 ## Quiz!
 
@@ -296,9 +341,13 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 ---
 
+
+
 # Pause
 
 ---
+
+
 
 # Øvelser
 
@@ -310,6 +359,8 @@ API'et: [https://it3e26.vercel.app/api/patients](https://it3e26.vercel.app/api/p
 
 ---
 
+
+
 ## Øvelse 1: Patientliste
 
 Hent `GET /api/patients` og vis `cpr` og `navn` i en tabel.
@@ -319,6 +370,8 @@ Hent `GET /api/patients` og vis `cpr` og `navn` i en tabel.
 - én række pr. patient i `tbody`
 
 ---
+
+
 
 ## Øvelse 2: Login
 

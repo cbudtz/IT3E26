@@ -6,38 +6,43 @@
       "type": "mc",
       "prompt": "Hvad er JavaScripts rolle på en webside?",
       "options": [
-        "At beskrive indhold og struktur",
+        "At beskrive sidens indhold og struktur",
         "At beskrive udseende og placering",
-        "At beskrive adfærd og reaktioner",
-        "At gemme projektets historik"
+        "At beskrive struktur, udseende og adfærd i ét sprog",
+        "At beskrive adfærd og reaktioner"
       ],
-      "correct": [2]
+      "correct": [3]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvordan får en JavaScript-variabel typisk sin type?",
       "options": [
-        "Den angives i deklarationen, som i C# med int count",
         "Den får type fra den aktuelle værdi",
-        "Den har ingen type, før koden kompileres",
-        "Den får altid typen string"
+        "Den skrives foran navnet, som int count i C#",
+        "Den første værdi låser typen, så den ikke kan skifte senere",
+        "let betyder tal, og const betyder tekst"
       ],
-      "correct": [1]
+      "correct": [0]
     },
     {
       "id": "q3",
       "type": "mc",
-      "prompt": "Hvilket nøgleord bruger du normalt til en værdi, der ikke skal tildeles igen?",
-      "options": ["var", "let", "const", "static"],
+      "prompt": "Hvorfor bruger eksemplet `let visits = 0` og ikke `const`?",
+      "options": [
+        "Fordi visits er et tal, og const kun bruges til tekst",
+        "Fordi let gør variablen global, og const gør den lokal",
+        "Fordi visits senere tildeles en ny værdi",
+        "Fordi const ville låse tallet, men stadig tillade visits = visits + 1"
+      ],
       "correct": [2]
     },
     {
       "id": "q4",
       "type": "mc",
-      "prompt": "Hvilket nøgleord bruger du, når variablen skal kunne tildeles en ny værdi senere?",
-      "options": ["const", "let", "static", "class"],
-      "correct": [1]
+      "prompt": "Hvad er værdien af `measurements[0]`, når `const measurements = [118, 124, 121]`?",
+      "options": ["124", "0", "121", "118"],
+      "correct": [3]
     },
     {
       "id": "q5",
@@ -51,130 +56,130 @@
       "type": "mc",
       "prompt": "Hvad er `[118, 124, 121]` i JavaScript?",
       "options": [
-        "En array — en liste af værdier i rækkefølge",
-        "Et objekt med tre navngivne felter",
-        "En funktion, der returnerer tre tal",
-        "En CSS-regel"
+        "Et objekt, hvor 118, 124 og 121 er navne på felter",
+        "En liste af objekter med ét måletal hver",
+        "En array: værdier i rækkefølge, første element på indeks 0",
+        "Et objekt med felterne systolic, diastolic og unit"
       ],
-      "correct": [0]
+      "correct": [2]
     },
     {
       "id": "q7",
       "type": "mc",
-      "prompt": "Hvordan opretter du et objekt med navngivne felter?",
+      "prompt": "Hvilket udtryk er et objekt med navngivne felter?",
       "options": [
-        "`[124, 82]`",
         "`{ systolic: 124, diastolic: 82 }`",
-        "`function measurement() {}`",
-        "`<p>124</p>`"
+        "`[118, 124, 121]`",
+        "`function measurement(systolic, diastolic) {}`",
+        "`systolic: 124, diastolic: 82`"
       ],
-      "correct": [1]
+      "correct": [0]
     },
     {
       "id": "q8",
       "type": "mc",
-      "prompt": "Hvad er en funktion i JavaScript?",
+      "prompt": "Hvad kendetegner en funktion her?",
       "options": [
-        "En CSS-regel, der samler farver",
-        "En handling, der er samlet, så den kan bruges flere gange",
-        "Et HTML-element i DOM'en",
-        "Et commit i Git"
+        "Den skal ligge i en klasse, før den kan kaldes",
+        "Den kører dér, hvor den står skrevet, også uden at blive kaldt",
+        "Den er et objekt med felter, man læser med punktum",
+        "Den samler en handling, så den kan kaldes flere gange"
       ],
-      "correct": [1]
+      "correct": [3]
     },
     {
       "id": "q9",
       "type": "mc",
-      "prompt": "Hvad bruges return til i en funktion?",
+      "prompt": "Hvad gør return, som console.log ikke gør?",
       "options": [
-        "At koble CSS på HTML",
-        "At sende en værdi tilbage fra funktionen",
-        "At oprette en Git-branch",
-        "At åbne DevTools"
+        "Den skriver værdien i Console og afslutter scriptet",
+        "Den ændrer parameteren, før funktionen slutter",
+        "Den sender en værdi tilbage, så kaldet kan bruge den",
+        "Den opretter funktionens parametre"
       ],
-      "correct": [1]
+      "correct": [2]
     },
     {
       "id": "q10",
       "type": "mc",
-      "prompt": "Hvad er en parameter i en funktion?",
+      "prompt": "I `function greeting(name)`, hvad er name?",
       "options": [
-        "Input til funktionen",
-        "Den værdi, funktionen altid logger i Console",
-        "Navnet på HTML-filen",
-        "En CSS-selector"
+        "Den tekst, funktionen sender tilbage",
+        "Parameteren: den værdi, kaldet sender ind",
+        "Et felt, man læser som greeting.name",
+        "En variabel uden for funktionen, som den altid kan læse"
       ],
-      "correct": [0]
+      "correct": [1]
     },
     {
       "id": "q11",
       "type": "mc",
       "prompt": "Hvornår kører koden i else-grenen?",
       "options": [
-        "Altid, både når betingelsen er sand og falsk",
         "Kun når betingelsen i if er falsk",
-        "Kun første gang funktionen kaldes",
-        "Kun hvis funktionen bruger return"
+        "Når betingelsen i if er sand",
+        "Både når betingelsen er sand, og når den er falsk",
+        "Når betingelsen er sand, men if-grenen allerede har ramt return"
       ],
-      "correct": [1]
+      "correct": [0]
     },
     {
       "id": "q12",
       "type": "mc",
       "prompt": "Hvorfor bruger vi typisk === til sammenligning i JavaScript?",
       "options": [
-        "Fordi == ikke findes i browseren",
-        "Fordi === sammenligner uden automatisk typekonvertering",
-        "Fordi === kun virker på strenge",
-        "Fordi === er det samme som et assignment med ="
+        "Fordi === tjekker typen, mens == kun tjekker om værdien findes",
+        "Fordi == afviser forskellige typer, mens === først konverterer dem",
+        "Fordi === er en tildeling, og == er en sammenligning",
+        "Fordi === sammenligner uden automatisk typekonvertering"
       ],
-      "correct": [1]
+      "correct": [3]
     },
     {
       "id": "q13",
       "type": "mc",
       "prompt": "Hvad bruges document.getElementById til?",
       "options": [
-        "At finde et HTML-element i DOM'en",
-        "At hente en fil fra GitHub",
-        "At oprette en funktion",
-        "At skrive CSS"
+        "At oprette et nyt element og lægge det ind i siden",
+        "At finde et eksisterende HTML-element i DOM'en",
+        "At læse teksten i et element og returnere den som tal",
+        "At koble en klik-hændelse på et element"
       ],
-      "correct": [0]
+      "correct": [1]
     },
     {
       "id": "q14",
       "type": "mc",
       "prompt": "Hvad gør en event listener?",
       "options": [
-        "Den gemmer alle commits",
+        "Den kører funktionen én gang, når siden er indlæst, og lytter ikke videre",
+        "Den ændrer teksten i det element, den bliver sat på",
         "Den venter på en hændelse og kører kode, når den sker",
-        "Den ændrer en remote branch",
-        "Den installerer JavaScript"
+        "Den finder et element ud fra dets id"
       ],
-      "correct": [1]
+      "correct": [2]
     },
     {
       "id": "q15",
       "type": "mc",
       "prompt": "Hvad sker der, når koden kører `message.innerText = \"Hej, Maja!\";`?",
       "options": [
-        "Den opretter en ny HTML-fil på disken",
         "Den ændrer den synlige tekst i elementet i DOM'en",
-        "Den sender en commit til GitHub",
-        "Den skifter sidens CSS-fil"
+        "Den opretter et nyt element med den tekst under message",
+        "Den gemmer teksten i en variabel, men viser den ikke",
+        "Den erstatter hele HTML-dokumentet med teksten"
       ],
-      "correct": [1]
+      "correct": [0]
     },
     {
       "id": "q16",
       "type": "mc",
       "prompt": "Hvad betyder defer på `<script src=\"app.js\" defer></script>`?",
       "options": [
-        "At scriptet aldrig kører",
+        "At scriptet kører med det samme, mens browseren læser HTML'en",
         "At browseren kan læse HTML'en færdig, før scriptet kører",
-        "At JavaScript kompileres til C#",
-        "At filen hentes fra Git i stedet for fra mappen"
+        "At scriptet først kører, når brugeren klikker på siden",
+        "At scriptet venter, til alle billeder også er hentet"
       ],
       "correct": [1]
     }

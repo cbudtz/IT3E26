@@ -2,13 +2,9 @@ const upper = document.getElementById("oevre");
 const button = document.getElementById("vurder");
 const result = document.getElementById("resultat");
 
-const classes = ["fejl", "lav", "ok", "hoj"];
-
 button.addEventListener("click", () => {
-  //fjern vores styling klasser, hvis de fines på input feltet
-  //.classList er DOM elementets klasser
-  classes.forEach((name) => upper.classList.remove(name));
-  //Tekst output
+  upper.classList.remove("fejl", "lav", "ok", "hoj");
+
   const raw = upper.value.trim();
   if (raw === "") {
     result.innerText = "Udfyld feltet Øvre";

@@ -18,22 +18,22 @@
       "type": "mc",
       "prompt": "Hvad gør addEventListener(\"click\", ...)?",
       "options": [
-        "Den kører funktionen med det samme, når scriptet indlæses",
-        "Den venter på et klik og kører så funktionen",
-        "Den skifter CSS-fil",
-        "Den gemmer værdien i Git"
+        "Den kører funktionen med det samme, når lytteren sættes på",
+        "Den erstatter en tidligere click-lytter på samme knap",
+        "Den kører kun, hvis knappen er type=\"submit\" og formularen sendes",
+        "Den venter på et klik og kører så funktionen"
       ],
-      "correct": [1]
+      "correct": [3]
     },
     {
       "id": "q3",
       "type": "mc",
       "prompt": "Hvad er upper.value, når feltet har type=\"number\"?",
       "options": [
-        "Altid et tal af typen number",
+        "Altid et tal, fordi type=\"number\" konverterer det",
         "Altid en streng — også når brugeren har skrevet 140",
-        "null, indtil man kalder Number()",
-        "Et objekt med felterne cpr og navn"
+        "En streng når feltet er tomt, et tal når der står 140",
+        "undefined, indtil man kalder Number()"
       ],
       "correct": [1]
     },
@@ -42,12 +42,12 @@
       "type": "mc",
       "prompt": "Hvad gør upper.classList.add(\"ok\")?",
       "options": [
-        "Den skriver teksten \"ok\" i feltet",
-        "Den lægger CSS-klassen ok på elementet",
-        "Den henter en fil ved navn ok.css",
-        "Den sletter de andre klasser automatisk"
+        "Den sætter class til præcis \"ok\" og fjerner de andre klasser",
+        "Den skriver teksten \"ok\" i resultatfeltet",
+        "Den lægger klassen ok på, og lader de øvrige klasser blive",
+        "Den virker kun, hvis elementet ikke har en klasse i forvejen"
       ],
-      "correct": [1]
+      "correct": [2]
     },
     {
       "id": "q5",
@@ -55,40 +55,40 @@
       "prompt": "Hvorfor fjerner demoen alle tilstandsklasser, før den lægger en ny på?",
       "options": [
         "Fordi classList kun kan have én klasse i alt",
-        "Så en gammel farve (fx lav) ikke hænger ved, når værdien ændres",
-        "Fordi browseren ellers ignorerer CSS",
-        "Fordi Number() kræver, at klasserne er tomme"
+        "Fordi add(\"ok\") selv fjerner lav, fejl og hoj",
+        "Fordi stylesheetets rækkefølge altid vælger den rigtige farve, så remove kun er pænhed",
+        "Så en gammel farve (fx lav) ikke hænger ved, når værdien ændres"
       ],
-      "correct": [1]
+      "correct": [3]
     },
     {
       "id": "q6",
       "type": "mc",
       "prompt": "I demoen: hvad sker der, hvis feltet Øvre er tomt?",
       "options": [
-        "Koden kalder Number(\"\") og viser OK",
         "Koden viser en fejl, sætter klassen fejl og stopper med return",
-        "Koden læser i stedet feltet Nedre",
-        "Koden sender værdien til underviser-API'et"
+        "Number(\"\") bliver 0, så grenen for lav kører",
+        "Tom streng bliver NaN og ryger i else (høj)",
+        "trim() gør feltet til 0, og 0 er OK fordi 0 <= 139"
       ],
-      "correct": [1]
+      "correct": [0]
     },
     {
       "id": "q7",
       "type": "mc",
       "prompt": "Hvilken gren kører for værdien 89, når koden er if (value < 90) … else if (value <= 139) … else …?",
       "options": [
-        "else if-grenen (OK)",
-        "if-grenen (lav)",
-        "else-grenen (høj)",
-        "Ingen — 89 er en streng og kan ikke sammenlignes"
+        "else if, fordi 89 også er <= 139",
+        "else, fordi 89 hverken er 90 eller 139",
+        "if, fordi 89 er < 90",
+        "Ingen gren — sammenligningen kører på strengen \"89\""
       ],
-      "correct": [1]
+      "correct": [2]
     },
     {
       "id": "q8",
       "type": "tf",
-      "prompt": "I blodtryksdemoen styrer feltet Nedre, hvilken farve Øvre får.",
+      "prompt": "I blodtryksdemoen fjerner classList.add(\"ok\") selv de andre tilstandsklasser.",
       "options": ["Sandt", "Falsk"],
       "correct": [1]
     }

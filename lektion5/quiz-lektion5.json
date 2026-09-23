@@ -4,79 +4,79 @@
     {
       "id": "q1",
       "type": "mc",
-      "prompt": "Hvad er et commit?",
+      "prompt": "Du har committet på din branch, men ikke pushet. Hvor ligger ændringen?",
       "options": [
-        "En gemt ændring i repositoryets historik",
-        "En kopi af hele computeren",
-        "En GitHub-bruger",
-        "En branch, der altid hedder main"
-      ],
-      "correct": [0]
-    },
-    {
-      "id": "q2",
-      "type": "mc",
-      "prompt": "Hvorfor arbejder man typisk på en branch?",
-      "options": [
-        "For at slette historikken",
-        "For at holde en opgave adskilt fra main, indtil den er klar",
-        "For at undgå commits",
-        "For at gøre HTML til JavaScript"
-      ],
-      "correct": [1]
-    },
-    {
-      "id": "q3",
-      "type": "mc",
-      "prompt": "Hvad gør en merge?",
-      "options": [
-        "Den sletter branchen, så kun working copy er tilbage",
-        "Den samler ændringer fra én branch ind i en anden",
-        "Den sender filer direkte til browseren",
-        "Den opretter et nyt GitHub-login"
-      ],
-      "correct": [1]
-    },
-    {
-      "id": "q4",
-      "type": "mc",
-      "prompt": "Hvad sender push typisk?",
-      "options": [
-        "Lokale commits til en remote",
-        "Remote ændringer til din lokale mappe",
-        "En pull request direkte til browseren",
-        "En HTML-fil til DOM'en"
-      ],
-      "correct": [0]
-    },
-    {
-      "id": "q5",
-      "type": "mc",
-      "prompt": "Hvad gør pull typisk?",
-      "options": [
-        "Den opretter en ny branch på GitHub",
-        "Den henter ændringer fra en remote og integrerer dem lokalt",
-        "Den sender lokale commits til en remote",
-        "Den åbner en pull request"
-      ],
-      "correct": [1]
-    },
-    {
-      "id": "q6",
-      "type": "mc",
-      "prompt": "Hvad er en pull request?",
-      "options": [
-        "En særlig slags commit med review-tekst",
-        "En kommando, der henter alle branches på én gang",
-        "En forespørgsel om at få en branch ind i en anden branch",
-        "En backup af hele det lokale repository"
+        "På GitHub, så gruppen kan se den med det samme",
+        "I en pull request, fordi et commit åbner reviewet",
+        "I den lokale historik; de andre ser den først efter push",
+        "På main, fordi et commit altid lander dér"
       ],
       "correct": [2]
     },
     {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvorfor lave opgaven på en branch frem for at committe direkte på main?",
+      "options": [
+        "Så main kan blive den stabile linje, indtil opgaven er merget",
+        "Så de andre ikke kan pushe til main, mens branchen findes",
+        "Så commits på branchen kasseres ved merge og ikke indgår i main",
+        "Så GitHub merger automatisk, når commit-beskeden er udfyldt"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvornår er ændringen merget?",
+      "options": [
+        "Når committen ligger på din branch",
+        "Når branchen er pushet, og GitHub viser forskellen",
+        "Når pull requesten er oprettet, og en anden kan se filerne",
+        "Når ændringerne fra den ene branch er samlet ind i den anden"
+      ],
+      "correct": [3]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Dine nye commits ligger kun lokalt. Hvad sender dem til GitHub?",
+      "options": [
+        "pull",
+        "push",
+        "merge til main på din egen computer",
+        "en pull request, før branchen er pushet"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q5",
+      "type": "mc",
+      "prompt": "En makker har merget til main på GitHub. Du vil have det ind lokalt. Hvad bruger du?",
+      "options": [
+        "push, så din main bliver den, GitHub gemmer",
+        "en pull request fra main til din computer",
+        "pull, så remote-ændringerne hentes og integreres lokalt",
+        "commit, så Git markerer at du har set makkerens ændring"
+      ],
+      "correct": [2]
+    },
+    {
+      "id": "q6",
+      "type": "mc",
+      "prompt": "Hvad er en pull request i jeres samarbejdsflow?",
+      "options": [
+        "At hente den nyeste main, før du opretter en branch",
+        "Et commit med en lang besked, som de andre reviewer i historikken",
+        "Et trin der både pusher branchen og merger den ind i main",
+        "En forespørgsel om at få din branch ind i en anden, typisk efter review"
+      ],
+      "correct": [3]
+    },
+    {
       "id": "q7",
       "type": "tf",
-      "prompt": "Man bør normalt committe adgangskoder og API-nøgler, så gruppen kan dele dem.",
+      "prompt": "En API-nøgle må gerne committes, hvis den kun ligger på en feature-branch og ikke på main.",
       "options": ["Sandt", "Falsk"],
       "correct": [1]
     }
