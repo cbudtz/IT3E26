@@ -67,7 +67,8 @@ I `patienter.js`:
 5. Brug `textContent` til cellerne — ikke `innerHTML`.
 6. Kald funktionen, når scriptet kører.
 
-Gennemgangen viste løkken med `createElement`. Den må I gerne bruge.
+Gennemgangen viste først en HTML-streng (`innerHTML`) og derefter løkken med
+`createElement`. I øvelsen bruger I `createElement`.
 
 ### Tjekliste
 

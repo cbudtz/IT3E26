@@ -277,14 +277,29 @@ kalde det.
 
 ## Fra array til tabel
 
+`thead` står i HTML'en. Løkken fylder `tbody` — samme mønster som Authors Page.
+
 ```html
-<table>
-  <thead>
-    <tr><th>CPR</th><th>Navn</th></tr>
-  </thead>
-  <tbody id="liste"></tbody>
-</table>
+<tbody id="liste"></tbody>
 ```
+
+```js
+const tbody = document.getElementById("liste");
+for (const p of patienter) {
+  tbody.innerHTML += `
+    <tr>
+      <td>${p.cpr}</td>
+      <td>${p.navn}</td>
+    </tr>
+  `;
+}
+```
+
+---
+
+## Samme tabel med elementer
+
+`textContent` sætter teksten som tekst. Den version bruger I i øvelse 1.
 
 ```js
 const tbody = document.getElementById("liste");
@@ -299,9 +314,6 @@ for (const p of patienter) {
   tbody.append(tr);
 }
 ```
-
-`thead` er fast. `tbody` fylder I i løkken. Brug `textContent` — ikke
-`innerHTML` — til data fra API'et.
 
 ---
 
@@ -351,7 +363,7 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 # Øvelser
 
-**Man lærer fetch bedst ved at prøve selv.**
+**Man lærer det bedst ved at prøve selv.**
 
 Detaljerne står i [øvelsesarket](oevelser.md).
 
