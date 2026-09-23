@@ -180,14 +180,25 @@ decisions (lock first).
   remains the Net wrap-up.
 - Assume students know UML from 62420/62450. Do not spend dedicated Web
   lessons reteaching UML diagrams; use them only when needed by the project.
-- **D1:** clickable frontend mockup with JavaScript, no backend.
+- **D1:** clickable frontend mockup with JavaScript, no backend, published
+  as a static URL (Vercel).
 - **D2:** MVP with frontend, backend/API, PostgreSQL and one central user
   action.
 - **D3:** functioning system with additional user flows, authentication,
   deployment and completed portfolio. Authorization is not required.
 - **L7 fetch target:** the teacher-provided patient API (D16); CORS is
   handled as an aside there, not as a dedicated topic.
-- **Sessions stay in L13** (application state), not moved to L21 auth.
+- **L9 is client state, not Express.** A setter updates data and re-renders
+  (the patient table from L7). `localStorage` survives refresh. Static
+  Vercel deploy so D1 has a URL. Curriculum is intentionally light; L10 is
+  project time toward the hand-in. No Node internals, no own backend.
+- **First Express / HTTP request-response** moves from L9 to **L13** (after
+  D1 and the autumn break): one JSON endpoint, tested with curl/Postman.
+  REST/CRUD stays in L15.
+- **SQL primer** moves from L13 to **L17**, next to PostgreSQL. Students
+  already know SQL from 62450.
+- **Server sessions stay in L21** with authentication. Browser
+  `localStorage` in L9 is not a session.
 - **Repository layer is taught explicitly in L17** (`Express → repository →
   PostgreSQL`) — makes "lagdelte applikationer" (L11, course goal) concrete
   and connects to 62450's UI/app-logic separation.
@@ -211,12 +222,12 @@ free of old-course references.
 | 6 | nyt (bygger på 62450) |
 | 7 | L13 (omarbejdet) |
 | 8 | F25 prototype-materiale |
-| 9 | L7 (omarbejdet) |
+| 9 | nyt (klient-tilstand + static Vercel) |
 | 10 | F25 aflevering 1 |
 | D1 | D1 |
 | 11 | L9 |
 | 12 | F25 statusrapporter |
-| 13 | L11 (omarbejdet) |
+| 13 | L7 (omarbejdet). E22 L11 (application state) er delt: klient-tilstand i L9, SQL-primer i L17 |
 | 14 | L2 (forkortet) |
 | 15 | nyt |
 | 16 | L6 + L18 |

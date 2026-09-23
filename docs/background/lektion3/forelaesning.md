@@ -60,7 +60,7 @@ Lister: <ul>, <ol type="{1,a,A,I,i}">, <li>
 Input: <input type="{text, number, password,...}" name="" required placeholder="">
 Forms: <form action="{url}" method="{get,post}">
 Button: <button type="{submit, reset, button}"> (<input type="submit"
-#NYT: Lister er L1 (Cat Photo App) — flyt til "Sidst". Nyt i L3: `<form>`, `<input>`, `<label>`, `<button>` — i *jeres* gennemgang, ikke FCC Forms and Tables. `action`/`method` kun som "her vil browseren sende hen" — HTTP hører til L9/L11; D1 har ingen backend.
+#NYT: Lister er L1 (Cat Photo App) — flyt til "Sidst". Nyt i L3: `<form>`, `<input>`, `<label>`, `<button>` — i *jeres* gennemgang, ikke FCC Forms and Tables. `action`/`method` kun som "her vil browseren sende hen" — HTTP hører til L11/L13; D1 har ingen backend. L9 er klient-tilstand og static Vercel.
 
 Inputs
 <input type="{text, number, password,...}" name="" required placeholder="">

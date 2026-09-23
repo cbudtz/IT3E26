@@ -69,7 +69,7 @@ Eksempler til inspiration
 
 ## Projektet — tre delafleveringer
 
-- **D1** — forstudie og klikbar frontend-mockup (uden backend)
+- **D1** — forstudie og klikbar frontend-mockup med URL (uden backend)
 - **D2** — MVP: frontend, backend/API, PostgreSQL, én central brugerhandling
 - **D3** — fungerende system med login, deployment og færdig portefølje
 

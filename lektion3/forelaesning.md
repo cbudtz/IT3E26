@@ -424,7 +424,7 @@ Ramme om felter, der hører sammen.
 - `method` — `get` eller `post`
 
 Til D1 mockup: I submitter **ikke** til en server. Brug `action="/enandenside.html"` — eller udelad `action`.
-HTTP hører til senere (Lektion 9).
+HTTP hører til senere (Lektion 11 og 13).
 
 ---
 
