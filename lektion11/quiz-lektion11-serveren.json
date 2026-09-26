@@ -1,0 +1,67 @@
+{
+  "title": "Lektion 11: serveren",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvilket request skal serveren svare 200 på?",
+      "options": [
+        "Ethvert request til port 3000",
+        "GET /api/patients",
+        "POST /api/patients",
+        "GET /"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvad svarer serveren, når stien ikke er /api/patients?",
+      "options": [
+        "200 og en tom liste",
+        "404 og en JSON-fejl",
+        "200 og HTML-siden",
+        "Ingenting. Processen stopper"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "tf",
+      "prompt": "Content-Type: application/json fortæller, at kroppen er JSON.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [0]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvorfor sætter serveren Access-Control-Allow-Origin: *?",
+      "options": [
+        "Fordi siden og serveren ikke er samme oprindelse",
+        "Fordi JSON ellers ikke kan parses",
+        "Fordi Node kræver headeren for at lytte",
+        "Fordi localStorage ellers bliver tømt"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q5",
+      "type": "tf",
+      "prompt": "HTTP husker det forrige request, så serveren ved, hvem der lige har hentet listen.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    },
+    {
+      "id": "q6",
+      "type": "mc",
+      "prompt": "Du retter et navn i listen i server.js. Hvornår ser tabellen det nye navn?",
+      "options": [
+        "Med det samme, uden at du gør mere",
+        "Når du genstarter processen og henter igen",
+        "Når du gemmer i localStorage",
+        "Først når Express er installeret"
+      ],
+      "correct": [1]
+    }
+  ]
+}

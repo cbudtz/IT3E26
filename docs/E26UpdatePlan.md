@@ -192,16 +192,24 @@ decisions (lock first).
   (the patient table from L7). `localStorage` survives refresh. Static
   Vercel deploy so D1 has a URL. Curriculum is intentionally light; L10 is
   project time toward the hand-in. No Node internals, no own backend.
-- **First Express / HTTP request-response** moves from L9 to **L13** (after
-  D1 and the autumn break): one JSON endpoint, tested with curl/Postman.
-  REST/CRUD stays in L15.
-- **SQL primer** moves from L13 to **L17**, next to PostgreSQL. Students
-  already know SQL from 62450.
-- **Server sessions stay in L21** with authentication. Browser
-  `localStorage` in L9 is not a session.
-- **Repository layer is taught explicitly in L17** (`Express → repository →
-  PostgreSQL`) — makes "lagdelte applikationer" (L11, course goal) concrete
-  and connects to 62450's UI/app-logic separation.
+- **L11 is a minimal Node server, not Express.** After the architecture
+  lecture (thin/thick, layers, HTTP, one sequence diagram) students write
+  `http.createServer`: one `GET /api/patients` that returns JSON. No POST,
+  no database. Browser `localStorage` in L9 is not a session, and it is not
+  this server.
+- **L13 is Express on that same file** (after the autumn break): routes,
+  data still in memory, tested with curl. Not a first introduction to what
+  a server is.
+- **SQL and the repository move to L15** (`Express → repository →
+  PostgreSQL`). Students already know SQL from 62450. The L13 routes stay;
+  `GET` reads and `POST` writes. No ORM.
+- **L17 is the central user action** against the database: dataflow, errors
+  and test. D2 does not include login.
+- **Access control starts in L19**, locally on the handed-in MVP: one
+  login, a session, one protected route. Course evaluation stays on L19.
+  **L21 finishes access control and deploys** the backend (hosting, env
+  vars, domains). The layered-app walkthrough that used to sit in L19 moves
+  to the L23 wrap-up; L17 already runs the layers in code.
 - **Git collaboration** (branches, pull requests, merge conflicts) is not a
   scheduled lesson. Level is gauged in L1 (survey); **if weak, introduce it
   in L3.**
@@ -225,18 +233,18 @@ free of old-course references.
 | 9 | nyt (klient-tilstand + static Vercel) |
 | 10 | F25 aflevering 1 |
 | D1 | D1 |
-| 11 | L9 |
+| 11 | L9 (tynd/tyk, lag). Node-serveren er ny. Tilstandsdiagrammer og JS-primer udgår |
 | 12 | F25 statusrapporter |
-| 13 | L7 (omarbejdet). E22 L11 (application state) er delt: klient-tilstand i L9, SQL-primer i L17 |
+| 13 | L7 (omarbejdet) som Express oven på L11-serveren. E22 L11 (application state) er delt: klient-tilstand i L9, SQL i L15 |
 | 14 | L2 (forkortet) |
-| 15 | nyt |
+| 15 | nyt (SQL + repository + PostgreSQL) |
 | 16 | L6 + L18 |
-| 17 | nyt |
+| 17 | nyt (central brugerhandling, fejl, test) |
 | 18 | projektarbejde |
 | D2 | D2 |
-| 19 | L5 + L23 (omarbejdet) |
+| 19 | L19 (adgangskontrol, lokalt). Deployment er flyttet til L21 |
 | 20 | L20 + L22 |
-| 21 | L19 |
+| 21 | L5 (deployment) + resten af L19 (session) |
 | 22 | L4 + L20 (omarbejdet) |
 | 23 | L25 |
 | 24 | — |

@@ -209,6 +209,16 @@
 	:global(.markdown pre code) { background: none; padding: 0; }
 	:global(.markdown blockquote) { margin: 0; padding: 0 1em; color: var(--muted); border-left: 0.25em solid var(--border); }
 	:global(.markdown img) { max-width: 100%; }
+	:global(.markdown p:has(img.screenshot)) {
+		overflow-x: auto;
+		max-width: 100%;
+	}
+	:global(.markdown img.screenshot) {
+		display: block;
+		max-width: none;
+		width: auto;
+		height: auto;
+	}
 
 	@media print {
 		header { display: none !important; }

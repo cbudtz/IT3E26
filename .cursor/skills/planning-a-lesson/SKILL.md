@@ -20,7 +20,7 @@ Skabeloner: `docs/templates/`. Referencelektioner: `lektion1/`, `lektion3/`, `le
 ## 2. Find eksisterende materiale
 
 - Forrige lektioner i `lektionN/` — hvad kan de studerende allerede, og hvad har de fået lovet ("gennemgås i Lektion X")?
-- `docs/background/` — gammelt E22-materiale. Find lektionen på **emne** via `docs/background/e22-lesson-plan-62581.md` (numrene matcher ikke). Respektér `#NYT`-noter. Mangler mappen: brug skill `pulling-e22-drive-material`.
+- `docs/background/` — gammelt materiale fra tidligere versioner af kurset. Find lektionen på **emne** via `docs/background/e22-lesson-plan-62581.md` (numrene matcher ikke). Respektér `#NYT`-noter. Mangler mappen: brug skill `pulling-e22-drive-material`.
 - Notér gaps: hvad kræver emnet, som hverken E22 eller tidligere lektioner dækker?
 
 ## 3. Overordnet plan — CHECKPOINT
@@ -30,11 +30,16 @@ Forelæg kort: 4–7 læringsmål, blokopdeling med tider, hvad forberedelsen d�
 ## 4. Forberedelse (`forberedelse.md`)
 
 Ud fra eksisterende ressourcer (freeCodeCamp, Learn Git Branching o.l.). Angiv tid, hvad der fokuseres på, hvad der springes over, "Når du er færdig", "Praktisk". Er ressourcevalget uklart: **CHECKPOINT**.
+Helst både teoretisk og praktisk funderet. Forelæsningens første gennemgang samler begge op.
 
+1. **Teoretisk materiale** — en tekst, der forklarer begrebet. Wikipedia, en sektion fra en lærebog eller en kort begrebsartikel. Afgræns hvilke afsnit. En programmeringsguide (MDN-tutorial, freeCodeCamp-workshop) kan være den praktiske del, men den erstatter ikke teorien, når lektionen har et begreb, der skal kunne diskuteres. Skriv om nødvendigt selv en kort tekst om emnet. 
+2. **Praktisk forberedelse, der eksemplificerer teorien** — Opgave der eksemplificerer teorien - Eks. Modul fra Free CodeCamp. 
+
+Angiv tid, fokus, hvad der springes over, "Når du er færdig", "Praktisk". Er ressourcevalget uklart: **CHECKPOINT**.
 ## 5. Forelæsning (`forelaesning.md`)
 
 - Blokke: gennemgang på 20–45 min, hver afsluttet med quiz og/eller øvelse. `# Pause`-slides mellem blokke.
-- Første gennemgang er *opsamling* på forberedelsen — ikke førstegangsgennemgang.
+- Første gennemgang er *opsamling* af forberedelsen — den teoretiske tekst og den praktiske eksemplificering. Ikke førstegangsgennemgang af nogen af dem.
 - Læringsmål er samme liste som i Readme.
 - Detaljer, der ikke kan stå på en slide, hører i øvelsesarket — link dertil.
 
@@ -56,7 +61,7 @@ Tabel: læringsmål × (forberedelse / gennemgang / øvelse / quiz). Hvert mål 
 
 ## Typiske fejl
 
-- Gennemgang, der gentager forberedelsen fra bunden i stedet for at samle op.
+- Forberedelse, der kun er en kodetur, når lektionen har et begreb, der skal kunne diskuteres. Den praktiske del skal eksemplificere teorien, ikke erstatte den.
 - Øvelser uden målbar afslutning eller uden kobling til projektet.
 - Quiz glemt, eller quiz der spørger om noget, der først gennemgås senere.
 - E22-materiale kopieret uden at følge `#NYT`-noterne eller D1–D6.

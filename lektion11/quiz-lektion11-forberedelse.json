@@ -1,0 +1,67 @@
+{
+  "title": "Lektion 11: forberedelse",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvem starter samtalen i client-server?",
+      "options": [
+        "Serveren, så snart den er startet",
+        "Klienten, med et request",
+        "Databasen",
+        "Begge samtidig"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q2",
+      "type": "tf",
+      "prompt": "En webserver kan være server for browseren og klient over for databasen i samme forløb.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [0]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvor sidder jeres D1-mockup på skalaen tynd/tyk?",
+      "options": [
+        "Tynd: den viser kun, og en server beslutter",
+        "Tyk: logik og liste ligger i browseren",
+        "Hverken tynd eller tyk, fordi der ikke er JavaScript",
+        "Tyk, fordi siden ligger på Vercel"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvad er forskellen på et lag og en tier?",
+      "options": [
+        "Et lag er et ansvar. En tier er et sted, det kører",
+        "Et lag er en maskine. En tier er en funktion",
+        "De er to ord for den samme HTTP-statuskode",
+        "Et lag er JSON. En tier er HTML"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q5",
+      "type": "mc",
+      "prompt": "Hvilket lag er beslutningen «må den her måling gemmes»?",
+      "options": [
+        "Præsentation",
+        "Applikation",
+        "Data",
+        "Browserens fane"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q6",
+      "type": "tf",
+      "prompt": "localStorage er datalaget i det færdige system.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    }
+  ]
+}

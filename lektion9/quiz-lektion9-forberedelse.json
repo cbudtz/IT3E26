@@ -1,0 +1,55 @@
+{
+  "title": "Lektion 9: forberedelse",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvad gemmer localStorage?",
+      "options": [
+        "JavaScript-objekter, direkte",
+        "Strenge",
+        "HTML-elementer",
+        "En række i gruppens database"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvordan lægger I en liste af patienter i localStorage?",
+      "options": [
+        "localStorage.setItem(\"patienter\", patienter)",
+        "localStorage.setItem(\"patienter\", JSON.stringify(patienter))",
+        "localStorage.setItem(\"patienter\", patienter.innerHTML)",
+        "sessionStorage er påkrævet, localStorage kan ikke gemme lister"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "tf",
+      "prompt": "localStorage overlever, at I lukker fanen. sessionStorage gør ikke.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [0]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvad giver getItem, hvis nøglen ikke findes?",
+      "options": [
+        "null",
+        "En tom liste",
+        "En tom streng",
+        "Den kaster en fejl med det samme"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q5",
+      "type": "tf",
+      "prompt": "Password må gerne ligge i localStorage, fordi kun jeres gruppe kan åbne siden.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    }
+  ]
+}

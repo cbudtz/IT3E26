@@ -19,15 +19,17 @@ node .cursor/skills/pulling-e22-drive-material/scripts/pull.mjs 3
 
 `--force` overwrites existing files. Lesson number may be `3` or `03`.
 
-The script reads folder IDs from `docs/background/e22-drive-materials.md`, lists the public Drive folder, exports Google Slides and Google Docs as plain text, and writes:
+The script reads folder IDs from `docs/background/e22-drive-materials.md`, lists the public Drive folder, and writes whichever of these exist:
 
-- `docs/background/lektionN/forelaesning.md`
-- `docs/background/lektionN/oevelser.md`
+- `docs/background/lektionN/forelaesning.md` — Google Slides, or an uploaded `.pptx` exported as plain text
+- `docs/background/lektionN/oevelser.md` — Google Docs
 - `docs/background/lektionN/README.md`
+
+A folder may contain only slides or only exercises. That still writes the file that is there.
 
 ## After the script
 
-1. Read both files. Replace the README **Contents** column with a one-line topic summary (see `docs/background/lektion1/README.md`).
+1. Read each file the script wrote. Replace the README **Contents** column with a one-line topic summary (see `docs/background/lektion1/README.md`).
 2. Add a row to `docs/background/README.md` if missing.
 3. Stop. Do not rewrite student-facing `lektionN/` in the same step, and do not add `#NYT` annotations during the pull.
 

@@ -1,6 +1,11 @@
 # Lektion [nummer] — Forberedelse
 
-## [Emne eller ressource] (ca. [tid])
+[Kort ramme: hvor lektionen sidder i forløbet, og hvad forberedelsen skal gøre dem i stand til at diskutere.]
+
+Forberedelsen har en teoretisk tekst og en lille praktisk opgave, der bruger
+teksten på noget, de allerede har. Forelæsningen samler begge dele op.
+
+## 1. [Teoretisk emne] (ca. [tid])
 
 Inden lektionen skal du [kort instruktion].
 

@@ -10,11 +10,31 @@ course database and the old course's Google Drive.
 | [e22-lesson-plan-62581.md](e22-lesson-plan-62581.md) | Complete 26-lesson plan (E22) with topics, preparation and deliverables | Google Sheets "E22 Lektionsplan 62581" |
 | [e22-drive-materials.md](e22-drive-materials.md) | Inventory of the old course's Google Drive (lectures + exercises per lesson) | https://drive.google.com/drive/folders/1qZ0IESfW2jFlFGfR5Igs1LZxHWu5rJUK |
 | [lektion1/](lektion1/) | Full verbatim text of Lektion 01's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion1/README.md](lektion1/README.md) |
+| [lektion2/](lektion2/) | Full verbatim text of Lektion 02's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion2/README.md](lektion2/README.md) |
 | [lektion3/](lektion3/) | Full verbatim text of Lektion 03's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion3/README.md](lektion3/README.md) |
+| [lektion4/](lektion4/) | Full verbatim text of Lektion 04's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion4/README.md](lektion4/README.md) |
 | [lektion5/](lektion5/) | Full verbatim text of Lektion 05's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion5/README.md](lektion5/README.md) |
+| [lektion6/](lektion6/) | Full verbatim text of Lektion 06's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion6/README.md](lektion6/README.md) |
+| [lektion7/](lektion7/) | Lecture slides only (no exercise doc in the Drive folder) | Google Slides, see [lektion7/README.md](lektion7/README.md) |
+| [lektion8/](lektion8/) | Full verbatim text of Lektion 08's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion8/README.md](lektion8/README.md) |
 | [lektion9/](lektion9/) | Full verbatim text of Lektion 09's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion9/README.md](lektion9/README.md) |
+| [lektion10/](lektion10/) | Lecture slides only (no exercise doc in the Drive folder) | Google Slides, see [lektion10/README.md](lektion10/README.md) |
+| [lektion11/](lektion11/) | Full verbatim text of Lektion 11's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion11/README.md](lektion11/README.md) |
+| [lektion12/](lektion12/) | Full verbatim text of Lektion 12's lecture slides and exercises, pulled from Drive | PowerPoint + Google Docs, see [lektion12/README.md](lektion12/README.md) |
 | [lektion13/](lektion13/) | Full verbatim text of Lektion 13's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion13/README.md](lektion13/README.md) |
+| [lektion14/](lektion14/) | Full verbatim text of Lektion 14's lecture slides and exercises, pulled from Drive | PowerPoint + Google Docs, see [lektion14/README.md](lektion14/README.md) |
+| [lektion15/](lektion15/) | Full verbatim text of Lektion 15's lecture slides and exercises, pulled from Drive | PowerPoint + Google Docs, see [lektion15/README.md](lektion15/README.md) |
+| [lektion16/](lektion16/) | Lecture slides only (no exercise doc in the Drive folder) | PowerPoint, see [lektion16/README.md](lektion16/README.md) |
 | [lektion17/](lektion17/) | Full verbatim text of Lektion 17's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion17/README.md](lektion17/README.md) |
+| [lektion18/](lektion18/) | Full verbatim text of Lektion 18's lecture slides and exercises, pulled from Drive | PowerPoint + Google Docs, see [lektion18/README.md](lektion18/README.md) |
+| [lektion19/](lektion19/) | Full verbatim text of Lektion 19's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion19/README.md](lektion19/README.md) |
+| [lektion20/](lektion20/) | Full verbatim text of Lektion 20's lecture slides and exercises, pulled from Drive | PowerPoint + Google Docs, see [lektion20/README.md](lektion20/README.md) |
+| [lektion21/](lektion21/) | Full verbatim text of Lektion 21's lecture slides and exercises, pulled from Drive | Google Slides + Google Docs, see [lektion21/README.md](lektion21/README.md) |
+| [lektion22/](lektion22/) | Full verbatim text of Lektion 22's lecture slides and exercises, pulled from Drive | PowerPoint + Google Docs, see [lektion22/README.md](lektion22/README.md) |
+| [lektion23/](lektion23/) | Lecture slides only (no exercise doc in the Drive folder) | Google Slides, see [lektion23/README.md](lektion23/README.md) |
+| [lektion24/](lektion24/) | Full verbatim text of Lektion 24's lecture slides and exercises, pulled from Drive | PowerPoint + Google Docs, see [lektion24/README.md](lektion24/README.md) |
+| [lektion25/](lektion25/) | Lecture slides only (no exercise doc in the Drive folder) | Google Slides, see [lektion25/README.md](lektion25/README.md) |
+| [lektion26/](lektion26/) | Lecture slides only (no exercise doc in the Drive folder) | Google Slides, see [lektion26/README.md](lektion26/README.md) |
 | [myrandomoldmaterialsonversioncontrol/](myrandomoldmaterialsonversioncontrol/) | Older versionskontrol materials (Git/EGit slides + 3 exercises), not from the E22 set | [Drive folder](https://drive.google.com/drive/folders/0B9dp65nRHm0rZ2JnYnByb0tELUE?resourcekey=0-pviK6YqjVRgOIrgJAikT-g), see [README](myrandomoldmaterialsonversioncontrol/README.md) |
 | [course-prerequisites-62420-62450.md](course-prerequisites-62420-62450.md) | The two prerequisite courses (IT1/IT2) — incoming student profile | https://kurser.dtu.dk/course/62420, https://kurser.dtu.dk/course/62450 |
 | [project-development-f25.md](project-development-f25.md) | F25 project-development material, adapted for the L1 scope exercise | https://drive.google.com/drive/folders/10jfMp-e9lRdwoUaIA5nbBXn_hxnhLV6L |

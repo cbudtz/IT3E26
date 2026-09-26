@@ -1,0 +1,60 @@
+{
+  "title": "Lektion 9: tilstand",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvad skal setPatienter gøre?",
+      "options": [
+        "Kalder fetch og tegner ikke",
+        "Gemmer listen, skriver til localStorage og kalder renderTabel",
+        "Opretter Vercel-projektet",
+        "Gemmer password fra login-svaret"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvem tegner rækkerne i tabellen?",
+      "options": [
+        "fetch, direkte i løkken efter res.json()",
+        "renderTabel, som læser variablen patienter",
+        "localStorage.setItem",
+        "Browseren, ud fra thead"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "tf",
+      "prompt": "patienter.push(...) opdaterer tabellen, også selv om I ikke kalder setPatienter eller renderTabel.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvad skal hentPatienter gøre, når res.ok er sand?",
+      "options": [
+        "Kalde setPatienter med JSON-listen",
+        "Skrive innerHTML på tbody og springe setteren over",
+        "Gemme password fra svaret",
+        "Navigere formularen til en anden HTML-fil"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q5",
+      "type": "mc",
+      "prompt": "Hvorfor læse localStorage, før I kalder fetch?",
+      "options": [
+        "Så refresh kan vise den gemte liste, før netværket svarer",
+        "Så fetch bliver synkront",
+        "Så CORS kan slås fra",
+        "Så tabellen ikke behøver en tbody"
+      ],
+      "correct": [0]
+    }
+  ]
+}

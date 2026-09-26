@@ -119,7 +119,13 @@ async function toHtml(markdown: string, fromFile: string): Promise<string> {
 	const baseLink = renderer.link.bind(renderer);
 	const baseImage = renderer.image.bind(renderer);
 	renderer.link = (token) => baseLink({ ...token, href: rewriteHref(token.href, fromFile) });
-	renderer.image = (token) => baseImage({ ...token, href: rewriteHref(token.href, fromFile) });
+	renderer.image = (token) => {
+		const href = rewriteHref(token.href, fromFile);
+		const html = baseImage({ ...token, href });
+		const path = token.href.split(/[?#]/)[0];
+		if (!/(^|\/)screenshots\//.test(path)) return html;
+		return html.replace('<img ', '<img class="screenshot" ');
+	};
 	return await marked.parse(markdown, { renderer, gfm: true });
 }
 
