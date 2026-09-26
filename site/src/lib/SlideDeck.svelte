@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { page } from '$app/state';
 	import AppMenu from './AppMenu.svelte';
 	import DownloadLinks from './DownloadLinks.svelte';
+	import { renderMermaid } from './renderMermaid';
 	import { textSize, textScale, initTextSize } from './textsize.svelte';
+	import { theme } from './theme.svelte';
 
 	let { slides }: { slides: string[] } = $props();
 
@@ -202,6 +204,15 @@
 		deck?.focus({ preventScroll: true });
 		poke();
 		return () => clearTimeout(hideTimer);
+	});
+
+	$effect(() => {
+		theme.mode;
+		slides;
+		if (!deck) return;
+		tick().then(() => {
+			if (deck) void renderMermaid(deck);
+		});
 	});
 </script>
 
@@ -528,6 +539,16 @@
 	.inner :global(blockquote) {
 		color: var(--slide-muted);
 		border-left-color: var(--slide-progress-fill);
+	}
+	.inner :global(.mermaid) {
+		display: flex;
+		justify-content: center;
+		margin: 0.4em 0 0;
+	}
+	.inner :global(.mermaid svg) {
+		max-width: 100%;
+		max-height: 58vh;
+		height: auto;
 	}
 	.inner :global(img) {
 		display: block;

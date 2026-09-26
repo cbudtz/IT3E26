@@ -208,6 +208,8 @@
 	:global(.markdown pre) { background: var(--pre-bg); padding: 1em; overflow-x: auto; border-radius: 6px; }
 	:global(.markdown pre code) { background: none; padding: 0; }
 	:global(.markdown blockquote) { margin: 0; padding: 0 1em; color: var(--muted); border-left: 0.25em solid var(--border); }
+	:global(.markdown .mermaid) { display: flex; justify-content: center; margin: 1em 0; }
+	:global(.markdown .mermaid svg) { max-width: 100%; height: auto; }
 	:global(.markdown img) { max-width: 100%; }
 	:global(.markdown p:has(img.screenshot)) {
 		overflow-x: auto;

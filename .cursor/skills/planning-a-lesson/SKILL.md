@@ -39,8 +39,10 @@ Angiv tid, fokus, hvad der springes over, "Når du er færdig", "Praktisk". Er r
 ## 5. Forelæsning (`forelaesning.md`)
 
 - Blokke: gennemgang på 20–45 min, hver afsluttet med quiz og/eller øvelse. `# Pause`-slides mellem blokke.
+- Samme tæthed som `lektion5/`, `lektion7/` og `lektion9/`: en slide er et begreb med forklaring, eventuelt kode. Ikke én sætning pr. slide.
 - Første gennemgang er *opsamling* af forberedelsen — den teoretiske tekst og den praktiske eksemplificering. Ikke førstegangsgennemgang af nogen af dem.
 - Læringsmål er samme liste som i Readme.
+- Diagrammer er Mermaid i en ` ```mermaid `-blok: sekvensdiagram for et kald, flowchart for lag og tier. Få sætninger ved diagrammet. Sitet renderer blokken i dokumentet og i slideshowet.
 - Detaljer, der ikke kan stå på en slide, hører i øvelsesarket — link dertil.
 
 ## 6. Øvelser (`oevelser.md`)
@@ -62,6 +64,7 @@ Tabel: læringsmål × (forberedelse / gennemgang / øvelse / quiz). Hvert mål 
 ## Typiske fejl
 
 - Forberedelse, der kun er en kodetur, når lektionen har et begreb, der skal kunne diskuteres. Den praktiske del skal eksemplificere teorien, ikke erstatte den.
+- Slides med én linje hver. Skriv i samme tæthed som de eksisterende forelæsninger, og læg Mermaid på de slides, hvor et kald eller en lagdeling skal ses.
 - Øvelser uden målbar afslutning eller uden kobling til projektet.
 - Quiz glemt, eller quiz der spørger om noget, der først gennemgås senere.
 - E22-materiale kopieret uden at følge `#NYT`-noterne eller D1–D6.

@@ -6,8 +6,7 @@ Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 
 ## Program i dag
 
-- Opsamling: client-server, tynd og tyk, tre lag
-- Opsamling: jeres skitse
+- Opsamling: client-server, tynd og tyk, tre lag, jeres skitse
 - Quiz: forberedelsen
 - Gennemgang: HTTP, nok til én server
 - Gennemgang: `server.js`
@@ -26,196 +25,108 @@ Efter lektionen skal du kunne:
 - forklare at klienten anmoder, og at serveren venter og svarer
 - skelne tynd og tyk klient og placere jeres mockup
 - navngive præsentation, applikation og data for én handling i gruppen
-
----
-
-## Læringsmål i dag
-
 - skrive en Node-server, der svarer JSON på `GET /api/patients` og 404 ellers
 - pege tabellen på `localhost` og se, at listen bor i server-processen
 - tegne sekvensdiagrammet for den handling, så pilene matcher kaldet
 
 ---
 
-# Opsamling — client-server
+# Opsamling — forberedelsen
 
 ---
 
-## Hvor vi er
+## Client-server
 
-D1 er en klient.
-
-Siden kører i browseren. Dataene ligger i `localStorage`.
-
-I dag sætter vi navn på det, I læste, og på skitsen I har med.
-
----
-
-## Klienten starter
-
-Klienten anmoder.
-
-Serveren venter.
-
-Uden et request sker der ingenting på serveren.
-
----
-
-## Request og response
-
-Klienten sender et request.
-
-Serveren sender et response tilbage.
+Klienten starter samtalen. Serveren venter og svarer. Uden et request sker der ingenting på serveren.
 
 Klienten behøver ikke vide, hvordan svaret blev fundet. Den skal kende protokollen.
+
+```mermaid
+sequenceDiagram
+  participant Klient
+  participant Server
+  Klient->>Server: request
+  Server-->>Klient: response
+```
 
 ---
 
 ## Rollen kan skifte
 
-Webserveren er server for browseren.
+I netbank-eksemplet er webserveren server for browseren. Samme webserver er klient, når den spørger databasen.
 
-Samme webserver er klient, når den spørger databasen.
+```mermaid
+sequenceDiagram
+  participant Browser
+  participant Webserver
+  participant Database
+  Browser->>Webserver: request
+  Webserver->>Database: request
+  Database-->>Webserver: data
+  Webserver-->>Browser: response
+```
 
-Det er netbank-eksemplet.
-
----
-
-## Tynd klient
-
-Næsten ingen egen logik.
-
-Den viser. Serveren beslutter.
-
----
-
-## Tyk klient
-
-Kan noget uden serveren.
-
-Logik og data kan ligge hos klienten.
-
-Wikipedia kalder det *rich client*. Vi siger tyk.
+Det er separation of concerns. Hvert led svarer kun på det, det blev spurgt om.
 
 ---
 
-## Jeres mockup
+## Tynd og tyk
 
-Det er en tyk klient.
+En tynd klient viser. Serveren beslutter.
 
-Præsentationen, beslutningerne og listen ligger i browseren.
+En tyk klient kan noget uden serveren. Wikipedia kalder det *rich client*. Vi siger tyk.
 
-`localStorage` er ikke en server.
+Jeres mockup er tykt. Præsentation, beslutninger og listen ligger i browseren. `localStorage` er ikke en server.
 
----
-
-## Ikke en klient
-
-Et program, der aldrig sender eller modtager noget over nettet, er ikke en klient.
-
-Jeres `fetch` til underviser-API'et var allerede et request. Mockuppets egen liste var det ikke.
+Et program, der aldrig sender eller modtager noget over nettet, er ikke en klient. Jeres `fetch` til underviser-API'et var allerede et request. Mockuppets egen liste var det ikke.
 
 ---
 
-# Opsamling — tre lag
+## Tre lag, ét sted
+
+Et lag er et ansvar. En tier er et sted, det kører. Samme tre lag kan ligge på én maskine.
+
+I mockuppet gør de det:
+
+```mermaid
+flowchart TB
+  subgraph browser [Browseren]
+    direction TB
+    P[Præsentation] --> A[Applikation] --> D["Data: localStorage"]
+  end
+```
+
+Præsentation er det, brugeren ser. Applikation er beslutningen. Data er det, der skal kunne hentes igen.
 
 ---
 
-## Lag og tier
+## Hvor lagene skal hen
 
-Et lag er et ansvar.
+Præsentationen bliver i browseren. Applikationen flytter over i serveren. I dag er den stadig bare en liste i processen. Datalaget bliver PostgreSQL i lektion 15.
 
-En tier er et sted, det kører.
-
-Samme tre lag kan ligge på én maskine.
-
----
-
-## Præsentation
-
-Det, brugeren ser og rører ved.
-
-I mockuppet: HTML, CSS og det, JavaScript tegner.
-
----
-
-## Applikation
-
-Beslutningen.
-
-Må den her måling gemmes. Hvem er patienten. Hvad er næste skridt.
+```mermaid
+flowchart LR
+  subgraph klient [Browser]
+    P[Præsentation]
+  end
+  subgraph server [Node]
+    A[Applikation]
+  end
+  subgraph database [PostgreSQL]
+    D[Data]
+  end
+  P --> A --> D
+```
 
 ---
 
-## Data
+## Jeres skitse
 
-Det, der bliver gemt, og som andre skal kunne hente igen.
+I har skrevet, om mockuppet er tyndt eller tykt, navngivet de tre lag og tegnet et sekvensdiagram. Vi bruger den. Vi tegner den ikke forfra.
 
-Ikke kun det, der tilfældigvis ligger i en variabel lige nu.
+Livlinjerne er bruger, browser, server og database. Databasen er med, selvom den ikke findes endnu. Tiden går nedad. En udfyldt pil venter på svar. En stiplet pil er svaret.
 
----
-
-## Hvor det sidder i dag
-
-| Lag | I mockuppet |
-|---|---|
-| Præsentation | Browseren |
-| Applikation | Browseren |
-| Data | `localStorage` |
-
-Én tier. Tre lag mast sammen.
-
----
-
-## Hvor det skal hen
-
-Præsentationen bliver i browseren.
-
-Applikationen flytter over i serveren. Det starter i dag, som én liste i en proces.
-
-Datalaget bliver PostgreSQL. Det er lektion 15. Repository-laget ligger der.
-
----
-
-# Opsamling — jeres skitse
-
----
-
-## Skitsen
-
-I har skrevet: tynd eller tyk, de tre lag, et sekvensdiagram.
-
-Vi bruger den. Vi tegner den ikke forfra.
-
----
-
-## Sekvensdiagram
-
-Tiden går nedad.
-
-En livlinje er en deltager.
-
-En udfyldt pil venter på svar. En stiplet pil er svaret.
-
----
-
-## Livlinjer
-
-Bruger. Browser. Server. Database.
-
-Databasen er med, selvom den ikke findes endnu.
-
-Pilene skal vise den handling, gruppen faktisk bygger.
-
----
-
-## Kig på skitsen
-
-Passer "tyk" med, at listen ligger i browseren?
-
-Ligger beslutningen i applikationslaget eller i det, brugeren ser?
-
-Er der et kald, der venter, og et svar tilbage?
+Kig på skitsen: passer «tyk» med, at listen ligger i browseren? Ligger beslutningen i applikationslaget? Er der et kald og et svar?
 
 ---
 
@@ -239,81 +150,39 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 ---
 
-## Det, I allerede har kaldt
+## Det kald, I allerede har
 
 ```js
 const res = await fetch("https://it3e26.vercel.app/api/patients");
 ```
 
-Browseren anmoder. En server svarer med JSON.
+Browseren anmoder. En server svarer med JSON. I dag skriver I den server, for én liste.
 
-I dag skriver I den server, for én liste.
-
----
-
-## Metoden
-
-`GET` henter.
-
-`POST` sender noget, der skal gemmes.
-
-I dag er det kun `GET`.
+`GET` henter. `POST` sender noget, der skal gemmes. I dag er det kun `GET`. Stien `/api/patients` er den ressource, requestet gælder. En anden sti er et andet request.
 
 ---
 
-## Stien
+## Status og krop
 
-`/api/patients`
+`200` betyder: her er indholdet. `404` betyder: den sti findes ikke. Statuskoden er første linje i svaret. Den er ikke en del af JSON-listen.
 
-Det er den ressource, requestet gælder.
-
-En anden sti er et andet request.
-
----
-
-## Status
-
-`200` — her er indholdet.
-
-`404` — den sti findes ikke.
-
-Statuskoden er første linje i svaret. Ikke en del af JSON-listen.
-
----
-
-## Kroppen
-
-På et `GET`, der lykkes, er kroppen listen.
+På et `GET`, der lykkes, er kroppen listen. Samme felter som tabellen allerede læser:
 
 ```json
 [{ "cpr": "2512489996", "navn": "Nancy Ann Test Berggren" }]
 ```
 
-Samme felter som tabellen allerede læser.
-
 ---
 
-## Stateless
+## Serveren husker ikke
 
-Serveren husker ikke samtalen.
+HTTP er stateless. Næste request starter forfra. Derfor er `localStorage` ikke en session. Sessioner er lektion 19.
 
-Næste request starter forfra.
-
-Derfor er `localStorage` ikke en session. Sessioner er lektion 19.
-
----
-
-## To oprindelser
-
-Siden ligger ét sted. Serveren lytter på `localhost:3000`.
-
-Browseren spørger kun på tværs, hvis svaret tillader det.
+Siden og `localhost:3000` er to oprindelser. Browseren spørger kun på tværs, hvis svaret tillader det. Samme aside som i lektion 7:
 
 ```js
 res.setHeader("Access-Control-Allow-Origin", "*");
 ```
-
-Samme aside som i lektion 7.
 
 ---
 
@@ -323,118 +192,64 @@ Samme aside som i lektion 7.
 
 ## Én fil
 
-`server.js` i det projekt, I allerede har.
+`server.js` i det projekt, I allerede har. Ingen Express, ingen database, ingen HTML fra serveren. Lektion 13 åbner den samme fil igen.
 
-Ingen Express. Ingen database. Ingen HTML fra serveren.
-
-Lektion 13 åbner den samme fil igen.
-
----
-
-## Listen bor i processen
+Listen bor i processen. Det er ikke datalaget. Det er en liste i hukommelsen, så I kan se grænsen.
 
 ```js
+const http = require("node:http");
+
 const patients = [
   { cpr: "2512489996", navn: "Nancy Ann Test Berggren" },
   { cpr: "0107729995", navn: "Max Test Berggren" }
 ];
 ```
 
-Det er ikke datalaget. Det er en liste i hukommelsen, så I kan se grænsen.
-
 ---
 
-## Processen venter
+## Den venter på et request
 
 ```js
-const http = require("node:http");
-
 const server = http.createServer((req, res) => {
-  // ét request ad gangen, her
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Content-Type", "application/json");
+
+  if (req.method === "GET" && req.url === "/api/patients") {
+    res.writeHead(200);
+    res.end(JSON.stringify(patients));
+    return;
+  }
+
+  res.writeHead(404);
+  res.end(JSON.stringify({ error: "not found" }));
 });
 
 server.listen(3000);
 ```
 
-Uden `listen` er der ingen server.
+Uden `listen` er der ingen server. Metode og sti skal begge passe. En forkert sti må ikke ligne en tom patientliste.
 
----
+Det kald, der lykkes, ser sådan ud:
 
-## To headere på hvert svar
-
-```js
-res.setHeader("Access-Control-Allow-Origin", "*");
-res.setHeader("Content-Type", "application/json");
+```mermaid
+sequenceDiagram
+  participant Browser
+  participant Server
+  Browser->>Server: GET /api/patients
+  Server-->>Browser: 200 og JSON
 ```
-
-Den første lukker browseren ind. Den anden siger, at kroppen er JSON.
-
----
-
-## Kun ét kald lykkes
-
-```js
-if (req.method === "GET" && req.url === "/api/patients") {
-  res.writeHead(200);
-  res.end(JSON.stringify(patients));
-  return;
-}
-```
-
-Metode og sti skal begge passe.
-
----
-
-## Alt andet er 404
-
-```js
-res.writeHead(404);
-res.end(JSON.stringify({ error: "not found" }));
-```
-
-En forkert sti må ikke ligne en tom patientliste.
-
----
-
-## Se svaret
-
-Start med `node server.js`.
-
-Åbn `http://localhost:3000/api/patients`.
-
-I skal se JSON, før I rører ved tabellen.
 
 ---
 
 ## Peg tabellen hertil
 
-Skift URL'en i det `fetch`, I allerede har.
+Start med `node server.js`. Åbn `http://localhost:3000/api/patients` og se JSON, før I rører ved tabellen.
 
-Fra `https://it3e26.vercel.app/api/patients`.
+Skift URL'en i det `fetch`, I allerede har, fra `https://it3e26.vercel.app/api/patients` til `http://localhost:3000/api/patients`. Tabellen kender felterne. Den skal ikke skrives om.
 
-Til `http://localhost:3000/api/patients`.
+Ret et navn i listen, genstart processen, og hent igen. Navnet skifter, fordi dataene sidder i den proces, I startede. Ikke i `localStorage`.
 
-Tabellen kender felterne. Den skal ikke skrives om.
-
----
-
-## Ændr et navn
-
-Ret et navn i listen. Genstart processen.
-
-Refresh tabellen.
-
-Navnet skifter, fordi dataene sidder i den proces, I startede. Ikke i `localStorage`.
-
----
-
-## Det, filen ikke er
-
-Ikke tre lag i koden. Listen og svaret ligger i samme fil.
-
-Ikke Express. Det er lektion 13.
-
-Ikke PostgreSQL. Det er lektion 15.
+Filen er ikke tre lag. Listen og svaret ligger samme sted. Express er lektion 13. PostgreSQL er lektion 15.
 
 ---
 
@@ -464,9 +279,7 @@ Detaljerne står i [øvelsesarket](oevelser.md).
 
 ## Øvelse 1: Skriv serveren
 
-Skriv `server.js`.
-
-`GET /api/patients` svarer 200 og JSON. Alt andet svarer 404.
+Skriv `server.js`. `GET /api/patients` svarer 200 og JSON. Alt andet svarer 404.
 
 Tabellen henter fra `localhost:3000`. Et ændret navn ses efter genstart.
 
@@ -474,10 +287,19 @@ Tabellen henter fra `localhost:3000`. Et ændret navn ses efter genstart.
 
 ## Øvelse 2: Pilene matcher kaldet
 
-Opdatér sekvensdiagrammet fra forberedelsen.
+Opdatér sekvensdiagrammet fra forberedelsen, så det er det kald, I lige har kørt. Databasen er med, men I har ikke spurgt den endnu.
 
-Kaldet fra browser til server er `GET /api/patients`.
+```mermaid
+sequenceDiagram
+  participant Bruger
+  participant Browser
+  participant Server
+  participant Database
+  Bruger->>Browser: åbn patientlisten
+  Browser->>Server: GET /api/patients
+  Note over Database: lektion 15
+  Server-->>Browser: 200 og JSON
+  Browser-->>Bruger: tabel
+```
 
-Svaret er `200` og JSON-listen.
-
-Diagrammet er gruppens, for den handling I faktisk bygger.
+Diagrammet skal handle om gruppens egen handling, ikke om netbanken.
