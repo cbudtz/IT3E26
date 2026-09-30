@@ -58,7 +58,7 @@ curl -X POST http://localhost:3000/api/login \
 | 401 | `{ "error": "forkert cpr eller password" }` |
 | 500 | `{ "error": "serverfejl" }` |
 
-`expiry` er et UTC-tidspunkt (`toISOString()`), 15 minutter efter svaret. `cpr` og `navn` i toppen er de samme felter som i `user`. Der gemmes ingen session på serveren.
+`expiry` er et UTC-tidspunkt (`toISOString()`), 5 minutter efter svaret. `cpr` og `navn` i toppen er de samme felter som i `user`. Der gemmes ingen session på serveren.
 
 ## Testpatienter (MedCom)
 

@@ -75,7 +75,7 @@ const data = await res.json();
 
 Tjek `res.ok` (status 200–299). Ved 400/401 ligger beskeden i `data.error`.
 
-Ved 200 er `cpr` og `navn` stadig i toppen. `user` er de samme to felter. `expiry` er et UTC-tidspunkt 15 minutter frem, for eksempel `"2026-09-30T08:45:00.000Z"`. Serveren gemmer ikke sessionen.
+Ved 200 er `cpr` og `navn` stadig i toppen. `user` er de samme to felter. `expiry` er et UTC-tidspunkt 5 minutter frem, for eksempel `"2026-09-30T08:35:00.000Z"`. Serveren gemmer ikke sessionen.
 
 ## Testpatienter
 

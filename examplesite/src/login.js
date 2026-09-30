@@ -2,7 +2,7 @@ import { eq } from 'drizzle-orm';
 import { getDb, schema } from './db.js';
 import { verifyPassword } from './passwords.js';
 
-const LOGIN_TTL_MS = 15 * 60 * 1000;
+const LOGIN_TTL_MS = 5 * 60 * 1000;
 
 export function normalizeCpr(cpr) {
 	return String(cpr ?? '').replace(/\D/g, '');

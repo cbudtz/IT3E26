@@ -12,7 +12,7 @@ test('normalizeCpr strips hyphen and spaces', () => {
 	assert.equal(normalizeCpr('251248 9996'), '2512489996');
 });
 
-test('login success body keeps cpr and navn and adds user plus 15 minute expiry', () => {
+test('login success body keeps cpr and navn and adds user plus 5 minute expiry', () => {
 	const now = Date.parse('2026-09-30T08:30:00.000Z');
 	const body = loginSuccessBody(
 		{ cpr: '2512489996', navn: 'Nancy Ann Test Berggren' },
@@ -22,7 +22,7 @@ test('login success body keeps cpr and navn and adds user plus 15 minute expiry'
 		cpr: '2512489996',
 		navn: 'Nancy Ann Test Berggren',
 		user: { cpr: '2512489996', navn: 'Nancy Ann Test Berggren' },
-		expiry: '2026-09-30T08:45:00.000Z'
+		expiry: '2026-09-30T08:35:00.000Z'
 	});
 });
 
@@ -43,8 +43,8 @@ test('login Nancy with password succeeds', { skip: !hasDb }, async () => {
 		navn: 'Nancy Ann Test Berggren'
 	});
 	const expiry = Date.parse(res.body.expiry);
-	const fifteenMin = 15 * 60 * 1000;
-	assert.ok(expiry >= before + fifteenMin && expiry <= after + fifteenMin);
+	const fiveMin = 5 * 60 * 1000;
+	assert.ok(expiry >= before + fiveMin && expiry <= after + fiveMin);
 	assert.equal('password' in res.body, false);
 	assert.equal('password' in res.body.user, false);
 });
