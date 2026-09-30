@@ -71,7 +71,7 @@ localStorage.setItem("login", JSON.stringify({ navn: "Nancy", expiresAt: 0 }));
 
 `JSON.stringify` og `JSON.parse` kender I fra Lektion 7. Her gemmer de i browseren i stedet for at rejse over nettet.
 
-Password, CPR og patientlisten hører ikke hjemme her. Lageret kan læses af script på samme side. Ligger nøglen `patienter` der, så slet den.
+Password, CPR og patientlisten hører ikke hjemme her. Lageret kan læses af script på samme side. Hvorfor er det et problem?
 
 ---
 
@@ -79,7 +79,7 @@ Password, CPR og patientlisten hører ikke hjemme her. Lageret kan læses af scr
 
 Samme metoder. Data dør, når fanen lukkes.
 
-Til mockuppet bruger I `localStorage` til login-state: navn og et udløbstidspunkt. Patientlisten gemmes ikke.
+Til mockuppet bruger I `localStorage` til login-state: navn og et udløbstidspunkt. 
 
 Det er browseren. Det er ikke et login på en server. Password og CPR hører ikke hjemme i lageret.
 
@@ -118,7 +118,6 @@ Først vis tilstanden. Så refresh — I er logget ud. Så læs den fra `localSt
 - Gem `{ navn, expiresAt }` med `JSON.stringify`, og læs den når scriptet starter
 - Vis kun, hvis udløbet ligger i fremtiden
 
-Ikke password. Ikke CPR. Ikke patientlisten.
 
 Detaljerne står i [øvelsesarket](oevelser.md).
 
