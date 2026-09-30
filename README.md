@@ -46,9 +46,9 @@ Klik på en lektion for at åbne materialet.
 | 12             | 9/10  | **Projekt**        | Monitorering og styring: status, fremdrift, risiko, scope creep, opdatering af plan og næste iteration                                                         |
 | 13             | 21/10 | **Web**            | Express oven på serveren fra L11: routes, data i hukommelsen, test med curl                                                                                    |
 | 14             | 23/10 | Net                | Hvad er internettet: internettet som netværk, netværksforståelse på overordnet niveau, protokolstakken, intro til HTTP                                         |
-| 15             | 28/10 | **Web**            | PostgreSQL: SQL i et repository. Samme routes som L13, `GET` læser og `POST` skriver                                                                            |
+| [15](lektion15/) | 28/10 | **Web**            | PostgreSQL: tabel, nøgler og SQL i psql. `CREATE`, `SELECT`, `INSERT`, `UPDATE` og `DELETE` på én patienttabel. Uden Express                                    |
 | 16             | 30/10 | Net                | Centrale protokoller på overordnet niveau: HTTP, XML (HL7), DNS og en web-forespørgsels vej gennem nettet                                                      |
-| 17             | 4/11  | **Web**            | Den centrale brugerhandling mod databasen: dataflow, fejlhåndtering og test. Uden login                                                                        |
+| 17             | 4/11  | **Web**            | Repository: samme routes som L13 kalder databasen. Den centrale brugerhandling, fejl og test. Uden login                                                       |
 | 18             | 6/11  | **Projektarbejde** | Projektarbejde frem mod D2: implementering af MVP, integration og løbende test                                                                                 |
 | **D2** (tirs.) | 10/11 | —                  | **Delaflevering 2: MVP** (frontend, backend/API, PostgreSQL, én central brugerhandling)                                                                        |
 | 19             | 11/11 | **Web**            | Adgangskontrol lokalt på MVP'et: login, session og én beskyttet route. Kursusevaluering                                                                        |

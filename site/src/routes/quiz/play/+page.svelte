@@ -20,6 +20,7 @@
 	const answered = $derived(answeredFor === q.id && q.id !== '');
 	/** Kun et klikket svar tæller - et hængende valg fra forrige spørgsmål er intet svar. */
 	const shownAnswer = $derived(answered ? myAnswer : null);
+	const gradedTotal = $derived(snap.gradedCount > 0 ? snap.gradedCount : snap.questionCount);
 
 	onMount(async () => {
 		const code = page.url.searchParams.get('code')?.toUpperCase() ?? '';
@@ -35,7 +36,10 @@
 			}
 			sessionStorage.setItem('it3e26_reconnect:' + code, room.reconnectionToken);
 			mySessionId = room.sessionId;
-			watch(room, (s) => (snap = s));
+			watch(room, (s) => {
+				if (s.question.id !== snap.question.id) shortText = '';
+				snap = s;
+			});
 			room.onLeave(() => (error = 'Forbindelsen blev lukket.'));
 		} catch (e) {
 			const msg = (e as { message?: string })?.message || String(e);
@@ -78,7 +82,18 @@
 		<p class="muted">Spørgsmål {snap.questionIndex + 1} af {snap.questionCount}</p>
 		<h1 class="prompt">{q.prompt}</h1>
 
-		{#if q.type === 'short'}
+		{#if q.type === 'open'}
+			{#if snap.phase === 'reveal'}
+				<p class="result">{shownAnswer === null ? 'Intet svar.' : 'Tak. Svaret er sendt.'}</p>
+			{:else if answered}
+				<p class="result">Svar sendt. Vent på afsløring…</p>
+			{:else}
+				<form onsubmit={submitShort} class="short open">
+					<textarea bind:value={shortText} placeholder="Skriv et par linjer" maxlength="500" rows="4"></textarea>
+					<button type="submit">Send</button>
+				</form>
+			{/if}
+		{:else if q.type === 'short'}
 			{#if snap.phase === 'reveal'}
 				<p class="result {myShortCorrect ? 'ok' : 'nope'}">
 					{shownAnswer === null ? 'Intet svar.' : myShortCorrect ? 'Rigtigt!' : `Du svarede "${shownAnswer}".`}
@@ -121,7 +136,7 @@
 	<section>
 		<div class="center">
 			<h1>Quizzen er slut</h1>
-			{#if me}<p class="big">Du fik {me.score} af {snap.questionCount} rigtige</p>{/if}
+			{#if me}<p class="big">Du fik {me.score} af {gradedTotal} rigtige</p>{/if}
 		</div>
 		<QuizSummary results={snap.results} />
 		<p><a href="/">Til forsiden</a></p>
@@ -145,9 +160,11 @@
 	.opt.wrong { border-color: #cf222e; background: #ffebe9; }
 	.letter { display: inline-block; width: 1.6em; font-weight: 700; color: #57606a; }
 	.short { display: flex; gap: 0.5rem; }
-	.short input { flex: 1; font-size: 1.2rem; padding: 0.6rem 0.8rem; border: 1px solid #d0d7de; border-radius: 8px; }
+	.short.open { flex-direction: column; align-items: stretch; }
+	.short input, .short textarea { flex: 1; font: inherit; font-size: 1.2rem; padding: 0.6rem 0.8rem; border: 1px solid #d0d7de; border-radius: 8px; }
+	.short textarea { min-height: 6rem; resize: vertical; }
 	.short button, .result { font-size: 1.1rem; }
-	.short button { padding: 0.6rem 1rem; border: 0; border-radius: 8px; background: #0969da; color: #fff; }
+	.short button { padding: 0.6rem 1rem; border: 0; border-radius: 8px; background: #0969da; color: #fff; align-self: flex-start; }
 	.result { margin-top: 1rem; font-weight: 600; }
 	.result.ok { color: #1a7f37; }
 	.result.nope { color: #cf222e; }

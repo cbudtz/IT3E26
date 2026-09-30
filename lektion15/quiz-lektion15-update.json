@@ -1,0 +1,60 @@
+{
+  "title": "Lektion 15: ret og slet",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvorfor køre SELECT med samme WHERE, før du kører UPDATE?",
+      "options": [
+        "For at se, at betingelsen rammer den ene række, du mener",
+        "Fordi UPDATE ikke virker uden en forudgående SELECT",
+        "Fordi SELECT gemmer rækken i server.js",
+        "Fordi WHERE kun må stå i SELECT"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvad ændrer UPDATE patients SET navn = 'Nancy Test Berggren' WHERE cpr = '2512489996'?",
+      "options": [
+        "navn på den række, hvis cpr er 2512489996",
+        "cpr på alle rækker",
+        "Alle navne i tabellen",
+        "Primærnøglen id"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvad gør UPDATE eller DELETE uden WHERE?",
+      "options": [
+        "Rammer alle rækker i tabellen",
+        "Rammer ingen rækker",
+        "Rammer kun den første række",
+        "Opretter en ny tabel"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvordan ser du, at DELETE FROM patients WHERE cpr = '0000000000' virkede?",
+      "options": [
+        "SELECT med samme WHERE giver nul rækker",
+        "psql viser tabellens CREATE TABLE igen",
+        "Express-listen bliver kortere",
+        "id starter forfra fra 1"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q5",
+      "type": "tf",
+      "prompt": "Password hører med i patients, fordi testpatienterne i lektion 7 har et password.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 # Lektion 11 — Client-server
 
-Dagen efter D1. Mockuppet er en tyk klient. Forberedelsen er client-server
-og tre lag, brugt på jeres eget system. I timen samler vi det op og skriver
+Dagen efter D1. Mockuppet er en tyk klient. Forberedelsen er client-server,
+tre lag og Node. I timen samler vi det op, tegner jeres system og skriver
 en minimal Node-server: `GET /api/patients`.
 
 ## Forberedelse
 
-Det forventes, at du har forberedt dig — client-server, tre lag og en skitse
-af jeres egen interaktion (ca. 55 min). Node skal være installeret.
+Det forventes, at du har forberedt dig — client-server, tre lag og Node
+(ca. 60 min). `node -v` skal svare. Skitsen tegner I i timen.
 
 [Forberedelse til Lektion 11](forberedelse.md)
 
@@ -15,13 +15,14 @@ af jeres egen interaktion (ca. 55 min). Node skal være installeret.
 
 | Tid | Blok | Indhold |
 |---|---|---|
-| 30 min | Opsamling | Client-server, tynd og tyk, tre lag, jeres skitse |
+| 20 min | Opsamling | Client-server, tynd og tyk, tre lag, Node |
 | 10 min | Quiz | Forberedelsen |
+| 15 min | [Øvelse 1](oevelser.md) | **Jeres system** — tynd eller tyk, tre lag, sekvensdiagram |
 | 20 min | Gennemgang | HTTP: metode, sti, status, JSON |
 | 25 min | Gennemgang | `server.js` — ét `GET`, 404 på resten |
 | 10 min | Quiz | Request og response |
-| 40 min | [Øvelse 1](oevelser.md) | **Skriv serveren** — JSON på `localhost:3000` |
-| 30 min | [Øvelse 2](oevelser.md) | **Pilene matcher kaldet** — sekvensdiagram for gruppens handling |
+| 40 min | [Øvelse 2](oevelser.md) | **Skriv serveren** — JSON på `localhost:3000` |
+| 30 min | [Øvelse 3](oevelser.md) | **Pilene matcher kaldet** — sekvensdiagram for gruppens handling |
 
 Der er afsat 45 minutter til pauser, som lægges ind undervejs.
 

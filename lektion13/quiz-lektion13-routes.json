@@ -1,0 +1,67 @@
+{
+  "title": "Lektion 13: routes",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvorfor ligger app.get(\"/api/patients\", …) før den sidste app.use, der svarer 404?",
+      "options": [
+        "Express matcher routes i rækkefølge — catch-all skal sidst",
+        "404-handleren skal altid stå øverst i filen",
+        "GET må ikke bruges efter npm install",
+        "Så tabellen kan bruge localStorage"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvad skal GET / returnere efter omskrivningen (samme adfærd som L11)?",
+      "options": [
+        "200 og en tom patientliste",
+        "404 og JSON med error",
+        "200 og Hello World",
+        "302 redirect til /api/patients"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "q3",
+      "type": "tf",
+      "prompt": "patients-arrayet i server.js er datalaget i det færdige system.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvorfor beholder I Access-Control-Allow-Origin: *?",
+      "options": [
+        "Fordi HTML-siden og localhost:3000 ikke er samme oprindelse",
+        "Fordi Express kræver den for at parse JSON",
+        "Fordi curl ellers ikke virker",
+        "Fordi npm init ikke kører uden den"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q5",
+      "type": "mc",
+      "prompt": "Hvad installerer npm install express?",
+      "options": [
+        "Express som afhængighed i projektet",
+        "PostgreSQL-driveren til lektion 15",
+        "En ny browser til curl",
+        "Erstatningen for node server.js"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q6",
+      "type": "tf",
+      "prompt": "res.json(patients) sender listen uden at I selv kalder JSON.stringify.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [0]
+    }
+  ]
+}

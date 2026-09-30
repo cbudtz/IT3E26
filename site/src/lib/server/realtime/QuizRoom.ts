@@ -1,12 +1,12 @@
 import { Room, CloseCode, type Client } from 'colyseus';
 import { QuizState, Player, Question, QuestionResult } from './state.ts';
 import { startRun, saveAnswers, endRun } from './persist.ts';
-import { isCorrect } from '../grading.ts';
+import { isCorrect, isGraded } from '../grading.ts';
 
 /** Et spoergsmaal som underviseren har defineret (facit forlader foerst serveren ved reveal). */
 export type QuestionDef = {
 	id: string;
-	type: 'mc' | 'tf' | 'short';
+	type: 'mc' | 'tf' | 'short' | 'open';
 	prompt: string;
 	options: string[];
 	/** Index i options (mc/tf) eller accepterede tekstsvar (short). */
@@ -49,6 +49,7 @@ export class QuizRoom extends Room {
 		this.state.joinCode = options.joinCode;
 		this.state.questionIndex = -1;
 		this.state.questionCount = this.questions.length;
+		this.state.gradedCount = this.questions.filter((q) => isGraded(q)).length;
 		this.state.question = new Question();
 		this.state.answerCount = 0;
 		this.state.unansweredCount = 0;
@@ -145,14 +146,14 @@ export class QuizRoom extends Room {
 		const perQuestion = this.answers.get(q.id)!;
 		if (perQuestion.has(client.sessionId)) return; // ét svar pr. spoergsmaal
 
-		const v = value.slice(0, 200);
+		const v = value.slice(0, q.type === 'open' ? 500 : 200);
 		perQuestion.set(client.sessionId, v);
 		this.state.answerCount = perQuestion.size;
 
 		const player = this.state.players.get(client.sessionId);
 		if (player) player.hasAnswered = true;
 
-		if (q.type === 'short') {
+		if (q.type === 'short' || q.type === 'open') {
 			this.state.shortAnswers.push(v);
 		} else {
 			const i = Number(v);
@@ -166,13 +167,13 @@ export class QuizRoom extends Room {
 		const rows: { nickname: string; value: string; isCorrect: boolean }[] = [];
 		for (const [sessionId, value] of this.answers.get(q.id) ?? []) {
 			const player = this.state.players.get(sessionId);
-			const ok = isCorrect(q, value);
+			const ok = isGraded(q) && isCorrect(q, value);
 			if (player && ok && !this.revealed.has(q.id)) player.score++;
 			rows.push({ nickname: player?.nickname ?? '?', value, isCorrect: ok });
 		}
 		this.revealed.add(q.id);
 		if (q.type === 'short') (q.correct as string[]).forEach((c) => this.state.correctText.push(c));
-		else (q.correct as number[]).forEach((i) => this.state.correctOptions.push(i));
+		else if (q.type !== 'open') (q.correct as number[]).forEach((i) => this.state.correctOptions.push(i));
 		this.state.unansweredCount = Math.max(0, this.state.players.size - rows.length);
 		this.state.results.push(this.snapshotResult(q));
 		this.state.phase = 'reveal';

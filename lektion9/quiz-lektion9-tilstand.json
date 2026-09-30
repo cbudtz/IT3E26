@@ -4,10 +4,10 @@
     {
       "id": "q1",
       "type": "mc",
-      "prompt": "Hvad skal setPatienter gøre?",
+      "prompt": "Hvad skal setKladde gøre?",
       "options": [
         "Kalder fetch og tegner ikke",
-        "Gemmer listen, skriver til localStorage og kalder renderTabel",
+        "Sætter variablen, skriver til localStorage og kalder renderKladde",
         "Opretter Vercel-projektet",
         "Gemmer password fra login-svaret"
       ],
@@ -16,30 +16,30 @@
     {
       "id": "q2",
       "type": "mc",
-      "prompt": "Hvem tegner rækkerne i tabellen?",
+      "prompt": "Hvem tegner forhåndsvisningen?",
       "options": [
-        "fetch, direkte i løkken efter res.json()",
-        "renderTabel, som læser variablen patienter",
+        "Feltet, direkte i input-lytteren",
+        "renderKladde, som læser variablen kladde",
         "localStorage.setItem",
-        "Browseren, ud fra thead"
+        "Browseren, ud fra label"
       ],
       "correct": [1]
     },
     {
       "id": "q3",
       "type": "tf",
-      "prompt": "patienter.push(...) opdaterer tabellen, også selv om I ikke kalder setPatienter eller renderTabel.",
+      "prompt": "kladde.tekst = \"hej\" opdaterer forhåndsvisningen, også selv om I ikke kalder setKladde eller renderKladde.",
       "options": ["Sandt", "Falsk"],
       "correct": [1]
     },
     {
       "id": "q4",
       "type": "mc",
-      "prompt": "Hvad skal hentPatienter gøre, når res.ok er sand?",
+      "prompt": "Hvad skal input-lytteren gøre?",
       "options": [
-        "Kalde setPatienter med JSON-listen",
-        "Skrive innerHTML på tbody og springe setteren over",
-        "Gemme password fra svaret",
+        "Kalde setKladde med teksten fra feltet",
+        "Skrive innerHTML på forhåndsvisningen og springe setteren over",
+        "Gemme patientlisten under nøglen patienter",
         "Navigere formularen til en anden HTML-fil"
       ],
       "correct": [0]
@@ -47,12 +47,12 @@
     {
       "id": "q5",
       "type": "mc",
-      "prompt": "Hvorfor læse localStorage, før I kalder fetch?",
+      "prompt": "Hvorfor læse login fra localStorage, når siden starter?",
       "options": [
-        "Så refresh kan vise den gemte liste, før netværket svarer",
-        "Så fetch bliver synkront",
-        "Så CORS kan slås fra",
-        "Så tabellen ikke behøver en tbody"
+        "Så et refresh inden udløb stadig viser topbaren",
+        "Så patientlisten overlever uden netværk",
+        "Så password kan genbruges",
+        "Så fetch bliver synkront"
       ],
       "correct": [0]
     }

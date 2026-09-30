@@ -22,7 +22,7 @@ export function parsePublishForm(fd: FormData): { slug: string; on: boolean } | 
 
 export function parseAnswerForm(fd: FormData): { questionId: string; value: string } | null {
 	const questionId = str(fd.get('questionId'));
-	const value = str(fd.get('value')).slice(0, 200);
+	const value = str(fd.get('value')).slice(0, 500);
 	if (!questionId || !value) return null;
 	return { questionId, value };
 }

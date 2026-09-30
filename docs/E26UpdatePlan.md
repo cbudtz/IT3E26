@@ -148,7 +148,7 @@ decisions (lock first).
 | D1 🔒 | Backend language & runtime | JavaScript on Node.js | Decided to use one language across frontend and backend. Framework: see D15. | decided |
 | D2 | Frontend approach | Vanilla JS · optional small helpers or Svelte/SvelteKit later | **Vanilla HTML/CSS/JavaScript is the standard.** Any alternative must remain optional and preserve the same learning goals and deliverables. | decided |
 | D3 | TypeScript vs JavaScript | JavaScript | Vanilla JavaScript is the standard. TypeScript is not part of the initial plan; reconsider only if the teaching team later sees a concrete need. | decided |
-| D4 | Database | PostgreSQL | Students already know SQL CRUD + joins (62450). Focus on dataflow through the web application rather than re-teaching relational basics. | decided |
+| D4 | Database | PostgreSQL | Incoming SQL from 62450 is thin, so L15 reteaches table, keys and CRUD in `psql` (no joins). L17 is the dataflow: Express → repository → PostgreSQL, no ORM. | decided |
 | D5 🔒 | Deployment target | Vercel or similar managed hosting | Exact platform is parked until the meeting. It must support the chosen backend and PostgreSQL with low setup friction. | parked |
 | D6 | Dev environment | Local VS Code | VS Code is the standard development environment for the course. Setup documentation and a shared starter repository should minimize environment friction. | decided |
 | D7 | Auth for milestone 3 | Authentication only | D3 requires login/authentication, but **not authorization** or role-based access. Implementation approach remains open. | decided |
@@ -160,7 +160,7 @@ decisions (lock first).
 | D13 ⤴ | Exam & grading split | Which learning goals, exam questions and milestone approvals the web teacher owns | Needed to scope material depth; coordinate with network-track teacher. | open |
 | D14 | Material distribution | This repo · DTU Learn · both (repo source of truth, Learn for announcements) | Replaces Google Drive; see Tooling section. | open |
 | D15 | Backend framework | Express · Hono · plain `http` | **Express.** Largest body of learning material and the most reliable output from AI assistants, which students will use. Teach "JavaScript can run on the server, receive HTTP requests and talk to a database" — not Node internals (V8, event loop). | decided |
-| D16 | Teacher-provided patient API | Teacher-hosted Express API with synthetic patients · local JSON files | **Teacher-hosted API** used from L7 onward for `fetch()` before students have their own backend. Must send `Access-Control-Allow-Origin: *` (the `cors` middleware) since students call it from `file://`/localhost; CORS is covered as an aside in L7 when they hit it. Endpoints mirror what students build themselves in L15 (`GET/POST/PUT/DELETE /api/patients[/:id]`). | decided |
+| D16 | Teacher-provided patient API | Teacher-hosted Express API with synthetic patients · local JSON files | **Teacher-hosted API** used from L7 onward for `fetch()` before students have their own backend. Must send `Access-Control-Allow-Origin: *` (the `cors` middleware) since students call it from `file://`/localhost; CORS is covered as an aside in L7 when they hit it. Endpoints mirror what students build themselves in L17 (`GET` and `POST /api/patients`). `PUT` and `DELETE` are not lesson routes. | decided |
 
 ### Decisions from current planning
 
@@ -200,11 +200,16 @@ decisions (lock first).
 - **L13 is Express on that same file** (after the autumn break): routes,
   data still in memory, tested with curl. Not a first introduction to what
   a server is.
-- **SQL and the repository move to L15** (`Express → repository →
-  PostgreSQL`). Students already know SQL from 62450. The L13 routes stay;
-  `GET` reads and `POST` writes. No ORM.
-- **L17 is the central user action** against the database: dataflow, errors
-  and test. D2 does not include login.
+- **L15 is SQL in `psql`, not the repository.** One `patients` table:
+  `CREATE`, `SELECT`, `INSERT`, `UPDATE`, `DELETE`. No Express. SQL from
+  62450 is treated as thin, so the lesson starts at table, row and key.
+  Joins wait until a group has two tables.
+- **L17 is the repository and the central user action.** The L13 routes
+  stay; `GET` reads and `POST` writes through a function that runs
+  parameterized SQL (`pg`, no ORM). Missing fields are 400, a database
+  failure is 500. The last exercise is the group's own action against
+  their table. D2 does not include login. The password in the connection
+  string moves to an environment variable in L21.
 - **Access control starts in L19**, locally on the handed-in MVP: one
   login, a session, one protected route. Course evaluation stays on L19.
   **L21 finishes access control and deploys** the backend (hosting, env
@@ -237,9 +242,9 @@ free of old-course references.
 | 12 | F25 statusrapporter |
 | 13 | L7 (omarbejdet) som Express oven på L11-serveren. E22 L11 (application state) er delt: klient-tilstand i L9, SQL i L15 |
 | 14 | L2 (forkortet) |
-| 15 | nyt (SQL + repository + PostgreSQL) |
+| 15 | nyt (SQL i psql, én patienttabel, uden Express) |
 | 16 | L6 + L18 |
-| 17 | nyt (central brugerhandling, fejl, test) |
+| 17 | nyt (repository med `pg`, samme routes som L13, central brugerhandling, fejl, test) |
 | 18 | projektarbejde |
 | D2 | D2 |
 | 19 | L19 (adgangskontrol, lokalt). Deployment er flyttet til L21 |
@@ -288,8 +293,9 @@ _(working section — to be refined)_
       new lesson material (little E22 reuse).
 - [ ] **User-centered design**: personas, scenarios, usability testing,
       accessibility (WCAG) — new material, concrete health-tech cases.
-- [ ] **Databases & data management**: relational basics, SQL/ORM, dataflow
-      in a web app — new material replacing serialization/protocol lessons.
+- [ ] **Databases & data management**: relational basics and SQL in L15
+      (`psql`, no joins), dataflow through a repository in L17. No ORM.
+      New material replacing serialization/protocol lessons.
 - [ ] **Networking condensed**: Internet/DNS/HTTP overview + client-server
       communication (2–4 lessons from the old 12+ network lessons).
 - [ ] **Security & privacy**: authentication/authorization (reuse E22 L19),
@@ -319,9 +325,9 @@ _(working section — to be refined)_
 
 ### Open questions
 
-- [ ] **Validation & error handling need a home** — server-side validation of
-      request bodies and consistent error responses appear only implicitly in
-      L17; likely L15 (REST APIs), as the bridge to security in L21.
+- [ ] **Validation beyond L17** — L17 covers a missing `cpr` or `navn` (400)
+      and a failed database call (500). Richer validation, and SQL injection
+      as a security topic, still need a home before L21.
 - [ ] Git collaboration: depends on the L1 survey — if needed, it goes into L3
       (which then has to make room next to HTML II/CSS).
 - [ ] Document the actual C# level from 62420/62450 (D9), and distinguish it

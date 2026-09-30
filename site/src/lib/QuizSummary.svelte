@@ -29,7 +29,14 @@
 		<article class="q">
 			<p class="muted">Spørgsmål {n + 1}</p>
 			<h3>{r.prompt}</h3>
-			{#if r.type === 'short'}
+			{#if r.type === 'open'}
+				<ul class="open-list">
+					{#each r.shortAnswers ?? [] as text, i (i)}
+						<li>{text}</li>
+					{/each}
+				</ul>
+				<p class="muted none">{r.unanswered ?? 0} uden svar</p>
+			{:else if r.type === 'short'}
 				<div class="bars">
 					{#each freq(r.shortAnswers ?? []) as [text, count] (text)}
 						<div class="row" class:correct={isShortCorrect(r, text)}>
@@ -79,4 +86,7 @@
 	.track { background: #eaeef2; border-radius: 6px; height: 1.6rem; overflow: hidden; }
 	.fill { height: 100%; background: #0969da; }
 	.n { text-align: right; font-weight: 700; }
+	.open-list { list-style: none; padding: 0; display: grid; gap: 0.45rem; margin: 0; }
+	.open-list li { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 0.55rem 0.8rem; }
+	.none { margin-top: 0.6rem; }
 </style>

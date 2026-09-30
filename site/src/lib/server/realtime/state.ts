@@ -10,7 +10,7 @@ export const Player = schema({
 
 export const Question = schema({
 	id: 'string',
-	/** 'mc' = multiple choice, 'tf' = sand/falsk, 'short' = kort tekstsvar */
+	/** 'mc' = multiple choice, 'tf' = sand/falsk, 'short' = kort tekstsvar, 'open' = fritekst uden facit */
 	type: 'string',
 	prompt: 'string',
 	options: ['string']
@@ -36,6 +36,8 @@ export const QuizState = schema({
 	joinCode: 'string',
 	questionIndex: 'number',
 	questionCount: 'number',
+	/** Spørgsmål der tæller i scoren. Fritekst er ikke med. */
+	gradedCount: 'number',
 	question: Question,
 	/** Antal svar pr. svarmulighed - vises live paa projektoren. */
 	tally: ['number'],

@@ -12,6 +12,7 @@
 	let netError = $state('');
 
 	const total = $derived(data.questions.length);
+	const gradedTotal = $derived(data.questions.filter((item: { type: string }) => item.type !== 'open').length);
 	const q = $derived(data.questions[index]);
 	const done = $derived(index >= total);
 	const result = $derived(
@@ -51,7 +52,7 @@
 {:else if done}
 	<section class="center">
 		<h1>{data.title}</h1>
-		<p class="big">Du fik {score} af {total} rigtige</p>
+		<p class="big">Du fik {score} af {gradedTotal} rigtige</p>
 		<p><a href="/quiz">Tilbage til quiz</a></p>
 	</section>
 {:else}
@@ -78,7 +79,7 @@
 							answeredIndex = -1;
 							return;
 						}
-						if (result.type === 'success' && result.data?.isCorrect) score += 1;
+						if (result.type === 'success' && result.data?.graded !== false && result.data?.isCorrect) score += 1;
 						if (result.type !== 'success') chosen = null;
 						await update({ reset: false, invalidateAll: false });
 					} finally {
@@ -89,7 +90,15 @@
 		>
 			<input type="hidden" name="questionId" value={q.id} />
 
-			{#if q.type === 'short'}
+			{#if q.type === 'open'}
+				<div class="short open">
+					<textarea name="value" bind:value={shortText} placeholder="Skriv et par linjer" maxlength="500" rows="4" disabled={answered || pending} required></textarea>
+					<button type="submit" disabled={answered || pending}>Svar</button>
+				</div>
+				{#if result}
+					<p class="result">Tak. Svaret er sendt.</p>
+				{/if}
+			{:else if q.type === 'short'}
 				<div class="short">
 					<input name="value" bind:value={shortText} placeholder="Skriv dit svar" maxlength="200" autocomplete="off" disabled={answered || pending} required />
 					<button type="submit" disabled={answered || pending}>Svar</button>
@@ -153,7 +162,9 @@
 	.opt.wrong { border-color: #cf222e; background: #ffebe9; }
 	.letter { display: inline-block; width: 1.6em; font-weight: 700; color: #57606a; }
 	.short { display: flex; gap: 0.5rem; }
-	.short input { flex: 1; font-size: 1.2rem; padding: 0.6rem 0.8rem; border: 1px solid #d0d7de; border-radius: 8px; }
+	.short.open { flex-direction: column; align-items: stretch; }
+	.short input, .short textarea { flex: 1; font: inherit; font-size: 1.2rem; padding: 0.6rem 0.8rem; border: 1px solid #d0d7de; border-radius: 8px; }
+	.short textarea { min-height: 6rem; resize: vertical; }
 	.short button, .next { font-size: 1.1rem; padding: 0.6rem 1rem; border: 0; border-radius: 8px; background: #0969da; color: #fff; cursor: pointer; }
 	.next { margin-top: 1.2rem; }
 	.result { margin-top: 1rem; font-weight: 600; font-size: 1.1rem; }

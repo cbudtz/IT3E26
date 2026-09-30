@@ -6,13 +6,14 @@ Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 
 ## Program i dag
 
-- Opsamling: client-server, tynd og tyk, tre lag, jeres skitse
+- Opsamling: client-server, tynd og tyk, tre lag, Node
 - Quiz: forberedelsen
+- Øvelse 1: Jeres system
 - Gennemgang: HTTP, nok til én server
 - Gennemgang: `server.js`
 - Quiz: request og response
-- Øvelse 1: Skriv serveren
-- Øvelse 2: Sekvensdiagrammet passer til kaldet
+- Øvelse 2: Skriv serveren
+- Øvelse 3: Sekvensdiagrammet passer til kaldet
 
 Pauser lægges ind undervejs.
 
@@ -120,13 +121,13 @@ flowchart LR
 
 ---
 
-## Jeres skitse
+## Node
 
-I har skrevet, om mockuppet er tyndt eller tykt, navngivet de tre lag og tegnet et sekvensdiagram. Vi bruger den. Vi tegner den ikke forfra.
+JavaScript kan køre uden for browseren. Det er Node.
 
-Livlinjerne er bruger, browser, server og database. Databasen er med, selvom den ikke findes endnu. Tiden går nedad. En udfyldt pil venter på svar. En stiplet pil er svaret.
+Browseren har DOM. Node har den ikke. Node kan tage imod HTTP.
 
-Kig på skitsen: passer «tyk» med, at listen ligger i browseren? Ligger beslutningen i applikationslaget? Er der et kald og et svar?
+I har kørt en fil med `node`. Processen skrev en linje og stoppede. Serveren er den proces, der bliver ved med at vente.
 
 ---
 
@@ -139,6 +140,20 @@ Kig på skitsen: passer «tyk» med, at listen ligger i browseren? Ligger beslut
 Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 **Lektion 11: forberedelse** — client-server, tynd og tyk, tre lag.
+
+---
+
+# Øvelse — jeres system
+
+---
+
+## Øvelse 1: Jeres system
+
+Tynd eller tyk. De tre lag for jeres handling. Sekvensdiagram med bruger, browser, server og database.
+
+Papir er fint. Detaljerne står i [øvelsesarket](oevelser.md).
+
+Vi bruger skitsen igen, når serveren kører.
 
 ---
 
@@ -277,7 +292,7 @@ Detaljerne står i [øvelsesarket](oevelser.md).
 
 ---
 
-## Øvelse 1: Skriv serveren
+## Øvelse 2: Skriv serveren
 
 Skriv `server.js`. `GET /api/patients` svarer 200 og JSON. Alt andet svarer 404.
 
@@ -285,9 +300,9 @@ Tabellen henter fra `localhost:3000`. Et ændret navn ses efter genstart.
 
 ---
 
-## Øvelse 2: Pilene matcher kaldet
+## Øvelse 3: Pilene matcher kaldet
 
-Opdatér sekvensdiagrammet fra forberedelsen, så det er det kald, I lige har kørt. Databasen er med, men I har ikke spurgt den endnu.
+Opdatér sekvensdiagrammet fra øvelse 1, så det er det kald, I lige har kørt. Databasen er med, men I har ikke spurgt den endnu.
 
 ```mermaid
 sequenceDiagram

@@ -3,20 +3,62 @@
 Man lærer grænsen mellem browser og server ved at starte processen selv.
 Detaljerne, der ikke står på slidesne, står her.
 
-Hvis du ikke nåede [forberedelsen](forberedelse.md), så start med skitsen —
-tynd eller tyk, de tre lag, sekvensdiagrammet — og skriv serveren bagefter.
+Hvis du ikke nåede [forberedelsen](forberedelse.md), så læs client-server
+og tre lag, og tag øvelserne bagefter.
 
 | Øvelse | Hvornår | Tid |
 |---|---|---|
-| **1** Skriv serveren | Efter quizzen om request og response | ~40 min |
-| **2** Pilene matcher kaldet | Efter øvelse 1 | ~30 min |
+| **1** Jeres system | Efter quizzen om forberedelsen | ~15 min |
+| **2** Skriv serveren | Efter quizzen om request og response | ~40 min |
+| **3** Pilene matcher kaldet | Efter øvelse 2 | ~30 min |
 
 AI er tilladt, men du skal kunne forklare hver linje, du skriver. En løsning,
 du ikke kan gennemgå, tæller ikke.
 
 ---
 
-## Øvelse 1 — Skriv serveren
+## Øvelse 1 — Jeres system
+
+**Mål:** De to tekster fra forberedelsen sidder på gruppens mockup. En halv
+side. Papir er fint.
+
+### Det skal du lave
+
+1. Hvem er klienten i mockuppet i dag? Er den tynd eller tyk, og hvorfor?
+2. Tag gruppens vigtigste brugerhandling. Navngiv de tre lag: hvad brugeren
+   ser, hvilken beslutning applikationen skulle tage, og hvad der skulle
+   gemmes. Databasen findes ikke endnu. Navngiv den alligevel.
+3. Tegn et sekvensdiagram for den handling med livlinjerne bruger, browser,
+   server og database. En udfyldt pil er et kald, der venter på svar. En
+   stiplet pil tilbage er svaret.
+
+Notation, hvis den er rusten: [Sequence diagram](https://sparxsystems.com/resources/tutorials/uml2/sequence-diagram.html), kun **Lifelines** og **Messages**. Netbank-eksemplet i client-server-artiklen er den samme slags række.
+
+### Tjekliste
+
+- [ ] Tynd eller tyk er begrundet i, hvor logikken sidder
+- [ ] Præsentation, applikation og data er navngivet for jeres handling
+- [ ] Diagrammet har et kald, der venter, og et svar tilbage
+- [ ] Databasen er med, selvom I ikke har den endnu
+
+### Øvelsen er i hus når…
+
+en anden i gruppen kan sige, om mockuppet er tyndt eller tykt, og læse ét
+kald og ét svar på diagrammet.
+
+### Hvis du sidder fast
+
+Mockuppet kører i browseren, og listen ligger i `localStorage`. Det er en
+tyk klient. Databasen på diagrammet er det, der skulle gemmes. I kalder den
+ikke endnu.
+
+### Hvis du har ekstra tid
+
+Skriv de tre lag med én sætning hver, ved siden af diagrammet.
+
+---
+
+## Øvelse 2 — Skriv serveren
 
 **Mål:** En proces svarer JSON på `GET /api/patients`. Jeres tabel henter
 derfra. Et ændret navn ses efter genstart.
@@ -65,9 +107,9 @@ Tilføj en tredje patient. Genstart, og se rækken dukke op. Skriv ikke
 
 ---
 
-## Øvelse 2 — Pilene matcher kaldet
+## Øvelse 3 — Pilene matcher kaldet
 
-**Mål:** Sekvensdiagrammet fra forberedelsen beskriver det kald, I lige har
+**Mål:** Sekvensdiagrammet fra øvelse 1 beskriver det kald, I lige har
 kørt. Det er gruppens diagram for den vigtigste brugerhandling.
 
 ### Det skal du lave
@@ -77,7 +119,7 @@ kørt. Det er gruppens diagram for den vigtigste brugerhandling.
 3. Skriv svaret tilbage som `200` og JSON-listen.
 4. Lad databasen stå på diagrammet. I har ikke kaldt den endnu. En note på
    pilen er nok: «kommer i lektion 15».
-5. Ret de tre lag fra forberedelsen, hvis øvelse 1 flyttede noget: listen
+5. Ret de tre lag fra øvelse 1, hvis øvelse 2 flyttede noget: listen
    ligger nu i server-processen, ikke i `localStorage`.
 
 ### Tjekliste

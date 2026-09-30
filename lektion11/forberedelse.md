@@ -1,11 +1,11 @@
 # Lektion 11 — Forberedelse
 
 D1 er afleveret. Mockuppet er en klient: siden kører i browseren, og dataene
-ligger i `localStorage`. Forberedelsen er to begrebstekster og en kort
-skitse af jeres eget system. I timen samler vi begge dele op, før I skriver
-en server.
+ligger i `localStorage`. Forberedelsen er client-server, tre lag, og hvad
+Node er. I timen samler vi det op. Skitsen af jeres eget system er en øvelse
+dér, før I skriver en server.
 
-Forberedelsen er ca. 55 minutter.
+Forberedelsen er ca. 60 minutter.
 
 ## 1. Client-server (~25 min)
 
@@ -53,20 +53,43 @@ rører ved. Applikationen er beslutningerne. Data er det, der bliver gemt.
 Spring listerne over CORBA, Java RMI og de øvrige protokoller. Spring også
 **Common layers** og afsnittet om strict og relaxed layering over.
 
-## 3. Jeres system (~15 min)
+## 3. Node (~15 min)
 
-Brug de to tekster på gruppens mockup. Skriv det ned, så du kan have det
-fremme i timen. En halv side er nok. Papir er fint.
+JavaScript har indtil nu kørt i browseren. Node er det, der kan køre det
+samme sprog uden for browseren. Det er den proces, serveren bliver.
 
-1. Hvem er klienten i mockuppet i dag? Er den tynd eller tyk, og hvorfor?
-2. Tag gruppens vigtigste brugerhandling. Navngiv de tre lag: hvad brugeren
-   ser, hvilken beslutning applikationen skulle tage, og hvad der skulle
-   gemmes. Databasen findes ikke endnu. Navngiv den alligevel.
-3. Tegn et sekvensdiagram for den handling med livlinjerne bruger, browser,
-   server og database. En udfyldt pil er et kald, der venter på svar. En
-   stiplet pil tilbage er svaret.
+**[Back End Development and APIs](https://www.freecodecamp.org/learn/back-end-development-and-apis-v9/)**
 
-Notation, hvis den er rusten: [Sequence diagram](https://sparxsystems.com/resources/tutorials/uml2/sequence-diagram.html), kun **Lifelines** og **Messages**. Netbank-eksemplet i den første artikel er den samme slags række.
+Kapitel **Back End Development and APIs**, modulet **Introduction to Node.js**. Lav kun denne lecture:
+
+1. [What Is Node and What Are Some Differences Between the Browser and Node Runtime Environment?](https://www.freecodecamp.org/learn/back-end-development-and-apis-v9/lecture-working-with-nodejs-and-event-driven-architecture/what-is-node-and-what-are-some-differences-between-the-browser-and-node-runtime-environment)
+
+Fokusér på, at browseren har DOM, og at Node ikke har. Node kan bygge en
+server, der tager imod HTTP. Der er ikke noget `window`.
+
+Spring **What Are the Advantages and Disadvantages of Using Node on the Back-End?**
+over. Event loop og tråde tager vi ikke. Spring også **How Can You Install
+Node on Your Computer?** over. NVM er ikke nødvendigt. Workshoppen **Learn
+Node.js REPL** er ikke forberedelse.
+
+## 4. Kør en fil (~10 min)
+
+Installer Node.js LTS fra [https://nodejs.org](https://nodejs.org).
+
+Lav en fil `hej.js`:
+
+```js
+console.log("hej fra Node");
+```
+
+Kør den i den mappe, filen ligger i:
+
+```text
+node hej.js
+```
+
+Terminalen skal skrive linjen, og processen stopper. Der er ingen browser og
+ingen server. Det er bare JavaScript uden for browseren.
 
 ## Når du er færdig
 
@@ -75,15 +98,17 @@ Du skal kunne forklare:
 - at klienten anmoder, og serveren venter og svarer
 - at det samme program kan være klient i ét kald og server i et andet
 - forskellen på et lag og en tier, og hvad præsentation, applikation og data hver især er
-- forskellen på en tynd og en tyk klient, og hvor jeres mockup sidder
+- forskellen på en tynd og en tyk klient
 - at `localStorage` ikke er en server og ikke er datalaget i et færdigt system
+- at Node kører JavaScript uden for browseren, og at den ikke har DOM
 
-Og du skal have skitsen med: tynd eller tyk, de tre lag for jeres handling, og sekvensdiagrammet.
+Og du skal have kørt `node hej.js`.
 
-HTTP i detaljer, og det at skrive serveren, tager vi i timen.
+Skitsen af jeres system, HTTP i detaljer, og det at skrive serveren, tager vi i timen.
 
 ## Praktisk
 
-- Installer Node.js LTS, hvis du ikke har det: [https://nodejs.org](https://nodejs.org). Kør `node -v` i en terminal og tjek, at den svarer med et versionsnummer.
+- `node -v` og `npm -v` skal svare med et versionsnummer.
 - Du skriver ikke serveren hjemmefra.
-- Hav gruppens mockup-URL og skitsen med.
+- Hav gruppens mockup-URL med. Skitsen tegner I i øvelsen.
+

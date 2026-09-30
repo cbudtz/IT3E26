@@ -116,7 +116,19 @@
 		<p class="muted">Spørgsmål {snap.questionIndex + 1} af {snap.questionCount}</p>
 		<h1 class="prompt">{q.prompt}</h1>
 
-		{#if q.type === 'short'}
+		{#if q.type === 'open'}
+			{#if snap.phase === 'reveal'}
+				<ul class="open-answers">
+					{#each snap.shortAnswers as a, i (i)}
+						<li>{a}</li>
+					{/each}
+				</ul>
+				{#if snap.shortAnswers.length === 0}<p class="muted">Ingen svar.</p>{/if}
+				<p class="muted none-count">{snap.unansweredCount} uden svar</p>
+			{:else}
+				<p class="muted">Fritekst. Svarene vises, når du afslører.</p>
+			{/if}
+		{:else if q.type === 'short'}
 			{#if snap.phase === 'reveal'}
 				<p>Facit: <strong>{snap.correctText.join(' / ')}</strong></p>
 			{/if}
@@ -182,5 +194,7 @@
 	.chips li { padding: 0.3rem 0.8rem; border-radius: 999px; background: #eaeef2; font-size: 1.1rem; }
 	.chips li.correct { background: #dafbe1; color: #1a7f37; font-weight: 600; }
 	.answers li { font-size: 1.4rem; }
+	.open-answers { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
+	.open-answers li { font-size: 1.35rem; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 10px; padding: 0.8rem 1rem; }
 	.lobby h1 { font-size: 2.4rem; }
 </style>

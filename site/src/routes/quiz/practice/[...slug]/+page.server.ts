@@ -1,7 +1,7 @@
 import { error, fail } from '@sveltejs/kit';
 import { loadQuiz } from '$lib/server/quizzes';
 import { isPublic } from '$lib/server/publicQuizzes';
-import { isCorrect } from '$lib/server/grading';
+import { isCorrect, isGraded } from '$lib/server/grading';
 import { parseAnswerForm, stripCorrect } from '$lib/server/practice';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -23,6 +23,12 @@ export const actions: Actions = {
 		if (!input) return fail(400, { error: 'Ugyldigt svar' });
 		const q = quiz.questions.find((x) => x.id === input.questionId);
 		if (!q) return fail(400, { error: 'Ukendt spørgsmål' });
-		return { questionId: q.id, isCorrect: isCorrect(q, input.value), correct: q.correct };
+		const graded = isGraded(q);
+		return {
+			questionId: q.id,
+			graded,
+			isCorrect: graded && isCorrect(q, input.value),
+			correct: graded ? q.correct : []
+		};
 	}
 };

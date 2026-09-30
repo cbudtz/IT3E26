@@ -20,7 +20,8 @@ export type Snapshot = {
 	joinCode: string;
 	questionIndex: number;
 	questionCount: number;
-	question: { id: string; type: 'mc' | 'tf' | 'short'; prompt: string; options: string[] };
+	gradedCount: number;
+	question: { id: string; type: 'mc' | 'tf' | 'short' | 'open'; prompt: string; options: string[] };
 	tally: number[];
 	answerCount: number;
 	unansweredCount: number;
@@ -32,7 +33,7 @@ export type Snapshot = {
 };
 
 export const EMPTY: Snapshot = {
-	phase: 'lobby', title: '', joinCode: '', questionIndex: -1, questionCount: 0,
+	phase: 'lobby', title: '', joinCode: '', questionIndex: -1, questionCount: 0, gradedCount: 0,
 	question: { id: '', type: 'mc', prompt: '', options: [] },
 	tally: [], answerCount: 0, unansweredCount: 0, correctOptions: [], correctText: [], shortAnswers: [],
 	results: [], players: {}

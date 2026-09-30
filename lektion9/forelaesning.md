@@ -8,10 +8,10 @@ Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 
 - Opsamling: `localStorage`
 - Quiz: forberedelsen
-- Øvelse 1: Gem listen
+- Øvelse 1: Login-state
 - Gennemgang: setter og render
 - Quiz: tilstand
-- Øvelse 2: Patientlisten følger data
+- Øvelse 2: Kladde til et notat
 - Gennemgang: statisk deploy til Vercel
 - Øvelse 3: Mockuppet får en URL
 - Øvelse 4: Videre på D1
@@ -24,10 +24,11 @@ Pauser lægges ind undervejs.
 
 Efter lektionen skal du kunne:
 
-- forklare at `localStorage` gemmer tekst, og at en liste skal igennem `JSON.stringify` / `JSON.parse`
-- gemme listen i en variabel og tegne tabellen fra en setter
+- forklare at `localStorage` gemmer tekst, og at login-state og kladden skal igennem `JSON.stringify` / `JSON.parse`
+- vise navn og minutter til logout efter et refresh, indtil `expiresAt`
+- gemme kladden i en variabel og tegne forhåndsvisningen fra en setter
 - lægge det statiske mockup på Vercel og åbne URL'en
-- holde password ude af `localStorage` — D1 har stadig ingen egen backend
+- holde password, CPR og patientlisten ude af `localStorage` — D1 har stadig ingen egen backend
 
 ---
 
@@ -37,11 +38,11 @@ Efter lektionen skal du kunne:
 
 ## Hvor vi er
 
-Lektion 7: `fetch` henter patientlisten og tegner rækkerne med det samme.
+Lektion 7: `fetch` henter patientlisten og tegner rækkerne med det samme. Den liste gemmer vi ikke.
 
-I forberedelsen lagde I en liste i `localStorage`. Den overlevede refresh. Tabellen læste den ikke.
+I forberedelsen lagde I et objekt i `localStorage`. Det overlevede refresh. Siden læste det ikke.
 
-I dag skal listen **bo et sted**, og skærmen skal følge med. Til sidst får prototypen en URL, og I arbejder videre på D1. Der er stadig ingen egen server.
+I dag skal login-state og en kladde **bo et sted**, og skærmen skal følge med. Til sidst får prototypen en URL, og I arbejder videre på D1. Der er stadig ingen egen server.
 
 ---
 
@@ -59,18 +60,18 @@ Værdien er **altid en streng**. `getItem` giver `null`, hvis nøglen ikke finde
 
 ---
 
-## En liste er tekst
+## Et objekt er tekst
 
 ```js
-const json = localStorage.getItem("patienter");
-const liste = json ? JSON.parse(json) : [];
+const json = localStorage.getItem("login");
+const login = json ? JSON.parse(json) : null;
 
-localStorage.setItem("patienter", JSON.stringify(liste));
+localStorage.setItem("login", JSON.stringify({ navn: "Nancy", expiresAt: 0 }));
 ```
 
 `JSON.stringify` og `JSON.parse` kender I fra Lektion 7. Her gemmer de i browseren i stedet for at rejse over nettet.
 
-Password hører ikke hjemme her. Lageret kan læses af script på samme side.
+Password, CPR og patientlisten hører ikke hjemme her. Lageret kan læses af script på samme side. Ligger nøglen `patienter` der, så slet den.
 
 ---
 
@@ -78,17 +79,17 @@ Password hører ikke hjemme her. Lageret kan læses af script på samme side.
 
 Samme metoder. Data dør, når fanen lukkes.
 
-Til mockuppet bruger I `localStorage`, så patientlisten stadig er der efter refresh.
+Til mockuppet bruger I `localStorage` til login-state: navn og et udløbstidspunkt. Patientlisten gemmes ikke.
 
-Det er browseren. Det er ikke et login på en server.
+Det er browseren. Det er ikke et login på en server. Password og CPR hører ikke hjemme i lageret.
 
 ---
 
-## Tabellen læser ikke lageret
+## Siden læser ikke lageret
 
-I konsollen overlevede Nancy et refresh. `patienter.html` tegnede hende ikke af den grund.
+I forberedelsen overlevede objektet et refresh. Siden viste det ikke.
 
-Lager og tegning er to skridt. Øvelse 1 kobler kun lageret på scriptet. Tegningen samler vi bagefter.
+I dag er det login-state og kladden, der skal overleve refresh. Patientlisten hentes med `fetch` og gemmes ikke.
 
 ---
 
@@ -108,13 +109,16 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 ---
 
-## Øvelse 1: Gem listen
+## Øvelse 1: Login-state
 
-Skriv lageret ind i `patienter.js`. Tabellen tegner I som i Lektion 7.
+Først vis tilstanden. Så refresh — I er logget ud. Så læs den fra `localStorage`.
 
-- `setItem` med `JSON.stringify` efter I har listen
-- `getItem` ved opstart, og `JSON.parse` kun når værdien ikke er `null`
-- Refresh uden netværk: konsollen viser stadig patienterne
+- Efter login: topbar med navn og minutter til `expiresAt` (fem minutter frem)
+- Refresh uden `setItem`: baren er væk
+- Gem `{ navn, expiresAt }` med `JSON.stringify`, og læs den når scriptet starter
+- Vis kun, hvis udløbet ligger i fremtiden
+
+Ikke password. Ikke CPR. Ikke patientlisten.
 
 Detaljerne står i [øvelsesarket](oevelser.md).
 
@@ -130,32 +134,23 @@ Detaljerne står i [øvelsesarket](oevelser.md).
 
 ## To opgaver
 
-1. **Husk** listen.
-2. **Tegn** tabellen ud fra listen.
+1. **Husk** kladden.
+2. **Tegn** forhåndsvisningen ud fra kladden.
 
-I Lektion 7 skete begge dele i samme åndedrag efter `fetch`. I dag er tegningen en funktion, og den eneste måde at ændre listen på kalder den funktion.
+Feltet og visningen er ikke det samme. I dag er tegningen en funktion, og den eneste måde at ændre kladden på kalder den funktion.
 
 ---
 
-## `renderTabel`
+## `renderKladde`
 
-Samme løkke som i Lektion 7. Den læser variablen. Den henter ikke selv.
+Den læser variablen. Den lytter ikke selv på feltet.
 
 ```js
-let patienter = [];
+let kladde = { tekst: "" };
 
-function renderTabel() {
-  const tbody = document.getElementById("liste");
-  tbody.replaceChildren();
-  for (const p of patienter) {
-    const tr = document.createElement("tr");
-    const cpr = document.createElement("td");
-    const navn = document.createElement("td");
-    cpr.textContent = p.cpr;
-    navn.textContent = p.navn;
-    tr.append(cpr, navn);
-    tbody.append(tr);
-  }
+function renderKladde() {
+  const vis = document.getElementById("forhaand");
+  vis.textContent = kladde.tekst || "Intet notat endnu";
 }
 ```
 
@@ -166,42 +161,38 @@ function renderTabel() {
 ## Setteren
 
 ```js
-function setPatienter(next) {
-  patienter = next;
-  localStorage.setItem("patienter", JSON.stringify(patienter));
-  renderTabel();
+function setKladde(next) {
+  kladde = next;
+  localStorage.setItem("kladde", JSON.stringify(kladde));
+  renderKladde();
 }
 ```
 
 Setteren gemmer, skriver til `localStorage` og tegner. Den gør ikke andet.
 
-`patienter.push(...)` ved siden af setteren opdaterer tabellen ikke. Tabellen læser kun variablen, når `renderTabel` kører.
-
-Linjerne fra øvelse 1 flytter herind. `console.log` udgår, når tabellen tegner.
+`kladde.tekst = "hej"` ved siden af setteren opdaterer forhåndsvisningen ikke. Den læser kun variablen, når `renderKladde` kører.
 
 ---
 
-## `fetch` skriver, den tegner ikke
+## Feltet skriver, det tegner ikke
 
 ```js
-async function hentPatienter() {
-  const res = await fetch("https://it3e26.vercel.app/api/patients");
-  if (!res.ok) throw new Error("Kunne ikke hente patienter");
-  setPatienter(await res.json());
-}
+document.getElementById("kladde-tekst").addEventListener("input", (event) => {
+  setKladde({ tekst: event.target.value });
+});
 ```
 
-Når kaldet lykkes, er tabellen allerede tegnet, fordi setteren kaldte `renderTabel`.
+Når der skrives, er forhåndsvisningen allerede tegnet, fordi setteren kaldte `renderKladde`.
 
-Ved opstart: læs `localStorage` og kald `setPatienter`, hvis der ligger en liste. Så viser refresh noget, også før netværket svarer.
+Ved opstart: læs `localStorage`, læg teksten i feltet, og kald `renderKladde`. Så viser refresh kladden. Patientlisten er ikke med i objektet.
 
 ---
 
 ## Hvad I skriver selv
 
-Frameworks kan spore, at listen ændrede sig, og tegne for jer. I kalder `renderTabel` selv.
+Frameworks kan spore, at teksten ændrede sig, og tegne for jer. I kalder `renderKladde` selv.
 
-I behøver ikke en liste af lyttere. Én setter er nok, så længe tabellen er det eneste, der skal følge med.
+I behøver ikke en liste af lyttere. Én setter er nok, så længe forhåndsvisningen er det eneste, der skal følge med.
 
 ---
 
@@ -221,13 +212,13 @@ Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 ---
 
-## Øvelse 2: Patientlisten følger data
+## Øvelse 2: Kladde til et notat
 
-Byg videre på øvelse 1.
+Først vis kladden. Så refresh — teksten er væk. Så gem den i `setKladde`, og læs den ved opstart.
 
-- `setPatienter` gemmer, skriver til `localStorage` og kalder `renderTabel`
-- `fetch` kalder setteren og tegner ikke selv
-- Refresh viser listen i tabellen, før netværket svarer
+- `setKladde` sætter variablen, skriver til `localStorage` og kalder `renderKladde`
+- Feltet kalder setteren og tegner ikke selv
+- Refresh viser teksten igen. Patientlisten er ikke i lageret
 
 Detaljerne står i [øvelsesarket](oevelser.md).
 
@@ -292,8 +283,8 @@ Gruppen deployer det repository, I allerede har, til Vercel.
 
 ## Øvelse 4: Videre på D1
 
-Læg tilstanden ind på den skærm, URL'en åbner. Brug resten af tiden på den klikbare sti, I vil aflevere.
+Læg login-baren og kladden ind på den skærm, URL'en åbner. Brug resten af tiden på den klikbare sti, I vil aflevere.
 
-Ingen egen backend. Password hører ikke hjemme i `localStorage`.
+Ingen egen backend. Password, CPR og patientlisten hører ikke hjemme i `localStorage`.
 
 Detaljerne står i [øvelsesarket](oevelser.md).

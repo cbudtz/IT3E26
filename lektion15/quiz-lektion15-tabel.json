@@ -1,0 +1,60 @@
+{
+  "title": "Lektion 15: tabel",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mc",
+      "prompt": "Hvad viser prompten lektion15=> ?",
+      "options": [
+        "At psql er forbundet til databasen lektion15",
+        "At tabellen patients har 15 rækker",
+        "At Express lytter på port 15",
+        "At SQLBolt-lektion 15 er færdig"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q2",
+      "type": "mc",
+      "prompt": "Hvad gør SERIAL på id?",
+      "options": [
+        "PostgreSQL sætter selv næste tal, når du indsætter en række uden id",
+        "id skal skrives som tekst",
+        "id bliver en fremmednøgle",
+        "Tabellen slettes ved genstart"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q3",
+      "type": "mc",
+      "prompt": "Hvorfor er cpr VARCHAR og ikke et tal?",
+      "options": [
+        "Fordi 0107729995 skal beholde det foranstillede 0",
+        "Fordi VARCHAR sorterer hurtigere end INTEGER",
+        "Fordi primærnøgler skal være tekst",
+        "Fordi WHERE kun virker på tekst"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q4",
+      "type": "mc",
+      "prompt": "Hvad viser \\d patients?",
+      "options": [
+        "Kolonner, typer og hvilken kolonne der er primærnøgle",
+        "Alle patientrækker",
+        "Indholdet af server.js",
+        "De fem lectures fra forberedelsen"
+      ],
+      "correct": [0]
+    },
+    {
+      "id": "q5",
+      "type": "tf",
+      "prompt": "INSERT INTO patients (cpr, navn) VALUES (...) skal også angive id, fordi id er primærnøgle.",
+      "options": ["Sandt", "Falsk"],
+      "correct": [1]
+    }
+  ]
+}

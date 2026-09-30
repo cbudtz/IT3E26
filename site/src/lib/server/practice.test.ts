@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { isCorrect } from './grading.ts';
+import { isCorrect, isGraded } from './grading.ts';
 import { stripCorrect, selectPublic, parsePublishForm, parseAnswerForm } from './practice.ts';
 import type { QuestionDef } from './realtime/QuizRoom.ts';
 
@@ -19,6 +19,13 @@ test('isCorrect: forkert mc-svar', () => {
 test('isCorrect: short er case-insensitive og trimmet', () => {
 	assert.equal(isCorrect(short, '  københavn '), true);
 	assert.equal(isCorrect(short, 'Aarhus'), false);
+});
+
+test('fritekst har intet facit og tæller ikke som rigtigt', () => {
+	const open: QuestionDef = { id: 'q3', type: 'open', prompt: 'Hvad fungerer godt?', options: [], correct: [] };
+	assert.equal(isGraded(open), false);
+	assert.equal(isCorrect(open, 'localStorage'), false);
+	assert.equal(isGraded(mc), true);
 });
 
 test('stripCorrect fjerner facit men beholder resten', () => {
@@ -54,10 +61,10 @@ test('parsePublishForm: publicér og afpublicér', () => {
 test('parseAnswerForm kræver questionId og value, afkorter value', () => {
 	const fd = new FormData();
 	fd.set('questionId', 'q1');
-	fd.set('value', 'x'.repeat(300));
+	fd.set('value', 'x'.repeat(600));
 	const r = parseAnswerForm(fd);
 	assert.equal(r?.questionId, 'q1');
-	assert.equal(r?.value.length, 200);
+	assert.equal(r?.value.length, 500);
 
 	const missing = new FormData();
 	missing.set('questionId', 'q1');

@@ -16,12 +16,12 @@
     {
       "id": "q2",
       "type": "mc",
-      "prompt": "Hvordan lægger I en liste af patienter i localStorage?",
+      "prompt": "Hvordan lægger I et objekt i localStorage?",
       "options": [
-        "localStorage.setItem(\"patienter\", patienter)",
-        "localStorage.setItem(\"patienter\", JSON.stringify(patienter))",
-        "localStorage.setItem(\"patienter\", patienter.innerHTML)",
-        "sessionStorage er påkrævet, localStorage kan ikke gemme lister"
+        "localStorage.setItem(\"login\", login)",
+        "localStorage.setItem(\"login\", JSON.stringify(login))",
+        "localStorage.setItem(\"login\", login.innerHTML)",
+        "sessionStorage er påkrævet, localStorage kan ikke gemme objekter"
       ],
       "correct": [1]
     },
@@ -50,6 +50,27 @@
       "prompt": "Password må gerne ligge i localStorage, fordi kun jeres gruppe kan åbne siden.",
       "options": ["Sandt", "Falsk"],
       "correct": [1]
+    },
+    {
+      "id": "q6",
+      "type": "open",
+      "prompt": "Dette fungerer godt i undervisningen.",
+      "options": [],
+      "correct": []
+    },
+    {
+      "id": "q7",
+      "type": "open",
+      "prompt": "Dette kunne forbedres. Kom gerne med et forslag.",
+      "options": [],
+      "correct": []
+    },
+    {
+      "id": "q8",
+      "type": "open",
+      "prompt": "Det her kunne jeg godt tænke mig at få repeteret.",
+      "options": [],
+      "correct": []
     }
   ]
 }
