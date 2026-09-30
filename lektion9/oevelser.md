@@ -260,8 +260,20 @@ bare fejlen.
 Det er den adresse, I afleverer til D1.
 
 Arbejd i **gruppens GitHub-repository**. HTML, CSS og JavaScript skal være
-committet og pushet. Én i gruppen ejer Vercel-projektet og inviterer resten
-under **Settings → Members** (eller deler URL'en, så de andre kan se siden).
+committet og pushet. Én i gruppen ejer Vercel-projektet og deler URL'en, så
+de andre kan se siden.
+
+> **Vigtigt: Kun ejeren af Vercel-projektet kan udløse et deploy.**
+> Den gratis Hobby-plan blokerer pushes fra alle andre i gruppen. Deres
+> commits kommer på GitHub, men ikke på den offentlige side.
+>
+> Når en anden i gruppen har pushet, gør **ejeren** sådan:
+>
+> 1. Pull de nyeste ændringer: `git pull`.
+> 2. Lav en ligegyldig ændring, fx et ekstra mellemrum i en kommentar.
+> 3. Commit og push.
+>
+> Nu deployer Vercel siden med alle gruppens commits.
 
 Billederne er fra et eksempel-repository. I vælger **gruppens** repository,
 ikke det, der står på billedet.
@@ -331,6 +343,9 @@ pege på det commit, siden er bygget fra.
 - 404: Root Directory er forkert, eller `index.html` er ikke pushet.
 - Siden er gammel: se i Vercel under **Deployments**, om det seneste push
 er **Ready**, og om produktion peger på den branch, I pusher til.
+- Deployet står som **Blocked**: en anden end ejeren har pushet. Ejeren
+skal pulle, lave en ligegyldig ændring og pushe (se boksen øverst i
+øvelsen).
 - `fetch` fejler kun på URL'en: tjek at adressen er
 `https://it3e26.vercel.app/api/patients` og ikke en relativ sti til en
 fil, der kun findes på din computer.
