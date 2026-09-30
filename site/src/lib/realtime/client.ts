@@ -45,7 +45,10 @@ export function connect(endpoint: string) {
 
 /** Abonnér paa state som plain JSON. Returnerer unsubscribe. */
 export function watch(room: Room, onSnap: (s: Snapshot) => void) {
-	const push = () => onSnap(structuredClone((room.state as { toJSON(): Snapshot }).toJSON()));
+	// join() resolver foer foerste ROOM_STATE er modtaget, saa state kan vaere tom her -
+	// udfyld manglende felter med EMPTY i stedet for at give komponenterne undefined.
+	const push = () =>
+		onSnap({ ...EMPTY, ...structuredClone((room.state as { toJSON(): Partial<Snapshot> }).toJSON()) });
 	push();
 	const off = room.onStateChange(push);
 	return () => off.clear?.();
