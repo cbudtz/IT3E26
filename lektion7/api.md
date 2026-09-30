@@ -68,12 +68,14 @@ const data = await res.json();
 
 | Status | Hvornår | Body |
 | --- | --- | --- |
-| 200 | Rigtig CPR + kode | `{ "cpr", "navn" }` |
+| 200 | Rigtig CPR + kode | `{ "cpr", "navn", "user": { "cpr", "navn" }, "expiry" }` |
 | 400 | `cpr` eller `password` mangler | `{ "error": "cpr og password skal sendes" }` |
 | 401 | Forkert kombination | `{ "error": "forkert cpr eller password" }` |
 | 500 | Serverfejl | `{ "error": "serverfejl" }` |
 
 Tjek `res.ok` (status 200–299). Ved 400/401 ligger beskeden i `data.error`.
+
+Ved 200 er `cpr` og `navn` stadig i toppen. `user` er de samme to felter. `expiry` er et UTC-tidspunkt 15 minutter frem, for eksempel `"2026-09-30T08:45:00.000Z"`. Serveren gemmer ikke sessionen.
 
 ## Testpatienter
 

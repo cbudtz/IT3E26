@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { config } from 'dotenv';
 import request from 'supertest';
-import { normalizeCpr } from './login.js';
+import { loginSuccessBody, normalizeCpr } from './login.js';
 
 config({ path: '.env' });
 const hasDb = Boolean(process.env.DATABASE_URL);
@@ -12,16 +12,41 @@ test('normalizeCpr strips hyphen and spaces', () => {
 	assert.equal(normalizeCpr('251248 9996'), '2512489996');
 });
 
+test('login success body keeps cpr and navn and adds user plus 15 minute expiry', () => {
+	const now = Date.parse('2026-09-30T08:30:00.000Z');
+	const body = loginSuccessBody(
+		{ cpr: '2512489996', navn: 'Nancy Ann Test Berggren' },
+		now
+	);
+	assert.deepEqual(body, {
+		cpr: '2512489996',
+		navn: 'Nancy Ann Test Berggren',
+		user: { cpr: '2512489996', navn: 'Nancy Ann Test Berggren' },
+		expiry: '2026-09-30T08:45:00.000Z'
+	});
+});
+
 async function postLogin(body) {
 	const { default: app } = await import('../server.js');
 	return request(app).post('/api/login').send(body);
 }
 
 test('login Nancy with password succeeds', { skip: !hasDb }, async () => {
+	const before = Date.now();
 	const res = await postLogin({ cpr: '2512489996', password: 'password' });
+	const after = Date.now();
 	assert.equal(res.status, 200);
-	assert.deepEqual(res.body, { cpr: '2512489996', navn: 'Nancy Ann Test Berggren' });
+	assert.equal(res.body.cpr, '2512489996');
+	assert.equal(res.body.navn, 'Nancy Ann Test Berggren');
+	assert.deepEqual(res.body.user, {
+		cpr: '2512489996',
+		navn: 'Nancy Ann Test Berggren'
+	});
+	const expiry = Date.parse(res.body.expiry);
+	const fifteenMin = 15 * 60 * 1000;
+	assert.ok(expiry >= before + fifteenMin && expiry <= after + fifteenMin);
 	assert.equal('password' in res.body, false);
+	assert.equal('password' in res.body.user, false);
 });
 
 test('login Kirsten with 12345678 succeeds', { skip: !hasDb }, async () => {

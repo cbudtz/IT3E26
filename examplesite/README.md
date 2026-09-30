@@ -53,10 +53,12 @@ curl -X POST http://localhost:3000/api/login \
 
 | Status | Body |
 | --- | --- |
-| 200 | `{ "cpr", "navn" }` |
+| 200 | `{ "cpr", "navn", "user": { "cpr", "navn" }, "expiry" }` |
 | 400 | `{ "error": "cpr og password skal sendes" }` |
 | 401 | `{ "error": "forkert cpr eller password" }` |
 | 500 | `{ "error": "serverfejl" }` |
+
+`expiry` er et UTC-tidspunkt (`toISOString()`), 15 minutter efter svaret. `cpr` og `navn` i toppen er de samme felter som i `user`. Der gemmes ingen session på serveren.
 
 ## Testpatienter (MedCom)
 
