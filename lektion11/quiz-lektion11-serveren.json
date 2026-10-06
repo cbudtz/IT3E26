@@ -4,52 +4,68 @@
     {
       "id": "q1",
       "type": "mc",
-      "prompt": "Hvilket request skal serveren svare 200 på?",
+      "prompt": "I jeres minimale server fra i dag: hvilket request giver 200?",
       "options": [
-        "Ethvert request til port 3000",
-        "GET /api/patients",
+        "GET /",
         "POST /api/patients",
-        "GET /"
+        "GET /api/patients",
+        "Ethvert request til port 3000"
       ],
-      "correct": [1]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvad svarer serveren, når stien ikke er /api/patients?",
       "options": [
-        "200 og en tom liste",
-        "404 og en JSON-fejl",
         "200 og HTML-siden",
-        "Ingenting. Processen stopper"
+        "200 og en tom liste",
+        "Ingenting. Processen stopper",
+        "404 og en JSON-fejl"
       ],
-      "correct": [1]
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q3",
       "type": "tf",
       "prompt": "Content-Type: application/json fortæller, at kroppen er JSON.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [0]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q4",
       "type": "mc",
       "prompt": "Hvorfor sætter serveren Access-Control-Allow-Origin: *?",
       "options": [
-        "Fordi siden og serveren ikke er samme oprindelse",
-        "Fordi JSON ellers ikke kan parses",
+        "Fordi localStorage ellers bliver tømt",
         "Fordi Node kræver headeren for at lytte",
-        "Fordi localStorage ellers bliver tømt"
+        "Fordi siden og serveren ikke er samme oprindelse",
+        "Fordi JSON ellers ikke kan parses"
       ],
-      "correct": [0]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q5",
       "type": "tf",
       "prompt": "HTTP husker det forrige request, så serveren ved, hvem der lige har hentet listen.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q6",
@@ -57,11 +73,13 @@
       "prompt": "Du retter et navn i listen i server.js. Hvornår ser tabellen det nye navn?",
       "options": [
         "Med det samme, uden at du gør mere",
-        "Når du genstarter processen og henter igen",
         "Når du gemmer i localStorage",
-        "Først når Express er installeret"
+        "Først når Express er installeret",
+        "Når du genstarter processen og henter igen"
       ],
-      "correct": [1]
+      "correct": [
+        3
+      ]
     }
   ]
 }

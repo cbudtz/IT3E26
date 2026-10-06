@@ -7,37 +7,53 @@
       "prompt": "Hvorfor skal app.use(express.json()) stå før POST-routen?",
       "options": [
         "Så req.body er parsed JSON fra requestets body",
-        "Så GET automatisk bliver til POST",
         "Så curl ikke behøver Content-Type",
+        "Så GET automatisk bliver til POST",
         "Så patientlisten gemmes i PostgreSQL"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvilken statuskode passer bedst, når en ny patient er oprettet med POST?",
-      "options": ["200 OK", "201 Created", "404 Not Found", "500 Internal Server Error"],
-      "correct": [1]
+      "options": [
+        "200 OK",
+        "500 Internal Server Error",
+        "404 Not Found",
+        "201 Created"
+      ],
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q3",
       "type": "mc",
       "prompt": "POST med body uden cpr eller navn bør typisk give:",
       "options": [
-        "201 og en tom patient",
         "400 og en fejlbesked",
-        "404 not found",
-        "200 og hele listen"
+        "200 og hele listen",
+        "201 og en tom patient",
+        "404 not found"
       ],
-      "correct": [1]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q4",
       "type": "tf",
       "prompt": "Efter curl POST og før genstart af serveren ligger den nye patient i processens hukommelse.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [0]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q5",
@@ -45,18 +61,25 @@
       "prompt": "Hvad tester curl bedre end browserens adresselinje i denne lektion?",
       "options": [
         "POST med JSON-body til API'et",
-        "CSS på patienttabellen",
         "localStorage efter refresh",
+        "CSS på patienttabellen",
         "Deploy til Vercel"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q6",
       "type": "tf",
       "prompt": "Når processen genstartes, er patienter kun tilføjet med curl stadig i listen.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     }
   ]
 }

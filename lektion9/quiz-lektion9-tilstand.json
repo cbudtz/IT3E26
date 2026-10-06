@@ -6,43 +6,54 @@
       "type": "mc",
       "prompt": "Hvad skal setKladde gøre?",
       "options": [
-        "Kalder fetch og tegner ikke",
+        "Gemmer password fra login-svaret",
         "Sætter variablen, skriver til localStorage og kalder renderKladde",
-        "Opretter Vercel-projektet",
-        "Gemmer password fra login-svaret"
+        "Kalder fetch og tegner ikke",
+        "Opretter Vercel-projektet"
       ],
-      "correct": [1]
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvem tegner forhåndsvisningen?",
       "options": [
+        "localStorage.setItem",
         "Feltet, direkte i input-lytteren",
         "renderKladde, som læser variablen kladde",
-        "localStorage.setItem",
         "Browseren, ud fra label"
       ],
-      "correct": [1]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q3",
       "type": "tf",
       "prompt": "kladde.tekst = \"hej\" opdaterer forhåndsvisningen, også selv om I ikke kalder setKladde eller renderKladde.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q4",
       "type": "mc",
       "prompt": "Hvad skal input-lytteren gøre?",
       "options": [
-        "Kalde setKladde med teksten fra feltet",
-        "Skrive innerHTML på forhåndsvisningen og springe setteren over",
         "Gemme patientlisten under nøglen patienter",
-        "Navigere formularen til en anden HTML-fil"
+        "Navigere formularen til en anden HTML-fil",
+        "Kalde setKladde med teksten fra feltet",
+        "Skrive innerHTML på forhåndsvisningen og springe setteren over"
       ],
-      "correct": [0]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q5",
@@ -50,11 +61,13 @@
       "prompt": "Hvorfor læse login fra localStorage, når siden starter?",
       "options": [
         "Så et refresh inden udløb stadig viser topbaren",
-        "Så patientlisten overlever uden netværk",
+        "Så fetch bliver synkront",
         "Så password kan genbruges",
-        "Så fetch bliver synkront"
+        "Så patientlisten overlever uden netværk"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     }
   ]
 }

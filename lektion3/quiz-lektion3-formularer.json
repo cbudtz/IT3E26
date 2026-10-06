@@ -6,50 +6,70 @@
       "type": "mc",
       "prompt": "Hvad er et <form>-elements rolle?",
       "options": [
-        "At style sidens farver og skrift",
         "At ramme felter ind, der hører sammen",
         "At åbne et nyt faneblad",
+        "At style sidens farver og skrift",
         "At gemme data i browserens localStorage"
       ],
-      "correct": [1]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvordan kobler man et <label> til et felt, så et klik på teksten giver fokus?",
       "options": [
-        "name på label skal matche class på input",
-        "for på label skal matche id på input",
+        "Det sker automatisk, hvis de står ved siden af hinanden",
         "for på label skal matche name på input",
-        "Det sker automatisk, hvis de står ved siden af hinanden"
+        "name på label skal matche class på input",
+        "for på label skal matche id på input"
       ],
-      "correct": [1]
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q3",
       "type": "mc",
       "prompt": "Hvilken input-type skjuler det, brugeren skriver (typisk som prikker)?",
-      "options": ["text", "email", "password", "hidden"],
-      "correct": [2]
+      "options": [
+        "email",
+        "text",
+        "hidden",
+        "password"
+      ],
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q4",
       "type": "mc",
       "prompt": "Til D1-mockup uden backend — hvad gør I med action?",
       "options": [
-        "action=\"https://dtu.dk/login\" med method=\"post\"",
-        "action=\"#\" — eller udelad action",
+        "action=\"mailto:chbu@dtu.dk\"",
         "action er påkrævet og skal pege på en .php-fil",
-        "action=\"mailto:chbu@dtu.dk\""
+        "action=\"https://dtu.dk/login\" med method=\"post\"",
+        "action=\"#\" — eller udelad action"
       ],
-      "correct": [1]
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q5",
       "type": "mc",
       "prompt": "Hvilken button-type er standard inde i en <form>?",
-      "options": ["reset", "button", "submit", "send"],
-      "correct": [2]
+      "options": [
+        "button",
+        "send",
+        "submit",
+        "reset"
+      ],
+      "correct": [
+        2
+      ]
     }
   ]
 }

@@ -5,15 +5,29 @@
       "id": "q1",
       "type": "mc",
       "prompt": "Hvad udskriver dette Python-udtryk: print(7 / 2) ?",
-      "options": ["3", "3.5", "4", "Fejl"],
-      "correct": [1]
+      "options": [
+        "3.5",
+        "4",
+        "Fejl",
+        "3"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvad er værdien af dette C#-udtryk, når begge operander er int: 7 / 2 ?",
-      "options": ["3", "3.5", "4", "Kompileringsfejl"],
-      "correct": [0]
+      "options": [
+        "3",
+        "3.5",
+        "Kompileringsfejl",
+        "4"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q3",
@@ -21,123 +35,164 @@
       "prompt": "Hvad betyder encapsulation (indkapsling) i objektorienteret programmering?",
       "options": [
         "At en klasses indre tilstand skjules og kun ændres via metoder",
-        "At en klasse arver felter og metoder fra en anden klasse",
         "At flere tråde kører samtidig",
-        "At programmet tegner en grafisk brugergrænseflade"
+        "At programmet tegner en grafisk brugergrænseflade",
+        "At en klasse arver felter og metoder fra en anden klasse"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q4",
       "type": "mc",
       "prompt": "Hvad kendetegner event-drevet programmering (fx i en GUI)?",
       "options": [
-        "Programmet venter på hændelser (klik, tast) og reagerer på dem",
         "Programmet kører alle linjer i rækkefølge og stopper så",
-        "Programmet starter en ny tråd for hver variabel",
-        "Programmet kommunikerer kun via seriel port"
+        "Programmet kommunikerer kun via seriel port",
+        "Programmet venter på hændelser (klik, tast) og reagerer på dem",
+        "Programmet starter en ny tråd for hver variabel"
       ],
-      "correct": [0]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q5",
       "type": "tf",
       "prompt": "En primærnøgle i en SQL-tabel må gerne have samme værdi i to rækker.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q6",
       "type": "mc",
       "prompt": "Hvilken SQL-sætning henter alle rækker fra tabellen patient?",
-      "options": ["GET * FROM patient;", "SELECT * FROM patient;", "FETCH ALL patient;", "SHOW patient;"],
-      "correct": [1]
+      "options": [
+        "FETCH ALL patient;",
+        "GET * FROM patient;",
+        "SELECT * FROM patient;",
+        "SHOW patient;"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q7",
       "type": "mc",
       "prompt": "Hvad gør et SQL JOIN?",
       "options": [
-        "Sletter dubletter i en tabel",
         "Kombinerer rækker fra to tabeller ud fra en relateret kolonne",
         "Opretter en ny database",
+        "Sletter dubletter i en tabel",
         "Sorterer rækker alfabetisk"
       ],
-      "correct": [1]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q8",
       "type": "short",
       "prompt": "Hvilket UML-diagram viser, hvordan objekter sender beskeder til hinanden over tid?",
       "options": [],
-      "correct": ["sekvensdiagram", "sequence diagram", "sekvens diagram"]
+      "correct": [
+        "sekvensdiagram",
+        "sequence diagram",
+        "sekvens diagram"
+      ]
     },
     {
       "id": "q9",
       "type": "mc",
       "prompt": "Hvad viser et UML-klassediagram (class diagram)?",
       "options": [
-        "Klasser, deres attributter og metoder samt relationer mellem dem",
-        "Hvordan objekter sender beskeder til hinanden over tid",
         "Brugerens klik og skærmovergange",
-        "Netværkspakker mellem klient og server"
+        "Netværkspakker mellem klient og server",
+        "Hvordan objekter sender beskeder til hinanden over tid",
+        "Klasser, deres attributter og metoder samt relationer mellem dem"
       ],
-      "correct": [0]
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q10",
       "type": "mc",
       "prompt": "Hvad er en persona i user-centered design?",
       "options": [
-        "Et fiktivt, evidensbaseret portræt af en typisk bruger",
         "En rigtig patient gemt i databasen",
-        "Et objekt i et UML-klassediagram",
-        "En Git-branch til brugerinterface"
+        "Et fiktivt, evidensbaseret portræt af en typisk bruger",
+        "En Git-branch til brugerinterface",
+        "Et objekt i et UML-klassediagram"
       ],
-      "correct": [0]
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q11",
       "type": "mc",
       "prompt": "Jeg har styr på Git.",
       "options": [
-        "Slet ikke — jeg har aldrig brugt det",
-        "Jeg kan clone, committe og pushe",
+        "Jeg bruger Git dagligt og kan løse konflikter",
         "Jeg kan oprette branches og merge",
-        "Jeg bruger Git dagligt og kan løse konflikter"
+        "Slet ikke — jeg har aldrig brugt det",
+        "Jeg kan clone, committe og pushe"
       ],
-      "correct": [0, 1, 2, 3]
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ]
     },
     {
       "id": "q12",
       "type": "mc",
       "prompt": "Hvad gør git merge?",
       "options": [
+        "Opretter en kopi af hele repositoryet",
         "Sletter en branch",
         "Kombinerer ændringer fra en branch ind i en anden",
-        "Uploader koden til GitHub",
-        "Opretter en kopi af hele repositoryet"
+        "Uploader koden til GitHub"
       ],
-      "correct": [1]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q13",
       "type": "mc",
       "prompt": "Hvad betyder det, at Git-worktree'et er dirty?",
       "options": [
-        "Repositoryet er slettet",
-        "Der er ændringer i working directory, som ikke er committet",
         "Den seneste commit er ødelagt",
-        "Man er på den forkerte branch"
+        "Man er på den forkerte branch",
+        "Der er ændringer i working directory, som ikke er committet",
+        "Repositoryet er slettet"
       ],
-      "correct": [1]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q14",
       "type": "tf",
       "prompt": "Jeg har forberedt mig til i dag.",
-      "options": ["Ja", "Nej"],
-      "correct": [0, 1]
+      "options": [
+        "Ja",
+        "Nej"
+      ],
+      "correct": [
+        0,
+        1
+      ]
     }
   ]
 }

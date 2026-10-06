@@ -6,50 +6,66 @@
       "type": "mc",
       "prompt": "Hvad gemmer localStorage?",
       "options": [
-        "JavaScript-objekter, direkte",
         "Strenge",
+        "JavaScript-objekter, direkte",
         "HTML-elementer",
         "En række i gruppens database"
       ],
-      "correct": [1]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvordan lægger I et objekt i localStorage?",
       "options": [
-        "localStorage.setItem(\"login\", login)",
-        "localStorage.setItem(\"login\", JSON.stringify(login))",
+        "sessionStorage er påkrævet, localStorage kan ikke gemme objekter",
         "localStorage.setItem(\"login\", login.innerHTML)",
-        "sessionStorage er påkrævet, localStorage kan ikke gemme objekter"
+        "localStorage.setItem(\"login\", JSON.stringify(login))",
+        "localStorage.setItem(\"login\", login)"
       ],
-      "correct": [1]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q3",
       "type": "tf",
       "prompt": "localStorage overlever, at I lukker fanen. sessionStorage gør ikke.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [0]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q4",
       "type": "mc",
       "prompt": "Hvad giver getItem, hvis nøglen ikke findes?",
       "options": [
-        "null",
-        "En tom liste",
         "En tom streng",
-        "Den kaster en fejl med det samme"
+        "Den kaster en fejl med det samme",
+        "null",
+        "En tom liste"
       ],
-      "correct": [0]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q5",
       "type": "tf",
       "prompt": "Password må gerne ligge i localStorage, fordi kun jeres gruppe kan åbne siden.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q6",

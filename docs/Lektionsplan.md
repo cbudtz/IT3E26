@@ -4,8 +4,16 @@ hvem, og hvad er ikke med? L4 omsætter scopet til en konkret projektplan med
 milepæle og work breakdown. Projektlektionerne L2, L4, L6, L8 og L12 danner
 derefter et forløb om scope, planlægning, brugeroplevelse, prototyping,
 monitorering og status. L9 er klient-tilstand og en statisk Vercel-URL, så
-D1 kan afleveres som en klikbar prototype uden backend. L11 er en
-minimal Node-server med ét `GET`. L13 lægger Express ovenpå. L15 er SQL
+D1 kan afleveres som en klikbar prototype uden backend. L10 er
+projektarbejde mod D1; L11 kommer dagen efter afleveringen. Mockuppet er
+en tyk klient: præsentation, logik og `localStorage` ligger i browseren.
+Forberedelsen er client-server, tre lag og Node (`node hej.js`, ikke
+serverkode hjemmefra). I timen opsamles det, gruppen tegner systemet og
+et sekvensdiagram, og I får HTTP nok til én fil: `server.js` med
+`GET /api/patients`, JSON på `localhost:3000` og 404 på resten — uden
+Express og uden database. Patienttabellen fra L7 peges om på jeres egen
+proces, så I kan se, at listen bor i serveren og ikke i `localStorage`.
+L13 lægger Express oven på samme fil. L15 er SQL
 i `psql`: én patienttabel, uden Express. L17 lægger et repository imellem
 de samme routes og tabellen, og kører den centrale brugerhandling, så D2
 kan være et fullstack-MVP uden login. Adgangskontrol

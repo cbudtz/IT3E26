@@ -51,7 +51,7 @@ Oversigtstabel (øvelse, hvornår, tid) + AI-reglen. Hver øvelse: mål, trin, t
 
 ## 7. Quiz (`quiz-lektionN.json`)
 
-Format som `lektion5/quiz-lektion5.json`. Én quiz pr. blok, der afsluttes med quiz. Spørgsmål dækker forberedelse + gennemgang op til det punkt, hvor quizzen ligger.
+Format som `lektion5/quiz-lektion5.json`. Én quiz pr. blok, der afsluttes med quiz. Spørgsmål dækker forberedelse + gennemgang op til det punkt, hvor quizzen ligger. Følg skill `quiz`: skriv spørgsmålene, review svarmulighederne, og kør derefter selv scriptet på den ene quiz-fil.
 
 ## 8. Readme (`Readme.md`)
 

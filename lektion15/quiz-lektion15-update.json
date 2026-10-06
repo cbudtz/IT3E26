@@ -11,7 +11,9 @@
         "Fordi SELECT gemmer rækken i server.js",
         "Fordi WHERE kun må stå i SELECT"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q2",
@@ -19,42 +21,53 @@
       "prompt": "Hvad ændrer UPDATE patients SET navn = 'Nancy Test Berggren' WHERE cpr = '2512489996'?",
       "options": [
         "navn på den række, hvis cpr er 2512489996",
-        "cpr på alle rækker",
         "Alle navne i tabellen",
-        "Primærnøglen id"
+        "Primærnøglen id",
+        "cpr på alle rækker"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q3",
       "type": "mc",
       "prompt": "Hvad gør UPDATE eller DELETE uden WHERE?",
       "options": [
+        "Opretter en ny tabel",
         "Rammer alle rækker i tabellen",
-        "Rammer ingen rækker",
         "Rammer kun den første række",
-        "Opretter en ny tabel"
+        "Rammer ingen rækker"
       ],
-      "correct": [0]
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q4",
       "type": "mc",
       "prompt": "Hvordan ser du, at DELETE FROM patients WHERE cpr = '0000000000' virkede?",
       "options": [
-        "SELECT med samme WHERE giver nul rækker",
+        "id starter forfra fra 1",
         "psql viser tabellens CREATE TABLE igen",
-        "Express-listen bliver kortere",
-        "id starter forfra fra 1"
+        "SELECT med samme WHERE giver nul rækker",
+        "Express-listen bliver kortere"
       ],
-      "correct": [0]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q5",
       "type": "tf",
       "prompt": "Password hører med i patients, fordi testpatienterne i lektion 7 har et password.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     }
   ]
 }

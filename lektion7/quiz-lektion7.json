@@ -6,91 +6,110 @@
       "type": "mc",
       "prompt": "Hvad bruges document.getElementById til?",
       "options": [
-        "At finde et HTML-element i DOM'en",
         "At hente JSON fra en server",
         "At oprette en CSS-fil",
-        "At sende en POST-request"
+        "At sende en POST-request",
+        "At finde et HTML-element i DOM'en"
       ],
-      "correct": [0]
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvad gør addEventListener(\"click\", ...)?",
       "options": [
-        "Den kører funktionen med det samme, når lytteren sættes på",
+        "Den venter på et klik og kører så funktionen",
         "Den erstatter en tidligere click-lytter på samme knap",
         "Den kører kun, hvis knappen er type=\"submit\" og formularen sendes",
-        "Den venter på et klik og kører så funktionen"
+        "Den kører funktionen med det samme, når lytteren sættes på"
       ],
-      "correct": [3]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q3",
       "type": "mc",
       "prompt": "Hvad er upper.value, når feltet har type=\"number\"?",
       "options": [
-        "Altid et tal, fordi type=\"number\" konverterer det",
         "Altid en streng — også når brugeren har skrevet 140",
+        "Altid et tal, fordi type=\"number\" konverterer det",
         "En streng når feltet er tomt, et tal når der står 140",
         "undefined, indtil man kalder Number()"
       ],
-      "correct": [1]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q4",
       "type": "mc",
       "prompt": "Hvad gør upper.classList.add(\"ok\")?",
       "options": [
-        "Den sætter class til præcis \"ok\" og fjerner de andre klasser",
         "Den skriver teksten \"ok\" i resultatfeltet",
+        "Den sætter class til præcis \"ok\" og fjerner de andre klasser",
         "Den lægger klassen ok på, og lader de øvrige klasser blive",
         "Den virker kun, hvis elementet ikke har en klasse i forvejen"
       ],
-      "correct": [2]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q5",
       "type": "mc",
       "prompt": "Hvorfor fjerner demoen alle tilstandsklasser, før den lægger en ny på?",
       "options": [
-        "Fordi classList kun kan have én klasse i alt",
-        "Fordi add(\"ok\") selv fjerner lav, fejl og hoj",
         "Fordi stylesheetets rækkefølge altid vælger den rigtige farve, så remove kun er pænhed",
-        "Så en gammel farve (fx lav) ikke hænger ved, når værdien ændres"
+        "Så en gammel farve (fx lav) ikke hænger ved, når værdien ændres",
+        "Fordi classList kun kan have én klasse i alt",
+        "Fordi add(\"ok\") selv fjerner lav, fejl og hoj"
       ],
-      "correct": [3]
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q6",
       "type": "mc",
       "prompt": "I demoen: hvad sker der, hvis feltet Øvre er tomt?",
       "options": [
-        "Koden viser en fejl, sætter klassen fejl og stopper med return",
-        "Number(\"\") bliver 0, så grenen for lav kører",
+        "trim() gør feltet til 0, og 0 er OK fordi 0 <= 139",
         "Tom streng bliver NaN og ryger i else (høj)",
-        "trim() gør feltet til 0, og 0 er OK fordi 0 <= 139"
+        "Koden viser en fejl, sætter klassen fejl og stopper med return",
+        "Number(\"\") bliver 0, så grenen for lav kører"
       ],
-      "correct": [0]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q7",
       "type": "mc",
       "prompt": "Hvilken gren kører for værdien 89, når koden er if (value < 90) … else if (value <= 139) … else …?",
       "options": [
+        "Ingen gren — sammenligningen kører på strengen \"89\"",
         "else if, fordi 89 også er <= 139",
-        "else, fordi 89 hverken er 90 eller 139",
         "if, fordi 89 er < 90",
-        "Ingen gren — sammenligningen kører på strengen \"89\""
+        "else, fordi 89 hverken er 90 eller 139"
       ],
-      "correct": [2]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q8",
       "type": "tf",
       "prompt": "I blodtryksdemoen fjerner classList.add(\"ok\") selv de andre tilstandsklasser.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     }
   ]
 }

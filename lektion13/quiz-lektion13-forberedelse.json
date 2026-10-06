@@ -6,43 +6,54 @@
       "type": "mc",
       "prompt": "Hvad er en route i Express?",
       "options": [
-        "En database-tabel med patienter",
-        "Metode, sti og en handler-funktion",
         "Kun stien i browserens adresselinje",
-        "En mappe under node_modules"
+        "En mappe under node_modules",
+        "Metode, sti og en handler-funktion",
+        "En database-tabel med patienter"
       ],
-      "correct": [1]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvad svarer til if (req.method === \"GET\" && req.url === \"/api/patients\") i L11?",
       "options": [
-        "app.listen(3000)",
-        "app.get(\"/api/patients\", handler)",
         "res.status(404)",
-        "require(\"express\")"
+        "app.listen(3000)",
+        "require(\"express\")",
+        "app.get(\"/api/patients\", handler)"
       ],
-      "correct": [1]
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q3",
       "type": "mc",
       "prompt": "Hvornår bruger du res.json i stedet for res.send?",
       "options": [
-        "Når svaret skal være JSON, fx patientlisten",
         "Når serveren skal redirecte",
         "Kun når der er PostgreSQL",
-        "Når browseren ikke må bruge fetch"
+        "Når browseren ikke må bruge fetch",
+        "Når svaret skal være JSON, fx patientlisten"
       ],
-      "correct": [0]
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q4",
       "type": "tf",
       "prompt": "Listen i my-app ligger i en database, fordi den overlever genstart.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q5",
@@ -50,18 +61,25 @@
       "prompt": "Hvad gør app.post typisk i forhold til app.get på samme sti?",
       "options": [
         "GET henter. POST sender noget, der skal gemmes",
+        "POST virker kun med curl, ikke med HTTP",
         "POST henter. GET gemmer",
-        "De gør præcis det samme",
-        "POST virker kun med curl, ikke med HTTP"
+        "De gør præcis det samme"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q6",
       "type": "tf",
       "prompt": "Express erstatter Node — I skal ikke længere starte en proces, der lytter på en port.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     }
   ]
 }

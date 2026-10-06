@@ -6,36 +6,42 @@
       "type": "mc",
       "prompt": "Hvad er en række i en relationel tabel?",
       "options": [
-        "Én ting, fx én patient eller én film, med en værdi i hver kolonne",
         "Navnet på en kolonne",
         "Selve SQL-sætningen",
+        "Én ting, fx én patient eller én film, med en værdi i hver kolonne",
         "Processen, der kører server.js"
       ],
-      "correct": [0]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q2",
       "type": "mc",
       "prompt": "Hvad gør WHERE i SELECT title FROM movies WHERE year = 1995?",
       "options": [
-        "Opretter en ny film med år 1995",
         "Beholder de rækker, hvor year er 1995",
         "Sletter film fra før 1995",
-        "Gør year til primærnøgle"
+        "Gør year til primærnøgle",
+        "Opretter en ny film med år 1995"
       ],
-      "correct": [1]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q3",
       "type": "mc",
       "prompt": "Hvilken sætning lægger en ny række i tabellen?",
       "options": [
-        "SELECT * FROM movies",
+        "PRIMARY KEY (id)",
         "INSERT INTO movies (title, year) VALUES ('Toy Story', 1995)",
-        "WHERE year = 1995",
-        "PRIMARY KEY (id)"
+        "SELECT * FROM movies",
+        "WHERE year = 1995"
       ],
-      "correct": [1]
+      "correct": [
+        1
+      ]
     },
     {
       "id": "q4",
@@ -43,30 +49,39 @@
       "prompt": "Hvad udpeger en primærnøgle?",
       "options": [
         "Én række, og to rækker må ikke have den samme værdi",
-        "Alle rækker med samme navn",
         "Den database, psql er forbundet til",
-        "Express-routen GET /api/patients"
+        "Express-routen GET /api/patients",
+        "Alle rækker med samme navn"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q5",
       "type": "mc",
       "prompt": "Hvad er en fremmednøgle?",
       "options": [
-        "En kolonne, der peger på primærnøglen i en anden tabel",
         "Et andet navn for SELECT *",
         "Adgangskoden til brugeren postgres",
+        "En kolonne, der peger på primærnøglen i en anden tabel",
         "Listen i hukommelsen i server.js"
       ],
-      "correct": [0]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q6",
       "type": "tf",
       "prompt": "Patientlisten i server.js er allerede en tabel i PostgreSQL.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     }
   ]
 }

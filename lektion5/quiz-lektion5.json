@@ -7,11 +7,13 @@
       "prompt": "Du har committet på din branch, men ikke pushet. Hvor ligger ændringen?",
       "options": [
         "På GitHub, så gruppen kan se den med det samme",
-        "I en pull request, fordi et commit åbner reviewet",
+        "På main, fordi et commit altid lander dér",
         "I den lokale historik; de andre ser den først efter push",
-        "På main, fordi et commit altid lander dér"
+        "I en pull request, fordi et commit åbner reviewet"
       ],
-      "correct": [2]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q2",
@@ -19,66 +21,81 @@
       "prompt": "Hvorfor lave opgaven på en branch frem for at committe direkte på main?",
       "options": [
         "Så main kan blive den stabile linje, indtil opgaven er merget",
-        "Så de andre ikke kan pushe til main, mens branchen findes",
         "Så commits på branchen kasseres ved merge og ikke indgår i main",
-        "Så GitHub merger automatisk, når commit-beskeden er udfyldt"
+        "Så GitHub merger automatisk, når commit-beskeden er udfyldt",
+        "Så de andre ikke kan pushe til main, mens branchen findes"
       ],
-      "correct": [0]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q3",
       "type": "mc",
       "prompt": "Hvornår er ændringen merget?",
       "options": [
-        "Når committen ligger på din branch",
-        "Når branchen er pushet, og GitHub viser forskellen",
         "Når pull requesten er oprettet, og en anden kan se filerne",
-        "Når ændringerne fra den ene branch er samlet ind i den anden"
+        "Når committen ligger på din branch",
+        "Når ændringerne fra den ene branch er samlet ind i den anden",
+        "Når branchen er pushet, og GitHub viser forskellen"
       ],
-      "correct": [3]
+      "correct": [
+        2
+      ]
     },
     {
       "id": "q4",
       "type": "mc",
       "prompt": "Dine nye commits ligger kun lokalt. Hvad sender dem til GitHub?",
       "options": [
+        "en pull request, før branchen er pushet",
         "pull",
-        "push",
         "merge til main på din egen computer",
-        "en pull request, før branchen er pushet"
+        "push"
       ],
-      "correct": [1]
+      "correct": [
+        3
+      ]
     },
     {
       "id": "q5",
       "type": "mc",
       "prompt": "En makker har merget til main på GitHub. Du vil have det ind lokalt. Hvad bruger du?",
       "options": [
-        "push, så din main bliver den, GitHub gemmer",
-        "en pull request fra main til din computer",
         "pull, så remote-ændringerne hentes og integreres lokalt",
-        "commit, så Git markerer at du har set makkerens ændring"
+        "commit, så Git markerer at du har set makkerens ændring",
+        "en pull request fra main til din computer",
+        "push, så din main bliver den, GitHub gemmer"
       ],
-      "correct": [2]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q6",
       "type": "mc",
       "prompt": "Hvad er en pull request i jeres samarbejdsflow?",
       "options": [
-        "At hente den nyeste main, før du opretter en branch",
-        "Et commit med en lang besked, som de andre reviewer i historikken",
+        "En forespørgsel om at få din branch ind i en anden, typisk efter review",
         "Et trin der både pusher branchen og merger den ind i main",
-        "En forespørgsel om at få din branch ind i en anden, typisk efter review"
+        "Et commit med en lang besked, som de andre reviewer i historikken",
+        "At hente den nyeste main, før du opretter en branch"
       ],
-      "correct": [3]
+      "correct": [
+        0
+      ]
     },
     {
       "id": "q7",
       "type": "tf",
       "prompt": "En API-nøgle må gerne committes, hvis den kun ligger på en feature-branch og ikke på main.",
-      "options": ["Sandt", "Falsk"],
-      "correct": [1]
+      "options": [
+        "Sandt",
+        "Falsk"
+      ],
+      "correct": [
+        1
+      ]
     }
   ]
 }
