@@ -1,11 +1,15 @@
 # Lektion 11 — Forberedelse
 
 D1 er afleveret. Mockuppet er en klient: siden kører i browseren, og dataene
-ligger i `localStorage`. Forberedelsen er client-server, tre lag, og hvad
-Node er. I timen samler vi det op. Skitsen af jeres eget system er en øvelse
-dér, før I skriver en server.
+ligger i `localStorage`. Forberedelsen er client-server, tre lag, et
+sekvensdiagram, og hvad Node er. I timen samler vi det op, skriver serveren
+og peger tabellen på den. Sekvensdiagrammet over jeres kald tegner I
+bagefter, når I kan se request og svar.
 
-Forberedelsen er ca. 60 minutter.
+Afsnittet om sekvensdiagrammer er lagt op sent. Tag det med, også hvis du
+allerede har lavet resten.
+
+Forberedelsen er ca. 80 minutter.
 
 ## 1. Client-server (~25 min)
 
@@ -16,15 +20,21 @@ Læs disse afsnit:
 1. Indledningen
 2. **Client and server role**
 3. **Client and server communication**
-4. **Example** (netbanken)
-5. **Server-side** → *General concepts*
-6. **Client side** → *General concepts*
-7. **Centralized computing**
+4. **Server-side** → *General concepts*
+5. **Client side** → *General concepts*
+6. **Centralized computing**
+
+Spring **Example** over. Artiklen bruger en netbank. Vi bruger det samme
+mønster på en journal:
+
+En kliniker slår en patient op. Browseren spørger journalens webserver.
+Webserveren er server for browseren. Samme webserver er klient, når den
+spørger databasen efter patientens række. Browseren behøver ikke vide,
+hvordan rækken blev fundet.
 
 Fokusér på, at klienten starter samtalen, og at serveren venter og svarer.
 Klienten behøver ikke vide, hvordan serveren finder svaret, kun hvilken
-protokol de deler. I netbank-eksemplet skifter rollen: webserveren er server
-for browseren og klient over for databaseserveren.
+protokol de deler.
 
 I **Centralized computing** hedder det *thin client* og *rich client*. I
 timen siger vi tyk klient om rich client. En tynd klient har næsten ingen
@@ -53,7 +63,24 @@ rører ved. Applikationen er beslutningerne. Data er det, der bliver gemt.
 Spring listerne over CORBA, Java RMI og de øvrige protokoller. Spring også
 **Common layers** og afsnittet om strict og relaxed layering over.
 
-## 3. Node (~15 min)
+## 3. Sekvensdiagram (~20 min)
+
+**[Sequence diagram](https://en.wikipedia.org/wiki/Sequence_diagram)**
+
+Læs indledningen, til og med at tiden går nedad langs livlinjerne, og
+afsnittet om beskeder. En udfyldt pil er et kald, der venter. En stiplet
+pil er svaret tilbage.
+
+Se kun sekvensdiagram-kapitlet i videoen, cirka 9 minutter, fra 1:17:17 og
+frem til Communications Diagram:
+
+[UML Diagrams Full Course — Sequence Diagram](https://www.youtube.com/watch?v=WnMQ8HlmeXc&t=4637s)
+
+Spring aktiveringsbokse, asynkrone pile og combined fragments (`alt`,
+`loop`, `opt`) over. Dem bruger vi ikke. Resten af det to timer lange
+kursus er ikke forberedelse.
+
+## 4. Node (~15 min)
 
 JavaScript har indtil nu kørt i browseren. Node er det, der kan køre det
 samme sprog uden for browseren. Det er den proces, serveren bliver.
@@ -72,7 +99,7 @@ over. Event loop og tråde tager vi ikke. Spring også **How Can You Install
 Node on Your Computer?** over. NVM er ikke nødvendigt. Workshoppen **Learn
 Node.js REPL** er ikke forberedelse.
 
-## 4. Kør en fil (~10 min)
+## 5. Kør en fil (~10 min)
 
 Installer Node.js LTS fra [https://nodejs.org](https://nodejs.org).
 
@@ -101,14 +128,15 @@ Du skal kunne forklare:
 - forskellen på en tynd og en tyk klient
 - at `localStorage` ikke er en server og ikke er datalaget i et færdigt system
 - at Node kører JavaScript uden for browseren, og at den ikke har DOM
+- at tiden i et sekvensdiagram går nedad, at en udfyldt pil er et kald, der venter, og at en stiplet pil er svaret
 
 Og du skal have kørt `node hej.js`.
 
-Skitsen af jeres system, HTTP i detaljer, og det at skrive serveren, tager vi i timen.
+HTTP, serveren og diagrammet over det kald, I lige har kørt, tager vi i timen.
 
 ## Praktisk
 
 - `node -v` og `npm -v` skal svare med et versionsnummer.
 - Du skriver ikke serveren hjemmefra.
-- Hav gruppens mockup-URL med. Skitsen tegner I i øvelsen.
+- Hav gruppens mockup med, lokalt. Diagrammet tegner I, når serveren svarer.
 

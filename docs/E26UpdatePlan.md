@@ -178,8 +178,8 @@ decisions (lock first).
   and D3.
 - Keep Net lectures on L14, L16, L20 and L22; L24 is currently empty and L26
   remains the Net wrap-up.
-- Assume students know UML from 62420/62450. Do not spend dedicated Web
-  lessons reteaching UML diagrams; use them only when needed by the project.
+- Sequence diagrams and component diagrams are not in place on this cohort,
+  even though 62420/62450 lists UML. Do not treat them as known.
 - **D1:** clickable frontend mockup with JavaScript, no backend, published
   as a static URL (Vercel).
 - **D2:** MVP with frontend, backend/API, PostgreSQL and one central user

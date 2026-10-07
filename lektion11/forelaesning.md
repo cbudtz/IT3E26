@@ -8,12 +8,11 @@ Christian Budtz — [chbu@dtu.dk](mailto:chbu@dtu.dk)
 
 - Opsamling: client-server, tynd og tyk, tre lag, Node
 - Quiz: forberedelsen
-- Øvelse 1: Jeres system
 - Gennemgang: HTTP, nok til én server
 - Gennemgang: `server.js`
 - Quiz: request og response
-- Øvelse 2: Skriv serveren
-- Øvelse 3: Sekvensdiagrammet passer til kaldet
+- Øvelse 1: Skriv serveren, og peg tabellen på den
+- Øvelse 2: Modellér det kald, I lige kørte
 
 Pauser lægges ind undervejs.
 
@@ -54,17 +53,17 @@ sequenceDiagram
 
 ## Rollen kan skifte
 
-I netbank-eksemplet er webserveren server for browseren. Samme webserver er klient, når den spørger databasen.
+En kliniker slår en patient op. Journalens webserver er server for browseren. Samme webserver er klient, når den spørger databasen efter patientens række.
 
 ```mermaid
 sequenceDiagram
   participant Browser
-  participant Webserver
-  participant Database
-  Browser->>Webserver: request
-  Webserver->>Database: request
-  Database-->>Webserver: data
-  Webserver-->>Browser: response
+  participant Journalserver
+  participant Patientdatabase
+  Browser->>Journalserver: hent patienten
+  Journalserver->>Patientdatabase: hent rækken
+  Patientdatabase-->>Journalserver: data
+  Journalserver-->>Browser: patienten
 ```
 
 Det er separation of concerns. Hvert led svarer kun på det, det blev spurgt om.
@@ -103,7 +102,7 @@ Præsentation er det, brugeren ser. Applikation er beslutningen. Data er det, de
 
 ## Hvor lagene skal hen
 
-Præsentationen bliver i browseren. Applikationen flytter over i serveren. I dag er den stadig bare en liste i processen. Datalaget bliver PostgreSQL i lektion 15.
+Præsentationen bliver i browseren. Applikationen flytter over i serveren. I dag er den stadig bare en liste i processen. Datalaget bliver PostgreSQL i lektion 15. Jeres eget diagram tegner I, når serveren svarer.
 
 ```mermaid
 flowchart LR
@@ -140,20 +139,6 @@ I har kørt en fil med `node`. Processen skrev en linje og stoppede. Serveren er
 Gå til [/quiz](/quiz) og indtast koden fra tavlen.
 
 **Lektion 11: forberedelse** — client-server, tynd og tyk, tre lag.
-
----
-
-# Øvelse — jeres system
-
----
-
-## Øvelse 1: Jeres system
-
-Tynd eller tyk. De tre lag for jeres handling. Sekvensdiagram med bruger, browser, server og database.
-
-Papir er fint. Detaljerne står i [øvelsesarket](oevelser.md).
-
-Vi bruger skitsen igen, når serveren kører.
 
 ---
 
@@ -244,7 +229,7 @@ server.listen(3000);
 
 Uden `listen` er der ingen server. Metode og sti skal begge passe. En forkert sti må ikke ligne en tom patientliste.
 
-Det kald, der lykkes, ser sådan ud:
+Det kald, der lykkes, ser sådan ud. Jeres diagram tegner I først, når I har kørt det:
 
 ```mermaid
 sequenceDiagram
@@ -292,29 +277,29 @@ Detaljerne står i [øvelsesarket](oevelser.md).
 
 ---
 
-## Øvelse 2: Skriv serveren
+## Øvelse 1: Skriv serveren
 
 Skriv `server.js`. `GET /api/patients` svarer 200 og JSON. Alt andet svarer 404.
 
-Tabellen henter fra `localhost:3000`. Et ændret navn ses efter genstart.
+Tabellen henter fra `localhost:3000`. Et ændret navn ses efter genstart. Åbn HTML-filen lokalt. Siden på Vercel kan ikke nå den bærbare.
 
 ---
 
-## Øvelse 3: Pilene matcher kaldet
+## Øvelse 2: Modellér kaldet
 
-Opdatér sekvensdiagrammet fra øvelse 1, så det er det kald, I lige har kørt. Databasen er med, men I har ikke spurgt den endnu.
+Tegn det kald, I lige har kørt. Livlinjer: bruger, browser, server. Databasen er ikke med.
 
 ```mermaid
 sequenceDiagram
   participant Bruger
   participant Browser
   participant Server
-  participant Database
   Bruger->>Browser: åbn patientlisten
   Browser->>Server: GET /api/patients
-  Note over Database: lektion 15
   Server-->>Browser: 200 og JSON
   Browser-->>Bruger: tabel
 ```
 
-Diagrammet skal handle om gruppens egen handling, ikke om netbanken.
+Navngiv præsentation, applikation og data ud fra koden. Skriv, at HTML-filen og Node kører på den bærbare, og at Vercel ikke er med i kaldet.
+
+Diagrammet skal handle om jeres kald, ikke om journal-eksemplet. Detaljerne står i [øvelsesarket](oevelser.md).
